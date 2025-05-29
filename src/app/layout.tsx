@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   keywords: '웹 개발, 프론트엔드, 백엔드, React, Next.js, 포트폴리오, 석지인',
   icons: {
     icon: [
-      {url: '/favicon.ico', type: 'image/x-icon'},
-      {url: '/favicon.svg', type: 'image/svg+xml'},
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="ko">
-    <body
+      <body
         className={cn(
-            'min-h-screen w-full bg-background text-[clamp(16px,1vw,18px)]',
+          'min-h-screen w-full bg-background text-[clamp(16px,1vw,18px)]',
         )}
-    >
+      >
         <TextProvider>
           <Suspense fallback={<HomePageSkeleton />}>
             {children}

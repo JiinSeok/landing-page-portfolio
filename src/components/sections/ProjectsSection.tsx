@@ -1,5 +1,13 @@
 import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
+import {
+  SectionContainer,
+  SectionHeader,
+} from '@/components/ui/containers/SectionContainer'
+import {
+  ContentLayout,
+  GridLayout,
+} from '@/components/ui/containers/ContentLayout'
 import { Link } from '@/navigation'
 import {
   ChevronLeftIcon,
@@ -7,7 +15,7 @@ import {
   LayoutGridIcon,
   LayoutIcon,
 } from 'lucide-react'
-import {useTranslations} from '@/lib/providers/TextContext'
+import { useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -150,7 +158,7 @@ export const EnergyUsageChart: React.FC = () => {
 ]
 
 export default function ProjectsSection() {
-  const t = useTranslations('pages.projects');
+  const t = useTranslations('pages.projects')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isGridView, setIsGridView] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -181,122 +189,116 @@ export default function ProjectsSection() {
   }, [currentIndex, isGridView])
 
   return (
-    <section id="projects" className="w-full py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-3">
-        <header className="text-center mb-12">
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold mb-4">
-            {t('meta.title')}
-          </h2>
-          <p className="text-[clamp(1.125rem,2vw,1.375rem)] text-muted-foreground max-w-2xl mx-auto">
-            {t('meta.subtitle')}
-          </p>
-        </header>
+    <SectionContainer id="projects" padding="py-20 px-6 md:px-8 lg:px-12">
+      <SectionHeader
+        title={t('meta.title')}
+        subtitle={t('meta.subtitle')}
+        titleClassName="text-[clamp(2rem,4vw,3rem)]"
+        subtitleClassName="text-[clamp(1.125rem,2vw,1.375rem)] max-w-2xl"
+      />
 
-        {/* 보기 전환 및 탐색 컨트롤 */}
-        <div className="flex justify-between items-center mb-8">
-          <nav
-              className="flex space-x-2"
-              aria-label={t('view-options')}
+      {/* 보기 전환 및 탐색 컨트롤 */}
+      <ContentLayout
+        direction="row"
+        justify="between"
+        align="center"
+        className="mb-8"
+      >
+        <nav className="flex space-x-2" aria-label={t('view-options')}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsGridView(false)}
+            className={!isGridView ? 'bg-primary text-primary-foreground' : ''}
+            aria-pressed={!isGridView}
           >
+            <LayoutIcon className="w-4 h-4 mr-1" />
+            <span>{t('view-carousel')}</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsGridView(true)}
+            className={isGridView ? 'bg-primary text-primary-foreground' : ''}
+            aria-pressed={isGridView}
+          >
+            <LayoutGridIcon className="w-4 h-4 mr-1" />
+            <span>{t('view-gallery')}</span>
+          </Button>
+        </nav>
+
+        {!isGridView && (
+          <nav className="flex space-x-2" aria-label={t('carousel-navigation')}>
             <Button
               variant="outline"
-              size="sm"
-              onClick={() => setIsGridView(false)}
-              className={
-                !isGridView ? 'bg-primary text-primary-foreground' : ''
-              }
-              aria-pressed={!isGridView}
+              size="icon"
+              onClick={prevProject}
+              aria-label={t('previous-project')}
             >
-              <LayoutIcon className="w-4 h-4 mr-1" />
-              <span>{t('view-carousel')}</span>
+              <ChevronLeftIcon className="w-4 h-4" />
             </Button>
             <Button
               variant="outline"
-              size="sm"
-              onClick={() => setIsGridView(true)}
-              className={isGridView ? 'bg-primary text-primary-foreground' : ''}
-              aria-pressed={isGridView}
+              size="icon"
+              onClick={nextProject}
+              aria-label={t('next-project')}
             >
-              <LayoutGridIcon className="w-4 h-4 mr-1" />
-              <span>{t('view-gallery')}</span>
+              <ChevronRightIcon className="w-4 h-4" />
             </Button>
           </nav>
+        )}
+      </ContentLayout>
 
-          {!isGridView && (
-              <nav
-                  className="flex space-x-2"
-                  aria-label={t('carousel-navigation')}
-              >
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={prevProject}
-                aria-label={t('previous-project')}
-              >
-                <ChevronLeftIcon className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={nextProject}
-                aria-label={t('next-project')}
-              >
-                <ChevronRightIcon className="w-4 h-4" />
-              </Button>
-              </nav>
-          )}
-        </div>
-
-        {/* 프로젝트 표시 - 캐러셀 또는 그리드 */}
-        {isGridView ? (
+      {/* 프로젝트 표시 - 캐러셀 또는 그리드 */}
+      {isGridView ? (
+        <GridLayout cols={{ default: 1, md: 2, lg: 3 }} gap="gap-8">
+          {projectsData.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </GridLayout>
+      ) : (
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-hidden snap-x snap-mandatory"
+          role="region"
+          aria-label={t('projects.carousel')}
+        >
+          {projectsData.map((project, index) => (
             <div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                role="list"
+              key={index}
+              className="w-full flex-shrink-0 snap-center px-4"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${t('projects.slide')} ${index + 1} ${t('projects.of')} ${projectsData.length}`}
             >
-            {projectsData.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
-        ) : (
-          <div
-            ref={carouselRef}
-            className="flex overflow-x-hidden snap-x snap-mandatory"
-            role="region"
-            aria-label={t('projects.carousel')}
-          >
-            {projectsData.map((project, index) => (
-              <div
-                key={index}
-                className="w-full flex-shrink-0 snap-center px-4"
-                role="group"
-                aria-roledescription="slide"
-                aria-label={`${t('projects.slide')} ${index + 1} ${t('projects.of')} ${projectsData.length}`}
-              >
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
-        )}
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      )}
 
-        {/* 캐러셀 인디케이터 */}
-        {!isGridView && (
-          <div className="flex justify-center mt-8 space-x-2">
-            {projectsData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full ${
-                  currentIndex === index
-                    ? 'bg-primary'
-                    : 'bg-gray-300 dark:bg-gray-700'
-                }`}
-                aria-label={`${t('projects.go-to-project')} ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+      {/* 캐러셀 인디케이터 */}
+      {!isGridView && (
+        <ContentLayout
+          direction="row"
+          justify="center"
+          className="mt-8 space-x-2"
+        >
+          {projectsData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-full ${
+                currentIndex === index
+                  ? 'bg-primary'
+                  : 'bg-gray-300 dark:bg-gray-700'
+              }`}
+              aria-label={`${t('projects.go-to-project')} ${index + 1}`}
+            />
+          ))}
+        </ContentLayout>
+      )}
+    </SectionContainer>
   )
 }
 
@@ -306,68 +308,68 @@ function ProjectCard({ project }: { project: ProjectWithMedia }) {
   const [showCode, setShowCode] = useState(false)
 
   return (
-      <article
-          role="listitem"
-          aria-labelledby={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
+    <article
+      role="listitem"
+      aria-labelledby={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
     >
-        <ContentCard title={project.title} className="h-full flex flex-col">
-          <div className="flex flex-col h-full">
-            <header className="flex justify-between items-start mb-4">
-              <h3
-                  id={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
-                  className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold"
-              >
-                {project.title}
-              </h3>
-              <time
-                  dateTime={`${project.year}`}
-                  className="text-sm text-muted-foreground"
-              >
-                {project.year}
-              </time>
-            </header>
+      <ContentCard title={project.title} className="h-full flex flex-col">
+        <div className="flex flex-col h-full">
+          <header className="flex justify-between items-start mb-4">
+            <h3
+              id={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
+              className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold"
+            >
+              {project.title}
+            </h3>
+            <time
+              dateTime={`${project.year}`}
+              className="text-sm text-muted-foreground"
+            >
+              {project.year}
+            </time>
+          </header>
 
-            {/* 프로젝트 이미지 또는 코드 스니펫 */}
-            <figure className="relative mb-4 overflow-hidden rounded-md aspect-video bg-muted">
-              {showCode && project.codeSnippet ? (
-                  <pre className="p-4 text-xs overflow-auto h-full bg-gray-900 text-gray-100 rounded-md">
+          {/* 프로젝트 이미지 또는 코드 스니펫 */}
+          <figure className="relative mb-4 overflow-hidden rounded-md aspect-video bg-muted">
+            {showCode && project.codeSnippet ? (
+              <pre className="p-4 text-xs overflow-auto h-full bg-gray-900 text-gray-100 rounded-md">
                 <code>{project.codeSnippet}</code>
               </pre>
-              ) : (
-                  <Image
-                      src={project.imageUrl}
-                      alt={project.alt}
-                      fill
-                      className="object-cover"
-                  />
-              )}
-              {!showCode && (
-                  <figcaption className="sr-only">{project.alt}</figcaption>
-              )}
-            </figure>
+            ) : (
+              <Image
+                src={project.imageUrl}
+                alt={project.alt}
+                fill
+                className="object-cover"
+              />
+            )}
+            {!showCode && (
+              <figcaption className="sr-only">{project.alt}</figcaption>
+            )}
+          </figure>
 
-            <p className="text-[clamp(0.875rem,1.25vw,1rem)] text-muted-foreground mb-4 flex-grow">
-              {project.description}
-            </p>
+          <p className="text-[clamp(0.875rem,1.25vw,1rem)] text-muted-foreground mb-4 flex-grow">
+            {project.description}
+          </p>
 
-            <footer className="flex flex-wrap gap-2 mt-auto">
-              {project.codeSnippet && (
-                  <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setShowCode(!showCode)}
-                  >
-                    {showCode ? t('view-image') : t('view-code')}
-                  </Button>
-              )}
-              <Link href={project.url}>
-                <Button variant="default" size="sm">
-                  {t('view-project')}
-                </Button>
-              </Link>
-            </footer>
-          </div>
-        </ContentCard>
-      </article>
+          <footer className="flex flex-wrap gap-2 mt-auto">
+            {project.codeSnippet && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowCode(!showCode)}
+              >
+                {showCode ? t('view-image') : t('view-code')}
+              </Button>
+            )}
+            <Link href={project.url}>
+              <Button variant="default" size="sm">
+                {t('view-project')}
+              </Button>
+            </Link>
+          </footer>
+        </div>
+      </ContentCard>
+    </article>
   )
 }

@@ -2,7 +2,7 @@
 
 import DemoShowcase from '@/components/ui/containers/SliderKit'
 import { demoItems } from '@/lib/constants/homepage'
-import {useTranslations} from '@/lib/providers/TextContext'
+import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import { JSX, useEffect, useState } from 'react'
 

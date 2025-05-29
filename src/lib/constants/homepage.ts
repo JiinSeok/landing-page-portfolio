@@ -69,7 +69,8 @@ export const demoItems = [
 export const benefits = [
   {
     title: koMessages.pages.home.sections.benefits.productivity.title,
-    description: koMessages.pages.home.sections.benefits.productivity.description,
+    description:
+      koMessages.pages.home.sections.benefits.productivity.description,
   },
   {
     title: koMessages.pages.home.sections.benefits.costs.title,
@@ -78,7 +79,7 @@ export const benefits = [
   {
     title: koMessages.pages.home.sections.benefits['time-to-market'].title,
     description:
-    koMessages.pages.home.sections.benefits['time-to-market'].description,
+      koMessages.pages.home.sections.benefits['time-to-market'].description,
   },
 ]
 
@@ -103,7 +104,7 @@ export const features = [
   {
     title: koMessages.pages.home.sections.features['model-management'].title,
     description:
-    koMessages.pages.home.sections.features['model-management'].description,
+      koMessages.pages.home.sections.features['model-management'].description,
     icon: '🤖',
   },
   {
@@ -114,13 +115,13 @@ export const features = [
   {
     title: koMessages.pages.home.sections.features.infrastructure.title,
     description:
-    koMessages.pages.home.sections.features.infrastructure.description,
+      koMessages.pages.home.sections.features.infrastructure.description,
     icon: '☁️',
   },
   {
     title: koMessages.pages.home.sections.features.collaboration.title,
     description:
-    koMessages.pages.home.sections.features.collaboration.description,
+      koMessages.pages.home.sections.features.collaboration.description,
     icon: '👥',
   },
   {

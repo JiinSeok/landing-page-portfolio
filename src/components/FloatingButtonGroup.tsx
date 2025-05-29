@@ -55,7 +55,7 @@ type FloatingButtonContextType = {
 
 // Create context
 const FloatingButtonContext = createContext<
-    FloatingButtonContextType | undefined
+  FloatingButtonContextType | undefined
 >(undefined)
 
 // Hook to use the context
@@ -63,7 +63,7 @@ export const useFloatingButton = () => {
   const context = useContext(FloatingButtonContext)
   if (!context) {
     throw new Error(
-        'useFloatingButton must be used within a FloatingButtonProvider',
+      'useFloatingButton must be used within a FloatingButtonProvider',
     )
   }
   return context
@@ -77,15 +77,15 @@ interface FloatingButtonGroupProps {
 
 // Root component
 export function FloatingButtonGroup({
-                                      className,
-                                      children,
-                                    }: FloatingButtonGroupProps) {
+  className,
+  children,
+}: FloatingButtonGroupProps) {
   const [activeButton, setActiveButton] = useState<
-      'none' | 'contact' | 'share' | 'toc'
+    'none' | 'contact' | 'share' | 'toc'
   >('none')
   const [copied, setCopied] = useState<'none' | 'contact' | 'url'>('none')
   const [headings, setHeadings] = useState<
-      Array<{ id: string; text: string; level: number; element: HTMLElement }>
+    Array<{ id: string; text: string; level: number; element: HTMLElement }>
   >([])
   const [activeId, setActiveId] = useState<string>('')
   const [viewedIds, setViewedIds] = useState<Set<string>>(new Set())
@@ -99,23 +99,23 @@ export function FloatingButtonGroup({
 
     const findHeadings = () => {
       const elements = Array.from(
-          document.querySelectorAll('h1, h2, h3, h4, h5, h6'),
+        document.querySelectorAll('h1, h2, h3, h4, h5, h6'),
       )
 
       const headingElements = elements
-          .map((element) => {
-            // Only collect headings that already have IDs to avoid hydration mismatches
-            if (element.id) {
-              return {
-                id: element.id,
-                text: element.textContent || '',
-                level: parseInt(element.tagName.substring(1), 10),
-                element: element as HTMLElement,
-              }
+        .map((element) => {
+          // Only collect headings that already have IDs to avoid hydration mismatches
+          if (element.id) {
+            return {
+              id: element.id,
+              text: element.textContent || '',
+              level: parseInt(element.tagName.substring(1), 10),
+              element: element as HTMLElement,
             }
-            return null
-          })
-          .filter(Boolean) as Array<{
+          }
+          return null
+        })
+        .filter(Boolean) as Array<{
         id: string
         text: string
         level: number
@@ -199,9 +199,9 @@ export function FloatingButtonGroup({
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
-          tocRef.current &&
-          !tocRef.current.contains(event.target as Node) &&
-          activeButton === 'toc'
+        tocRef.current &&
+        !tocRef.current.contains(event.target as Node) &&
+        activeButton === 'toc'
       ) {
         setActiveButton('none')
       }
@@ -215,40 +215,40 @@ export function FloatingButtonGroup({
 
   // Scroll to heading when clicked
   const scrollToHeading = useCallback(
-      (id: string) => {
-        // Only run on the client side
-        if (typeof window === 'undefined' || typeof document === 'undefined')
-          return
+    (id: string) => {
+      // Only run on the client side
+      if (typeof window === 'undefined' || typeof document === 'undefined')
+        return
 
-        const element = document.getElementById(id)
-        if (element) {
-          // Get the element's position relative to the viewport
-          const rect = element.getBoundingClientRect()
+      const element = document.getElementById(id)
+      if (element) {
+        // Get the element's position relative to the viewport
+        const rect = element.getBoundingClientRect()
 
-          // Calculate the absolute position and apply offset
-          const absoluteTop = window.pageYOffset + rect.top - 120 // Offset for better UX
+        // Calculate the absolute position and apply offset
+        const absoluteTop = window.pageYOffset + rect.top - 120 // Offset for better UX
 
-          window.scrollTo({
-            top: absoluteTop,
-            behavior: 'smooth',
-          })
+        window.scrollTo({
+          top: absoluteTop,
+          behavior: 'smooth',
+        })
 
-          // Mark this heading as viewed
-          setViewedIds((prev) => {
-            const newSet = new Set(prev)
-            newSet.add(id)
-            return newSet
-          })
+        // Mark this heading as viewed
+        setViewedIds((prev) => {
+          const newSet = new Set(prev)
+          newSet.add(id)
+          return newSet
+        })
 
-          setActiveId(id)
+        setActiveId(id)
 
-          // Close mobile menu after clicking
-          if (isMobile) {
-            setActiveButton('none')
-          }
+        // Close mobile menu after clicking
+        if (isMobile) {
+          setActiveButton('none')
         }
-      },
-      [isMobile, setActiveButton],
+      }
+    },
+    [isMobile, setActiveButton],
   )
 
   const copyContactToClipboard = async () => {
@@ -287,8 +287,8 @@ export function FloatingButtonGroup({
     const url = encodeURIComponent(window.location.href)
     const text = encodeURIComponent(document.title)
     window.open(
-        `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-        '_blank',
+      `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+      '_blank',
     )
   }
 
@@ -309,9 +309,9 @@ export function FloatingButtonGroup({
 
   // Find GitHub and LinkedIn links
   const githubLink =
-      SOCIAL_LINKS.find((link: SocialLink) => link.id === 'github')?.path || '#'
+    SOCIAL_LINKS.find((link: SocialLink) => link.id === 'github')?.path || '#'
   const linkedinLink =
-      SOCIAL_LINKS.find((link: SocialLink) => link.id === 'linkedin')?.path || '#'
+    SOCIAL_LINKS.find((link: SocialLink) => link.id === 'linkedin')?.path || '#'
 
   // Context value
   const contextValue = {
@@ -335,11 +335,11 @@ export function FloatingButtonGroup({
   return (
     <FloatingButtonContext.Provider value={contextValue}>
       <div
-          ref={tocRef}
-          className={cn(
-              'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex flex-col items-end gap-4',
-              className,
-          )}
+        ref={tocRef}
+        className={cn(
+          'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex flex-col items-end gap-4',
+          className,
+        )}
       >
         {children}
       </div>
@@ -378,14 +378,14 @@ export function TocButton() {
       className="rounded-full h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 bg-primary"
       aria-label={
         activeButton === 'toc'
-            ? 'Close table of contents'
-            : 'Open table of contents'
+          ? 'Close table of contents'
+          : 'Open table of contents'
       }
     >
       {activeButton === 'toc' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-          <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -412,9 +412,9 @@ export function ContactButton() {
       }
     >
       {activeButton === 'contact' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-          <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -441,9 +441,9 @@ export function ShareButton() {
       }
     >
       {activeButton === 'share' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-          <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"/>
+        <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -464,13 +464,13 @@ export function ContactMenu() {
   return (
     <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
       <ContentCard
-          title="Jiin Seok"
-          icon={
-            <div
-                className="bg-primary rounded-full h-5 w-5"
-                aria-hidden="true"
-            ></div>
-          }
+        title="Jiin Seok"
+        icon={
+          <div
+            className="bg-primary rounded-full h-5 w-5"
+            aria-hidden="true"
+          ></div>
+        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <address className="space-y-2 text-sm text-muted-foreground not-italic">
@@ -487,10 +487,10 @@ export function ContactMenu() {
               GitHub
             </Badge>
             <a
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
             >
               github.com/jiindev
             </a>
@@ -500,10 +500,10 @@ export function ContactMenu() {
               LinkedIn
             </Badge>
             <a
-                href={linkedinLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
+              href={linkedinLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
             >
               linkedin.com/in/jiindev
             </a>
@@ -549,13 +549,13 @@ export function ShareMenu() {
   return (
     <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
       <ContentCard
-          title="Share This Page"
-          icon={
-            <div
-                className="bg-primary rounded-full h-5 w-5"
-                aria-hidden="true"
-            ></div>
-          }
+        title="Share This Page"
+        icon={
+          <div
+            className="bg-primary rounded-full h-5 w-5"
+            aria-hidden="true"
+          ></div>
+        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <div className="flex flex-col gap-3">
@@ -636,30 +636,30 @@ export function ShareMenu() {
 
 // TOC Menu Component
 export function TocMenu() {
-  const {activeButton, headings, activeId, scrollToHeading} =
-      useFloatingButton()
+  const { activeButton, headings, activeId, scrollToHeading } =
+    useFloatingButton()
 
   if (activeButton !== 'toc') return null
 
   return (
     <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
       <ContentCard
-          title="Table of Contents"
-          icon={
-            <div
-                className="bg-primary rounded-full h-5 w-5"
-                aria-hidden="true"
-            ></div>
-          }
+        title="Table of Contents"
+        icon={
+          <div
+            className="bg-primary rounded-full h-5 w-5"
+            aria-hidden="true"
+          ></div>
+        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <nav
-            className="pr-3 -mr-2 flex flex-col"
-            aria-label="Table of Contents"
+          className="pr-3 -mr-2 flex flex-col"
+          aria-label="Table of Contents"
         >
           <ul className="space-y-2">
             {headings.map((heading) => (
-                <li
+              <li
                 key={heading.id}
                 className={cn('transition-colors', {
                   'text-primary font-medium': activeId === heading.id,
@@ -674,18 +674,18 @@ export function TocMenu() {
                     scrollToHeading(heading.id)
                   }}
                   className={cn(
-                      'text-left text-sm py-1.5 hover:text-primary flex items-center w-full',
-                      activeId === heading.id && 'font-medium',
+                    'text-left text-sm py-1.5 hover:text-primary flex items-center w-full',
+                    activeId === heading.id && 'font-medium',
                   )}
                   aria-current={
                     activeId === heading.id ? 'location' : undefined
                   }
                 >
                   {activeId === heading.id && (
-                      <span
-                          className="w-1 h-4 bg-primary rounded-full mr-2"
-                          aria-hidden="true"
-                      />
+                    <span
+                      className="w-1 h-4 bg-primary rounded-full mr-2"
+                      aria-hidden="true"
+                    />
                   )}
                   {heading.text}
                 </a>

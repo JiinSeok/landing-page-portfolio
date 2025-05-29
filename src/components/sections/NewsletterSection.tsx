@@ -2,7 +2,7 @@
 
 import Form from '@/components/ui/input/Form'
 import { Button } from '@/components/ui/Button/Button'
-import {useTranslations} from '@/lib/providers/TextContext'
+import { useTranslations } from '@/lib/providers/TextContext'
 
 /**
  * Newsletter section component for the homepage
@@ -24,9 +24,7 @@ export default function NewsletterSection() {
       className="w-full py-20 bg-gradient-to-b from-background to-secondary/20"
     >
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          {t('title')}
-        </h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           {t('description')}
         </p>

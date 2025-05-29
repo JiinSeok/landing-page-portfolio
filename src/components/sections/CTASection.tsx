@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button/Button'
 import { useModal } from '@/lib/hooks/useModal'
-import {useTranslations} from '@/lib/providers/TextContext'
+import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 
 /**
@@ -12,57 +12,57 @@ import styles from '@/lib/utils/styles'
  * and a button to contact the developer.
  */
 export default function CTASection() {
-    const t = useTranslations('pages.home.sections.cta')
+  const t = useTranslations('pages.home.sections.cta')
   const { openModal } = useModal()
 
   return (
-      <section
-          id="contact"
-          className={styles.combineStyles([
-              'w-full bg-primary text-white',
-              styles.layout.section('lg'),
-          ])}
+    <section
+      id="contact"
+      className={styles.combineStyles([
+        'w-full bg-primary text-white',
+        styles.layout.section('lg'),
+      ])}
+    >
+      <div
+        className={styles.combineStyles([
+          styles.layout.container('xl'),
+          styles.spacing.paddingX('md'),
+          'text-center',
+        ])}
       >
-          <div
-              className={styles.combineStyles([
-                  styles.layout.container('xl'),
-                  styles.spacing.paddingX('md'),
-                  'text-center',
-              ])}
-          >
-              <h2
-                  className={styles.combineStyles([
-                      styles.text.heading(2),
-                      styles.spacing.marginBottom('sm'),
-                  ])}
-              >
-                  {t('title')}
-              </h2>
-              <p
-                  className={styles.combineStyles([
-                      styles.text.body('large'),
-                      'opacity-90 max-w-2xl mx-auto',
-                      styles.spacing.marginBottom('md'),
-                  ])}
-              >
-                  {t('description')}
+        <h2
+          className={styles.combineStyles([
+            styles.text.heading(2),
+            styles.spacing.marginBottom('sm'),
+          ])}
+        >
+          {t('title')}
+        </h2>
+        <p
+          className={styles.combineStyles([
+            styles.text.body('large'),
+            'opacity-90 max-w-2xl mx-auto',
+            styles.spacing.marginBottom('md'),
+          ])}
+        >
+          {t('description')}
         </p>
-              <Button
-                  variant="default"
-                  size="lg"
+        <Button
+          variant="default"
+          size="lg"
           className="bg-white text-primary hover:bg-white/90"
           onClick={() => openModal('contactDialog')}
         >
-                  {t('button')}
+          {t('button')}
         </Button>
-              <p
-                  className={styles.combineStyles([
-                      styles.spacing.marginTop('sm'),
-                      styles.text.ui('small'),
-                      'opacity-80',
-                  ])}
-              >
-                  {t('contact-info')}
+        <p
+          className={styles.combineStyles([
+            styles.spacing.marginTop('sm'),
+            styles.text.ui('small'),
+            'opacity-80',
+          ])}
+        >
+          {t('contact-info')}
         </p>
       </div>
     </section>

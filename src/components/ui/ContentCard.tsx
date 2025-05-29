@@ -3,30 +3,31 @@
 import { ReactNode } from 'react'
 
 interface ContentCardProps {
-  title: string
+  title?: string
   icon?: ReactNode
   children: ReactNode
   className?: string
+  footer?: ReactNode
+  hoverEffect?: boolean
 }
 
-/**
- * Content Card Component
- *
- * A reusable card component for displaying content with a title and optional icon.
- * Used in various sections of the application to maintain consistent styling.
- */
 export function ContentCard({
-                              // title,
-                              // icon,
+  title,
+  icon,
   children,
   className = '',
+  footer,
 }: ContentCardProps) {
   return (
-      <div
-          className={`bg-card p-6 md:p-8 rounded-xl shadow-lg w-full md:w-[28rem] ${className}`}
-      >
-      {/* Banner top text removed as per requirement */}
-        <div className="space-y-4 h-full">{children}</div>
+    <div
+      className={`bg-card p-6 md:p-8 rounded-xl shadow-lg w-full ${className}`}
+    >
+      {icon && <div className="text-4xl mb-4">{icon}</div>}
+      {title && <h3 className="text-xl font-semibold mb-2">{title}</h3>}
+      <div className="space-y-4">{children}</div>
+      {footer && (
+        <div className="mt-4 pt-4 border-t border-border">{footer}</div>
+      )}
     </div>
   )
 }

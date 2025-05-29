@@ -13,7 +13,7 @@ interface Step2FormProps {
 
 export default function Step2Form({ formData, onSubmit }: Step2FormProps) {
   // JSON 직접 접근
-  const stepperDialog = koMessages.StepperDialog
+  const stepperDialog = koMessages.components.stepper
   const { prevStep } = useStepper()
 
   return (

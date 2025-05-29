@@ -6,15 +6,15 @@ import Form from '@/components/ui/input/Form'
 import { cn } from '@/lib/utils/classnames'
 import { FieldValues } from 'react-hook-form'
 
-export default function FormModal({isOpen, onRequestClose}: ModalProps) {
+export default function FormModal({ isOpen, onRequestClose }: ModalProps) {
   const handleSubmit = async (data: FieldValues): Promise<void> => {
     console.log(data)
     onRequestClose()
   }
 
   return (
-      <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-        <Modal.CloseButton onClick={onRequestClose}/>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+      <Modal.CloseButton onClick={onRequestClose} />
 
       <Modal.Icon>
         <span className="text-3xl text-blue-500">✏️</span>

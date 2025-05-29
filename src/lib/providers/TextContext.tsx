@@ -51,8 +51,8 @@ export function getNestedValue(obj: any, path: string): any {
 export function TextProvider({ children }: { children: ReactNode }) {
   // 매개변수 지원이 있는 키별 텍스트 검색 함수
   const t = (
-      key: string,
-      params?: Record<string, string | number>,
+    key: string,
+    params?: Record<string, string | number>,
   ): string | any => {
     // 점 표기법으로 번역 가져오기
     const keyParts = key.split('.')
@@ -62,7 +62,7 @@ export function TextProvider({ children }: { children: ReactNode }) {
     for (const part of keyParts) {
       if (translationValue && typeof translationValue === 'object') {
         translationValue =
-            translationValue[part as keyof typeof translationValue]
+          translationValue[part as keyof typeof translationValue]
       } else {
         translationValue = undefined
         break

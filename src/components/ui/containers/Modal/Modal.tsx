@@ -28,7 +28,7 @@ export interface ModalProps {
 export default function Modal({
   isOpen,
   onAfterOpen,
-                                onRequestClose,
+  onRequestClose,
   children,
   className,
   role,

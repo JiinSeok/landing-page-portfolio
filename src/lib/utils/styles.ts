@@ -19,8 +19,8 @@ export function combineStyles(
   additionalClasses?: string,
 ): string {
   const classes = Array.isArray(tokenClasses)
-      ? tokenClasses.join(' ')
-      : tokenClasses
+    ? tokenClasses.join(' ')
+    : tokenClasses
   return cn(classes, additionalClasses)
 }
 
@@ -37,9 +37,9 @@ export const text = {
    */
   heading: (level: 1 | 2 | 3 | 4 | 5 | 6, className?: string): string => {
     const headingToken =
-        tokens.typography.responsiveFontSize[
-            `h${level}` as keyof typeof tokens.typography.responsiveFontSize
-            ]
+      tokens.typography.responsiveFontSize[
+        `h${level}` as keyof typeof tokens.typography.responsiveFontSize
+      ]
     const fontWeight = tokens.typography.fontWeight.bold
     return combineStyles([headingToken, fontWeight], className)
   },
@@ -52,8 +52,8 @@ export const text = {
    * @returns Combined class string
    */
   body: (
-      size: 'large' | 'default' | 'small' = 'default',
-      className?: string,
+    size: 'large' | 'default' | 'small' = 'default',
+    className?: string,
   ): string => {
     const sizeMap = {
       large: tokens.typography.responsiveFontSize.bodyLarge,
@@ -71,8 +71,8 @@ export const text = {
    * @returns Combined class string
    */
   ui: (
-      size: 'large' | 'default' | 'small' = 'default',
-      className?: string,
+    size: 'large' | 'default' | 'small' = 'default',
+    className?: string,
   ): string => {
     const sizeMap = {
       large: tokens.typography.responsiveFontSize.uiLarge,
@@ -106,8 +106,8 @@ export const layout = {
    * @returns Combined class string
    */
   container: (
-      size: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'prose' | 'full' = 'xl',
-      className?: string,
+    size: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'prose' | 'full' = 'xl',
+    className?: string,
   ): string => {
     return combineStyles([tokens.sizing.container[size], 'mx-auto'], className)
   },
@@ -121,8 +121,8 @@ export const layout = {
    */
   grid: (columns: 1 | 2 | 3 | 4, className?: string): string => {
     return combineStyles(
-        ['grid', tokens.layout.responsive.grid[columns]],
-        className,
+      ['grid', tokens.layout.responsive.grid[columns]],
+      className,
     )
   },
 
@@ -134,17 +134,17 @@ export const layout = {
    * @returns Combined class string
    */
   flex: (
-      direction:
-          | 'row'
-          | 'column'
-          | 'columnReverse'
-          | 'rowColumn'
-          | 'rowColumnReverse' = 'row',
-      className?: string,
+    direction:
+      | 'row'
+      | 'column'
+      | 'columnReverse'
+      | 'rowColumn'
+      | 'rowColumnReverse' = 'row',
+    className?: string,
   ): string => {
     return combineStyles(
-        ['flex', tokens.layout.responsive.flexDirection[direction]],
-        className,
+      ['flex', tokens.layout.responsive.flexDirection[direction]],
+      className,
     )
   },
 }
@@ -161,8 +161,8 @@ export const spacing = {
    * @returns Combined class string
    */
   padding: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.padding[size], className)
   },
@@ -175,8 +175,8 @@ export const spacing = {
    * @returns Combined class string
    */
   paddingX: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.paddingX[size], className)
   },
@@ -189,8 +189,8 @@ export const spacing = {
    * @returns Combined class string
    */
   paddingY: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.paddingY[size], className)
   },
@@ -203,8 +203,8 @@ export const spacing = {
    * @returns Combined class string
    */
   margin: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.margin[size], className)
   },
@@ -217,17 +217,17 @@ export const spacing = {
    * @returns Combined class string
    */
   marginX: (
-      size:
-          | 'none'
-          | 'xs'
-          | 'sm'
-          | 'md'
-          | 'lg'
-          | 'xl'
-          | '2xl'
-          | '3xl'
-          | 'auto' = 'md',
-      className?: string,
+    size:
+      | 'none'
+      | 'xs'
+      | 'sm'
+      | 'md'
+      | 'lg'
+      | 'xl'
+      | '2xl'
+      | '3xl'
+      | 'auto' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.marginX[size], className)
   },
@@ -240,8 +240,8 @@ export const spacing = {
    * @returns Combined class string
    */
   marginY: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.marginY[size], className)
   },
@@ -254,8 +254,8 @@ export const spacing = {
    * @returns Combined class string
    */
   marginBottom: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.marginBottom[size], className)
   },
@@ -268,8 +268,8 @@ export const spacing = {
    * @returns Combined class string
    */
   marginTop: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.marginTop[size], className)
   },
@@ -282,8 +282,8 @@ export const spacing = {
    * @returns Combined class string
    */
   gap: (
-      size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
-      className?: string,
+    size: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.spacing.gap[size], className)
   },
@@ -301,8 +301,8 @@ export const sizing = {
    * @returns Combined class string
    */
   icon: (
-      size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md',
-      className?: string,
+    size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.sizing.icon[size], className)
   },
@@ -315,8 +315,8 @@ export const sizing = {
    * @returns Combined class string
    */
   avatar: (
-      size: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' = 'md',
-      className?: string,
+    size: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.sizing.image.avatar[size], className)
   },
@@ -329,8 +329,8 @@ export const sizing = {
    * @returns Combined class string
    */
   thumbnail: (
-      size: 'sm' | 'md' | 'lg' | 'xl' = 'md',
-      className?: string,
+    size: 'sm' | 'md' | 'lg' | 'xl' = 'md',
+    className?: string,
   ): string => {
     return combineStyles(tokens.sizing.image.thumbnail[size], className)
   },

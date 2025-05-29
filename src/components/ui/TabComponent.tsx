@@ -59,12 +59,12 @@ export function TabComponent({
       {/* Tab content */}
       <div className={`flex justify-center ${contentClassName}`}>
         {tabs.map(
-            (tab) =>
-                activeTab === tab.id && (
-                    <div key={tab.id} className="w-full">
-                      {tab.content}
-                    </div>
-                ),
+          (tab) =>
+            activeTab === tab.id && (
+              <div key={tab.id} className="w-full">
+                {tab.content}
+              </div>
+            ),
         )}
       </div>
     </div>

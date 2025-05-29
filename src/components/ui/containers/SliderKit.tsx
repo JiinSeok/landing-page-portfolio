@@ -351,11 +351,11 @@ function SliderItem({ children, className, href, title }: SliderItemProps) {
 // SliderImage 컴포넌트
 
 function SliderImage({
-                       src,
-                       alt,
-                       className,
-                       sizes = '100vw',
-                     }: SliderKitImageProps) {
+  src,
+  alt,
+  className,
+  sizes = '100vw',
+}: SliderKitImageProps) {
   // 이미지 경로에서 확장자 추출
   const extension = src.split('.').pop() || 'png'
   // 확장자를 제외한 기본 경로
@@ -367,7 +367,7 @@ function SliderImage({
 
   if (extension === 'svg') {
     return (
-        <Image
+      <Image
         src={src}
         alt={alt}
         width={width}
@@ -405,9 +405,14 @@ function SliderImage({
         alt={alt}
         width={width}
         height={height}
-        className={cn('w-full h-full object-cover', className)}
+        className={cn('w-full object-contain', className)}
         loading="lazy"
         decoding="async"
+        style={{
+          objectPosition: 'center',
+          maxHeight: '66.67vh', // 2/3 of viewport height
+          margin: '0 auto', // Center horizontally
+        }}
       />
     </picture>
   )
@@ -431,9 +436,14 @@ function Video({ src, className, title, ariaLabel, poster }: VideoProps) {
         preload="metadata"
         width={width}
         height={height}
-        className={cn('w-full h-full object-cover', className)}
+        className={cn('w-full object-contain', className)}
         title={title || '데모 영상'}
         aria-label={ariaLabel || '제품 데모 영상'}
+        style={{
+          objectPosition: 'center',
+          maxHeight: '66.67vh', // 2/3 of viewport height
+          margin: '0 auto', // Center horizontally
+        }}
         poster={poster}
         disablePictureInPicture
         controlsList="nodownload"
@@ -568,9 +578,9 @@ function NavigationButtons({
 // SliderItemSkeleton 컴포넌트
 
 function SliderItemSkeleton({ className }: SliderItemSkeletonProps) {
-  // 명시적인 너비와 높이 (9:16 비율) - SliderItem과 동일하게 유지
-  // const width = 900
-  const height = 1600
+  // 명시적인 너비와 높이 (9:19 비율) - SVG와 일치
+  // const width = 450
+  const height = 920
 
   return (
     <article

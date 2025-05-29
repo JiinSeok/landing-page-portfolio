@@ -1,53 +1,53 @@
-import {JSX, ReactNode} from 'react'
+import { JSX, ReactNode } from 'react'
 
 export interface ClickProps {
-    onClick?: () => void
+  onClick?: () => void
 }
 
 export type ParentProps = {
-    children?: ReactNode
-    className?: string
+  children?: ReactNode
+  className?: string
 }
 
 export type ComponentProps<T extends keyof JSX.IntrinsicElements = 'div'> = {
-    children?: ReactNode
-    className?: string
-    as?: keyof JSX.IntrinsicElements
-    id?: string
+  children?: ReactNode
+  className?: string
+  as?: keyof JSX.IntrinsicElements
+  id?: string
 } & JSX.IntrinsicElements[T]
 
 export interface HeaderProps extends ComponentProps {
-    id?: string
-    title?: string
-    description?: string
+  id?: string
+  title?: string
+  description?: string
 }
 
 export interface ChildrenProps {
-    children: ReactNode
+  children: ReactNode
 }
 
 export type LayoutProps = Readonly<ChildrenProps>
 
 export interface MenuItem {
-    id: string
-    name: string
-    icon: ReactNode
-    path: string
+  id: string
+  name: string
+  icon: ReactNode
+  path: string
 }
 
 export interface BaseDashboardLayoutProps extends LayoutProps {
-    menuItems: MenuItem[]
-    title?: string
-    logoPath?: string
-    logoAlt?: string
+  menuItems: MenuItem[]
+  title?: string
+  logoPath?: string
+  logoAlt?: string
 }
 
 export interface CustomMessage {
-    title?: string
-    message?: string
+  title?: string
+  message?: string
 }
 
 export interface MarkdownRendererProps {
-    content: string
-    className?: string
+  content: string
+  className?: string
 }

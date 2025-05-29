@@ -14,7 +14,7 @@ export default function Step3Confirmation({
   onSubmit,
 }: Step3ConfirmationProps) {
   // JSON 직접 접근
-  const stepperDialog = koMessages.StepperDialog
+  const stepperDialog = koMessages.components.stepper
   const { prevStep } = useStepper()
 
   return (

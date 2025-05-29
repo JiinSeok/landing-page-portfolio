@@ -11,7 +11,7 @@ interface Step1FormProps {
 
 export default function Step1Form({ formData, onSubmit }: Step1FormProps) {
   // JSON 직접 접근
-  const stepperDialog = koMessages.StepperDialog
+  const stepperDialog = koMessages.components.stepper
 
   return (
     <Form formId="contact-step1" onSubmit={onSubmit} defaultValues={formData}>

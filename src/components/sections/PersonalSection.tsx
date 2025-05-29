@@ -8,7 +8,7 @@
  */
 'use client'
 
-import {useTranslations} from '@/lib/providers/TextContext'
+import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import Image from 'next/image'
 import { createContext, useContext, useState, useEffect } from 'react'
@@ -58,8 +58,8 @@ export default function PersonalSection() {
   return (
     <PersonalSectionContext.Provider value={contextValue}>
       <section
-          id="personal"
-          className="w-full py-16 sm:py-20 md:py-24 lg:py-28 bg-secondary/10"
+        id="personal"
+        className="w-full py-16 sm:py-20 md:py-24 lg:py-28 bg-secondary/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
           <PersonalSection.Header />
@@ -88,8 +88,8 @@ PersonalSection.Header = function Header() {
   return (
     <header className="text-center mb-16">
       <h2
-          className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
-          id="personalabout-title"
+        className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
+        id="personalabout-title"
       >
         {t('pages.personal.about-title')}
       </h2>
@@ -104,10 +104,10 @@ PersonalSection.ProfileImage = function ProfileImage() {
   return (
     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center sm:pl-2 md:pl-4 lg:pl-6">
       <div
-          className={styles.combineStyles([
-            'relative rounded-full overflow-hidden border-4 border-primary',
-            styles.sizing.avatar('4xl'),
-          ])}
+        className={styles.combineStyles([
+          'relative rounded-full overflow-hidden border-4 border-primary',
+          styles.sizing.avatar('4xl'),
+        ])}
       >
         {isLoading ? (
           // Skeleton UI for profile image
@@ -137,19 +137,19 @@ PersonalSection.PersonalInfo = function PersonalInfo() {
         <>
           <div className="flex flex-wrap gap-2 mb-6">
             {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                    key={i}
-                    className="h-6 w-20 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"
-                ></div>
+              <div
+                key={i}
+                className="h-6 w-20 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"
+              ></div>
             ))}
           </div>
           <div className="h-24 bg-gray-200 dark:bg-gray-700 rounded mb-4 animate-pulse"></div>
           <div className="flex flex-wrap gap-4">
             {[1, 2, 3].map((i) => (
-                <div
-                    key={i}
-                    className="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
-                ></div>
+              <div
+                key={i}
+                className="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"
+              ></div>
             ))}
           </div>
         </>
@@ -174,10 +174,10 @@ PersonalSection.PersonalInfo = function PersonalInfo() {
             </span>
           </div>
           <p
-              className={styles.combineStyles([
-                styles.text.body('large'),
-                'mb-4 break-keep',
-              ])}
+            className={styles.combineStyles([
+              styles.text.body('large'),
+              'mb-4 break-keep',
+            ])}
           >
             {t('pages.personal.profile-description')}
           </p>
@@ -292,7 +292,7 @@ PersonalSection.Interests = function Interests() {
         // Actual content
         <>
           <h3
-              className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
+            className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
           >
             {t('pages.personal.interests-title')}
           </h3>
@@ -393,7 +393,7 @@ PersonalSection.Values = function Values() {
         // Actual content
         <>
           <h3
-              className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
+            className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
           >
             {t('pages.personal.values-title')}
           </h3>
@@ -491,7 +491,7 @@ PersonalSection.Strengths = function Strengths() {
         // Actual content
         <>
           <h3
-              className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
+            className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
           >
             {t('pages.personal.strengths-title')}
           </h3>
@@ -592,7 +592,7 @@ PersonalSection.Motivations = function Motivations() {
         // Actual content
         <>
           <h3
-              className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
+            className={styles.combineStyles([styles.text.heading(3), 'mb-6'])}
           >
             {t('pages.personal.motivations-title')}
           </h3>

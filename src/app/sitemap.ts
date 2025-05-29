@@ -1,9 +1,9 @@
-import {metaData} from '@/app/config'
-import {MetadataRoute} from 'next'
+import { metaData } from '@/app/config'
+import { MetadataRoute } from 'next'
 
 const BaseUrl = metaData.baseUrl.endsWith('/')
-    ? metaData.baseUrl
-    : `${metaData.baseUrl}/`
+  ? metaData.baseUrl
+  : `${metaData.baseUrl}/`
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // const posts = await getBlogPosts()
@@ -24,10 +24,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const routes = ['til', 'projects', 'site-build', 'soft-skills'].map(
-      (route) => ({
-        url: `${BaseUrl}${route}`,
-        lastModified: new Date().toISOString().split('T')[0],
-      }),
+    (route) => ({
+      url: `${BaseUrl}${route}`,
+      lastModified: new Date().toISOString().split('T')[0],
+    }),
   )
 
   return [...routes, ...blogs]
