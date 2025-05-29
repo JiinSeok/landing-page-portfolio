@@ -6,10 +6,7 @@ import Form from '@/components/ui/input/Form'
 import { cn } from '@/lib/utils/classnames'
 import { FieldValues } from 'react-hook-form'
 
-export default function FormModal({
-  isOpen,
-                                    onRequestClose,
-}: ModalProps) {
+export default function FormModal({isOpen, onRequestClose}: ModalProps) {
   const handleSubmit = async (data: FieldValues): Promise<void> => {
     console.log(data)
     onRequestClose()

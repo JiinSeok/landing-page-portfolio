@@ -2,7 +2,7 @@
 
 import DemoShowcase from '@/components/ui/containers/SliderKit'
 import { demoItems } from '@/lib/constants/homepage'
-import { useTranslations } from '@/lib/constants/mock-translations'
+import {useTranslations} from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import { JSX, useEffect, useState } from 'react'
 
@@ -14,7 +14,7 @@ import { JSX, useEffect, useState } from 'react'
  * Compound Component 패턴을 사용하여 UI 요소를 재사용 가능한 컴포넌트로 분리했습니다.
  */
 export default function DemoShowcaseSection(): JSX.Element {
-  const t = useTranslations('HomePage')
+  const t = useTranslations('pages.home.sections.demo')
   // 로딩 상태 관리
   const [isLoading, setIsLoading] = useState(true)
 
@@ -87,7 +87,7 @@ export default function DemoShowcaseSection(): JSX.Element {
               styles.spacing.marginBottom('sm'),
             ])}
           >
-            {t('sections.demo.title')}
+            {t('title')}
           </h2>
           <p
             className={styles.combineStyles([
@@ -95,7 +95,7 @@ export default function DemoShowcaseSection(): JSX.Element {
               'text-muted-foreground max-w-2xl mx-auto',
             ])}
           >
-            {t('sections.demo.description')}
+            {t('description')}
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export default function DemoShowcaseSection(): JSX.Element {
               demoItems.map((item) => (
                 <DemoShowcase.SliderItem key={item.id} className={'pb-20'}>
                   <figure className="relative h-full p-0 m-0">
-                    <DemoShowcase.Image
+                    <DemoShowcase.SliderImage
                       src={item.src}
                       alt={item.alt}
                       sizes="(max-width: 375px) 90vw, (max-width: 768px) 80vw, (max-width: 1440px) 70vw, 50vw"

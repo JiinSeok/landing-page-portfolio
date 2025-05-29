@@ -1,6 +1,6 @@
 /**
  * Design Tokens
- * 
+ *
  * This file contains centralized design tokens for consistent styling across the application.
  * Use these tokens instead of direct Tailwind classes to ensure uniformity.
  */
@@ -19,25 +19,25 @@ export const typography = {
     '5xl': 'text-5xl',
   },
 
-  // Responsive font sizes
+  // Responsive font sizes with improved clamp-based scaling
   responsiveFontSize: {
     // Headings
-    h1: 'text-4xl md:text-5xl lg:text-6xl',
-    h2: 'text-3xl md:text-4xl lg:text-5xl',
-    h3: 'text-2xl md:text-3xl',
-    h4: 'text-xl md:text-2xl',
-    h5: 'text-lg md:text-xl',
-    h6: 'text-base md:text-lg',
+    h1: 'text-[clamp(2.5rem,5vw,4rem)]', // 40px to 64px
+    h2: 'text-[clamp(2rem,4vw,3rem)]', // 32px to 48px
+    h3: 'text-[clamp(1.5rem,3vw,2.25rem)]', // 24px to 36px
+    h4: 'text-[clamp(1.25rem,2.5vw,1.75rem)]', // 20px to 28px
+    h5: 'text-[clamp(1.125rem,2vw,1.5rem)]', // 18px to 24px
+    h6: 'text-[clamp(1rem,1.5vw,1.25rem)]', // 16px to 20px
 
     // Body text
-    bodyLarge: 'text-lg md:text-xl',
-    bodyDefault: 'text-base md:text-lg',
-    bodySmall: 'text-sm md:text-base',
+    bodyLarge: 'text-[clamp(1.125rem,2vw,1.375rem)]', // 18px to 22px
+    bodyDefault: 'text-[clamp(1rem,1.5vw,1.125rem)]', // 16px to 18px
+    bodySmall: 'text-[clamp(0.875rem,1.25vw,1rem)]', // 14px to 16px
 
     // UI text
-    uiLarge: 'text-base',
-    uiDefault: 'text-sm',
-    uiSmall: 'text-xs',
+    uiLarge: 'text-[clamp(1rem,1.5vw,1.125rem)]', // 16px to 18px
+    uiDefault: 'text-[clamp(0.875rem,1.25vw,1rem)]', // 14px to 16px
+    uiSmall: 'text-[clamp(0.75rem,1vw,0.875rem)]', // 12px to 14px
   },
 
   // Font weights
@@ -189,7 +189,7 @@ export const sizing = {
       '4xl': 'w-64 h-64',
     },
     thumbnail: {
-      sm: 'w-16 h-9',  // 16:9 aspect ratio
+      sm: 'w-16 h-9', // 16:9 aspect ratio
       md: 'w-32 h-18', // 16:9 aspect ratio
       lg: 'w-48 h-27', // 16:9 aspect ratio
       xl: 'w-64 h-36', // 16:9 aspect ratio

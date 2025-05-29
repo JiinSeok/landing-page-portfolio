@@ -39,46 +39,46 @@ export const demoItems = [
     id: 1,
     type: 'image' as const,
     src: DEMO_IMAGES.DEMO_1,
-    alt: koMessages.HomePage.sections.demo.item1.alt,
-    callout: koMessages.HomePage.sections.demo.item1.callout,
+    alt: koMessages.pages.home.sections.demo.item1.alt,
+    callout: koMessages.pages.home.sections.demo.item1.callout,
   },
   {
     id: 2,
     type: 'image' as const,
     src: DEMO_IMAGES.DEMO_2,
-    alt: koMessages.HomePage.sections.demo.item2.alt,
-    callout: koMessages.HomePage.sections.demo.item2.callout,
+    alt: koMessages.pages.home.sections.demo.item2.alt,
+    callout: koMessages.pages.home.sections.demo.item2.callout,
   },
   {
     id: 3,
     type: 'image' as const,
     src: DEMO_IMAGES.DEMO_3,
-    alt: koMessages.HomePage.sections.demo.item3.alt,
-    callout: koMessages.HomePage.sections.demo.item3.callout,
+    alt: koMessages.pages.home.sections.demo.item3.alt,
+    callout: koMessages.pages.home.sections.demo.item3.callout,
   },
   {
     id: 4,
     type: 'image' as const,
     src: DEMO_VIDEOS.MAIN_DEMO,
-    alt: koMessages.HomePage.sections.demo.item4.alt,
-    callout: koMessages.HomePage.sections.demo.item4.callout,
+    alt: koMessages.pages.home.sections.demo.item4.alt,
+    callout: koMessages.pages.home.sections.demo.item4.callout,
   },
 ]
 
 // Benefits list for the benefits section
 export const benefits = [
   {
-    title: koMessages.HomePage.sections.benefits.productivity.title,
-    description: koMessages.HomePage.sections.benefits.productivity.description,
+    title: koMessages.pages.home.sections.benefits.productivity.title,
+    description: koMessages.pages.home.sections.benefits.productivity.description,
   },
   {
-    title: koMessages.HomePage.sections.benefits.costs.title,
-    description: koMessages.HomePage.sections.benefits.costs.description,
+    title: koMessages.pages.home.sections.benefits.costs.title,
+    description: koMessages.pages.home.sections.benefits.costs.description,
   },
   {
-    title: koMessages.HomePage.sections.benefits['time-to-market'].title,
+    title: koMessages.pages.home.sections.benefits['time-to-market'].title,
     description:
-      koMessages.HomePage.sections.benefits['time-to-market'].description,
+    koMessages.pages.home.sections.benefits['time-to-market'].description,
   },
 ]
 
@@ -101,36 +101,36 @@ export const metrics = {
 // Features list for the features section
 export const features = [
   {
-    title: koMessages.HomePage.sections.features['model-management'].title,
+    title: koMessages.pages.home.sections.features['model-management'].title,
     description:
-      koMessages.HomePage.sections.features['model-management'].description,
+    koMessages.pages.home.sections.features['model-management'].description,
     icon: '🤖',
   },
   {
-    title: koMessages.HomePage.sections.features.analytics.title,
-    description: koMessages.HomePage.sections.features.analytics.description,
+    title: koMessages.pages.home.sections.features.analytics.title,
+    description: koMessages.pages.home.sections.features.analytics.description,
     icon: '📊',
   },
   {
-    title: koMessages.HomePage.sections.features.infrastructure.title,
+    title: koMessages.pages.home.sections.features.infrastructure.title,
     description:
-      koMessages.HomePage.sections.features.infrastructure.description,
+    koMessages.pages.home.sections.features.infrastructure.description,
     icon: '☁️',
   },
   {
-    title: koMessages.HomePage.sections.features.collaboration.title,
+    title: koMessages.pages.home.sections.features.collaboration.title,
     description:
-      koMessages.HomePage.sections.features.collaboration.description,
+    koMessages.pages.home.sections.features.collaboration.description,
     icon: '👥',
   },
   {
-    title: koMessages.HomePage.sections.features.api.title,
-    description: koMessages.HomePage.sections.features.api.description,
+    title: koMessages.pages.home.sections.features.api.title,
+    description: koMessages.pages.home.sections.features.api.description,
     icon: '🔌',
   },
   {
-    title: koMessages.HomePage.sections.features.security.title,
-    description: koMessages.HomePage.sections.features.security.description,
+    title: koMessages.pages.home.sections.features.security.title,
+    description: koMessages.pages.home.sections.features.security.description,
     icon: '🔒',
   },
 ]

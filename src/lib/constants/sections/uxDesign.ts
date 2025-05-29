@@ -7,33 +7,33 @@
 // UX design features
 export const UX_DESIGN_FEATURES = [
   {
-    title: 'ux-design.structure.title',
-    description: 'ux-design.structure.description',
+    title: 'pages.uxDesign.structure.title',
+    description: 'pages.uxDesign.structure.description',
     icon: '📝',
   },
   {
-    title: 'ux-design.component.title',
-    description: 'ux-design.component.description',
+    title: 'pages.uxDesign.component.title',
+    description: 'pages.uxDesign.component.description',
     icon: '🧩',
   },
   {
-    title: 'ux-design.state-management.title',
-    description: 'ux-design.state-management.description',
+    title: 'pages.uxDesign.state-management.title',
+    description: 'pages.uxDesign.state-management.description',
     icon: '🔄',
   },
   {
-    title: 'ux-design.performance.title',
-    description: 'ux-design.performance.description',
+    title: 'pages.uxDesign.performance.title',
+    description: 'pages.uxDesign.performance.description',
     icon: '⚡',
   },
   {
-    title: 'ux-design.accessibility.title',
-    description: 'ux-design.accessibility.description',
+    title: 'pages.uxDesign.accessibility.title',
+    description: 'pages.uxDesign.accessibility.description',
     icon: '♿',
   },
   {
-    title: 'ux-design.testing.title',
-    description: 'ux-design.testing.description',
+    title: 'pages.uxDesign.responsive.title',
+    description: 'pages.uxDesign.responsive.description',
     icon: '🧪',
   },
 ]

@@ -4,11 +4,10 @@ import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
 import { TabComponent, TabItem } from '@/components/ui/TabComponent'
 import { useModal } from '@/lib/hooks/useModal'
-import { useTranslations } from '@/lib/constants/mock-translations'
-import styles from '@/lib/utils/styles'
+import {useTranslations} from '@/lib/providers/TextContext'
 import { Link } from '@/navigation'
 import Image from 'next/image'
-import { createContext, useContext, useEffect, useState } from 'react'
+import {createContext, useContext, useEffect, useMemo, useState} from 'react'
 
 // Summary Component
 HeroSection.Summary = function Summary() {
@@ -122,29 +121,30 @@ const useHeroSection = () => {
 
 // Main component
 export default function HeroSection() {
-  const t = useTranslations('HomePage')
+  const t = useTranslations('pages.home.sections.hero')
   const { openModal } = useModal()
   const [activeTab, setActiveTab] = useState<string>('code')
 
   // Define tab content
-  const tabs: TabItem[] = [
-    {
-      id: 'code',
-      label: t('hero.tab-code'),
-      content: (
-        <ContentCard
-          title={t('hero.code-snippet')}
-          icon={<div className="bg-chart-1"></div>}
-        >
-          <div className="bg-secondary p-4 rounded-lg text-responsive-sm">
-            {t('hero.code-question')}
-          </div>
-          <div className="bg-primary/10 p-4 rounded-lg text-responsive-sm whitespace-pre-line">
-            {t('hero.code-answer')}
-          </div>
-          <div className="bg-secondary/50 p-4 rounded-lg font-mono">
-            <pre className="text-responsive-sm whitespace-pre-wrap break-words">
-              {`// Example TypeScript code
+  const tabs: TabItem[] = useMemo<TabItem[]>(
+      () => [
+        {
+          id: 'code',
+          label: t('tab-code'),
+          content: (
+              <ContentCard
+                  title={t('code-snippet')}
+                  icon={<div className="bg-chart-1"></div>}
+              >
+                <div className="bg-secondary p-4 rounded-lg text-responsive-sm">
+                  {t('code-question')}
+                </div>
+                <div className="bg-primary/10 p-4 rounded-lg text-responsive-sm whitespace-pre-line">
+                  {t('code-answer')}
+                </div>
+                <div className="bg-secondary/50 p-4 rounded-lg font-mono">
+              <pre className="text-responsive-sm whitespace-pre-wrap break-words">
+                {`// Example TypeScript code
               type User = {
                 id: string;
                 name: string;
@@ -155,56 +155,58 @@ export default function HeroSection() {
                 const response = await fetch(\`/api/users/\${id}\`);
                 return response.json();
               }`}
-            </pre>
-          </div>
-        </ContentCard>
-      ),
-    },
-    {
-      id: 'seo',
-      label: t('hero.tab-seo'),
-      content: (
-        <ContentCard
-          title={t('hero.seo-title')}
-          icon={<div className="bg-chart-3"></div>}
-        >
-          <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
-            <Image
-              src="/notion-images/albaform/seo.png"
-              alt="SEO Optimization"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <p className="mt-4 text-responsive-sm text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
-            {t('hero.seo-description')}
-          </p>
-        </ContentCard>
-      ),
-    },
-    {
-      id: 'demo',
-      label: t('hero.tab-demo'),
-      content: (
-        <ContentCard
-          title={t('hero.demo-title')}
-          icon={<div className="bg-chart-4"></div>}
-        >
-          <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
-            <Image
-              src="/notion-images/albaform/seo.png"
-              alt="Interactive Demo"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <p className="mt-4 text-responsive-sm text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
-            {t('hero.demo-description')}
-          </p>
-        </ContentCard>
-      ),
-    },
-  ]
+              </pre>
+                </div>
+              </ContentCard>
+          ),
+        },
+        {
+          id: 'seo',
+          label: t('tab-seo'),
+          content: (
+              <ContentCard
+                  title={t('seo-title')}
+                  icon={<div className="bg-chart-3"></div>}
+              >
+                <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
+                  <Image
+                      src="/notion-images/albaform/seo.png"
+                      alt="SEO Optimization"
+                      fill
+                      className="object-contain"
+                  />
+                </div>
+                <p className="mt-4 text-responsive-sm text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
+                  {t('seo-description')}
+                </p>
+              </ContentCard>
+          ),
+        },
+        {
+          id: 'demo',
+          label: t('tab-demo'),
+          content: (
+              <ContentCard
+                  title={t('demo-title')}
+                  icon={<div className="bg-chart-4"></div>}
+              >
+                <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
+                  <Image
+                      src="/notion-images/albaform/seo.png"
+                      alt="Interactive Demo"
+                      fill
+                      className="object-contain"
+                  />
+                </div>
+                <p className="mt-4 text-responsive-sm text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
+                  {t('demo-description')}
+                </p>
+              </ContentCard>
+          ),
+        },
+      ],
+      [t],
+  )
 
   // Auto-rotate tabs every 5 seconds
   useEffect(() => {
@@ -237,68 +239,58 @@ export default function HeroSection() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row items-start gap-10">
-            <div className="md:w-1/2 mb-12 md:mb-0">
-              <h2
-                className={styles.combineStyles([
-                  styles.text.heading(2),
-                  'text-start mb-4',
-                ])}
-                id="portfolio-title"
+            <header className="md:w-1/2 mb-12 md:mb-0">
+              <h1
+                  className="text-[clamp(2.5rem,5vw,4rem)] font-bold text-start mb-4"
+                  id="meta.title"
               >
-                {t('portfolio-title')}
-              </h2>
-              <p
-                className={styles.combineStyles([
-                  styles.text.body('large'),
-                  'text-muted-foreground text-start mb-12 max-w-3xl mx-auto',
-                ])}
-              >
-                {t('portfolio-subtitle')}
+                <p>{t('title-highlight1')}</p>
+                {t('title-highlight2')}
+              </h1>
+              <p className="text-[clamp(1.125rem,2vw,1.375rem)] text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
+                고객에게 쉽고 믿을 수 있는 웹 경험, 어떻게 만들까?
               </p>
-              <div className="text-md w-full md:text-lg mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
+              <div
+                  className="text-[clamp(1rem,1.5vw,1.125rem)] w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
                 <p>안녕하세요.</p>
                 <p>
                   소프트웨어를 쉽고 빠르게 만들기 위해 도구를 즐겨 활용하는
                   석지인입니다(TypeScript, Next.js, TailwindCSS, Shadcn/ui,
                   JetBrain Junie(AI) 등). 저 역시{' '}
-                  <span className={'font-bold'}>
-                    복잡한 기술도 쉽게 이용할 수 있는 프론트엔드
-                  </span>
+                  <strong>복잡한 기술도 쉽게 이용할 수 있는 프론트엔드</strong>
                   로 사용자의 문제를 풀고 싶습니다.
                 </p>
                 <p>
                   프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
                   만듭니다. 방법에 얽매이지 않고{' '}
-                  <span className={'font-bold'}>
-                    사용자를 고객으로 만드는 프론트엔드
-                  </span>
-                  를 위해 노력하겠습니다.
+                  <strong>사용자를 고객으로 만드는 프론트엔드</strong>를 위해
+                  노력하겠습니다.
                 </p>
               </div>
               {/*<HeroSection.Summary />*/}
               <nav
                 className="flex flex-wrap gap-5"
-                aria-label={t('hero.main-actions')}
+                aria-label={t('cta-projects')}
               >
                 <Link href="#projects">
                   <Button
                     size="lg"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-6 py-4 rounded-md"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 text-[clamp(1rem,1.5vw,1.125rem)] px-6 py-4 rounded-md"
                   >
-                    {t('hero.cta-projects')}
+                    {t('cta-projects')}
                   </Button>
                 </Link>
                 <Link href="#resume">
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-primary text-primary hover:bg-primary/10 text-lg px-6 py-4 rounded-md"
+                    className="border-primary text-primary hover:bg-primary/10 text-[clamp(1rem,1.5vw,1.125rem)] px-6 py-4 rounded-md"
                   >
-                    {t('hero.cta-resume')}
+                    {t('cta-resume')}
                   </Button>
                 </Link>
               </nav>
-            </div>
+            </header>
             <HeroSection.TabDisplay tabs={tabs} />
           </div>
         </div>

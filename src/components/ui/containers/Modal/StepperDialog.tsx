@@ -10,11 +10,8 @@ import { ModalProps } from '@/lib/types'
 import React, { useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 
-export default function StepperDialog({
-  isOpen,
-                                        onRequestClose: onRequestClose,
-}: ModalProps) {
-  const stepperDialog = koMessages.StepperDialog
+export default function StepperDialog({isOpen, onRequestClose}: ModalProps) {
+  const stepperDialog = koMessages.components.stepper
 
   const [formData, setFormData] = useState<Record<string, any>>({})
 

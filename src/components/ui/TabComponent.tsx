@@ -21,7 +21,7 @@ interface TabComponentProps {
 
 /**
  * Reusable Tab Component
- * 
+ *
  * This component provides a standardized way to create tabs across the application.
  * It handles tab navigation and content rendering based on the active tab.
  */
@@ -47,8 +47,8 @@ export function TabComponent({
               activeTab === tab.id ? activeTabClassName : inactiveTabClassName
             }`}
             onClick={(e) => {
-              e.preventDefault();
-              setActiveTab(tab.id);
+              e.preventDefault()
+              setActiveTab(tab.id)
             }}
           >
             {tab.label}
@@ -58,13 +58,14 @@ export function TabComponent({
 
       {/* Tab content */}
       <div className={`flex justify-center ${contentClassName}`}>
-        {tabs.map((tab) => (
-          activeTab === tab.id && (
-            <div key={tab.id} className="w-full">
-              {tab.content}
-            </div>
-          )
-        ))}
+        {tabs.map(
+            (tab) =>
+                activeTab === tab.id && (
+                    <div key={tab.id} className="w-full">
+                      {tab.content}
+                    </div>
+                ),
+        )}
       </div>
     </div>
   )

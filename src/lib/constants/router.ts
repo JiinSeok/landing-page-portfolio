@@ -1,8 +1,8 @@
 // Define types for router items
 interface RouterItem {
-  path: string;
-  getName: (customName?: string) => string;
-  external?: boolean;
+  path: string
+  getName: (customName?: string) => string
+  external?: boolean
 }
 export const ROUTER: Record<string, RouterItem> = {
   // Main pages

@@ -29,4 +29,4 @@ export const CATEGORY_SUMMARIES = [
     description: 'category-summary.experience.description',
     icon: '🧠',
   },
-];
+]

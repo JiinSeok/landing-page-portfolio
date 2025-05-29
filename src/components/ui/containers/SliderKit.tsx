@@ -13,6 +13,7 @@ import {
   VideoProps,
 } from '@/lib/types'
 import { cn } from '@/lib/utils/classnames'
+import Image from 'next/image'
 /**
  * DemoShowcase 컴포넌트
  *
@@ -23,7 +24,7 @@ import { cn } from '@/lib/utils/classnames'
  *
  * DemoShowcase는 메인 컨테이너로 시작하여 Header, Slider, Indicators, NavigationButtons 등의
  * 하위 컴포넌트를 조합하여 사용합니다. Slider 내부에는 SliderItem을 배치하고, 각 SliderItem 안에
- * Image나 Video 컴포넌트를 넣어 콘텐츠를 표시합니다.
+ * SliderImage나 Video 컴포넌트를 넣어 콘텐츠를 표시합니다.
  *
  * ## 컴포넌트 구성
  *
@@ -45,7 +46,7 @@ import { cn } from '@/lib/utils/classnames'
  *    - href: 클릭 시 이동할 링크 (선택)
  *    - title: 슬라이드 제목 (선택)
  *
- * 5. DemoShowcase.Image: 이미지 컴포넌트
+ * 5. DemoShowcase.SliderImage: 이미지 컴포넌트
  *    - src: 이미지 경로 (필수)
  *    - alt: 이미지 대체 텍스트 (필수)
  *    - className: 추가 스타일 클래스
@@ -347,9 +348,14 @@ function SliderItem({ children, className, href, title }: SliderItemProps) {
   )
 }
 
-// Image 컴포넌트
+// SliderImage 컴포넌트
 
-function Image({ src, alt, className, sizes = '100vw' }: SliderKitImageProps) {
+function SliderImage({
+                       src,
+                       alt,
+                       className,
+                       sizes = '100vw',
+                     }: SliderKitImageProps) {
   // 이미지 경로에서 확장자 추출
   const extension = src.split('.').pop() || 'png'
   // 확장자를 제외한 기본 경로
@@ -361,7 +367,7 @@ function Image({ src, alt, className, sizes = '100vw' }: SliderKitImageProps) {
 
   if (extension === 'svg') {
     return (
-      <img
+        <Image
         src={src}
         alt={alt}
         width={width}
@@ -595,7 +601,7 @@ DemoShowcase.Header = Header
 DemoShowcase.Slider = SliderKit
 DemoShowcase.SliderItem = SliderItem
 DemoShowcase.SliderItemSkeleton = SliderItemSkeleton
-DemoShowcase.Image = Image
+DemoShowcase.SliderImage = SliderImage
 DemoShowcase.Video = Video
 DemoShowcase.Indicators = Indicators
 DemoShowcase.NavigationButtons = NavigationButtons

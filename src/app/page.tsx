@@ -16,16 +16,33 @@ import StepperDialog from '@/components/ui/containers/Modal/StepperDialog'
 import { ROUTER } from '@/lib/constants/router'
 import { NAVIGATION_ITEMS } from '@/lib/constants/sections/navigation'
 import { useModal } from '@/lib/hooks/useModal'
-import { useTranslations } from '@/lib/constants/mock-translations'
-import styles from '@/lib/utils/styles'
+import {useTranslations} from '@/lib/providers/TextContext'
 import { Link } from '@/navigation'
 import { JSX, useState } from 'react'
 
 export default function HomePage(): JSX.Element {
   const { modalName, openModal, closeModal } = useModal()
-  const t = useTranslations('HomePage')
+  const t = useTranslations('pages.home')
   const [email, setEmail] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Helper function to determine navigation item href
+  const getItemHref = (itemId: string) => {
+    switch (itemId) {
+      case 'til':
+        return ROUTER.TIL.path
+      case 'soft-skills':
+        return ROUTER.SoftSkills.path
+      case 'resume':
+        return ROUTER.Resume.path
+      case 'projects':
+        return ROUTER.Projects.path
+      case 'site-build':
+        return ROUTER.SiteBuild.path
+      default:
+        return {pathname: '/', hash: itemId}
+    }
+  }
 
   const handleSubmit = (data: any) => {
     console.log('Subscribed with email:', data.email)
@@ -56,21 +73,17 @@ export default function HomePage(): JSX.Element {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-5 md:py-7 flex flex-col sm:flex-row justify-between items-center">
           <div className="flex items-center justify-between w-full sm:w-auto mb-5 sm:mb-0">
-            <h1
-              className={styles.combineStyles([
-                styles.text.heading(3),
-                'md:' + styles.text.heading(2).replace('text-', ''),
-                'text-primary',
-              ])}
-            >
-              {t('developer-name')}
+            <h1 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-primary">
+              석지인
             </h1>
 
-            {/* 모바일 메뉴 버튼 */}
+            {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
               className="p-2 focus:outline-none sm:hidden"
               aria-label="메뉴 열기/닫기"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +91,7 @@ export default function HomePage(): JSX.Element {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 {isMenuOpen ? (
                   <path
@@ -97,86 +111,61 @@ export default function HomePage(): JSX.Element {
               </svg>
             </button>
           </div>
-          <div className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+          <ul className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             {NAVIGATION_ITEMS.map((item) => (
-              <Link
-                key={item.id}
-                href={
-                  item.id === 'til'
-                    ? ROUTER.TIL.path
-                    : item.id === 'soft-skills'
-                      ? ROUTER.SoftSkills.path
-                      : item.id === 'resume'
-                        ? ROUTER.Resume.path
-                        : item.id === 'projects'
-                          ? ROUTER.Projects.path
-                          : item.id === 'site-build'
-                            ? ROUTER.SiteBuild.path
-                            : { pathname: '/', hash: item.id }
-                }
-                className={styles.combineStyles([
-                  styles.text.ui('default'),
-                  'md:' + styles.text.ui('large').replace('text-', ''),
-                  'text-foreground hover:text-primary transition-colors',
-                ])}
-              >
-                {t(`nav.${item.id}`)}
-              </Link>
+                <li key={item.id}>
+                  <Link
+                      href={getItemHref(item.id)}
+                      className="text-[clamp(0.875rem,1.25vw,1rem)] text-foreground hover:text-primary transition-colors"
+                  >
+                    {t(`nav.${item.id}`)}
+                  </Link>
+                </li>
             ))}
-            <button
-              onClick={() => openModal('contactDialog')}
-              className={styles.combineStyles([
-                styles.text.ui('default'),
-                'md:' + styles.text.ui('large').replace('text-', ''),
-                'text-foreground hover:text-primary transition-colors',
-              ])}
-            >
-              {t('nav.contact')}
-            </button>
-          </div>
-        </div>
-
-        {/* 모바일 메뉴 드롭다운 */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-5 py-6 bg-card rounded-lg shadow-md">
-            <div className="flex flex-col space-y-5 px-6">
-              {NAVIGATION_ITEMS.map((item) => (
-                <Link
-                  key={item.id}
-                  href={
-                    item.id === 'til'
-                      ? ROUTER.TIL.path
-                      : item.id === 'soft-skills'
-                        ? ROUTER.SoftSkills.path
-                        : item.id === 'resume'
-                          ? ROUTER.Resume.path
-                          : item.id === 'projects'
-                            ? ROUTER.Projects.path
-                            : item.id === 'site-build'
-                              ? ROUTER.SiteBuild.path
-                              : { pathname: '/', hash: item.id }
-                  }
-                  className="text-base font-medium text-foreground hover:text-primary transition-colors py-3"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t(`nav.${item.id}`)}
-                </Link>
-              ))}
+            <li>
               <button
-                onClick={() => {
-                  openModal('contactDialog')
-                  setIsMenuOpen(false)
-                }}
-                className={styles.combineStyles([
-                  styles.text.ui('default'),
-                  'font-medium text-foreground hover:text-primary transition-colors py-2 text-left',
-                ])}
+                  onClick={() => openModal('contactDialog')}
+                  className="text-[clamp(0.875rem,1.25vw,1rem)] text-foreground hover:text-primary transition-colors"
               >
                 {t('nav.contact')}
               </button>
-            </div>
+            </li>
+          </ul>
+        </div>
 
-            {/* CTA 버튼 영역 - 모바일 */}
+        {/* Mobile menu dropdown */}
+        {isMenuOpen && (
+            <div
+                id="mobile-menu"
+                className="md:hidden mt-5 py-6 bg-card rounded-lg shadow-md"
+                role="menu"
+            >
+              <ul className="flex flex-col space-y-5 px-6">
+              {NAVIGATION_ITEMS.map((item) => (
+                  <li key={item.id} role="menuitem">
+                    <Link
+                        href={getItemHref(item.id)}
+                        className="text-[clamp(1rem,1.5vw,1.125rem)] font-medium text-foreground hover:text-primary transition-colors py-3 block"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                      {t(`nav.${item.id}`)}
+                    </Link>
+                  </li>
+              ))}
+                <li role="menuitem">
+                  <button
+                      onClick={() => {
+                        openModal('contactDialog')
+                        setIsMenuOpen(false)
+                      }}
+                      className="text-[clamp(1rem,1.5vw,1.125rem)] font-medium text-foreground hover:text-primary transition-colors py-2 text-left w-full"
+                  >
+                    {t('nav.contact')}
+                  </button>
+                </li>
+              </ul>
+
+              {/* CTA form area - mobile */}
             <div className="mt-8 px-6">
               <Form
                 formId="release-notification-form-mobile"
@@ -192,7 +181,7 @@ export default function HomePage(): JSX.Element {
                       t('release.email-placeholder') ||
                       '이메일 주소를 입력하세요'
                     }
-                    className="text-base w-full"
+                    className="text-[clamp(1rem,1.5vw,1.125rem)] w-full"
                     required={true}
                     hookFormPattern={{
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -200,12 +189,13 @@ export default function HomePage(): JSX.Element {
                     }}
                     minLength={5}
                     maxLength={100}
+                    aria-label="이메일 주소"
                   />
                 </Form.Field>
                 <Button
                   type="submit"
                   size="lg"
-                  className="text-base w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="text-[clamp(1rem,1.5vw,1.125rem)] w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   예약하기
                 </Button>
@@ -216,28 +206,9 @@ export default function HomePage(): JSX.Element {
       </nav>
 
       {/* Main Content */}
-      <main role="main" className="w-full">
+      <main className="w-full">
         {/* Portfolio Content */}
         <div className="w-full bg-gradient-to-b from-background to-secondary/5 py-16">
-          {/*<div className="max-w-7xl mx-auto px-6 mb-20">*/}
-          {/*  <h2*/}
-          {/*    className={styles.combineStyles([*/}
-          {/*      styles.text.heading(2),*/}
-          {/*      'text-center mb-4',*/}
-          {/*    ])}*/}
-          {/*    id="portfolio-title"*/}
-          {/*  >*/}
-          {/*    {t('portfolio-title')}*/}
-          {/*  </h2>*/}
-          {/*  <p*/}
-          {/*    className={styles.combineStyles([*/}
-          {/*      styles.text.body('large'),*/}
-          {/*      'text-muted-foreground text-center mb-12 max-w-3xl mx-auto',*/}
-          {/*    ])}*/}
-          {/*  >*/}
-          {/*    {t('portfolio-subtitle')}*/}
-          {/*  </p>*/}
-          {/*</div>*/}
           <PortfolioHeroSection />
           <DemoShowcaseSection />
           <PersonalSection />

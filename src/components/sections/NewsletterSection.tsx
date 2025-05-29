@@ -2,7 +2,7 @@
 
 import Form from '@/components/ui/input/Form'
 import { Button } from '@/components/ui/Button/Button'
-import { useTranslations } from '@/lib/constants/mock-translations'
+import {useTranslations} from '@/lib/providers/TextContext'
 
 /**
  * Newsletter section component for the homepage
@@ -10,7 +10,7 @@ import { useTranslations } from '@/lib/constants/mock-translations'
  * This component displays a newsletter subscription form to capture user emails.
  */
 export default function NewsletterSection() {
-  const t = useTranslations('HomePage')
+  const t = useTranslations('pages.home.sections.release')
 
   // Handle form submission
   const handleSubmit = (data: any) => {
@@ -25,10 +25,10 @@ export default function NewsletterSection() {
     >
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          {t('release.title')}
+          {t('title')}
         </h2>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          {t('release.description')}
+          {t('description')}
         </p>
         <Form
           formId="newsletter-form"
@@ -39,17 +39,17 @@ export default function NewsletterSection() {
             <Form.Input
               name="email"
               type="text"
-              placeholder={t('release.email-placeholder')}
+              placeholder={t('email-placeholder')}
               className="flex-grow"
               required
-              aria-label={t('release.email-placeholder')}
+              aria-label={t('email-placeholder')}
             />
           </Form.Field>
           <Button
             type="submit"
             className="bg-primary text-primary-foreground hover:bg-primary/90"
           >
-            {t('release.subscribe')}
+            {t('subscribe')}
           </Button>
         </Form>
       </div>

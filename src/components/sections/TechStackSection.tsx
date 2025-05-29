@@ -1,26 +1,28 @@
 'use client'
 
 import { TabComponent, TabItem } from '@/components/ui/TabComponent'
-import { TECH_STACK_CATEGORIES, TECH_STACK_WITH_EXPERIENCE } from '@/lib/constants/sections/techStack'
-import { useTranslations } from '@/lib/constants/mock-translations'
+import {
+  TECH_STACK_CATEGORIES,
+  TECH_STACK_WITH_EXPERIENCE,
+} from '@/lib/constants/sections/techStack'
+import {useTranslations} from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * Tech Stack section component for the homepage
+ * 홈페이지의 기술 스택 섹션 컴포넌트
  *
- * This component displays the developer's technical skills and expertise,
- * including detailed experience information organized by categories.
+ * 개발자의 기술 역량과 전문성을 카테고리별로 표시
  */
 export default function TechStackSection() {
-  const t = useTranslations('HomePage')
+  const t = useTranslations()
   const [activeCategory, setActiveCategory] = useState<string>(
     TECH_STACK_CATEGORIES[0],
   )
   const [showMoreIndicator, setShowMoreIndicator] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
-  // Check if content overflows to show the indicator
+  // 콘텐츠 오버플로우 확인하여 인디케이터 표시
   useEffect(() => {
     const checkOverflow = () => {
       if (cardRef.current) {
@@ -38,47 +40,36 @@ export default function TechStackSection() {
     }
   }, [activeCategory])
 
-  // Auto-rotate category tabs every 5 seconds
+  // 5초마다 카테고리 탭 자동 전환
   useEffect(() => {
     const interval = setInterval(() => {
-      // Find current category index
+      // 현재 카테고리 인덱스 찾기
       const currentIndex = TECH_STACK_CATEGORIES.findIndex(
         (category) => category === activeCategory,
       )
-      // Calculate next category index (loop back to 0 if at the end)
+      // 다음 카테고리 인덱스 계산 (끝에서 처음으로 순환)
       const nextIndex = (currentIndex + 1) % TECH_STACK_CATEGORIES.length
-      // Set the next category as active
+      // 다음 카테고리를 활성화
       setActiveCategory(TECH_STACK_CATEGORIES[nextIndex])
-    }, 5000) // Change category every 5 seconds
+    }, 5000) // 5초마다 카테고리 변경
 
-    // Clean up interval on component unmount
+    // 컴포넌트 언마운트 시 인터벌 정리
     return () => clearInterval(interval)
   }, [activeCategory])
 
-  // Create tab items from categories
+  // 카테고리에서 탭 아이템 생성
   const categoryTabs: TabItem[] = TECH_STACK_CATEGORIES.map((category) => ({
     id: category,
     label: category,
     content: (
       <div className="bg-card p-6 rounded-lg shadow-lg w-full">
-        {/*<div className="flex items-center mb-6">*/}
-        {/*  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">*/}
-        {/*    <span className="text-2xl">💻</span>*/}
-        {/*  </div>*/}
-        {/*  <div>*/}
-        {/*    <h4 className="font-semibold">{category}</h4>*/}
-        {/*    <p className="text-sm text-muted-foreground">*/}
-        {/*      {t('tech-stack.skills.subtitle')}*/}
-        {/*    </p>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
         <div className="space-y-6 grid grid-cols-1 gap-4">
           {(() => {
             const filteredTech = TECH_STACK_WITH_EXPERIENCE.filter(
               (tech) => tech.category === category,
             )
 
-            // If there are no tech items for this category, show a placeholder
+            // 해당 카테고리에 기술 항목이 없으면 플레이스홀더 표시
             if (filteredTech.length === 0) {
               return (
                 <div className="border-b pb-4 last:border-0">
@@ -101,7 +92,7 @@ export default function TechStackSection() {
               )
             }
 
-            // Otherwise, show the filtered tech items
+            // 그렇지 않으면 필터링된 기술 항목 표시
             return filteredTech.map((tech, index) => (
               <div key={index} className="border-b pb-4 last:border-0">
                 <div className="flex items-center mb-2">
@@ -147,14 +138,14 @@ export default function TechStackSection() {
     <section id="tech-stack" className="w-full py-20 bg-secondary/10">
       <div className="max-w-7xl mx-auto px-3">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">{t('tech-stack.title')}</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('pages.techStack.meta.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t('tech-stack.subtitle')}
+            {t('pages.techStack.meta.subtitle')}
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left column - Tech categories */}
+          {/* 왼쪽 열 - 기술 카테고리 */}
           <div className="w-full lg:w-2/3">
             <TabComponent
               tabs={categoryTabs}
@@ -167,17 +158,17 @@ export default function TechStackSection() {
             />
           </div>
 
-          {/* Right column - Tech skills */}
+          {/* 오른쪽 열 - 기술 역량 */}
           <div className="w-full lg:w-1/3">
             <div className="bg-card p-6 rounded-lg shadow-lg h-full">
               <h3 className="text-xl font-semibold mb-6">
-                {t('tech-stack.frontend.title')}
+                {t('pages.techStack.frontend.title')}
               </h3>
               <div
                 ref={cardRef}
                 className="space-y-4 overflow-auto max-h-[400px] pr-2"
               >
-                {/* Frontend skills */}
+                {/* 프론트엔드 기술 */}
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium">TypeScript</span>
@@ -257,11 +248,11 @@ export default function TechStackSection() {
                 </div>
               </div>
 
-              {/* Show more indicator if content overflows */}
+              {/* 콘텐츠가 넘칠 경우 더보기 인디케이터 표시 */}
               {showMoreIndicator && (
                 <div className="text-center mt-4">
                   <span className="text-xs text-muted-foreground">
-                    Scroll for more
+                    더 보려면 스크롤하세요
                   </span>
                 </div>
               )}
