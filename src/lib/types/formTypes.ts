@@ -1,7 +1,3 @@
-// import {
-//   buttonColor,
-//   buttonStyle,
-// } from '@/components/ui/Button'
 import { ComponentProps } from '@/lib/types'
 import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react'
 import {
@@ -19,16 +15,6 @@ import {
 
 export type StepIndex = 1 | 2 | 3
 export type StepTitle = '모집 내용' | '모집 조건' | '근무 조건'
-
-export const STEP_BUTTONS: { index: StepIndex; title: StepTitle }[] = [
-  { index: 1, title: '모집 내용' },
-  { index: 2, title: '모집 조건' },
-  { index: 3, title: '근무 조건' },
-]
-
-export interface FormCreateStepProp {
-  step: StepIndex
-}
 
 export type FormInProgress = { step: StepIndex; isProgress: boolean }
 
@@ -85,53 +71,6 @@ export interface EditingFormData extends FormStep1, FormStep2, FormStep3 {}
 
 export type EditingFormDataTypes = keyof EditingFormData
 export type EditingFormDataValues = EditingFormData[EditingFormDataTypes]
-
-export interface TempEditingFormType {
-  id: number
-  createAt: string
-  formData: EditingFormData | FieldValues
-}
-
-// export type ListAlbatalkOrderByType = keyof typeof LIST_ALBATALK_ORDER_BY
-//
-// export const LIST_ALBATALK_ORDER_BY_KEYS = Object.keys(
-//   LIST_ALBATALK_ORDER_BY,
-// ) as Array<ListAlbatalkOrderByType>
-// export interface ListAlbatalkProps {
-//   limit: number
-//   cursor?: number
-//   orderBy?: ListAlbatalkOrderByType
-//   keyword?: string
-// }
-
-export interface AlbatalkProps {
-  writer: {
-    /** 작성자 프로필 */
-    imageUrl: string
-    /** 작성자 이름 */
-    nickname: string
-    /** 작성자 식별번호 */
-    id: number
-  }
-  /** 수정일 */
-  updatedAt: string
-  /** 생성일 */
-  createdAt: string
-  /** 댓글 수 */
-  commentCount: number
-  /** 좋아요 수 */
-  likeCount: number
-  /** 첨부 이미지 */
-  imageUrl: string
-  /** 내용 */
-  content: string
-  /** 제목 */
-  title: string
-  /** 게시물 식별번호 */
-  id: number
-  /** 좋아요 여부 */
-  isLiked: boolean
-}
 
 export type AlbatalkPropsType =
   | 'updatedAt'

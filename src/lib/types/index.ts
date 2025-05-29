@@ -1,21 +1,7 @@
 import React, {
-  InputHTMLAttributes,
   JSX,
   ReactNode,
-  TextareaHTMLAttributes,
 } from 'react'
-import {
-  FieldErrors,
-  FieldValues,
-  SubmitHandler,
-  UseFormGetFieldState,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormReset,
-  UseFormSetFocus,
-  UseFormSetValue,
-  UseFormWatch,
-} from 'react-hook-form'
 
 // ==========================================
 // Base Types
@@ -212,17 +198,6 @@ export interface EditingFormData extends FormStep1, FormStep2, FormStep3 {}
 export type EditingFormDataTypes = keyof EditingFormData
 export type EditingFormDataValues = EditingFormData[EditingFormDataTypes]
 
-export type AlbatalkPropsType =
-  | 'updatedAt'
-  | 'createdAt'
-  | 'commentCount'
-  | 'likeCount'
-  | 'imageUrl'
-  | 'content'
-  | 'title'
-  | 'id'
-  | 'isLiked'
-
 export interface AnnoucementProps {
   createdAt: string
   recruitmentEndDate: string
@@ -240,28 +215,6 @@ export interface ContactInfoProps {
   phoneNumber: string
 }
 
-export interface CurrentApplicationProps {
-  ownerId: number
-  applyCount: number
-}
-
-export interface ImageProps {
-  imageUrls: string[] | string
-}
-
-export interface LocationProps {
-  location: string
-  storeName: string
-}
-
-export interface RequirementsProps {
-  numberOfPositions: number
-  preferred: string
-  age: string
-  education: string
-  gender: string
-}
-
 export interface WorkScheduleProps {
   hourlyWage: number
   workEndDate: string
@@ -272,15 +225,6 @@ export interface WorkScheduleProps {
   workStartTime: string
 }
 
-export interface ApplicationProps {
-  id: number
-  applicantId: number
-  name: string
-  phoneNumber: string
-  experienceMonths: number
-  status: string
-}
-
 export const FORM_STATUS = {
   REJECTED: '거절',
   INTERVIEW_PENDING: '면접 대기',
@@ -289,100 +233,6 @@ export const FORM_STATUS = {
 } as const
 
 export type FormStatusType = keyof typeof FORM_STATUS
-
-export const FORM_STATUS_REVERSED = {
-  거절: 'REJECTED',
-  '면접 대기': 'INTERVIEW_PENDING',
-  '면접 완료': 'INTERVIEW_COMPLETED',
-  '채용 완료': 'HIRED',
-} as const
-
-export interface FormContextProps {
-  formId: string
-  onSubmit: (data: FieldValues) => void
-  watch: UseFormWatch<FieldValues>
-  getValues: UseFormGetValues<FieldValues>
-  getFieldState: UseFormGetFieldState<FieldValues>
-  setValue: UseFormSetValue<FieldValues>
-  errors: FieldErrors
-  isValid: boolean
-  isSubmitting: boolean
-  reset: UseFormReset<any>
-  register: UseFormRegister<FieldValues>
-  setFocus: UseFormSetFocus<FieldValues>
-}
-
-export interface FormResetButtonProps extends ComponentProps<'button'> {
-  onClick?: () => void
-}
-
-export interface FormSubmitButtonProps {
-  children: ReactNode
-  buttonStyle?: 'solid' | 'outline'
-  color?: 'primary' | 'gray'
-  isPending?: boolean
-}
-
-export interface FormProps extends ComponentProps<'form'> {
-  formId: string
-  onSubmit: SubmitHandler<FieldValues>
-  initialValues?: Record<string, any>
-  defaultValues?: any
-}
-
-export interface FieldProps extends ComponentProps {
-  htmlFor?: string
-  isInline?: boolean
-  hidden?: boolean
-}
-
-export interface LegendProps extends ComponentProps {
-  required?: boolean
-}
-
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string
-  type?: HTMLInputElement['type']
-  required?: boolean
-  minLength?: number
-  maxLength?: number
-  hookFormPattern?: {
-    value: RegExp
-    message: string
-  }
-  value?: any
-  validate?: any
-  initialValues?: string
-  step?: number
-  onClick?: (event?: any) => void
-  workDaysValue?: WorkDaysType
-}
-
-export interface TextareaProps
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  name: string
-  required?: boolean
-  minLength?: number
-  maxLength?: number
-  validate?: any
-}
-
-export interface SelectProps extends InputHTMLAttributes<HTMLSelectElement> {
-  name: string
-  required?: boolean
-  options: { value: string; label: string }[]
-  validate?: any
-}
-
-export interface ImageInputProps extends InputProps {
-  onImageChange?: (file: File) => void
-}
-
-export interface AddressSearchProps {
-  name: string
-  placeholder?: string
-  required?: boolean
-}
 
 export interface FormDetailsProps {
   updatedAt?: string
@@ -431,11 +281,6 @@ export interface FooterLink {
   label: string | ReactNode
 }
 
-export interface FooterSectionProps extends ParentProps {
-  title: string | ReactNode
-  links?: FooterLink[]
-}
-
 // ==========================================
 // Modal Types
 // ==========================================
@@ -443,39 +288,13 @@ export interface FooterSectionProps extends ParentProps {
 export interface ModalProps extends UIComponentProps {
   isOpen: boolean
   onAfterOpen?: () => void
-  onRequestCloseAction: () => void
+  onRequestClose: () => void
 }
-
-export interface CloseButtonProps extends ClickableProps, ClassNameProps {}
 
 export type ModalTitleProps = ComponentProps
 export type ModalBodyProps = ComponentProps
 export type ModalFooterProps = ComponentProps
 export type ModalIconProps = ComponentProps
-
-export interface Step1FormProps {
-  formData: Record<string, any>
-  onSubmit: (data: FieldValues) => void
-}
-
-export interface Step2FormProps {
-  formData: Record<string, any>
-  onSubmit: (data: FieldValues) => void
-}
-
-export interface Step3ConfirmationProps {
-  formData: Record<string, any>
-  onSubmit: () => void
-}
-
-// ==========================================
-// Response Types
-// ==========================================
-
-export interface ErrorResponse {
-  code: string
-  message: string
-}
 
 export const HttpStatus = {
   UNAUTHORIZED: {
@@ -503,21 +322,6 @@ export const HttpStatus = {
 export type HttpStatusType = keyof typeof HttpStatus
 
 // ==========================================
-// Skeleton Types
-// ==========================================
-
-export interface SkeletonProps extends ClassNameProps {
-  width?: string | number
-  height?: string | number
-  circle?: boolean
-  rounded?: boolean
-}
-
-export interface SkeletonTextProps extends ClassNameProps {
-  lines?: number
-}
-
-// ==========================================
 // General Types
 // ==========================================
 
@@ -538,18 +342,6 @@ export interface MenuItem {
   name: string
   icon: ReactNode
   path: string
-}
-
-export interface BaseDashboardLayoutProps extends LayoutProps {
-  menuItems: MenuItem[]
-  title?: string
-  logoPath?: string
-  logoAlt?: string
-}
-
-export interface MarkdownRendererProps {
-  content: string
-  className?: string
 }
 
 // ==========================================

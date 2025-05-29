@@ -12,7 +12,7 @@ import { FieldValues } from 'react-hook-form'
 
 export default function StepperDialog({
   isOpen,
-  onRequestClose,
+                                        onRequestClose: onRequestClose,
 }: ModalProps) {
   const stepperDialog = koMessages.StepperDialog
 
@@ -31,7 +31,7 @@ export default function StepperDialog({
     <Modal
       isOpen={isOpen}
       className={'w-[700px]'}
-      onRequestCloseAction={onRequestClose}
+      onRequestClose={onRequestClose}
     >
       <Modal.CloseButton onClick={onRequestClose} />
 

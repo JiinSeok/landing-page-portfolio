@@ -19,7 +19,7 @@ export default function ContactDialog({
   return (
     <Modal
       isOpen={isOpen}
-      onRequestCloseAction={onRequestClose}
+      onRequestClose={onRequestClose}
       aria-labelledby="contact-dialog-title"
       role="dialog"
       className={'w-700px'}

@@ -8,16 +8,16 @@ import { FieldValues } from 'react-hook-form'
 
 export default function FormModal({
   isOpen,
-  onRequestCloseAction,
+                                    onRequestClose,
 }: ModalProps) {
   const handleSubmit = async (data: FieldValues): Promise<void> => {
     console.log(data)
-    onRequestCloseAction()
+    onRequestClose()
   }
 
   return (
-    <Modal isOpen={isOpen} onRequestCloseAction={onRequestCloseAction}>
-      <Modal.CloseButton onClick={onRequestCloseAction} />
+      <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+        <Modal.CloseButton onClick={onRequestClose}/>
 
       <Modal.Icon>
         <span className="text-3xl text-blue-500">✏️</span>
@@ -79,7 +79,7 @@ export default function FormModal({
             type="button"
             variant="outline"
             size="lg"
-            onClick={onRequestCloseAction}
+            onClick={onRequestClose}
           >
             취소
           </Button>
