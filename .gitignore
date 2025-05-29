@@ -39,3 +39,45 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ============================
+# Node & Dependencies
+# ============================
+node_modules/
+package-lock.json
+
+# ============================
+# Build outputs
+# ============================
+dist/
+build/
+.next/*
+!.next/standalone/
+
+# ============================
+# Environment & config
+# ============================
+!.env.example
+
+# ============================
+# Logs
+# ============================
+*.log
+
+# ============================
+# IDE & Editor
+# ============================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# ============================
+# OS & tools
+# ============================
+*.local.*
+.fleet
+
