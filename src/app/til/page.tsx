@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { tilEntries, TILEntry } from './til-data'
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 import Navigation from '@/components/layout/Navigation'
 import { TabComponent, TabItem } from '@/components/ui/TabComponent'
 import { ContentCard } from '@/components/ui/ContentCard'
@@ -113,7 +113,7 @@ export default function TIL() {
           {/* List of all TIL entries */}
           <div className="space-y-8">
             <h2 className="text-2xl font-bold mb-6 text-primary">
-              All Entries
+              {tilT('all-entries')}
             </h2>
             {tilEntries.map((entry, index) => (
               <div
@@ -136,7 +136,7 @@ export default function TIL() {
                     )}
                   </h2>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {new Date(entry.date).toLocaleDateString('en-US', {
+                    {new Date(entry.date).toLocaleDateString('ko-KR', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -164,7 +164,7 @@ export default function TIL() {
         </section>
       </main>
 
-      <FooterSection />
+      <Footer />
     </div>
   )
 }

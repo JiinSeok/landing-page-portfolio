@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button/Button'
 import { useTranslations } from '@/lib/providers/TextContext'
 import Link from 'next/link'
 import { useEffect } from 'react'
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 
 interface ErrorPageProps {
   error: Error & { digest?: string }
@@ -70,7 +70,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
           )}
         </div>
       </div>
-      <FooterSection />
+      <Footer />
     </div>
   )
 }

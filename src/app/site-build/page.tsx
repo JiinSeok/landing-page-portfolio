@@ -1,4 +1,4 @@
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 import SiteBuildSection from '@/components/sections/SiteBuildSection'
 import Navigation from '@/components/layout/Navigation'
 
@@ -17,7 +17,7 @@ export default function SiteBuildPage() {
         {/* Title moved to SiteBuildSection component to avoid duplication */}
       </div>
       <SiteBuildSection />
-      <FooterSection />
+      <Footer />
     </div>
   )
 }

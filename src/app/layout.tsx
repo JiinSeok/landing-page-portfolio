@@ -16,6 +16,8 @@ import { LayoutProps } from '@/lib/types'
 import { cn } from '@/lib/utils/classnames'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
+import Footer from "@/components/layout/Footer";
+import Navigation from "@/components/layout/Navigation";
 
 export const metadata: Metadata = {
   title: '석지인 - 웹 개발자 포트폴리오',
@@ -45,6 +47,8 @@ export default function RootLayout({ children }: LayoutProps) {
         )}
       >
         <TextProvider>
+          {/* Navigation */}
+          <Navigation />
           <Suspense fallback={<HomePageSkeleton />}>
             {children}
             {/* Global floating button group - visible on all pages */}
@@ -60,6 +64,8 @@ export default function RootLayout({ children }: LayoutProps) {
             </FloatingButtonGroup>
           </Suspense>
           <ClientSideProviders />
+          <Footer />
+
         </TextProvider>
       </body>
     </html>

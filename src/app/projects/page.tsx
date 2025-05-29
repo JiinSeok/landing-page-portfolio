@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import React from 'react'
 import { projects } from './data'
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 import Navigation from '@/components/layout/Navigation'
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function Projects() {
           ))}
         </div>
       </section>
-      <FooterSection />
+      <Footer />
     </div>
   )
 }

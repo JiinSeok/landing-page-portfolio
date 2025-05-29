@@ -8,8 +8,8 @@ import { useTranslations } from '@/lib/providers/TextContext'
 import { useModal } from '@/lib/hooks/useModal'
 
 export default function Navigation() {
-  const { modalName, openModal, closeModal } = useModal()
-  const t = useTranslations('pages.home')
+  const { openModal } = useModal()
+  const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Helper function to determine navigation item href
@@ -45,10 +45,9 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto mb-5 sm:mb-0">
-          <Link href="/public" className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
-            석지인
+          <Link href="/" className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+            {t('pages.home.meta.developer-name')}
           </Link>
-
           {/* Mobile menu button */}
           <button
             onClick={toggleMenu}
@@ -90,17 +89,17 @@ export default function Navigation() {
                 href={getItemHref(item.id)}
                 className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
               >
-                {t(`nav.${item.id}`)}
+                {t(`components.nav.${item.id}`)}
               </Link>
             </li>
           ))}
           <li>
-            <button
-              onClick={() => openModal('contactDialog')}
-              className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
-            >
-              {t('nav.contact')}
-            </button>
+            {/*<button*/}
+            {/*  onClick={() => openModal('contactDialog')}*/}
+            {/*  className="text-sm md:text-base text-foreground hover:text-primary transition-colors"*/}
+            {/*>*/}
+            {/*  {t('components.nav.contact')}*/}
+            {/*</button>*/}
           </li>
         </ul>
       </div>
@@ -132,7 +131,7 @@ export default function Navigation() {
                 }}
                 className="text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors py-2 text-left w-full"
               >
-                {t('nav.contact')}
+                {t('contact')}
               </button>
             </li>
           </ul>

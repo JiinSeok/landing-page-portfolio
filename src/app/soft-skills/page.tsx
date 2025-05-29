@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { softSkillEntries } from './soft-skills-data'
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 import Navigation from '@/components/layout/Navigation'
 import Head from 'next/head'
 import { useTranslations } from '@/lib/providers/TextContext'
@@ -53,7 +53,7 @@ export default function SoftSkills() {
                     )}
                   </h2>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {new Date(entry.date).toLocaleDateString('en-US', {
+                    {new Date(entry.date).toLocaleDateString('ko-KR', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -81,7 +81,7 @@ export default function SoftSkills() {
         </section>
       </main>
 
-      <FooterSection />
+      <Footer />
     </div>
   )
 }

@@ -3,7 +3,7 @@
 import PortfolioCTASection from '@/components/sections/CTASection'
 import DemoShowcaseSection from '@/components/sections/DemoShowcaseSection'
 import PortfolioFAQSection from '@/components/sections/FAQSection'
-import FooterSection from '@/components/sections/FooterSection'
+import Footer from '@/components/layout/Footer'
 import PortfolioHeroSection from '@/components/sections/HeroSection'
 import NewsletterSection from '@/components/sections/NewsletterSection'
 import PersonalSection from '@/components/sections/PersonalSection'
@@ -35,8 +35,7 @@ export default function HomePage(): JSX.Element {
         onRequestClose={closeModal}
       />
 
-      {/* Navigation */}
-      <Navigation />
+
 
       {/* Main Content */}
       <main className="w-full">
@@ -51,7 +50,6 @@ export default function HomePage(): JSX.Element {
           <PortfolioFAQSection />
           <PortfolioCTASection />
           <NewsletterSection />
-          <FooterSection />
         </div>
       </main>
     </div>
