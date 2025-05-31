@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 랜딩 페이지 포트폴리오
 
-## Getting Started
+## 프로젝트 소개
 
-First, run the development server:
+안녕하세요! 이 프로젝트는 제가 넥스카의 랜딩 페이지를 개발한 경험을 바탕으로 만든 프론트엔드 개발자 포트폴리오입니다. 사용자 중심의 웹 개발과 디자인을 통해 직관적이고 매력적인 사용자 경험을 제공하는 것을 목표로 했습니다.
+
+이 포트폴리오는 제 개인 프로젝트 중 두 번째로 중요한 프로젝트로, 제 첫 번째 개인 프로젝트인 Albaform에 이어 제 프론트엔드 개발 역량을 보여주는 작업입니다. Albaform이 구직자와 고용주를 연결하는 플랫폼으로서 제 기술적 역량을 보여주었다면, 이 랜딩 페이지 포트폴리오는 사용자 경험과 시각적 디자인에 중점을 둔 프로젝트입니다.
+
+## 주요 기능
+
+### 포트폴리오 섹션
+
+- **히어로 섹션**: 개발자 소개와 핵심 역량을 강조하는 첫 화면으로, 자동 회전하는 탭 인터페이스를 통해 코드 스니펫, SEO 최적화, 인터랙티브 데모를 보여줍니다.
+- **데모 쇼케이스**: 주요 프로젝트 하이라이트와 개발 역량을 시각적으로 보여주는 섹션입니다.
+- **개인 소개**: 개발자의 가치관, 관심사, 강점을 소개하는 섹션입니다.
+- **프로젝트 갤러리**: 넥스카(자동차 관리 플랫폼), 포트폴리오 웹사이트, 스마트 홈 대시보드 등 주요 프로젝트를 캐러셀 또는 그리드 뷰로 보여주며, 각 프로젝트의 코드 스니펫도 확인할 수 있습니다.
+- **기술 스택**: 프론트엔드, 백엔드, 도구 등 카테고리별로 기술 스택을 보여주며, 자동 회전하는 탭 인터페이스와 기술 숙련도를 시각화한 프로그레스 바를 제공합니다.
+- **UX 디자인**: 사용자 경험을 위한 프론트엔드 설계 원칙과 접근 방식을 설명합니다.
+- **FAQ 섹션**: 자주 묻는 질문과 답변을 제공합니다.
+- **CTA 섹션**: 방문자가 연락할 수 있는 행동 유도 섹션입니다.
+- **뉴스레터**: 이메일 구독 기능을 제공합니다.
+
+### 기술적 특징
+
+- **반응형 디자인**: Tailwind CSS를 활용한 모든 디바이스에 최적화된 레이아웃을 제공합니다.
+- **다크/라이트 모드**: next-themes를 활용한 테마 전환 기능을 제공합니다.
+- **다국어 지원**: 한국어와 영어 지원으로 더 넓은 관객에게 다가갑니다.
+- **접근성 고려**: 키보드 네비게이션, ARIA 속성, 적절한 색상 대비 등 WCAG 지침을 준수했습니다.
+- **인터랙티브 요소**: 탭 인터페이스, 캐러셀, 모달 다이얼로그 등 다양한 인터랙티브 요소를 제공합니다.
+- **폼 처리**: React Hook Form을 활용한 문의 양식과 뉴스레터 구독 기능을 제공합니다.
+
+## 사용 기술
+
+### 프론트엔드
+- **프레임워크**: Next.js 15.3.2 (앱 라우터 사용)
+- **UI 라이브러리**: React 19.1.0 (최신 버전)
+- **언어**: TypeScript 5.8.3, JavaScript
+- **스타일링**: Tailwind CSS 4.1.7, PostCSS 8.5.3
+- **UI 컴포넌트**: Radix UI (Progress, Select, Slot, Tabs), Shadcn/ui
+- **상태 관리**: React Context API
+- **테마 관리**: next-themes 0.4.6 (다크/라이트 모드)
+
+### 데이터 관리 및 폼
+- **폼 관리**: React Hook Form 7.56.4
+- **데이터 페칭**: TanStack Query (React Query) 5.77.2, Axios 1.9.0
+- **스키마 검증**: Zod 3.25.28
+
+### UI/UX 향상
+- **아이콘**: Lucide React 0.511.0
+- **마크다운 렌더링**: React Markdown 10.1.0, Remark GFM 4.0.1
+- **모달**: React Modal 3.16.3
+- **토스트 알림**: Sonner 2.0.3
+- **이미지 최적화**: Sharp 0.34.2
+- **애니메이션**: CSS 트랜지션, React 훅, tw-animate-css 1.3.0
+
+### 개발 도구
+- **코드 품질**: ESLint 9.27.0, Prettier 3.5.3, Stylelint 16.19.1
+- **Git 훅**: Husky 9.1.7, lint-staged
+- **빌드 도구**: esbuild 0.25.4
+- **성능 분석**: Vercel Speed Insights 1.2.0
+
+### 배포
+- **호스팅**: Vercel
+
+## 설치 및 실행 방법
+
+### 필수 조건
+
+- Node.js 18.0.0 이상
+- Yarn 1.22.0 이상
+
+### 설치
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 저장소 클론
+git clone https://github.com/yourusername/my-landing-page-portfolio.git
+cd my-landing-page-portfolio
+
+# 의존성 설치
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 개발 서버 실행
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+브라우저에서 [http://localhost:3000](http://localhost:3000)으로 접속하여 결과를 확인할 수 있습니다.
 
-## Learn More
+### 빌드
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 프로덕션 모드 실행
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+yarn start
+```
 
-## Deploy on Vercel
+## 프로젝트 구조
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+my-landing-page-portfolio/
+├── public/            # 정적 파일 (이미지, 폰트 등)
+├── src/               # 소스 코드
+│   ├── app/           # Next.js 앱 라우터
+│   ├── components/    # 재사용 가능한 컴포넌트
+│   ├── lib/           # 유틸리티 함수, 훅, 상수
+│   └── navigation/    # 다국어 라우팅 설정
+├── .eslintrc.json     # ESLint 설정
+├── .prettierrc.json   # Prettier 설정
+├── next.config.js     # Next.js 설정
+├── tailwind.config.js # Tailwind CSS 설정
+└── tsconfig.json      # TypeScript 설정
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 구현 세부 사항
+
+### 컴포넌트 구조
+- **섹션 컴포넌트**: 각 페이지 섹션(Hero, Projects, TechStack 등)은 독립적인 컴포넌트로 구현되어 유지보수성을 높였습니다.
+- **UI 컴포넌트**: Button, ContentCard, TabComponent 등 재사용 가능한 UI 컴포넌트를 구현하여 일관된 디자인 시스템을 구축했습니다.
+- **컨테이너 컴포넌트**: SectionContainer, ContentLayout, GridLayout 등 레이아웃 컴포넌트를 통해 일관된 스페이싱과 정렬을 제공합니다.
+
+### 인터랙티브 기능
+- **탭 인터페이스**: 자동 회전 기능이 있는 탭 컴포넌트로 다양한 콘텐츠를 효율적으로 보여줍니다.
+- **캐러셀/그리드 뷰**: 프로젝트 섹션에서 두 가지 보기 모드를 전환할 수 있습니다.
+- **코드 스니펫 토글**: 프로젝트 카드에서 이미지와 코드 스니펫을 전환할 수 있습니다.
+- **모달 다이얼로그**: 문의하기 기능을 위한 단계별 모달 다이얼로그를 구현했습니다.
+
+### 다국어 지원
+- **JSON 기반 번역**: 한국어와 영어 번역을 JSON 파일로 관리하여 확장성을 높였습니다.
+- **컨텍스트 API**: useTranslations 훅을 통해 전역적으로 번역에 접근할 수 있습니다.
+- **다국어 라우팅**: Next.js의 국제화 기능을 활용하여 언어별 URL 구조를 제공합니다.
+
+### 성능 최적화
+- **이미지 최적화**: Next.js의 Image 컴포넌트와 Sharp 라이브러리를 활용하여 이미지 로딩 성능을 개선했습니다.
+- **코드 스플리팅**: 페이지와 컴포넌트 단위로 코드를 분할하여 초기 로딩 시간을 단축했습니다.
+- **지연 로딩**: 필요한 시점에 컴포넌트와 리소스를 로드하여 성능을 향상시켰습니다.
+- **Vercel Speed Insights**: 실제 사용자 경험을 모니터링하고 최적화합니다.
+
+### 접근성
+- **키보드 네비게이션**: 모든 인터랙티브 요소는 키보드로 접근 가능합니다.
+- **ARIA 속성**: 적절한 ARIA 역할과 속성을 사용하여 스크린 리더 호환성을 높였습니다.
+- **색상 대비**: WCAG 지침에 따른 적절한 색상 대비를 제공합니다.
+- **반응형 디자인**: 모든 화면 크기에서 콘텐츠에 접근할 수 있습니다.
+
+## 연락처
+
+프로젝트에 관한 질문이나 제안이 있으시면 언제든지 연락해 주세요:
+
+- 이메일: contact@jiinseok.com
+- GitHub: [github.com/jiinseok](https://github.com/jiinseok)
+- LinkedIn: [linkedin.com/in/jiinseok](https://linkedin.com/in/jiinseok)
+
+## 라이센스
+
+이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
