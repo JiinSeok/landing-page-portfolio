@@ -101,7 +101,13 @@ export function FloatingButtonGroup({
   const [activeId, setActiveId] = useState<string>('')
   const [viewedIds, setViewedIds] = useState<Set<string>>(new Set())
   const [isMobile, setIsMobile] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const tocRef = useRef<HTMLDivElement>(null)
+
+  // Only show the component after client-side hydration is complete
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Find all headings in the document
   useEffect(() => {
@@ -373,17 +379,19 @@ export function FloatingButtonGroup({
 
   return (
     <FloatingButtonContext.Provider value={contextValue}>
-      <div
-        ref={tocRef}
-        className={cn(
-          'flex items-end gap-4',
-          // Apply fixed positioning only if className doesn't contain 'static'
-          !className?.includes('static') && 'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex-col',
-          className,
-        )}
-      >
-        {children}
-      </div>
+      {isMounted && (
+        <div
+          ref={tocRef}
+          className={cn(
+            'flex items-end gap-4',
+            // Apply fixed positioning only if className doesn't contain 'static'
+            !className?.includes('static') && 'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex-col',
+            className,
+          )}
+        >
+          {children}
+        </div>
+      )}
     </FloatingButtonContext.Provider>
   )
 }
@@ -418,12 +426,21 @@ export function ButtonContainer({ children }: ButtonContainerProps) {
 // TOC Button Component
 export function TocButton() {
   const { activeButton, setActiveButton } = useFloatingButton()
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only show the button after client-side hydration is complete
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const toggleTocMenu = () => {
     setActiveButton(activeButton === 'toc' ? 'none' : 'toc')
     if (activeButton !== 'none' && activeButton !== 'toc')
       setActiveButton('toc')
   }
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
   const isInNavigation = typeof document !== 'undefined' && 
@@ -476,12 +493,21 @@ export function TocButton() {
 // Contact Button Component
 export function ContactButton() {
   const { activeButton, setActiveButton } = useFloatingButton()
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only show the button after client-side hydration is complete
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const toggleContactMenu = () => {
     setActiveButton(activeButton === 'contact' ? 'none' : 'contact')
     if (activeButton !== 'none' && activeButton !== 'contact')
       setActiveButton('contact')
   }
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
   const isInNavigation = typeof document !== 'undefined' && 
@@ -532,12 +558,21 @@ export function ContactButton() {
 // Share Button Component
 export function ShareButton() {
   const { activeButton, setActiveButton } = useFloatingButton()
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only show the button after client-side hydration is complete
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const toggleShareMenu = () => {
     setActiveButton(activeButton === 'share' ? 'none' : 'share')
     if (activeButton !== 'none' && activeButton !== 'share')
       setActiveButton('share')
   }
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
   const isInNavigation = typeof document !== 'undefined' && 
@@ -594,6 +629,9 @@ export function ContactMenu() {
     githubLink,
     linkedinLink,
   } = useFloatingButton()
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined') return null
 
   if (activeButton !== 'contact') return null
 
@@ -683,6 +721,9 @@ export function ShareMenu() {
     shareOnLinkedIn,
     shareOnKakao,
   } = useFloatingButton()
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined') return null
 
   if (activeButton !== 'share') return null
 
@@ -787,6 +828,9 @@ export function ShareMenu() {
 export function TocMenu() {
   const { activeButton, headings, activeId, scrollToHeading } =
     useFloatingButton()
+
+  // Don't render anything during server-side rendering
+  if (typeof window === 'undefined') return null
 
   if (activeButton !== 'toc') return null
 

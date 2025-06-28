@@ -26,6 +26,12 @@ export default function FloatingButton({
   ariaLabel = '도움말 메뉴 열기',
 }: FloatingButtonProps): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Only show the button after client-side hydration is complete
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const togglePopover = () => {
     setIsOpen(!isOpen)
@@ -37,20 +43,22 @@ export default function FloatingButton({
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      {/* 플로팅 버튼 */}
-      <Button
-        variant="default"
-        size="icon"
-        className={cn('rounded-full shadow-lg', className)}
-        onClick={togglePopover}
-        aria-label={ariaLabel}
-        aria-expanded={isOpen}
-      >
-        {icon}
-      </Button>
+      {/* 플로팅 버튼 - only show after client-side hydration */}
+      {isMounted && (
+        <Button
+          variant="default"
+          size="icon"
+          className={cn('rounded-full shadow-lg', className)}
+          onClick={togglePopover}
+          aria-label={ariaLabel}
+          aria-expanded={isOpen}
+        >
+          {icon}
+        </Button>
+      )}
 
-      {/* 팝오버 */}
-      {isOpen && (
+      {/* 팝오버 - only show after client-side hydration */}
+      {isMounted && isOpen && (
         <div className="absolute bottom-16 right-0 w-72 bg-popover rounded-lg shadow-lg p-4 animate-in fade-in-50 slide-in-from-bottom-5">
           <div className="flex justify-between items-center mb-2">
             <h3 className="font-semibold">도움이 필요하신가요?</h3>
@@ -67,7 +75,7 @@ export default function FloatingButton({
       )}
 
       {/* 배경 오버레이 - 팝오버가 열렸을 때만 표시 */}
-      {isOpen && (
+      {isMounted && isOpen && (
         <div
           className="fixed inset-0 z-40"
           onClick={closePopover}
