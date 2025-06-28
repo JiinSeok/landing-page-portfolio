@@ -73,8 +73,8 @@
 
 ```bash
 # 저장소 클론
-git clone https://github.com/yourusername/my-landing-page-portfolio.git
-cd my-landing-page-portfolio
+git clone https://github.com/JiinSeok/landing-page-portfolio.git
+cd landing-page-portfolio
 
 # 의존성 설치
 yarn install
@@ -100,18 +100,23 @@ yarn build
 yarn start
 ```
 
+**참고**: `yarn start` 명령은 package.json에서 `node ./server.js`를 실행하도록 설정되어 있지만, 현재 저장소에는 server.js 파일이 포함되어 있지 않습니다. 프로덕션 환경에서 실행하기 전에 server.js 파일을 생성하거나 start 스크립트를 수정해야 할 수 있습니다.
+
 ## 프로젝트 구조
 
 ```
-my-landing-page-portfolio/
+landing-page-portfolio/
+├── docs/              # 문서 파일
+├── lint/              # 린트 설정 파일
+│   ├── .eslintrc.json # ESLint 설정
+│   ├── .prettierrc.json # Prettier 설정
+│   └── .stylelintrc.json # Stylelint 설정
 ├── public/            # 정적 파일 (이미지, 폰트 등)
 ├── src/               # 소스 코드
 │   ├── app/           # Next.js 앱 라우터
 │   ├── components/    # 재사용 가능한 컴포넌트
 │   ├── lib/           # 유틸리티 함수, 훅, 상수
-│   └── navigation/    # 다국어 라우팅 설정
-├── .eslintrc.json     # ESLint 설정
-├── .prettierrc.json   # Prettier 설정
+│   └── navigation.ts  # 다국어 라우팅 설정
 ├── next.config.js     # Next.js 설정
 ├── tailwind.config.js # Tailwind CSS 설정
 └── tsconfig.json      # TypeScript 설정
@@ -152,9 +157,5 @@ my-landing-page-portfolio/
 프로젝트에 관한 질문이나 제안이 있으시면 언제든지 연락해 주세요:
 
 - 이메일: contact@jiinseok.com
-- GitHub: [github.com/jiinseok](https://github.com/jiinseok)
+- GitHub: [github.com/JiinSeok](https://github.com/JiinSeok)
 - LinkedIn: [linkedin.com/in/jiinseok](https://linkedin.com/in/jiinseok)
-
-## 라이센스
-
-이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
