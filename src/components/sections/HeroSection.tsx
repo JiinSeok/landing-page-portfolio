@@ -255,21 +255,21 @@ export default function HeroSection() {
               {t('title-highlight2')}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
-              고객에게 쉽고 믿을 수 있는 웹 경험, 어떻게 만들까?
+              고객이 믿을 수 있는 웹 경험, 어떻게 만들까?
             </p>
             <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
               <p>안녕하세요.</p>
               <p>
-                소프트웨어를 쉽고 빠르게 만들기 위해 도구를 즐겨 활용하는
-                석지인입니다(TypeScript, Next.js, TailwindCSS, Shadcn/ui,
-                JetBrain Junie(AI) 등). 저 역시{' '}
-                <strong>복잡한 기술도 쉽게 이용할 수 있는 프론트엔드</strong>로
+                소프트웨어를 쉽고 빠르게 만들기 위해 소프트웨어를 즐겨 활용하는
+                석지인입니다<span className={'text-sm'}>(TypeScript, Next.js, TailwindCSS, shadcn/UI,
+                JetBrain Junie)</span>. 저 역시,{' '}
+                <strong>복잡한 기술을 쉽게 이용할 수 있는 프론트엔드</strong>로
                 사용자의 문제를 풀고 싶습니다.
               </p>
               <p>
-                프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
-                만듭니다. 방법에 얽매이지 않고{' '}
-                <strong>사용자를 고객으로 만드는 프론트엔드</strong>를 위해
+                <strong className={'font-bold'}>프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
+                  만듭니다.</strong> 방법에 얽매이지 않고
+                사용자를 고객으로 만드는 프론트엔드를 위해
                 노력하겠습니다.
               </p>
             </div>
@@ -286,7 +286,7 @@ export default function HeroSection() {
                   {t('cta-projects')}
                 </Button>
               </Link>
-              <Link href="#resume">
+              <Link href="https://www.rallit.com/resumes/1459572@jxh4cjhfc4/%EC%84%9D%EC%A7%80%EC%9D%B8">
                 <Button
                   variant="outline"
                   size="lg"
