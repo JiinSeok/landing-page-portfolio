@@ -6,6 +6,13 @@ import { NAVIGATION_ITEMS } from '@/lib/constants/sections/navigation'
 import { ROUTER } from '@/lib/constants/router'
 import { useTranslations } from '@/lib/providers/TextContext'
 import { useModal } from '@/lib/hooks/useModal'
+import {
+  ButtonContainer,
+  ContactButton, ContactMenu,
+  FloatingButtonGroup,
+  ShareButton, ShareMenu,
+  TocButton, TocMenu,
+} from '@/components/FloatingButtonGroup'
 
 export default function Navigation() {
   const { openModal } = useModal()
@@ -45,7 +52,7 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto mb-5 sm:mb-0">
-          <Link href="/" className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+          <Link href="/" className="w-fit text-2xl md:text-3xl lg:text-4xl font-bold text-primary whitespace-nowrap">
             {t('pages.home.meta.developer-name')}
           </Link>
           {/* Mobile menu button */}
@@ -82,26 +89,37 @@ export default function Navigation() {
             </svg>
           </button>
         </div>
-        <ul className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-          {NAVIGATION_ITEMS.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={getItemHref(item.id)}
-                className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
-              >
-                {t(`components.nav.${item.id}`)}
-              </Link>
-            </li>
-          ))}
-          <li>
-            {/*<button*/}
-            {/*  onClick={() => openModal('contactDialog')}*/}
-            {/*  className="text-sm md:text-base text-foreground hover:text-primary transition-colors"*/}
-            {/*>*/}
-            {/*  {t('components.nav.contact')}*/}
-            {/*</button>*/}
-          </li>
-        </ul>
+        <div className="flex items-center w-full">
+          <div className="flex-1"></div>
+          <div className="flex justify-center">
+            <ul className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+              {NAVIGATION_ITEMS.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={getItemHref(item.id)}
+                    className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
+                  >
+                    {t(`components.nav.${item.id}`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-end">
+            <ul className="hidden sm:flex items-center nav-floating-buttons">
+              <FloatingButtonGroup className="static flex-row">
+                <ButtonContainer>
+                  <li><TocButton /></li>
+                  <li><ContactButton /></li>
+                  <li><ShareButton /></li>
+                </ButtonContainer>
+                <TocMenu />
+                <ContactMenu />
+                <ShareMenu />
+              </FloatingButtonGroup>
+            </ul>
+          </div>
+        </div>
       </div>
 
       {/* Mobile menu dropdown */}
@@ -119,20 +137,21 @@ export default function Navigation() {
                   className="text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors py-3 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t(`nav.${item.id}`)}
+                  {t(`components.nav.${item.id}`)}
                 </Link>
               </li>
             ))}
-            <li role="menuitem">
-              <button
-                onClick={() => {
-                  openModal('contactDialog')
-                  setIsMenuOpen(false)
-                }}
-                className="text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors py-2 text-left w-full"
-              >
-                {t('contact')}
-              </button>
+            <li role="menuitem" className="nav-floating-buttons">
+              <FloatingButtonGroup className="static">
+                <ButtonContainer>
+                  <TocButton />
+                  <ContactButton />
+                  <ShareButton />
+                </ButtonContainer>
+                <TocMenu />
+                <ContactMenu />
+                <ShareMenu />
+              </FloatingButtonGroup>
             </li>
           </ul>
         </div>

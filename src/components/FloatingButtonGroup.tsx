@@ -6,6 +6,17 @@
  */
 'use client'
 
+// Extend Window interface to include Kakao SDK
+declare global {
+  interface Window {
+    Kakao?: {
+      Link: {
+        sendDefault: (options: any) => void;
+      };
+    };
+  }
+}
+
 import {
   useState,
   useEffect,
@@ -47,8 +58,8 @@ type FloatingButtonContextType = {
   scrollToHeading: (id: string) => void
   copyContactToClipboard: () => Promise<void>
   copyUrlToClipboard: () => Promise<void>
-  shareOnTwitter: () => void
-  shareOnFacebook: () => void
+  shareOnLinkedIn: () => void
+  shareOnKakao: () => void
   githubLink: string
   linkedinLink: string
 }
@@ -280,24 +291,52 @@ export function FloatingButtonGroup({
     }
   }
 
-  const shareOnTwitter = () => {
+  const shareOnLinkedIn = () => {
     // Only run on the client side
     if (typeof window === 'undefined' || typeof document === 'undefined') return
 
     const url = encodeURIComponent(window.location.href)
-    const text = encodeURIComponent(document.title)
+    const title = encodeURIComponent(document.title)
     window.open(
-      `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+      `https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`,
       '_blank',
     )
   }
 
-  const shareOnFacebook = () => {
+  const shareOnKakao = () => {
     // Only run on the client side
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
 
-    const url = encodeURIComponent(window.location.href)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank')
+    // Check if Kakao SDK is loaded
+    if (typeof window.Kakao === 'undefined') {
+      // If Kakao SDK is not available, open the URL in a new tab
+      const url = encodeURIComponent(window.location.href)
+      window.open(`https://story.kakao.com/share?url=${url}`, '_blank')
+      return
+    }
+
+    // If Kakao SDK is available, use it for sharing
+    window.Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: document.title,
+        description: 'Check out this page',
+        imageUrl: 'https://jiindev.me/og-image.png', // Default image
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
+      },
+      buttons: [
+        {
+          title: 'View Website',
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+      ],
+    })
   }
 
   // Define type for social link
@@ -326,8 +365,8 @@ export function FloatingButtonGroup({
     scrollToHeading,
     copyContactToClipboard,
     copyUrlToClipboard,
-    shareOnTwitter,
-    shareOnFacebook,
+    shareOnLinkedIn,
+    shareOnKakao,
     githubLink,
     linkedinLink,
   }
@@ -337,7 +376,9 @@ export function FloatingButtonGroup({
       <div
         ref={tocRef}
         className={cn(
-          'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex flex-col items-end gap-4',
+          'flex items-end gap-4',
+          // Apply fixed positioning only if className doesn't contain 'static'
+          !className?.includes('static') && 'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex-col',
           className,
         )}
       >
@@ -353,8 +394,22 @@ interface ButtonContainerProps {
 }
 
 export function ButtonContainer({ children }: ButtonContainerProps) {
+  const { isMobile } = useFloatingButton()
+
+  // Check if we're in a navigation context
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
-    <div className="flex flex-row gap-4 animate-in fade-in duration-300 bg-primary rounded-full shadow-lg p-1">
+    <div className={cn(
+      "flex flex-row animate-in fade-in duration-300",
+      // Different styling based on context
+      isInNavigation 
+        ? "gap-4 sm:gap-5 md:gap-6 lg:gap-8" // Match navigation item spacing
+        : "gap-2 bg-primary rounded-full shadow-lg p-1", // Original floating button styling
+      // Add more gap for floating buttons when not in navigation
+      !isMobile && !isInNavigation && "gap-4"
+    )}>
       {children}
     </div>
   )
@@ -370,22 +425,49 @@ export function TocButton() {
       setActiveButton('toc')
   }
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
     <Button
-      variant="default"
-      size="icon"
+      variant={isInNavigation ? "ghost" : "default"}
+      size={isInNavigation ? "sm" : "icon"}
       onClick={toggleTocMenu}
-      className="rounded-full h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 bg-primary"
+      className={cn(
+        // Different styling based on context
+        isInNavigation 
+          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto" 
+          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+      )}
       aria-label={
         activeButton === 'toc'
           ? 'Close table of contents'
           : 'Open table of contents'
       }
     >
-      {activeButton === 'toc' ? (
-        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+      {isInNavigation ? (
+        // Text version for navigation
+        <span className="flex items-center gap-1">
+          {activeButton === 'toc' ? (
+            <>
+              <XIcon className="h-4 w-4" />
+              <span>Close</span>
+            </>
+          ) : (
+            <>
+              <Menu className="h-4 w-4" />
+              <span>Contents</span>
+            </>
+          )}
+        </span>
       ) : (
-        <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        // Icon-only version for floating buttons
+        activeButton === 'toc' ? (
+          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        ) : (
+          <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        )
       )}
     </Button>
   )
@@ -401,20 +483,47 @@ export function ContactButton() {
       setActiveButton('contact')
   }
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
     <Button
-      variant="default"
-      size="icon"
+      variant={isInNavigation ? "ghost" : "default"}
+      size={isInNavigation ? "sm" : "icon"}
       onClick={toggleContactMenu}
-      className="rounded-full h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 bg-primary"
+      className={cn(
+        // Different styling based on context
+        isInNavigation 
+          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto" 
+          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+      )}
       aria-label={
         activeButton === 'contact' ? 'Close contact menu' : 'Open contact menu'
       }
     >
-      {activeButton === 'contact' ? (
-        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+      {isInNavigation ? (
+        // Text version for navigation
+        <span className="flex items-center gap-1">
+          {activeButton === 'contact' ? (
+            <>
+              <XIcon className="h-4 w-4" />
+              <span>Close</span>
+            </>
+          ) : (
+            <>
+              <UserIcon className="h-4 w-4" />
+              <span>Contact</span>
+            </>
+          )}
+        </span>
       ) : (
-        <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        // Icon-only version for floating buttons
+        activeButton === 'contact' ? (
+          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        ) : (
+          <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        )
       )}
     </Button>
   )
@@ -430,20 +539,47 @@ export function ShareButton() {
       setActiveButton('share')
   }
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
     <Button
-      variant="default"
-      size="icon"
+      variant={isInNavigation ? "ghost" : "default"}
+      size={isInNavigation ? "sm" : "icon"}
       onClick={toggleShareMenu}
-      className="rounded-full h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 bg-primary"
+      className={cn(
+        // Different styling based on context
+        isInNavigation 
+          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto" 
+          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+      )}
       aria-label={
         activeButton === 'share' ? 'Close share menu' : 'Open share menu'
       }
     >
-      {activeButton === 'share' ? (
-        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+      {isInNavigation ? (
+        // Text version for navigation
+        <span className="flex items-center gap-1">
+          {activeButton === 'share' ? (
+            <>
+              <XIcon className="h-4 w-4" />
+              <span>Close</span>
+            </>
+          ) : (
+            <>
+              <Share2Icon className="h-4 w-4" />
+              <span>Share</span>
+            </>
+          )}
+        </span>
       ) : (
-        <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        // Icon-only version for floating buttons
+        activeButton === 'share' ? (
+          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        ) : (
+          <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+        )
       )}
     </Button>
   )
@@ -461,16 +597,20 @@ export function ContactMenu() {
 
   if (activeButton !== 'contact') return null
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
-    <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
+    <div className={cn(
+      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
+      // Position differently based on context
+      isInNavigation 
+        ? "absolute top-full right-0 mt-2" 
+        : "mt-4"
+    )}>
       <ContentCard
         title="Jiin Seok"
-        icon={
-          <div
-            className="bg-primary rounded-full h-5 w-5"
-            aria-hidden="true"
-          ></div>
-        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <address className="space-y-2 text-sm text-muted-foreground not-italic">
@@ -540,22 +680,26 @@ export function ShareMenu() {
     activeButton,
     copied,
     copyUrlToClipboard,
-    shareOnTwitter,
-    shareOnFacebook,
+    shareOnLinkedIn,
+    shareOnKakao,
   } = useFloatingButton()
 
   if (activeButton !== 'share') return null
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
-    <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
+    <div className={cn(
+      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
+      // Position differently based on context
+      isInNavigation 
+        ? "absolute top-full right-0 mt-2" 
+        : "mt-4"
+    )}>
       <ContentCard
         title="Share This Page"
-        icon={
-          <div
-            className="bg-primary rounded-full h-5 w-5"
-            aria-hidden="true"
-          ></div>
-        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <div className="flex flex-col gap-3">
@@ -580,9 +724,9 @@ export function ShareMenu() {
           <Button
             variant="outline"
             size="sm"
-            onClick={shareOnTwitter}
+            onClick={shareOnLinkedIn}
             className="rounded-full shadow-sm border-primary/30 hover:bg-primary/10 hover:text-primary justify-start"
-            aria-label="Share on Twitter"
+            aria-label="Share on LinkedIn"
           >
             <span className="flex items-center gap-2">
               <svg
@@ -597,18 +741,20 @@ export function ShareMenu() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
               </svg>
-              Share on Twitter
+              Share on LinkedIn
             </span>
           </Button>
 
           <Button
             variant="outline"
             size="sm"
-            onClick={shareOnFacebook}
+            onClick={shareOnKakao}
             className="rounded-full shadow-sm border-primary/30 hover:bg-primary/10 hover:text-primary justify-start"
-            aria-label="Share on Facebook"
+            aria-label="Share on Kakao"
           >
             <span className="flex items-center gap-2">
               <svg
@@ -623,9 +769,12 @@ export function ShareMenu() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" />
+                <line x1="15" y1="9" x2="15.01" y2="9" />
               </svg>
-              Share on Facebook
+              Share on Kakao
             </span>
           </Button>
         </div>
@@ -641,16 +790,20 @@ export function TocMenu() {
 
   if (activeButton !== 'toc') return null
 
+  // Check if we're in a navigation context by looking for the nav-floating-buttons class
+  const isInNavigation = typeof document !== 'undefined' && 
+    document.querySelector('.nav-floating-buttons') !== null
+
   return (
-    <div className="flex flex-col gap-4 mt-4 animate-in slide-in-from-top duration-200">
+    <div className={cn(
+      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
+      // Position differently based on context
+      isInNavigation 
+        ? "absolute top-full right-0 mt-2" 
+        : "mt-4"
+    )}>
       <ContentCard
         title="Table of Contents"
-        icon={
-          <div
-            className="bg-primary rounded-full h-5 w-5"
-            aria-hidden="true"
-          ></div>
-        }
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
       >
         <nav

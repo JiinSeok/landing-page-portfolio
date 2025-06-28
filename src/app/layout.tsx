@@ -68,22 +68,11 @@ export default function RootLayout({ children }: LayoutProps) {
     >
     <TextProvider>
       {/* Navigation */}
-      <Navigation />
-      <Suspense fallback={<HomePageSkeleton />}>
-        {children}
-        {/* Global floating button group - visible on all pages */}
-        <FloatingButtonGroup>
-          <ButtonContainer>
-            <TocButton />
-            <ContactButton />
-            <ShareButton />
-          </ButtonContainer>
-          <TocMenu />
-          <ContactMenu />
-          <ShareMenu />
-        </FloatingButtonGroup>
-      </Suspense>
       <ClientSideProviders />
+      <Suspense fallback={<HomePageSkeleton />}>
+
+        {children}
+      </Suspense>
       <Footer />
     </TextProvider>
     </body>
