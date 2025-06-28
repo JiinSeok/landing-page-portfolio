@@ -1,6 +1,4 @@
-import Footer from '@/components/layout/Footer'
-import SiteBuildSection from '@/components/sections/SiteBuildSection'
-import Navigation from '@/components/layout/Navigation'
+import ComingSoon from '@/components/ui/ComingSoon'
 
 /**
  * SiteBuildPage component
@@ -10,14 +8,9 @@ import Navigation from '@/components/layout/Navigation'
  */
 export default function SiteBuildPage() {
   return (
-    <div className="flex flex-col items-center">
-      <Navigation />
+    <div className="flex flex-col items-center w-full">
       {/* Main Content */}
-      <div className="w-full max-w-7xl mx-auto px-4 py-12">
-        {/* Title moved to SiteBuildSection component to avoid duplication */}
-      </div>
-      <SiteBuildSection />
-      <Footer />
+      <ComingSoon />
     </div>
   )
 }

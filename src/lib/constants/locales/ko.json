@@ -551,6 +551,14 @@
     }
   },
   "components": {
+    "comingSoon": {
+      "title": "준비 중입니다",
+      "subtitle": "새로운 콘텐츠를 준비하고 있어요",
+      "description": "더 나은 경험을 제공하기 위해 열심히 작업 중입니다. 조금만 기다려주세요!",
+      "pageTitle": "페이지 준비 중",
+      "homeButton": "홈으로 돌아가기",
+      "notifyButton": "업데이트 알림 받기"
+    },
     "stepper": {
       "title": "문의하기",
       "description": "아래 양식을 작성하여 문의사항을 보내주세요.",
