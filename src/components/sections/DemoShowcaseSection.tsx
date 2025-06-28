@@ -69,7 +69,7 @@ export default function DemoShowcaseSection(): JSX.Element {
       id="demo"
       className={styles.combineStyles([
         'w-full bg-background',
-        styles.layout.section('lg'),
+        styles.layout.section('md'),
       ])}
     >
       <div
@@ -78,13 +78,13 @@ export default function DemoShowcaseSection(): JSX.Element {
         <div
           className={styles.combineStyles([
             'text-center',
-            styles.spacing.marginBottom('lg'),
+            styles.spacing.marginBottom('md'),
           ])}
         >
           <h2
             className={styles.combineStyles([
               styles.text.heading(2),
-              styles.spacing.marginBottom('sm'),
+              styles.spacing.marginBottom('xs'),
             ])}
           >
             {t('title')}
@@ -100,7 +100,7 @@ export default function DemoShowcaseSection(): JSX.Element {
         </div>
 
         {/* 데모 슬라이더 */}
-        <DemoShowcase autoSlideInterval={2000} className={'pb-1'}>
+        <DemoShowcase autoSlideInterval={3000} className={'pb-0'}>
           <DemoShowcase.Slider aria-labelledby="user-journey-heading">
             {isLoading ? (
               // 로딩 중일 때 스켈레톤 표시 (실제 아이템 개수와 동일하게)
@@ -112,7 +112,7 @@ export default function DemoShowcaseSection(): JSX.Element {
             ) : (
               // 로딩 완료 후 실제 콘텐츠 표시
               demoItems.map((item) => (
-                <DemoShowcase.SliderItem key={item.id} className={'pb-20'}>
+                <DemoShowcase.SliderItem key={item.id} className={'pb-8'}>
                   <figure className="relative h-full p-0 m-0">
                     <DemoShowcase.SliderImage
                       src={item.src}
@@ -121,12 +121,14 @@ export default function DemoShowcaseSection(): JSX.Element {
                     />
 
                     {/* 콜아웃 */}
-                    <figcaption className="absolute top-1/2 right-2 sm:right-3 md:right-4 lg:right-6 transform -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 p-2 sm:p-3 md:p-4 lg:p-5 rounded-lg shadow-lg max-w-[80%] text-black dark:text-white border border-gray-200 dark:border-gray-700 callout-shape">
-                      <ol className="list-decimal pl-5 space-y-1">
-                        <li className="text-xs sm:text-xs md:text-sm lg:text-base font-medium">
-                          {item.callout}
-                        </li>
-                      </ol>
+                    <figcaption className="absolute top-1/2 right-2 sm:right-3 md:right-4 lg:right-6 transform -translate-y-1/2 bg-white/95 dark:bg-gray-800/95 p-3 sm:p-4 md:p-5 lg:p-6 rounded-lg shadow-xl max-w-[85%] text-black dark:text-white border border-gray-200 dark:border-gray-700 callout-shape backdrop-blur-sm">
+                      <div className="flex items-center space-x-2 mb-1">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-primary">프로젝트 특징</h3>
+                      </div>
+                      <p className="text-xs sm:text-sm md:text-base lg:text-lg font-medium leading-tight">
+                        {item.callout}
+                      </p>
                     </figcaption>
                   </figure>
                 </DemoShowcase.SliderItem>

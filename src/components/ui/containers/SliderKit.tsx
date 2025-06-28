@@ -405,12 +405,12 @@ function SliderImage({
         alt={alt}
         width={width}
         height={height}
-        className={cn('w-full object-contain', className)}
+        className={cn('w-full h-full object-cover', className)}
         loading="lazy"
         decoding="async"
         style={{
           objectPosition: 'center',
-          maxHeight: '66.67vh', // 2/3 of viewport height
+          maxHeight: '75vh', // 3/4 of viewport height
           margin: '0 auto', // Center horizontally
         }}
       />
