@@ -5,7 +5,7 @@ import { Link } from '@/navigation'
 import { NAVIGATION_ITEMS } from '@/lib/constants/sections/navigation'
 import { ROUTER } from '@/lib/constants/router'
 import { useTranslations } from '@/lib/providers/TextContext'
-import { useModal } from '@/lib/hooks/useModal'
+// import { useModal } from '@/lib/hooks/useModal'
 import {
   ButtonContainer,
   ContactButton, ContactMenu,
@@ -15,7 +15,7 @@ import {
 } from '@/components/FloatingButtonGroup'
 
 export default function Navigation() {
-  const { openModal } = useModal()
+  // const { openModal } = useModal()
   const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -91,27 +91,27 @@ export default function Navigation() {
         </div>
         <div className="flex items-center w-full">
           <div className="flex-1"></div>
-          <div className="flex justify-center">
-            <ul className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-              {NAVIGATION_ITEMS.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={getItemHref(item.id)}
-                    className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
-                  >
-                    {t(`components.nav.${item.id}`)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/*<div className="flex justify-center">*/}
+          {/*  <ul className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">*/}
+          {/*    {NAVIGATION_ITEMS.map((item) => (*/}
+          {/*      <li key={item.id}>*/}
+          {/*        <Link*/}
+          {/*          href={getItemHref(item.id)}*/}
+          {/*          className="text-sm md:text-base text-foreground hover:text-primary transition-colors"*/}
+          {/*        >*/}
+          {/*          {t(`components.nav.${item.id}`)}*/}
+          {/*        </Link>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
           <div className="flex-1 flex justify-end">
             <ul className="hidden sm:flex items-center nav-floating-buttons">
               <FloatingButtonGroup className="static flex-row">
                 <ButtonContainer>
                   <li><TocButton /></li>
                   <li><ContactButton /></li>
-                  <li><ShareButton /></li>
+                  {/*<li><ShareButton /></li>*/}
                 </ButtonContainer>
                 <TocMenu />
                 <ContactMenu />
@@ -129,31 +129,31 @@ export default function Navigation() {
           className="md:hidden mt-4 py-5 bg-card rounded-lg shadow-md"
           role="menu"
         >
-          <ul className="flex flex-col space-y-4 px-4 sm:px-6">
-            {NAVIGATION_ITEMS.map((item) => (
-              <li key={item.id} role="menuitem">
-                <Link
-                  href={getItemHref(item.id)}
-                  className="text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors py-3 block"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t(`components.nav.${item.id}`)}
-                </Link>
-              </li>
-            ))}
-            <li role="menuitem" className="nav-floating-buttons">
-              <FloatingButtonGroup className="static">
-                <ButtonContainer>
-                  <TocButton />
-                  <ContactButton />
-                  <ShareButton />
-                </ButtonContainer>
-                <TocMenu />
-                <ContactMenu />
-                <ShareMenu />
-              </FloatingButtonGroup>
-            </li>
-          </ul>
+          {/*<ul className="flex flex-col space-y-4 px-4 sm:px-6">*/}
+          {/*  {NAVIGATION_ITEMS.map((item) => (*/}
+          {/*    <li key={item.id} role="menuitem">*/}
+          {/*      <Link*/}
+          {/*        href={getItemHref(item.id)}*/}
+          {/*        className="text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors py-3 block"*/}
+          {/*        onClick={() => setIsMenuOpen(false)}*/}
+          {/*      >*/}
+          {/*        {t(`components.nav.${item.id}`)}*/}
+          {/*      </Link>*/}
+          {/*    </li>*/}
+          {/*  ))}*/}
+          {/*  <li role="menuitem" className="nav-floating-buttons">*/}
+          {/*    <FloatingButtonGroup className="static">*/}
+          {/*      <ButtonContainer>*/}
+          {/*        <TocButton />*/}
+          {/*        <ContactButton />*/}
+          {/*        <ShareButton />*/}
+          {/*      </ButtonContainer>*/}
+          {/*      <TocMenu />*/}
+          {/*      <ContactMenu />*/}
+          {/*      <ShareMenu />*/}
+          {/*    </FloatingButtonGroup>*/}
+          {/*  </li>*/}
+          {/*</ul>*/}
         </div>
       )}
     </nav>

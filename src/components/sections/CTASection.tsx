@@ -47,23 +47,14 @@ export default function CTASection() {
         >
           {t('description')}
         </p>
-        <Button
-          variant="default"
-          size="lg"
-          className="bg-white text-primary hover:bg-white/90"
-          onClick={() => openModal('contactDialog')}
-        >
-          {t('button')}
-        </Button>
-        <p
-          className={styles.combineStyles([
-            styles.spacing.marginTop('sm'),
-            styles.text.ui('small'),
-            'opacity-80',
-          ])}
-        >
-          {t('contact-info')}
-        </p>
+        {/*<Button*/}
+        {/*  variant="default"*/}
+        {/*  size="lg"*/}
+        {/*  className="bg-white text-primary hover:bg-white/90"*/}
+        {/*  onClick={() => openModal('contactDialog')}*/}
+        {/*>*/}
+        {/*  {t('button')}*/}
+        {/*</Button>*/}
       </div>
     </section>
   )

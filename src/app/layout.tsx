@@ -76,7 +76,6 @@ export default function RootLayout({ children }: LayoutProps) {
       <Footer />
     </TextProvider>
     </body>
-
     </html>
 
   )

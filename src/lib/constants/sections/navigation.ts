@@ -34,10 +34,10 @@ export const NAVIGATION_ITEMS = [
   //   id: 'projects',
   //   translationKey: 'nav.projects',
   // },
-  {
-    id: 'site-build',
-    translationKey: 'nav.site-build',
-  },
+  // {
+  //   id: 'site-build',
+  //   translationKey: 'nav.site-build',
+  // },
 ]
 
 // Social media links

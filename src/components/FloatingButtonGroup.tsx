@@ -7,6 +7,8 @@
 'use client'
 
 // Extend Window interface to include Kakao SDK
+import { ROUTER } from '@/lib/constants/router'
+
 declare global {
   interface Window {
     Kakao?: {
@@ -626,8 +628,6 @@ export function ContactMenu() {
     activeButton,
     copied,
     copyContactToClipboard,
-    githubLink,
-    linkedinLink,
   } = useFloatingButton()
 
   // Don't render anything during server-side rendering
@@ -665,12 +665,12 @@ export function ContactMenu() {
               GitHub
             </Badge>
             <a
-              href={githubLink}
+              href={ROUTER.GitHub.path}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              github.com/jiindev
+              github.com/JiinSeok
             </a>
           </div>
           <div className="flex items-center gap-2">
@@ -678,12 +678,12 @@ export function ContactMenu() {
               LinkedIn
             </Badge>
             <a
-              href={linkedinLink}
+              href={ROUTER.LinkedIn.path}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              linkedin.com/in/jiindev
+              linkedin.com/in/jiin-seok
             </a>
           </div>
         </address>

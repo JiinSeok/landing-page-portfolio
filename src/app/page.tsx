@@ -49,7 +49,7 @@ export default function HomePage(): JSX.Element {
           <UXDesignSection />
           <PortfolioFAQSection />
           <PortfolioCTASection />
-          <NewsletterSection />
+          {/*<NewsletterSection />*/}
         </div>
       </main>
     </div>
