@@ -42,11 +42,12 @@ export default function HomePage(): JSX.Element {
         {/* Portfolio Content */}
         <div className="w-full bg-gradient-to-b from-background to-secondary/5 py-12 md:py-16 lg:py-20">
           <PortfolioHeroSection />
-          <DemoShowcaseSection />
-          <PersonalSection />
+          {/*<DemoShowcaseSection />*/}
           {/*<ProjectsSection />*/}
           <TechStackSection />
           <UXDesignSection />
+          <PersonalSection />
+
           <PortfolioFAQSection />
           <PortfolioCTASection />
           {/*<NewsletterSection />*/}
