@@ -278,7 +278,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-5"
               aria-label={t('cta-projects')}
             >
-              <Link href="#projects">
+              <Link href="https://jiin-seok.notion.site/portfolio">
                 <Button
                   size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 text-base md:text-lg px-6 py-4 rounded-md"
