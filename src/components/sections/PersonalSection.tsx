@@ -88,7 +88,7 @@ PersonalSection.Header = function Header() {
   return (
     <header className="text-center mb-16">
       <h2
-        className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
+        className={styles.combineStyles([styles.text.heading(2), 'text-5xl mb-6'])}
         id="personalabout-title"
       >
         {t('pages.personal.about-title')}

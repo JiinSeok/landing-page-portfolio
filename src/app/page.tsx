@@ -47,7 +47,6 @@ export default function HomePage(): JSX.Element {
           <TechStackSection />
           <UXDesignSection />
           <PersonalSection />
-
           <PortfolioFAQSection />
           <PortfolioCTASection />
           {/*<NewsletterSection />*/}

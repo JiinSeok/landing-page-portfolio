@@ -9,6 +9,7 @@ import {
 import { useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
   const t = useTranslations()
@@ -122,7 +123,7 @@ export default function TechStackSection() {
     <section id="tech-stack" className="w-full py-20 bg-secondary/10">
       <div className="max-w-7xl mx-auto px-3">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-5xl font-bold mb-4 styles.combineStyles([styles.text.heading(2), 'mb-6'">
             {t('pages.techStack.meta.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
