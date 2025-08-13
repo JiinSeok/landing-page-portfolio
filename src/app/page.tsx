@@ -11,15 +11,35 @@ import ProjectsSection from '@/components/sections/ProjectsSection'
 import TechStackSection from '@/components/sections/TechStackSection'
 import UXDesignSection from '@/components/sections/UXDesignSection'
 import StepperDialog from '@/components/ui/containers/Modal/StepperDialog'
+import AnnouncementModal from '@/components/ui/containers/Modal/AnnouncementModal'
 import Navigation from '@/components/layout/Navigation'
 import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
-import { JSX, useState } from 'react'
+import { JSX, useState, useEffect } from 'react'
 
 export default function HomePage(): JSX.Element {
   const { modalName, openModal, closeModal } = useModal()
   const t = useTranslations('pages.home')
   const [email, setEmail] = useState('')
+  const [showAnnouncement, setShowAnnouncement] = useState(false)
+
+  useEffect(() => {
+    // Check if user has closed it today
+    const lastClosed = localStorage.getItem('npmAnnouncementClosedDate')
+    const today = new Date().toDateString()
+    
+    if (lastClosed !== today) {
+      setShowAnnouncement(true)
+    }
+  }, [])
+
+  const handleCloseAnnouncement = (dontShowToday: boolean = false) => {
+    setShowAnnouncement(false)
+    if (dontShowToday) {
+      const today = new Date().toDateString()
+      localStorage.setItem('npmAnnouncementClosedDate', today)
+    }
+  }
 
   const handleSubmit = (data: any) => {
     console.log('Subscribed with email:', data.email)
@@ -29,6 +49,12 @@ export default function HomePage(): JSX.Element {
 
   return (
     <div className="flex flex-col items-center">
+      {/* NPM Announcement Modal */}
+      <AnnouncementModal
+        isOpen={showAnnouncement}
+        onRequestClose={handleCloseAnnouncement}
+      />
+
       {/* Contact Dialog */}
       <StepperDialog
         isOpen={modalName === 'contactDialog'}

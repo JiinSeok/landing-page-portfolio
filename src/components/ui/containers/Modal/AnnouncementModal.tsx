@@ -7,7 +7,7 @@ import { JSX } from 'react'
 
 interface AnnouncementModalProps {
   isOpen: boolean
-  onRequestClose: () => void
+  onRequestClose: (dontShowToday?: boolean) => void
 }
 
 export default function AnnouncementModal({
@@ -20,7 +20,7 @@ export default function AnnouncementModal({
       onRequestClose={onRequestClose}
       className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-2xl p-8 w-[90vw] max-w-[800px] mx-auto overflow-y-auto max-h-[90vh]"
     >
-      <Modal.CloseButton onClick={onRequestClose} />
+      <Modal.CloseButton onClick={() => onRequestClose(false)} />
       
       <div className="relative">
         {/* Header with emoji and title */}
@@ -148,9 +148,16 @@ export default function AnnouncementModal({
               npm 패키지 보기
             </Button>
             <Button
-              onClick={onRequestClose}
+              onClick={() => onRequestClose(true)}
               variant="outline"
               className="border-gray-300"
+            >
+              오늘 그만 보기
+            </Button>
+            <Button
+              onClick={() => onRequestClose(false)}
+              variant="ghost"
+              className="text-gray-500 hover:text-gray-700"
             >
               닫기
             </Button>
