@@ -17,7 +17,7 @@ export default function AnnouncementModal({
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={() => onRequestClose(false)}
       className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-2xl p-8 w-[90vw] max-w-[800px] mx-auto overflow-y-auto max-h-[90vh]"
     >
       <Modal.CloseButton onClick={() => onRequestClose(false)} />
