@@ -240,7 +240,7 @@ export default function HeroSection() {
 
   const handleDownloadResume = async () => {
     try {
-      window.open("https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/8d6c8f1f-17c2-41ab-98b3-bc656972badf/FE_석지인_문제의_발견_정의_해결_공개용.pdf?table=block&id=24e64a36-d59e-8038-9476-cb61ce479f82&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=X77eg4fCu3EvdCT69T7VtbfBxHNnEuoq6FN1xefh0lk&downloadName=%5BFE+석지인%5D+문제의+발견%2C+정의%2C+해결+공개용.pdf", '_blank')
+      window.open("https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/fe0d7c94-5560-4ddc-ac20-eca62d0d95bb/FE_%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4_%E1%84%87%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC.pdf?table=block&id=24e64a36-d59e-8014-a841-f29ee72f43df&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=Kx1kWcWVdknKgL5syrFTL0l1thB8AneSDctZgzwNaxc", '_blank')
     } catch (error) {
       handleError('올바른 파일 주소를 찾을 수 없습니다.', error as Error)
     }
