@@ -178,6 +178,7 @@ export default function HeroSection() {
                 src="/notion-images/albaform/seo.png"
                 alt="SEO Optimization"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-contain"
               />
             </div>
@@ -200,6 +201,7 @@ export default function HeroSection() {
                 src="/notion-images/albaform/seo.png"
                 alt="Interactive Demo"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-contain"
               />
             </div>
@@ -238,7 +240,7 @@ export default function HeroSection() {
 
   const handleDownloadResume = async () => {
     try {
-      window.open("https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/0d6331c9-c4f9-4fca-ad87-b8847f09264a/FE_석지인_퍼블릭_문제의_발견_정의_해결.pdf?table=block&id=24e64a36-d59e-8014-a841-f29ee72f43df&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1755093600000&signature=jNz6j1H9td3HMokz9fvRyGPr2Z5ax9a-WWUCdq6SzyE&download=true&downloadName=%5BFE_%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%91%E1%85%A5%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%A8%5D+%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4+%E1%84%87%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A7%E1%86%AB%2C+%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4%2C+%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF.pdf", '_blank')
+      window.open("https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/8d6c8f1f-17c2-41ab-98b3-bc656972badf/FE_석지인_문제의_발견_정의_해결_공개용.pdf?table=block&id=24e64a36-d59e-8038-9476-cb61ce479f82&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=X77eg4fCu3EvdCT69T7VtbfBxHNnEuoq6FN1xefh0lk&downloadName=%5BFE+석지인%5D+문제의+발견%2C+정의%2C+해결+공개용.pdf", '_blank')
     } catch (error) {
       handleError('올바른 파일 주소를 찾을 수 없습니다.', error as Error)
     }

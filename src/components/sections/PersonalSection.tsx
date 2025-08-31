@@ -117,6 +117,7 @@ PersonalSection.ProfileImage = function ProfileImage() {
             src="/profile.jpg"
             alt={t('pages.personal.profile-image-alt')}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="object-cover"
             priority
           />
