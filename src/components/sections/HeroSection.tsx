@@ -299,14 +299,14 @@ export default function HeroSection() {
                 </Button>
               </Link>
               {/* <Link href="https://www.rallit.com/resumes/1459572@jxh4cjhfc4/%EC%84%9D%EC%A7%80%EC%9D%B8"> */}
-                <Button
-                  onClick={handleDownloadResume}
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary/10 text-base md:text-lg px-6 py-4 rounded-md"
-                >
-                  {t('cta-resume')}
-                </Button>
+              {/*   <Button */}
+              {/*     onClick={handleDownloadResume} */}
+              {/*     variant="outline" */}
+              {/*     size="lg" */}
+              {/*     className="border-primary text-primary hover:bg-primary/10 text-base md:text-lg px-6 py-4 rounded-md" */}
+              {/*   > */}
+              {/*     {t('cta-resume')} */}
+              {/*   </Button> */}
               {/* </Link> */}
             </nav>
           </header>
