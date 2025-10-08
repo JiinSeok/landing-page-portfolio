@@ -278,7 +278,8 @@ export default function HeroSection() {
                 소프트웨어를 쉽고 빠르게 만들기 위해 소프트웨어를 즐겨 활용하는
                 석지인입니다
                 <span className={'text-sm'}>
-                  (TypeScript, Next.js, TailwindCSS, shadcn/UI, JetBrain Junie)
+                  (TypeScript, Next.js, TailwindCSS, shadcn/UI, Claude Code,
+                  etc.)
                 </span>
                 . 저 역시,{' '}
                 <strong>복잡한 기술을 쉽게 이용할 수 있는 프론트엔드</strong>로
