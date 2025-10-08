@@ -15,9 +15,9 @@ import AnnouncementModal from '@/components/ui/containers/Modal/AnnouncementModa
 import Navigation from '@/components/layout/Navigation'
 import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
-import { JSX, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function HomePage(): JSX.Element {
+export default function HomePage() {
   const { modalName, openModal, closeModal } = useModal()
   const t = useTranslations('pages.home')
   const [email, setEmail] = useState('')
@@ -51,7 +51,7 @@ export default function HomePage(): JSX.Element {
     <div className="flex flex-col items-center">
       {/* NPM Announcement Modal */}
       <AnnouncementModal
-        isOpen={showAnnouncement}
+        isOpen={false}
         onRequestClose={handleCloseAnnouncement}
       />
 
