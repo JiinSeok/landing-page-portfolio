@@ -27,7 +27,7 @@ export default function HomePage(): JSX.Element {
     // Check if user has closed it today
     const lastClosed = localStorage.getItem('npmAnnouncementClosedDate')
     const today = new Date().toDateString()
-    
+
     if (lastClosed !== today) {
       setShowAnnouncement(true)
     }
@@ -60,8 +60,6 @@ export default function HomePage(): JSX.Element {
         isOpen={modalName === 'contactDialog'}
         onRequestClose={closeModal}
       />
-
-
 
       {/* Main Content */}
       <main className="w-full">
