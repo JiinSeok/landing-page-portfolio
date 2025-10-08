@@ -241,7 +241,8 @@ export default function HeroSection() {
   const handleDownloadResume = async () => {
     try {
       window.open(
-        'https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/fe0d7c94-5560-4ddc-ac20-eca62d0d95bb/FE_%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4_%E1%84%87%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC.pdf?table=block&id=24e64a36-d59e-8014-a841-f29ee72f43df&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=Kx1kWcWVdknKgL5syrFTL0l1thB8AneSDctZgzwNaxc',
+        // 'https://www.rallit.com/resumes/1459572@jxh4cjhfc4/%EC%84%9D%EC%A7%80%EC%9D%B8'
+        '/files/resume.pdf',
         '_blank',
       )
     } catch (error) {
@@ -305,16 +306,14 @@ export default function HeroSection() {
                   {t('cta-projects')}
                 </Button>
               </Link>
-              {/* <Link href="https://www.rallit.com/resumes/1459572@jxh4cjhfc4/%EC%84%9D%EC%A7%80%EC%9D%B8"> */}
-              {/*   <Button */}
-              {/*     onClick={handleDownloadResume} */}
-              {/*     variant="outline" */}
-              {/*     size="lg" */}
-              {/*     className="border-primary text-primary hover:bg-primary/10 text-base md:text-lg px-6 py-4 rounded-md" */}
-              {/*   > */}
-              {/*     {t('cta-resume')} */}
-              {/*   </Button> */}
-              {/* </Link> */}
+              <Button
+                onClick={handleDownloadResume}
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary/10 text-base md:text-lg px-6 py-4 rounded-md"
+              >
+                {t('cta-resume')}
+              </Button>
             </nav>
           </header>
           <HeroSection.TabDisplay tabs={tabs} />
