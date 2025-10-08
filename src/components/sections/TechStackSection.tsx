@@ -9,7 +9,6 @@ import {
 import { useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
   const t = useTranslations()

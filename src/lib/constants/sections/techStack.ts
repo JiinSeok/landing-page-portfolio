@@ -236,7 +236,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Zustand',
     category: '상태 API',
-    logo: 'https://cdn.simpleicons.org/zustand/764ABC',
+    logo: 'https://github.com/pmndrs/zustand/raw/refs/heads/main/examples/starter/src/assets/zustand-mascot.svg',
     experience: '로그인한 사용자 정보 등 전역 상태 관리에 사용했습니다.',
     description: '로그인한 사용자 정보 등 전역 상태 관리에 사용했습니다.',
     projects: [],
@@ -330,7 +330,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'AWS',
     category: '인프라',
-    logo: 'https://cdn.simpleicons.org/aws/232F3E',
+    logo: '/aws-logo.svg',
     experience:
       '저렴한 유지비용을 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에 Certificate Manager, CloudFront를 사용했습니다.',
     description:
