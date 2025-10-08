@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.shellIntegration.showCommandGuide": true,
+  "terminal.integrated.suggest.showStatusBar": true,
+  "terminal.integrated.suggest.enabled": true
+}
