@@ -9,6 +9,7 @@ import {
 import { useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
   const t = useTranslations()
@@ -122,7 +123,7 @@ export default function TechStackSection() {
     <section id="tech-stack" className="w-full py-20 bg-secondary/10">
       <div className="max-w-7xl mx-auto px-3">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold mb-4 styles.combineStyles([styles.text.heading(2), 'mb-6'">
+          <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-6')}>
             {t('pages.techStack.meta.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -206,7 +207,7 @@ export default function TechStackSection() {
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Redux</span>
+                    <span className="text-sm font-medium">Zustand</span>
                     <span className="text-xs text-muted-foreground">80%</span>
                   </div>
                   <div className="w-full bg-secondary/30 rounded-full h-2">
@@ -219,7 +220,9 @@ export default function TechStackSection() {
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">React Query</span>
+                    <span className="text-sm font-medium">
+                      Tanstack React Query
+                    </span>
                     <span className="text-xs text-muted-foreground">85%</span>
                   </div>
                   <div className="w-full bg-secondary/30 rounded-full h-2">
