@@ -198,7 +198,7 @@ export default function HeroSection() {
           >
             <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
               <Image
-                src="/notion-images/albaform/seo.png"
+                src="/notion-images/albaform/login-toast.png"
                 alt="Interactive Demo"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -240,13 +240,15 @@ export default function HeroSection() {
 
   const handleDownloadResume = async () => {
     try {
-      window.open("https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/fe0d7c94-5560-4ddc-ac20-eca62d0d95bb/FE_%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4_%E1%84%87%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC.pdf?table=block&id=24e64a36-d59e-8014-a841-f29ee72f43df&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=Kx1kWcWVdknKgL5syrFTL0l1thB8AneSDctZgzwNaxc", '_blank')
+      window.open(
+        'https://file.notion.so/f/f/05532416-b482-4b43-86eb-8b742c1b9ba5/fe0d7c94-5560-4ddc-ac20-eca62d0d95bb/FE_%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4_%E1%84%87%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A7%E1%86%AB_%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AD%E1%86%BC.pdf?table=block&id=24e64a36-d59e-8014-a841-f29ee72f43df&spaceId=05532416-b482-4b43-86eb-8b742c1b9ba5&expirationTimestamp=1756663200000&signature=Kx1kWcWVdknKgL5syrFTL0l1thB8AneSDctZgzwNaxc',
+        '_blank',
+      )
     } catch (error) {
       handleError('올바른 파일 주소를 찾을 수 없습니다.', error as Error)
     }
   }
-  
-  
+
   return (
     <HeroSectionContext.Provider value={contextValue}>
       <SectionContainer
@@ -273,15 +275,20 @@ export default function HeroSection() {
               <p>안녕하세요.</p>
               <p>
                 소프트웨어를 쉽고 빠르게 만들기 위해 소프트웨어를 즐겨 활용하는
-                석지인입니다<span className={'text-sm'}>(TypeScript, Next.js, TailwindCSS, shadcn/UI,
-                JetBrain Junie)</span>. 저 역시,{' '}
+                석지인입니다
+                <span className={'text-sm'}>
+                  (TypeScript, Next.js, TailwindCSS, shadcn/UI, JetBrain Junie)
+                </span>
+                . 저 역시,{' '}
                 <strong>복잡한 기술을 쉽게 이용할 수 있는 프론트엔드</strong>로
                 사용자의 문제를 풀고 싶습니다.
               </p>
               <p>
-                <strong className={'font-bold'}>프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
-                  만듭니다.</strong> 방법에 얽매이지 않고
-                사용자를 고객으로 만드는 프론트엔드를 위해
+                <strong className={'font-bold'}>
+                  프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
+                  만듭니다.
+                </strong>{' '}
+                방법에 얽매이지 않고 사용자를 고객으로 만드는 프론트엔드를 위해
                 노력하겠습니다.
               </p>
             </div>
