@@ -3,131 +3,64 @@
 import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
 import { SectionContainer } from '@/components/ui/containers/SectionContainer'
-import { ContentLayout } from '@/components/ui/containers/ContentLayout'
 import { TabComponent, TabItem } from '@/components/ui/TabComponent'
-import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
 import handleError from '@/lib/utils/errorHandler'
 import styles from '@/lib/utils/styles'
 import { Link } from '@/navigation'
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-// Summary Component
-HeroSection.Summary = function Summary() {
-  const { t } = useHeroSection()
+// Section preview data for the nav cards
+const previewSections = [
+  {
+    id: 'career',
+    title: '경력',
+    description: '5개 회사에서의 경험',
+    preview: ['도스트11 · 풀스택 개발자', '체인시프트 · 프론트엔드', '핏투게더 · SQA', '물류대장 · SQA 매니저', '연합뉴스 · 자료조사'],
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      </svg>
+    ),
+  },
+  {
+    id: 'tech-stack',
+    title: '기술 스택',
+    description: '사용하는 주요 기술과 도구',
+    preview: ['React · TypeScript · Rails', 'Tailwind CSS · Next.js', 'Git · Docker · MySQL'],
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
+  {
+    id: 'faq',
+    title: '자주 묻는 질문',
+    description: '궁금하실 수 있는 점들',
+    preview: ['현재 어떤 일을 하고 있나요?', 'SQA 경험이 어떻게 도움이 되나요?', '협업 스타일은 어떤가요?'],
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+        <path d="M12 17h.01" />
+      </svg>
+    ),
+  },
+]
 
-  return (
-    <ul className="mb-10 text-muted-foreground list-disc pl-6 space-y-3">
-      {(() => {
-        const summary = t('hero.summary')
-        if (Array.isArray(summary)) {
-          return summary.map((item: string, index: number) => (
-            <li
-              key={index}
-              className="text-xl md:text-2xl lg:text-3xl font-bold break-keep leading-tight"
-            >
-              {item}
-            </li>
-          ))
-        } else {
-          return (
-            <li className="text-base md:text-lg lg:text-xl leading-relaxed">
-              {summary}
-            </li>
-          )
-        }
-      })()}
-    </ul>
-  )
-}
-
-// CTA Buttons Component
-HeroSection.CTAButtons = function CTAButtons() {
-  const { t, openModal } = useHeroSection()
-
-  return (
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-      <Button
-        size="lg"
-        className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
-        asChild
-      >
-        <a href="/files/resume.pdf" target="_blank" rel="noopener noreferrer">
-          {t('hero.cta-resume')}
-        </a>
-      </Button>
-      <Button
-        size="lg"
-        variant="outline"
-        className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
-        asChild
-      >
-        <a href="#projects">{t('hero.cta-projects')}</a>
-      </Button>
-      <Button
-        size="lg"
-        variant="ghost"
-        className="text-primary hover:bg-primary/10 w-full sm:w-auto"
-        onClick={() => openModal('contactDialog')}
-      >
-        {t('hero.cta-contact')}
-      </Button>
-    </div>
-  )
-}
-
-// Tab Display Component
-interface TabDisplayProps {
-  tabs: TabItem[]
-}
-
-HeroSection.TabDisplay = function TabDisplay({ tabs }: TabDisplayProps) {
-  const { activeTab, setActiveTab } = useHeroSection()
-
-  return (
-    <>
-      <div className="w-full md:w-7/12 lg:w-1/2 flex justify-center relative mt-8 md:mt-0">
-        <div className="relative w-full max-w-lg h-[28rem] rounded-xl">
-          <div className="absolute inset-0 bg-gradient-to-r from-chart-1 to-chart-3 rounded-xl opacity-20 blur-xl"></div>
-          <div className="relative h-full flex flex-col items-center justify-start p-6 md:p-8">
-            <TabComponent
-              tabs={tabs}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
-
-// Context type definition
-type HeroSectionContextType = {
-  activeTab: string
-  setActiveTab: (tab: string) => void
-  openModal: (modalName: string) => void
-  t: (key: string) => string
-}
-
-// Create context
-const HeroSectionContext = createContext<HeroSectionContextType | undefined>(
-  undefined,
-)
-
-// Hook to use the context
-const useHeroSection = () => {
-  const context = useContext(HeroSectionContext)
-  if (!context) {
-    throw new Error('useHeroSection must be used within a HeroSectionProvider')
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-  return context
 }
 
 // Main component
 export default function HeroSection() {
   const t = useTranslations('pages.home.sections.hero')
-  const { openModal } = useModal()
   const [activeTab, setActiveTab] = useState<string>('competencies')
 
   // Define tab content
@@ -216,51 +149,31 @@ export default function HeroSection() {
   // Auto-rotate tabs every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      // Find current tab index
       const currentIndex = tabs.findIndex((tab) => tab.id === activeTab)
-      // Calculate next tab index (loop back to 0 if at the end)
       const nextIndex = (currentIndex + 1) % tabs.length
-      // Set the next tab as active
       setActiveTab(tabs[nextIndex].id)
-    }, 5000) // Change tab every 5 seconds
+    }, 5000)
 
-    // Clean up interval on component unmount
     return () => clearInterval(interval)
   }, [activeTab, tabs])
 
-  // Context value
-  const contextValue = {
-    activeTab,
-    setActiveTab,
-    openModal,
-    t,
-  }
-
   const handleDownloadResume = async () => {
     try {
-      window.open(
-        // 'https://www.rallit.com/resumes/1459572@jxh4cjhfc4/%EC%84%9D%EC%A7%80%EC%9D%B8'
-        '/files/resume.pdf',
-        '_blank',
-      )
+      window.open('/files/resume.pdf', '_blank')
     } catch (error) {
       handleError('올바른 파일 주소를 찾을 수 없습니다.', error as Error)
     }
   }
 
   return (
-    <HeroSectionContext.Provider value={contextValue}>
       <SectionContainer
         id="hero"
         background="bg-gradient-to-b from-background to-secondary/20"
         padding="py-16 md:py-20 px-6 md:px-8 lg:px-12"
       >
-        <ContentLayout
-          direction="column"
-          gap="gap-10"
-          className="md:flex-row md:items-start"
-        >
-          <header className="md:w-1/2 mb-12 md:mb-0">
+        {/* Hero: Left intro + Right preview nav */}
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start gap-10">
+          <header className="md:w-1/2">
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-start mb-4"
               id="meta.title"
@@ -268,7 +181,7 @@ export default function HeroSection() {
               <span className="block">{t('title-highlight1')}</span>
               <span className="block">{t('title-highlight2')}</span>
             </h1>
-            <p className={styles.combineStyles([styles.text.body('large'), 'text-muted-foreground text-start mb-12 max-w-3xl mx-auto'])}>
+            <p className={styles.combineStyles([styles.text.body('large'), 'text-muted-foreground text-start mb-12'])}>
               SQA 출신 풀스택 개발자
             </p>
             <div className={styles.combineStyles([styles.text.body('default'), 'w-full mb-10 font-light text-muted-foreground leading-relaxed whitespace-pre-line'])}>
@@ -281,11 +194,7 @@ export default function HeroSection() {
                 이전에 2개 회사에서 SQA를 했고, 그때 시작한 이슈 트래킹·용어 통일·문서화 습관이 개발에도 이어지고 있어요.
               </p>
             </div>
-            {/*<HeroSection.Summary />*/}
-            <nav
-              className="flex flex-wrap gap-5"
-              aria-label={t('cta-projects')}
-            >
+            <nav className="flex flex-wrap gap-5" aria-label={t('cta-projects')}>
               <Link href="https://jiin-seok.notion.site/portfolio">
                 <Button
                   size="lg"
@@ -304,9 +213,46 @@ export default function HeroSection() {
               </Button>
             </nav>
           </header>
-          <HeroSection.TabDisplay tabs={tabs} />
-        </ContentLayout>
+
+          {/* Section preview nav cards — vertical */}
+          <nav className="md:w-1/2 flex flex-col gap-3 mt-4 md:mt-0" aria-label="섹션 미리보기">
+            {previewSections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="group text-left p-5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:shadow-md transition-all cursor-pointer"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-primary">{section.icon}</span>
+                  <h3 className="font-semibold text-sm">{section.title}</h3>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">{section.description}</p>
+                <ul className="space-y-1.5">
+                  {section.preview.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground/70 truncate">
+                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary/50" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Carousel — full width below hero content */}
+        <div className="max-w-3xl mx-auto mt-16">
+          <div className="relative rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-r from-chart-1 to-chart-3 rounded-xl opacity-20 blur-xl" />
+            <div className="relative h-[28rem] flex flex-col p-6 md:p-8">
+              <TabComponent
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+            </div>
+          </div>
+        </div>
       </SectionContainer>
-    </HeroSectionContext.Provider>
   )
 }
