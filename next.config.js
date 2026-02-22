@@ -13,6 +13,7 @@ const nextConfig = {
             { protocol: 'https', hostname: 'github.com' },
         ],
         dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
     // Include content directory in transpilation
     transpilePackages: ['content'],
