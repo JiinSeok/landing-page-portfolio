@@ -36,9 +36,9 @@ export function TabComponent({
   contentClassName = '',
 }: TabComponentProps) {
   return (
-    <div className={className}>
-      {/* Tab navigation */}
-      <div className="flex space-x-3 mb-6">
+    <div className={`h-full flex flex-col ${className}`}>
+      {/* Tab navigation — fixed */}
+      <div className="flex space-x-3 mb-6 shrink-0">
         {tabs.map((tab) => (
           <a
             href={`#${tab.id}`}
@@ -56,8 +56,8 @@ export function TabComponent({
         ))}
       </div>
 
-      {/* Tab content */}
-      <div className={`flex justify-center ${contentClassName}`}>
+      {/* Tab content — scrollable */}
+      <div className={`flex-1 min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${contentClassName}`}>
         {tabs.map(
           (tab) =>
             activeTab === tab.id && (

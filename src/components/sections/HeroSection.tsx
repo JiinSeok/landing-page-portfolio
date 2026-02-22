@@ -8,6 +8,7 @@ import { TabComponent, TabItem } from '@/components/ui/TabComponent'
 import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
 import handleError from '@/lib/utils/errorHandler'
+import styles from '@/lib/utils/styles'
 import { Link } from '@/navigation'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
@@ -88,7 +89,7 @@ HeroSection.TabDisplay = function TabDisplay({ tabs }: TabDisplayProps) {
       <div className="w-full md:w-7/12 lg:w-1/2 flex justify-center relative mt-8 md:mt-0">
         <div className="relative w-full max-w-lg h-[28rem] rounded-xl">
           <div className="absolute inset-0 bg-gradient-to-r from-chart-1 to-chart-3 rounded-xl opacity-20 blur-xl"></div>
-          <div className="relative h-full flex flex-col items-center justify-start p-6 md:p-8 overflow-y-auto">
+          <div className="relative h-full flex flex-col items-center justify-start p-6 md:p-8">
             <TabComponent
               tabs={tabs}
               activeTab={activeTab}
@@ -149,8 +150,8 @@ export default function HeroSection() {
                     {i + 1}
                   </span>
                   <div>
-                    <span className="font-semibold text-sm md:text-base">{item.label}</span>
-                    <p className="text-xs md:text-sm text-muted-foreground mt-0.5">{item.description}</p>
+                    <span className="font-semibold text-sm">{item.label}</span>
+                    <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
                   </div>
                 </li>
               ))}
@@ -165,13 +166,8 @@ export default function HeroSection() {
           <ContentCard title={t('achievements-title')}>
             <ul className="space-y-3">
               {Array.isArray(achievements) && achievements.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm md:text-base">
-                  <span className="shrink-0 text-primary mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                      <polyline points="9 11 12 14 22 4" />
-                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                    </svg>
-                  </span>
+                <li key={i} className={styles.combineStyles([styles.text.body('small'), 'flex items-start gap-2'])}>
+                  <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />
                   <span className="break-keep">{item}</span>
                 </li>
               ))}
@@ -189,7 +185,7 @@ export default function HeroSection() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">학력</h4>
                 <ul className="space-y-2">
                   {Array.isArray(education) && education.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm md:text-base">
+                    <li key={i} className="flex items-center gap-2 text-sm">
                       <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary" />
                       <span className="font-medium">{item.label}</span>
                       <span className="text-muted-foreground">— {item.description}</span>
@@ -201,7 +197,7 @@ export default function HeroSection() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">자격증</h4>
                 <ul className="space-y-2">
                   {Array.isArray(certifications) && certifications.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm md:text-base">
+                    <li key={i} className="flex items-center gap-2 text-sm">
                       <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary" />
                       <span className="font-medium">{item.label}</span>
                       <span className="text-muted-foreground">— {item.description}</span>
@@ -272,10 +268,10 @@ export default function HeroSection() {
               <span className="block">{t('title-highlight1')}</span>
               <span className="block">{t('title-highlight2')}</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
+            <p className={styles.combineStyles([styles.text.body('large'), 'text-muted-foreground text-start mb-12 max-w-3xl mx-auto'])}>
               SQA 출신 풀스택 개발자
             </p>
-            <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
+            <div className={styles.combineStyles([styles.text.body('default'), 'w-full mb-10 font-light text-muted-foreground leading-relaxed whitespace-pre-line'])}>
               <p>안녕하세요. 석지인입니다.</p>
               <p>
                 MBC AI 전략자회사 <strong>도스트11</strong>에서 디지털 에셋 마켓 도프켓의 풀스택 개발을 하고 있어요.

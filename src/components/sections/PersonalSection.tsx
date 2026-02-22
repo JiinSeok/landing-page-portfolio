@@ -12,6 +12,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 type CareerEntry = {
   company: string
+  description?: string
+  url?: string
   period: string
   role: string
   contributions: string[]
@@ -72,7 +74,7 @@ PersonalSection.Header = function Header() {
   return (
     <header className="text-center mb-12">
       <h2
-        className={styles.combineStyles([styles.text.heading(2), 'text-5xl mb-6'])}
+        className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
         id="career-title"
       >
         {t('pages.career.section-title') as string}
@@ -119,10 +121,21 @@ PersonalSection.CareerCards = function CareerCards() {
           className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm"
         >
           <h3
-            className={styles.combineStyles([styles.text.heading(3), 'mb-1'])}
+            className={styles.combineStyles([styles.text.heading(3), 'mb-0.5'])}
           >
-            {career.company}
+            {career.url ? (
+              <a href={career.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                {career.company}
+              </a>
+            ) : (
+              career.company
+            )}
           </h3>
+          {career.description && (
+            <p className="text-xs text-muted-foreground/70 mb-1">
+              {career.description}
+            </p>
+          )}
           <p className="text-sm text-muted-foreground mb-1">
             {career.period}
           </p>
@@ -131,24 +144,8 @@ PersonalSection.CareerCards = function CareerCards() {
           </p>
           <ul className="space-y-3">
             {career.contributions.map((item, i) => (
-              <li key={i} className="flex items-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={styles.combineStyles([
-                    styles.sizing.icon('md'),
-                    'text-primary mr-2 mt-0.5 flex-shrink-0',
-                  ])}
-                  aria-hidden="true"
-                >
-                  <polyline points="9 11 12 14 22 4" />
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                </svg>
+              <li key={i} className="flex items-start gap-2">
+                <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />
                 <span className={styles.text.body('default')}>
                   {item}
                 </span>

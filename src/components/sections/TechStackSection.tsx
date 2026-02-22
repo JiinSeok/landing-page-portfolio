@@ -47,13 +47,13 @@ export default function TechStackSection() {
                       <span className="text-lg">📚</span>
                     </div>
                     <h5
-                      className="font-medium"
+                      className="font-medium text-base"
                       id={category.toLowerCase().replace(/\s+/g, '-')}
                     >
                       {category} 기술
                     </h5>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className={styles.combineStyles([styles.text.body('small'), 'text-muted-foreground'])}>
                     {category} 관련 기술을 사용한 경험이 있습니다. 자세한 내용은
                     추가될 예정입니다.
                   </p>
@@ -75,18 +75,18 @@ export default function TechStackSection() {
                       height={32}
                     />
                   </div>
-                  <h5 className="font-medium">{tech.name}</h5>
+                  <h5 className="font-medium text-base">{tech.name}</h5>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">
+                <p className={styles.combineStyles([styles.text.body('small'), 'text-muted-foreground mb-3'])}>
                   {tech.description}
                 </p>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {tech.projects.map((project, idx) => (
                     <div
                       key={idx}
-                      className="text-xs flex items-start text-muted-foreground"
+                      className="text-xs flex items-start gap-2 text-muted-foreground"
                     >
-                      <span className="text-primary mr-2">•</span>
+                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary mt-1.5" />
                       <span>{project}</span>
                     </div>
                   ))}
@@ -106,7 +106,7 @@ export default function TechStackSection() {
           <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-6')}>
             {t('pages.techStack.meta.title')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={styles.combineStyles([styles.text.body('large'), 'text-muted-foreground max-w-2xl mx-auto'])}>
             {t('pages.techStack.meta.subtitle')}
           </p>
         </div>
