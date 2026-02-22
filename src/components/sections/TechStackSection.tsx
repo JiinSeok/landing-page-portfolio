@@ -75,7 +75,7 @@ export default function TechStackSection() {
                       height={32}
                     />
                   </div>
-                  <h5 className="font-medium text-base">{tech.name}</h5>
+                  <h5 className="font-semibold text-base">{tech.name}</h5>
                 </div>
                 <p className={styles.combineStyles([styles.text.body('small'), 'text-muted-foreground mb-3'])}>
                   {tech.description}
@@ -86,7 +86,7 @@ export default function TechStackSection() {
                       key={idx}
                       className="text-xs flex items-start gap-2 text-muted-foreground"
                     >
-                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary mt-1.5" />
+                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-1.5" />
                       <span>{project}</span>
                     </div>
                   ))}

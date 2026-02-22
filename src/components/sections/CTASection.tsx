@@ -2,12 +2,13 @@
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
+import Image from 'next/image'
 
 /**
  * CTA (Call to Action) section component for the homepage
  *
- * This component displays a call-to-action section with a title, description,
- * and a button to contact the developer.
+ * This component displays a call-to-action section with a profile photo, title,
+ * and description.
  */
 export default function CTASection() {
   const t = useTranslations('pages.home.sections.cta')
@@ -24,9 +25,16 @@ export default function CTASection() {
         className={styles.combineStyles([
           styles.layout.container('xl'),
           'px-6 md:px-8 lg:px-12',
-          'text-center',
+          'text-center flex flex-col items-center',
         ])}
       >
+        {/* <Image
+          src="/profile.jpg"
+          alt="석지인"
+          width={96}
+          height={96}
+          className="rounded-full object-cover w-24 h-24 mb-6 border-2 border-white/30"
+        /> */}
         <h2
           className={styles.combineStyles([
             styles.text.heading(2),
@@ -44,14 +52,6 @@ export default function CTASection() {
         >
           {t('description')}
         </p>
-        {/*<Button*/}
-        {/*  variant="default"*/}
-        {/*  size="lg"*/}
-        {/*  className="bg-white text-primary hover:bg-white/90"*/}
-        {/*  onClick={() => openModal('contactDialog')}*/}
-        {/*>*/}
-        {/*  {t('button')}*/}
-        {/*</Button>*/}
       </div>
     </section>
   )

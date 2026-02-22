@@ -1,9 +1,9 @@
 'use client'
 
-import { SectionContainer } from '@/components/ui/containers/SectionContainer'
-import Image from 'next/image'
+import { useTranslations } from '@/lib/providers/TextContext'
+import { useState, useEffect } from 'react'
 
-// Section preview data — intro content is woven into card descriptions
+// Section preview data
 const previewSections = [
   {
     id: 'career',
@@ -66,53 +66,80 @@ function scrollToSection(id: string) {
 }
 
 export default function HeroSection() {
+  const t = useTranslations('pages.home.sections.cta')
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
-    <SectionContainer
-      id="hero"
-      background="bg-gradient-to-b from-background to-secondary/20"
-      padding="py-16 md:py-20 px-6 md:px-8 lg:px-12"
-    >
+    <section id="hero" className="w-full bg-primary text-white py-16 md:py-20 px-6 md:px-8 lg:px-12">
+      <style>{`
+        @keyframes cardPop {
+          0% { opacity: 0; transform: translateY(16px); }
+          60% { opacity: 1; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+          100% { opacity: 1; transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto">
-        {/* Profile + greeting */}
-        <div className="flex items-center gap-4 mb-8">
-          <Image
-            src="/profile.jpg"
-            alt="석지인"
-            width={56}
-            height={56}
-            className="rounded-full object-cover w-14 h-14"
-          />
-          <div>
-            <p className="text-base font-medium">안녕하세요, 석지인입니다.</p>
-            <p className="text-sm text-muted-foreground">궁금한 항목부터 눌러보세요.</p>
-          </div>
+        {/* CTA heading */}
+        <div className="text-center mb-10">
+          <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold mb-3">
+            {t('title')}
+          </h1>
+          <p className="text-[clamp(1.125rem,2vw,1.375rem)] text-white/80 max-w-2xl mx-auto">
+            {t('description')}
+          </p>
         </div>
 
         {/* Section preview nav cards — 3 columns */}
-        <nav className="grid grid-cols-1 sm:grid-cols-3 gap-4" aria-label="섹션 미리보기">
-          {previewSections.map((section) => (
+        <nav className="grid grid-cols-1 sm:grid-cols-3 gap-5" aria-label="섹션 미리보기">
+          {previewSections.map((section, index) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
-              className="group text-left p-5 rounded-lg border border-border/50 bg-card hover:border-primary/30 hover:shadow-md transition-all cursor-pointer flex flex-col items-start"
+              className="group text-left rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm transition-all duration-200 cursor-pointer flex flex-col overflow-hidden hover:-translate-y-1.5 hover:bg-white/15 hover:border-white/25 hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)]"
+              style={{
+                opacity: mounted ? undefined : 0,
+                animation: mounted ? `cardPop 0.5s ease ${index * 0.15}s both` : 'none',
+              }}
             >
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="text-primary">{section.icon}</span>
-                <h3 className="font-semibold text-sm">{section.title}</h3>
+              {/* Header with icon */}
+              <div className="px-5 pt-5 pb-3 flex items-center gap-3">
+                <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/15 text-white shrink-0">
+                  {section.icon}
+                </span>
+                <div>
+                  <h3 className="font-semibold text-base leading-tight text-white">{section.title}</h3>
+                  <p className="text-xs text-white/60 mt-0.5">{section.description}</p>
+                </div>
               </div>
-              <p className="text-xs text-muted-foreground mb-2.5">{section.description}</p>
-              <ul className="space-y-1">
+
+              {/* Divider */}
+              <div className="mx-5 border-t border-white/10" />
+
+              {/* Preview list */}
+              <ul className="px-5 pt-3 pb-4 space-y-1.5 flex-1">
                 {section.preview.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground/70 truncate">
-                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/50" />
-                    {item}
+                  <li key={i} className="flex items-center gap-2.5 text-sm text-white/70">
+                    <span className="shrink-0 w-1 h-1 rounded-full bg-white/40" />
+                    <span className="truncate">{item}</span>
                   </li>
                 ))}
               </ul>
+
+              {/* Footer action hint */}
+              <div className="px-5 pb-4 flex items-center gap-1 text-xs text-white/40 group-hover:text-white/80 transition-colors">
+                <span>자세히 보기</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5">
+                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                </svg>
+              </div>
             </button>
           ))}
         </nav>
       </div>
-    </SectionContainer>
+    </section>
   )
 }

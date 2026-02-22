@@ -44,16 +44,11 @@ export default function FAQSection() {
       ])}
     >
       <div className="px-6 md:px-8 lg:px-12">
-        <div
-          className={styles.combineStyles([
-            'max-w-3xl mx-auto text-center',
-            styles.spacing.marginBottom('xl'),
-          ])}
-        >
+        <div className="max-w-3xl mx-auto text-center mb-12">
           <h2
             className={styles.combineStyles([
               styles.text.heading(2),
-              styles.spacing.marginBottom('md'),
+              'mb-6',
             ])}
           >
             {t('title')}
@@ -111,19 +106,14 @@ export default function FAQSection() {
                   'border-b border-border last:border-0',
                 ])}
               >
-                <h3
-                  className={styles.combineStyles([
-                    styles.text.heading(4),
-                    styles.spacing.paddingY('md'),
-                  ])}
-                >
+                <h3 className="font-semibold text-lg py-3">
                   {faq.question}
                 </h3>
                 <div
                   className={styles.combineStyles([
                     styles.spacing.paddingX('md'),
                     'text-muted-foreground',
-                    styles.text.body('default'),
+                    styles.text.body('small'),
                   ])}
                 >
                   <p className="pb-3">{faq.answer}</p>

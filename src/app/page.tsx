@@ -1,6 +1,5 @@
 'use client'
 
-import PortfolioCTASection from '@/components/sections/CTASection'
 import PortfolioFAQSection from '@/components/sections/FAQSection'
 import PortfolioHeroSection from '@/components/sections/HeroSection'
 import PersonalSection from '@/components/sections/PersonalSection'
@@ -58,7 +57,6 @@ export default function HomePage() {
           <TechStackSection />
           {/*<UXDesignSection />*/}
           <PortfolioFAQSection />
-          <PortfolioCTASection />
           {/*<NewsletterSection />*/}
         </div>
       </main>
