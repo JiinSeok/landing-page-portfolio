@@ -82,7 +82,7 @@ export const VehicleInfoCard: React.FC = () => {
   },
   {
     title: '포트폴리오 웹사이트',
-    year: 2023,
+    year: 2024,
     description:
       '개인 포트폴리오 웹사이트로, 프로젝트 쇼케이스, 기술 스택, 경력 정보를 담고 있습니다. Next.js, TypeScript, Tailwind CSS를 활용하여 반응형 디자인과 모던 UI/UX를 구현했습니다. 다크 모드 지원과 성능 최적화에 중점을 두었습니다.',
     url: '/site-build',
@@ -288,11 +288,10 @@ export default function ProjectsSection() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full ${
-                currentIndex === index
+              className={`w-3 h-3 rounded-full ${currentIndex === index
                   ? 'bg-primary'
                   : 'bg-gray-300 dark:bg-gray-700'
-              }`}
+                }`}
               aria-label={`${t('projects.go-to-project')} ${index + 1}`}
             />
           ))}

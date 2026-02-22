@@ -23,7 +23,7 @@ export default function CTASection() {
       <div
         className={styles.combineStyles([
           styles.layout.container('xl'),
-          styles.spacing.paddingX('md'),
+          'px-6 md:px-8 lg:px-12',
           'text-center',
         ])}
       >

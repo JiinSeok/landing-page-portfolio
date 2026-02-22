@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* Main Content */}
       <main className="w-full">
         {/* Portfolio Content */}
-        <div className="w-full bg-gradient-to-b from-background to-secondary/5 py-12 md:py-16 lg:py-20">
+        <div className="w-full bg-gradient-to-b from-background to-secondary/5">
           <PortfolioHeroSection />
           {/*<DemoShowcaseSection />*/}
           {/*<ProjectsSection />*/}

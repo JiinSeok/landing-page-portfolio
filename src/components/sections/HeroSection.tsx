@@ -255,6 +255,7 @@ export default function HeroSection() {
       <SectionContainer
         id="hero"
         background="bg-gradient-to-b from-background to-secondary/20"
+        padding="py-16 md:py-20 px-6 md:px-8 lg:px-12"
       >
         <ContentLayout
           direction="column"

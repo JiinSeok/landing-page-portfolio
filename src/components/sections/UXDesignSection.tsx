@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
 import { UX_DESIGN_FEATURES } from '@/lib/constants/sections/uxDesign'
 import { useTranslations } from '@/lib/providers/TextContext'
+import styles from '@/lib/utils/styles'
 
 /**
  * 홈페이지의 UX 디자인 섹션 컴포넌트
@@ -12,11 +13,11 @@ export default function UXDesignSection() {
   const t = useTranslations()
 
   return (
-    <section id="ux-design" className="w-full py-20">
-      <div className="max-w-7xl mx-auto px-3">
-        <div className="text-center mb-16">
+    <section id="ux-design" className="w-full py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-5xl font-bold mb-4"
+            className={styles.combineStyles(styles.text.heading(2), 'mb-4')}
             id="ux-designtitle"
           >
             {t('pages.uxDesign.meta.title')}

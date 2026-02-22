@@ -100,8 +100,8 @@ export default function TechStackSection() {
   }))
 
   return (
-    <section id="tech-stack" className="w-full py-20 bg-secondary/10">
-      <div className="max-w-7xl mx-auto px-3">
+    <section id="tech-stack" className="w-full py-16 md:py-20 bg-secondary/10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         <div className="text-center mb-12">
           <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-6')}>
             {t('pages.techStack.meta.title')}

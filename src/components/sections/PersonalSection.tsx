@@ -59,16 +59,16 @@ export default function PersonalSection() {
     <PersonalSectionContext.Provider value={contextValue}>
       <section
         id="personal"
-        className="w-full py-16 sm:py-20 md:py-24 lg:py-28 bg-secondary/10"
+        className="w-full py-16 md:py-20 bg-secondary/10"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <PersonalSection.Header />
           <div className="flex flex-col md:flex-row lg:flex-row items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-12 sm:mb-14 md:mb-16 lg:mb-20">
             <PersonalSection.ProfileImage />
             <PersonalSection.PersonalInfo />
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
             <PersonalSection.Interests />
             <PersonalSection.Values />
@@ -86,7 +86,7 @@ PersonalSection.Header = function Header() {
   const { t } = usePersonalSection()
 
   return (
-    <header className="text-center mb-16">
+    <header className="text-center mb-12">
       <h2
         className={styles.combineStyles([styles.text.heading(2), 'text-5xl mb-6'])}
         id="personalabout-title"
@@ -308,8 +308,8 @@ PersonalSection.Interests = function Interests() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={styles.combineStyles([
-                  styles.sizing.icon('lg'),
-                  'text-primary mr-3 mt-1 flex-shrink-0',
+                  styles.sizing.icon('md'),
+                  'text-primary mr-2 mt-1 flex-shrink-0',
                 ])}
                 aria-hidden="true"
               >
@@ -409,8 +409,8 @@ PersonalSection.Values = function Values() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={styles.combineStyles([
-                  styles.sizing.icon('lg'),
-                  'text-primary mr-3 mt-1 flex-shrink-0',
+                  styles.sizing.icon('md'),
+                  'text-primary mr-2 mt-1 flex-shrink-0',
                 ])}
                 aria-hidden="true"
               >
@@ -507,8 +507,8 @@ PersonalSection.Strengths = function Strengths() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={styles.combineStyles([
-                  styles.sizing.icon('lg'),
-                  'text-primary mr-3 mt-1 flex-shrink-0',
+                  styles.sizing.icon('md'),
+                  'text-primary mr-2 mt-1 flex-shrink-0',
                 ])}
                 aria-hidden="true"
               >
@@ -608,8 +608,8 @@ PersonalSection.Motivations = function Motivations() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={styles.combineStyles([
-                  styles.sizing.icon('lg'),
-                  'text-primary mr-3 mt-1 flex-shrink-0',
+                  styles.sizing.icon('md'),
+                  'text-primary mr-2 mt-1 flex-shrink-0',
                 ])}
                 aria-hidden="true"
               >

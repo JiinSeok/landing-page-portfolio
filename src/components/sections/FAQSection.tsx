@@ -49,7 +49,7 @@ export default function FAQSection() {
       ])}
     >
       <div
-        className={styles.layout.container('xl', styles.spacing.paddingX('lg'))}
+        className={styles.layout.container('xl', 'px-6 md:px-8 lg:px-12')}
       >
         <div
           className={styles.combineStyles([
