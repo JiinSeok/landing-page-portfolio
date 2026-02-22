@@ -41,7 +41,7 @@ export default function PersonalSection() {
   if (isLoading) {
     return (
       <section id="career" className="w-full py-16 md:py-20 bg-secondary/10">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="max-w-3xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="text-center mb-12">
             <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-24 mx-auto animate-pulse" />
           </div>
@@ -76,8 +76,8 @@ export default function PersonalSection() {
 
   return (
     <section id="career" className="w-full py-16 md:py-20 bg-secondary/10">
-      <div className="max-w-5xl mx-auto px-6 md:px-8 lg:px-12">
-        <header className="text-center mb-12">
+      <div className="px-6 md:px-8 lg:px-12">
+        <header className="max-w-3xl mx-auto text-center mb-12">
           <h2
             className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
             id="career-title"
@@ -86,8 +86,8 @@ export default function PersonalSection() {
           </h2>
         </header>
 
-        {/* Timeline */}
-        <div className="relative">
+        {/* Timeline — left-aligned, expands rightward */}
+        <div className="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-24">
           {careers.map((career, index) => {
             const logo = COMPANY_LOGOS[career.company]
             const isLast = index === careers.length - 1
@@ -101,9 +101,9 @@ export default function PersonalSection() {
                 </div>
 
                 {/* Content */}
-                <div className={`flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ${isLast ? '' : 'pb-10 md:pb-12'}`}>
-                  {/* Column 1: Company info */}
-                  <div>
+                <div className={`flex-1 flex flex-col md:flex-row gap-4 md:gap-10 ${isLast ? '' : 'pb-10 md:pb-12'}`}>
+                  {/* Column 1: Company info — fixed width */}
+                  <div className="md:w-56 shrink-0">
                     <div className="flex items-center gap-3 mb-2">
                       {logo && (
                         <div className="shrink-0 w-8 h-8 relative rounded overflow-hidden bg-white flex items-center justify-center">
@@ -139,8 +139,8 @@ export default function PersonalSection() {
                     </p>
                   </div>
 
-                  {/* Column 2: Contributions */}
-                  <ul className="space-y-2 md:mt-0 mt-2">
+                  {/* Column 2: Contributions — expands freely */}
+                  <ul className="space-y-2">
                     {career.contributions.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />

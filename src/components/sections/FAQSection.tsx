@@ -43,12 +43,10 @@ export default function FAQSection() {
         styles.layout.section('lg'),
       ])}
     >
-      <div
-        className={styles.layout.container('xl', 'px-6 md:px-8 lg:px-12')}
-      >
+      <div className="px-6 md:px-8 lg:px-12">
         <div
           className={styles.combineStyles([
-            'text-center',
+            'max-w-3xl mx-auto text-center',
             styles.spacing.marginBottom('xl'),
           ])}
         >
@@ -70,7 +68,7 @@ export default function FAQSection() {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-24">
           {isLoading ? (
             // Skeleton UI for FAQ items
             <>

@@ -101,8 +101,8 @@ export default function TechStackSection() {
 
   return (
     <section id="tech-stack" className="w-full py-16 md:py-20 bg-secondary/10">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-        <div className="text-center mb-12">
+      <div className="px-6 md:px-8 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-6')}>
             {t('pages.techStack.meta.title')}
           </h2>
@@ -111,12 +111,13 @@ export default function TechStackSection() {
           </p>
         </div>
 
-        <div>
+        <div className="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-24">
           <TabComponent
             tabs={categoryTabs}
             activeTab={activeCategory}
             setActiveTab={setActiveCategory}
             className="w-full"
+            tabContainerClassName="justify-center flex-wrap"
             tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
             activeTabClassName="bg-primary text-white"
             inactiveTabClassName="bg-secondary/50 hover:bg-secondary/80"

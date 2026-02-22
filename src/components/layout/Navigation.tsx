@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { Link } from '@/navigation'
-import { useTranslations } from '@/lib/providers/TextContext'
 import {
   ButtonContainer,
   ContactButton, ContactMenu,
@@ -12,8 +11,6 @@ import {
 } from '@/components/FloatingButtonGroup'
 
 export default function Navigation() {
-  // const { openModal } = useModal()
-  const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -31,8 +28,8 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto mb-5 sm:mb-0">
-          <Link href="/" className="w-fit text-2xl md:text-3xl lg:text-4xl font-bold text-primary whitespace-nowrap">
-            {t('pages.home.meta.developer-name')}
+          <Link href="/" className="w-fit text-lg md:text-xl font-bold text-primary whitespace-nowrap">
+            석지인<span className="text-muted-foreground font-normal mx-1.5">·</span><span className="text-muted-foreground font-normal">웹 개발자</span>
           </Link>
           {/* Mobile menu button */}
           <button

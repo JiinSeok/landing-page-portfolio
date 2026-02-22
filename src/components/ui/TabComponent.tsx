@@ -13,6 +13,7 @@ interface TabComponentProps {
   activeTab: string
   setActiveTab: (id: string) => void
   className?: string
+  tabContainerClassName?: string
   tabClassName?: string
   activeTabClassName?: string
   inactiveTabClassName?: string
@@ -30,6 +31,7 @@ export function TabComponent({
   activeTab,
   setActiveTab,
   className = '',
+  tabContainerClassName = '',
   tabClassName = 'px-4 py-2 rounded-md text-sm font-medium transition-colors',
   activeTabClassName = 'bg-primary text-white',
   inactiveTabClassName = 'bg-secondary',
@@ -38,7 +40,7 @@ export function TabComponent({
   return (
     <div className={`h-full flex flex-col ${className}`}>
       {/* Tab navigation — fixed */}
-      <div className="flex space-x-3 mb-6 shrink-0">
+      <div className={`flex space-x-3 mb-6 shrink-0 ${tabContainerClassName}`}>
         {tabs.map((tab) => (
           <a
             href={`#${tab.id}`}
