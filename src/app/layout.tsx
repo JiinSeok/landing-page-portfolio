@@ -11,7 +11,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop"
 import CursorCompanion from "@/components/ui/CursorCompanion"
 
 export const metadata: Metadata = {
-  title: '석지인 포트폴리오',
+  title: '석지인 · 웹개발자',
   description:
     '사용자 중심의 웹 개발을 통해 매끄러운 디지털 경험을 만드는 웹 개발자입니다.',
   keywords: '웹 개발, 프론트엔드, 백엔드, React, Next.js, 포트폴리오, 석지인',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: '석지인 - 웹 개발자 포트폴리오',
+    title: '석지인 · 웹개발자',
     description:
       '석지인은 사용자 중심의 웹 개발과 디자인을 통해 혁신적인 디지털 경험을 만드는 웹 개발자입니다.',
     url: 'https://usejiin.link',
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps) {
           }
         });
       `}} />
-      <title>석지인 포트폴리오</title>
+      <title>석지인 · 웹개발자</title>
     </head>
     <body
       className={cn(
