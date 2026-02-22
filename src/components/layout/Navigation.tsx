@@ -2,40 +2,19 @@
 
 import React, { useState } from 'react'
 import { Link } from '@/navigation'
-import { NAVIGATION_ITEMS } from '@/lib/constants/sections/navigation'
-import { ROUTER } from '@/lib/constants/router'
 import { useTranslations } from '@/lib/providers/TextContext'
-// import { useModal } from '@/lib/hooks/useModal'
 import {
   ButtonContainer,
   ContactButton, ContactMenu,
   FloatingButtonGroup,
-  ShareButton, ShareMenu,
   TocButton, TocMenu,
+  ShareMenu,
 } from '@/components/FloatingButtonGroup'
 
 export default function Navigation() {
   // const { openModal } = useModal()
   const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  // Helper function to determine navigation item href
-  const getItemHref = (itemId: string) => {
-    switch (itemId) {
-      case 'til':
-        return ROUTER.TIL.path
-      case 'soft-skills':
-        return ROUTER.SoftSkills.path
-      case 'resume':
-        return ROUTER.Resume.path
-      case 'projects':
-        return ROUTER.Projects.path
-      case 'site-build':
-        return ROUTER.SiteBuild.path
-      default:
-        return { pathname: '/', hash: itemId }
-    }
-  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)

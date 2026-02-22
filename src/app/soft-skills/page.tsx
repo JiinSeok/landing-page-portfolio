@@ -8,7 +8,6 @@ import Head from 'next/head'
 import { useTranslations } from '@/lib/providers/TextContext'
 
 export default function SoftSkills() {
-  const t = useTranslations()
   const softSkillsT = useTranslations('pages.soft-skills')
 
   return (

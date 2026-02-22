@@ -1,27 +1,19 @@
 'use client'
 
 import PortfolioCTASection from '@/components/sections/CTASection'
-import DemoShowcaseSection from '@/components/sections/DemoShowcaseSection'
 import PortfolioFAQSection from '@/components/sections/FAQSection'
-import Footer from '@/components/layout/Footer'
 import PortfolioHeroSection from '@/components/sections/HeroSection'
-import NewsletterSection from '@/components/sections/NewsletterSection'
 import PersonalSection from '@/components/sections/PersonalSection'
-import ProjectsSection from '@/components/sections/ProjectsSection'
 import TechStackSection from '@/components/sections/TechStackSection'
 import UXDesignSection from '@/components/sections/UXDesignSection'
 import StepperDialog from '@/components/ui/containers/Modal/StepperDialog'
 import AnnouncementModal from '@/components/ui/containers/Modal/AnnouncementModal'
-import Navigation from '@/components/layout/Navigation'
 import { useModal } from '@/lib/hooks/useModal'
-import { useTranslations } from '@/lib/providers/TextContext'
 import { useState, useEffect } from 'react'
 
 export default function HomePage() {
-  const { modalName, openModal, closeModal } = useModal()
-  const t = useTranslations('pages.home')
-  const [email, setEmail] = useState('')
-  const [showAnnouncement, setShowAnnouncement] = useState(false)
+  const { modalName, closeModal } = useModal()
+  const [, setShowAnnouncement] = useState(false)
 
   useEffect(() => {
     // Check if user has closed it today
@@ -39,12 +31,6 @@ export default function HomePage() {
       const today = new Date().toDateString()
       localStorage.setItem('npmAnnouncementClosedDate', today)
     }
-  }
-
-  const handleSubmit = (data: any) => {
-    console.log('Subscribed with email:', data.email)
-    // 여기에 이메일 구독 로직 추가
-    setEmail('')
   }
 
   return (

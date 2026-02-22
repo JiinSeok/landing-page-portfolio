@@ -1,15 +1,5 @@
 import '@/app/globals.css'
 import { HomePageSkeleton } from '@/components/HomePage/Skeleton'
-import {
-  FloatingButtonGroup,
-  ButtonContainer,
-  TocButton,
-  ContactButton,
-  ShareButton,
-  TocMenu,
-  ContactMenu,
-  ShareMenu,
-} from '@/components/FloatingButtonGroup'
 import ClientSideProviders from '@/lib/providers/ClientSideProviders'
 import { TextProvider } from '@/lib/providers/TextContext'
 import { LayoutProps } from '@/lib/types'
@@ -17,7 +7,6 @@ import { cn } from '@/lib/utils/classnames'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 import Footer from "@/components/layout/Footer"
-import Navigation from "@/components/layout/Navigation"
 
 export const metadata: Metadata = {
   title: '석지인 포트폴리오',

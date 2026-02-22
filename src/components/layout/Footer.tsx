@@ -4,7 +4,6 @@ import { SectionContainer } from '@/components/ui/containers/SectionContainer'
 import { GridLayout } from '@/components/ui/containers/ContentLayout'
 import { ROUTER } from '@/lib/constants/router'
 import { useTranslations } from '@/lib/providers/TextContext'
-import { Link } from '@/navigation'
 
 /**
  * Footer section component for the homepage

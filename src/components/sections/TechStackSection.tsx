@@ -8,7 +8,7 @@ import {
 } from '@/lib/constants/sections/techStack'
 import { useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
@@ -16,26 +16,6 @@ export default function TechStackSection() {
   const [activeCategory, setActiveCategory] = useState<string>(
     TECH_STACK_CATEGORIES[0],
   )
-  const [showMoreIndicator, setShowMoreIndicator] = useState(false)
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (cardRef.current) {
-        const isOverflowing =
-          cardRef.current.scrollHeight > cardRef.current.clientHeight
-        setShowMoreIndicator(isOverflowing)
-      }
-    }
-
-    checkOverflow()
-    window.addEventListener('resize', checkOverflow)
-
-    return () => {
-      window.removeEventListener('resize', checkOverflow)
-    }
-  }, [activeCategory])
-
   useEffect(() => {
     const interval = setInterval(() => {
       const currentIndex = TECH_STACK_CATEGORIES.findIndex(
@@ -131,118 +111,16 @@ export default function TechStackSection() {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="w-full lg:w-2/3">
-            <TabComponent
-              tabs={categoryTabs}
-              activeTab={activeCategory}
-              setActiveTab={setActiveCategory}
-              className="w-full"
-              tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
-              activeTabClassName="bg-primary text-white"
-              inactiveTabClassName="bg-secondary/50 hover:bg-secondary/80"
-            />
-          </div>
-
-          <div className="w-full lg:w-1/3">
-            <ContentCard
-              title={t('pages.techStack.frontend.title')}
-              className="h-full"
-            >
-              <div
-                ref={cardRef}
-                className="space-y-4 overflow-auto max-h-[400px] pr-2"
-              >
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">TypeScript</span>
-                    <span className="text-xs text-muted-foreground">95%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '95%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">React</span>
-                    <span className="text-xs text-muted-foreground">90%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '90%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Next.js</span>
-                    <span className="text-xs text-muted-foreground">85%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '85%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Tailwind CSS</span>
-                    <span className="text-xs text-muted-foreground">90%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '90%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Zustand</span>
-                    <span className="text-xs text-muted-foreground">80%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '80%' }}
-                    ></div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">
-                      Tanstack React Query
-                    </span>
-                    <span className="text-xs text-muted-foreground">85%</span>
-                  </div>
-                  <div className="w-full bg-secondary/30 rounded-full h-2">
-                    <div
-                      className="bg-primary rounded-full h-2"
-                      style={{ width: '85%' }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-
-              {showMoreIndicator && (
-                <div className="text-center mt-4">
-                  <span className="text-xs text-muted-foreground">
-                    더 보려면 스크롤하세요
-                  </span>
-                </div>
-              )}
-            </ContentCard>
-          </div>
+        <div>
+          <TabComponent
+            tabs={categoryTabs}
+            activeTab={activeCategory}
+            setActiveTab={setActiveCategory}
+            className="w-full"
+            tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            activeTabClassName="bg-primary text-white"
+            inactiveTabClassName="bg-secondary/50 hover:bg-secondary/80"
+          />
         </div>
       </div>
     </section>

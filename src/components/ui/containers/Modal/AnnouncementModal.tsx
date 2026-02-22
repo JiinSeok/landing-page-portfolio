@@ -100,10 +100,10 @@ export default function AnnouncementModal({
             똑똑한 자동화
           </h4>
           <div className="bg-gray-900 text-gray-100 rounded-lg p-3 font-mono text-sm">
-            <div className="text-green-400">// 👁️ 토글 자동 생성</div>
-            <div>&lt;FormKit.Input type="password" /&gt;</div>
-            <div className="mt-2 text-green-400">// 비밀번호 일치 자동 검증</div>
-            <div>&lt;FormKit.Input name="confirmPassword" /&gt;</div>
+            <div className="text-green-400">{`// 👁️ 토글 자동 생성`}</div>
+            <div>{`<FormKit.Input type="password" />`}</div>
+            <div className="mt-2 text-green-400">{`// 비밀번호 일치 자동 검증`}</div>
+            <div>{`<FormKit.Input name="confirmPassword" />`}</div>
           </div>
         </div>
 

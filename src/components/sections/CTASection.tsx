@@ -1,7 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/Button/Button'
-import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 
@@ -13,7 +11,6 @@ import styles from '@/lib/utils/styles'
  */
 export default function CTASection() {
   const t = useTranslations('pages.home.sections.cta')
-  const { openModal } = useModal()
 
   return (
     <section

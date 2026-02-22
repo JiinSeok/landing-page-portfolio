@@ -10,7 +10,6 @@ import Image from 'next/image'
 import { useTranslations } from '@/lib/providers/TextContext'
 
 export default function TIL() {
-  const t = useTranslations()
   const tilT = useTranslations('pages.til')
   const [activeTab, setActiveTab] = useState<string>(
     tilEntries[0]?.title || 'default',

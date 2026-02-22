@@ -1,5 +1,4 @@
 import {
-  SectionSkeleton,
   Skeleton,
   SkeletonText,
   NavigationSkeleton,
