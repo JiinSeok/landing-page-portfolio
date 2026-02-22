@@ -2,7 +2,7 @@ const path = require('path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
+    // output: 'standalone', // Vercel에서는 불필요
     eslint: { ignoreDuringBuilds: true },
     images: {
         remotePatterns: [
