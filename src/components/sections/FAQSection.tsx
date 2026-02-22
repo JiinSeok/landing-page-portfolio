@@ -63,7 +63,7 @@ export default function FAQSection() {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto pl-4 md:pl-12 lg:pl-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
           {isLoading ? (
             // Skeleton UI for FAQ items
             <>

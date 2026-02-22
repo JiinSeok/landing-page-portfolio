@@ -370,7 +370,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
     experience: '마케팅/영업을 위한 Grafana 대시보드를 제작하고, 물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
-    description: '물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
+    description: '마케팅/영업을 위한 Grafana 대시보드를 제작하고, 물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
     projects: [],
   },
   {

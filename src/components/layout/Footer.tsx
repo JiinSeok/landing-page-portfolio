@@ -1,215 +1,63 @@
 'use client'
 
-import { SectionContainer } from '@/components/ui/containers/SectionContainer'
-import { GridLayout } from '@/components/ui/containers/ContentLayout'
 import { ROUTER } from '@/lib/constants/router'
 import { useTranslations } from '@/lib/providers/TextContext'
 
-/**
- * Footer section component for the homepage
- *
- * This component displays the footer with copyright information, social links,
- * and navigation links.
- */
 export default function Footer() {
   const t = useTranslations()
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-secondary/20">
-      <SectionContainer padding="py-12 px-6 md:px-8 lg:px-12">
-        <GridLayout gap="gap-8">
-          {/* Logo and copyright */}
-          <div>
-            <div className="flex items-center mb-4">
-              <span className="text-xl font-bold text-primary">Jiin Seok</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {t('copyright').replace('2025', currentYear.toString())}
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              {t('designed-by')}
-            </p>
-          </div>
-
-          {/* Portfolio links */}
-          <div>
-            <h3 className="text-sm font-semibold mb-4 uppercase tracking-wider">
-              Portfolio
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://jiin-seok.notion.site/portfolio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                  {t('pages.home.sections.hero.cta-projects')}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/files/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                  </svg>
-                  {t('pages.home.sections.hero.cta-resume')}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social links */}
-          <div>
-            <h3 className="text-sm font-semibold mb-4 uppercase tracking-wider">
-              Connect
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href={ROUTER.GitHub.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                  </svg>
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href={ROUTER.LinkedIn.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href={ROUTER.Email.path}
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2"
-                  >
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                  Email
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="hidden">
-            <h3 className="text-sm font-semibold mb-4 uppercase tracking-wider">
-              Story
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href={ROUTER.SiteBuild.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors flex items-center"
-                >
-                  {/*<svg*/}
-                  {/*  xmlns="http://www.w3.org/2000/svg"*/}
-                  {/*  width="16"*/}
-                  {/*  height="16"*/}
-                  {/*  viewBox="0 0 24 24"*/}
-                  {/*  fill="none"*/}
-                  {/*  stroke="currentColor"*/}
-                  {/*  strokeWidth="2"*/}
-                  {/*  strokeLinecap="round"*/}
-                  {/*  strokeLinejoin="round"*/}
-                  {/*  className="mr-2"*/}
-                  {/*>*/}
-                  {/*  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />*/}
-                  {/*  <path d="M9 18c-4.51 2-5-2-7-2" />*/}
-                  {/*</svg>*/}
-                  {t('pages.siteBuild.meta.title')}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </GridLayout>
-      </SectionContainer>
+    <footer id="footer" className="w-full bg-zinc-900 text-zinc-300">
+      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 md:px-8 lg:px-10 flex items-center gap-6 flex-wrap pb-20 sm:pb-6">
+        <span className="text-xs text-zinc-500">&copy; {currentYear}</span>
+        <a
+          href="https://jiin-seok.notion.site/portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          {t('pages.home.sections.hero.cta-projects')}
+        </a>
+        <a
+          href="/files/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          {t('pages.home.sections.hero.cta-resume')}
+        </a>
+        <a
+          href="https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          SEO 라이트닝 토크
+        </a>
+        <a
+          href={ROUTER.GitHub.path}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          GitHub
+        </a>
+        <a
+          href={ROUTER.LinkedIn.path}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          LinkedIn
+        </a>
+        <a
+          href={ROUTER.Email.path}
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          Email
+        </a>
+      </div>
     </footer>
   )
 }

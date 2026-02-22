@@ -8,6 +8,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/ui/ScrollToTop"
+import CursorCompanion from "@/components/ui/CursorCompanion"
 
 export const metadata: Metadata = {
   title: '석지인 포트폴리오',
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps) {
       </Suspense>
       <Footer />
       <ScrollToTop />
+      <CursorCompanion />
     </TextProvider>
     </body>
     </html>
