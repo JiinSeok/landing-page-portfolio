@@ -387,8 +387,10 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     name: 'NPM',
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg',
-    experience: '',
-    description: '',
+    experience:
+      'npm 패키지를 직접 만들어 배포한 경험이 있습니다. 의존성 관리와 패키지 버전 관리에 활용하고 있습니다.',
+    description:
+      'npm 패키지를 직접 만들어 배포한 경험이 있습니다. 의존성 관리와 패키지 버전 관리에 활용하고 있습니다.',
     projects: [],
   },
   {

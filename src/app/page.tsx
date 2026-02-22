@@ -54,9 +54,9 @@ export default function HomePage() {
           <PortfolioHeroSection />
           {/*<DemoShowcaseSection />*/}
           {/*<ProjectsSection />*/}
+          <PersonalSection />
           <TechStackSection />
           {/*<UXDesignSection />*/}
-          <PersonalSection />
           <PortfolioFAQSection />
           <PortfolioCTASection />
           {/*<NewsletterSection />*/}

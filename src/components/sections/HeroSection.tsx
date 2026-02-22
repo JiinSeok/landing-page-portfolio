@@ -273,16 +273,17 @@ export default function HeroSection() {
               <span className="block">{t('title-highlight2')}</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
-              고객이 믿을 수 있는 웹 경험, 어떻게 만들까?
+              브랜딩, 로컬라이제이션, 결제, B2B 온보딩까지
             </p>
             <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
               <p>안녕하세요. 석지인입니다.</p>
               <p>
-                MBC AI 전략자회사 <strong>도스트11</strong>에서 풀스택(Rails + React) 개발자로 일하고 있습니다.
-                디지털 에셋 마켓 도프켓의 한국 시장 로컬라이제이션과 B2B 고객사 온보딩을 담당하고 있어요.
+                MBC AI 전략자회사 <strong>도스트11</strong>에서 디지털 에셋 마켓 도프켓의 한국 시장을 전담하고 있습니다.
+                여러 외부 서비스에 의존하던 구조를 자체 플랫폼으로 전환하면서,
+                브랜딩·UI부터 결제·이메일·B2B 온보딩까지 프론트엔드와 백엔드를 넘나들며 만들고 있어요.
               </p>
               <p>
-                이전 SQA 경력에서 익힌 구조화·문서화 습관을 개발에 활용하고 있습니다.
+                SQA 경력에서 시작한 이슈 트래킹, 용어 통일, 문서화 습관이 개발에도 이어지고 있습니다.
               </p>
             </div>
             {/*<HeroSection.Summary />*/}
