@@ -178,7 +178,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Tailwind CSS',
     category: '스타일링',
-    logo: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
     experience:
       '체인시프트, 도스트11에서 실무로 사용 중입니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선 등에 활용했습니다.',
     description:
@@ -188,7 +188,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Styled-Components',
     category: '스타일링',
-    logo: 'https://cdn.simpleicons.org/styledcomponents/DB7093',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
     experience: '동적 스타일링을 위해 학습했습니다.',
     description: '동적 스타일링을 위해 학습했습니다.',
     projects: [],
@@ -216,7 +216,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Tanstack React Query',
     category: '상태 API',
-    logo: 'https://cdn.simpleicons.org/reactquery/FF4154',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/reactquery.svg',
     experience:
       'API 리퀘스트의 에러 처리를 공통화하고, isLoading 등으로 상태를 관리했습니다.',
     description:
@@ -236,7 +236,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Zustand',
     category: '상태 API',
-    logo: 'https://github.com/pmndrs/zustand/raw/refs/heads/main/examples/starter/src/assets/zustand-mascot.svg',
+    logo: 'https://raw.githubusercontent.com/pmndrs/zustand/main/examples/starter/src/assets/zustand-mascot.svg',
     experience: '로그인한 사용자 정보 등 전역 상태 관리에 사용했습니다.',
     description: '로그인한 사용자 정보 등 전역 상태 관리에 사용했습니다.',
     projects: [],
@@ -244,7 +244,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'React Hook Form',
     category: '상태 API',
-    logo: 'https://cdn.simpleicons.org/reacthookform/EC5990',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/reacthookform.svg',
     experience:
       '조립식 Form 컴포넌트의 타입 정의, 상태관리, 유효성 검사를 위해 도입했습니다.',
     description:
@@ -254,7 +254,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Axios',
     category: '상태 API',
-    logo: 'https://cdn.simpleicons.org/axios/5A29E4',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/axios.svg',
     experience:
       'API 호출에 cookie, token을 추가하기 위해 intercepter를 사용했습니다. 리스폰스의 JSON parsing을 생략하기 위해 사용했습니다.',
     description:
@@ -294,7 +294,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Husky',
     category: '도구',
-    logo: 'https://cdn.simpleicons.org/git/F05032',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg',
     experience: 'Git Hook으로 린터, 포매터 적용을 자동화했습니다.',
     description: 'Git Hook으로 린터, 포매터 적용을 자동화했습니다.',
     projects: [],
@@ -312,7 +312,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Vercel',
     category: '인프라',
-    logo: 'https://cdn.simpleicons.org/vercel/000000',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg',
     experience: '자동배포와 PR Checks를 위해 사용했습니다.',
     description: '자동배포와 PR Checks를 위해 사용했습니다.',
     projects: [],
@@ -416,7 +416,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Asana',
     category: '협업',
-    logo: 'https://cdn.simpleicons.org/asana/FC636B',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/asana.svg',
     experience:
       'Asana에 Slack 인터그레이션을 적용해 담당 개발자 멘션을 자동화했습니다.',
     description:
@@ -426,7 +426,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Confluence / Notion',
     category: '협업',
-    logo: 'https://cdn.simpleicons.org/notion/000000',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg',
     experience: '공유용 기술 문서 작성 및 자동 알림을 위해 사용했습니다.',
     description: '공유용 기술 문서 작성 및 자동 알림을 위해 사용했습니다.',
     projects: [],
@@ -434,7 +434,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Postman',
     category: '협업',
-    logo: 'https://cdn.simpleicons.org/postman/FF6C37',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg',
     experience: 'API 문서 파악 및 API 리퀘스트 디버깅을 위해 사용했습니다.',
     description: 'API 문서 파악 및 API 리퀘스트 디버깅을 위해 사용했습니다.',
     projects: [],
@@ -442,7 +442,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Swagger',
     category: '협업',
-    logo: 'https://cdn.simpleicons.org/swagger/85EA2D',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swagger.svg',
     experience:
       'API를 전달 받고 협업하는 데에 사용했습니다. 인증이 필요한 요청을 통해 리스폰스를 실제로 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 고민하였습니다.',
     description:
@@ -472,7 +472,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Google Analytics',
     category: '기타',
-    logo: 'https://cdn.simpleicons.org/googleanalytics/E37400',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googleanalytics.svg',
     experience: '페이지 통폐합을 위한 프로덕션 조회수 수집에 사용했습니다.',
     description: '페이지 통폐합을 위한 프로덕션 조회수 수집에 사용했습니다.',
     projects: [],
@@ -480,7 +480,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
   {
     name: 'Kakao Developers',
     category: '기타',
-    logo: 'https://cdn.simpleicons.org/kakao/FFCD00',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kakao.svg',
     experience:
       'OAuth 2.0, 공유하기에 사용했습니다. 따로 생성된 카카오 앱 3개를 단일화했습니다.',
     description:
