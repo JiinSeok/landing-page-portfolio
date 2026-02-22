@@ -86,9 +86,9 @@ HeroSection.TabDisplay = function TabDisplay({ tabs }: TabDisplayProps) {
   return (
     <>
       <div className="w-full md:w-7/12 lg:w-1/2 flex justify-center relative mt-8 md:mt-0">
-        <div className="relative w-full max-w-lg h-auto min-h-[28rem] md:h-[28rem] rounded-xl">
+        <div className="relative w-full max-w-lg h-[28rem] rounded-xl">
           <div className="absolute inset-0 bg-gradient-to-r from-chart-1 to-chart-3 rounded-xl opacity-20 blur-xl"></div>
-          <div className="relative h-full flex flex-col items-center justify-center p-6 md:p-8">
+          <div className="relative h-full flex flex-col items-center justify-start p-6 md:p-8 overflow-y-auto">
             <TabComponent
               tabs={tabs}
               activeTab={activeTab}
@@ -273,17 +273,16 @@ export default function HeroSection() {
               <span className="block">{t('title-highlight2')}</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
-              브랜딩, 로컬라이제이션, 결제, B2B 온보딩까지
+              SQA 출신 풀스택 개발자
             </p>
             <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
               <p>안녕하세요. 석지인입니다.</p>
               <p>
-                MBC AI 전략자회사 <strong>도스트11</strong>에서 디지털 에셋 마켓 도프켓의 한국 시장을 전담하고 있습니다.
-                여러 외부 서비스에 의존하던 구조를 자체 플랫폼으로 전환하면서,
-                브랜딩·UI부터 결제·이메일·B2B 온보딩까지 프론트엔드와 백엔드를 넘나들며 만들고 있어요.
+                MBC AI 전략자회사 <strong>도스트11</strong>에서 디지털 에셋 마켓 도프켓의 풀스택 개발을 하고 있어요.
+                한국 시장 로컬라이제이션, 상품 대시보드, 블로그 CMS, 결제 UX, B2B 고객사 온보딩 등을 맡고 있습니다.
               </p>
               <p>
-                SQA 경력에서 시작한 이슈 트래킹, 용어 통일, 문서화 습관이 개발에도 이어지고 있습니다.
+                이전에 2개 회사에서 SQA를 했고, 그때 시작한 이슈 트래킹·용어 통일·문서화 습관이 개발에도 이어지고 있어요.
               </p>
             </div>
             {/*<HeroSection.Summary />*/}
