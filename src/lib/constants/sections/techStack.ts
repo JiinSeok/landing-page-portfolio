@@ -131,8 +131,8 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     name: 'TypeScript',
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    experience: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다.',
-    description: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다.',
+    experience: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다. 도스트11에서 Rails + React 프로젝트의 프론트엔드 타입 안정성을 확보하는 데 활용 중입니다.',
+    description: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다. 도스트11에서 Rails + React 프로젝트의 프론트엔드 타입 안정성을 확보하는 데 활용 중입니다.',
     projects: [],
   },
   {
@@ -150,9 +150,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     experience:
-      '리액트 동작 원리의 하이드레이션을 조절하기 위해 여러 훅을 사용했습니다. 라이브러리 코드로 TypeScript와의 조합 원리를 파악했습니다.',
+      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 등 다양한 컴포넌트를 개발 중입니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 활용하고 있습니다.',
     description:
-      '리액트 동작 원리의 하이드레이션을 조절하기 위해 여러 훅을 사용했습니다. 라이브러리 코드로 TypeScript와의 조합 원리를 파악했습니다.',
+      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 등 다양한 컴포넌트를 개발 중입니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 활용하고 있습니다.',
     projects: [],
   },
   {
@@ -180,9 +180,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
     experience:
-      '별도 스타일 파일을 두지 않기 위해, 반응형 뷰를 빠르게 구현하기 위해 사용했습니다.',
+      '체인시프트, 도스트11에서 실무로 사용 중입니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선 등에 활용했습니다.',
     description:
-      '별도 스타일 파일을 두지 않기 위해, 반응형 뷰를 빠르게 구현하기 위해 사용했습니다.',
+      '체인시프트, 도스트11에서 실무로 사용 중입니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선 등에 활용했습니다.',
     projects: [],
   },
   {
@@ -266,9 +266,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     experience:
-      '협업에 차질이 생기지 않도록 리니어 히스토리 컨벤션을 만들고, Git Hook과 GitHub 설정으로 강제했습니다.',
+      '리니어 히스토리 컨벤션을 만들고 Git Hook으로 강제했습니다. 도스트11에서 Overcommit 기반 Git Hook과 PR 기반 워크플로를 사용하고 있습니다.',
     description:
-      '협업에 차질이 생기지 않도록 리니어 히스토리 컨벤션을 만들고, Git Hook과 GitHub 설정으로 강제했습니다.',
+      '리니어 히스토리 컨벤션을 만들고 Git Hook으로 강제했습니다. 도스트11에서 Overcommit 기반 Git Hook과 PR 기반 워크플로를 사용하고 있습니다.',
     projects: [],
   },
   {
@@ -342,9 +342,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
     experience:
-      '개발용으로 로컬 DB와 서버를 구동하기 위해 사용했습니다. 패키지 관리자 마이그레이션에서 CI/CD 스크립트 수정과 확인을 위해 사용했습니다.',
+      '도스트11에서 devcontainer로 개발 환경을 구성하고 있습니다. 로컬 DB·서버 구동, CI/CD 스크립트 수정에도 활용했습니다.',
     description:
-      '개발용으로 로컬 DB와 서버를 구동하기 위해 사용했습니다. 패키지 관리자 마이그레이션에서 CI/CD 스크립트 수정과 확인을 위해 사용했습니다.',
+      '도스트11에서 devcontainer로 개발 환경을 구성하고 있습니다. 로컬 DB·서버 구동, CI/CD 스크립트 수정에도 활용했습니다.',
     projects: [],
   },
   {
@@ -369,7 +369,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     name: 'mySQL',
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-    experience: '물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
+    experience: '마케팅/영업을 위한 Grafana 대시보드를 제작하고, 물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
     description: '물류 서비스 입출고 메뉴의 QA에 사용했습니다.',
     projects: [],
   },
@@ -445,6 +445,16 @@ export const TECH_STACK_WITH_EXPERIENCE = [
       'API를 전달 받고 협업하는 데에 사용했습니다. 인증이 필요한 요청을 통해 리스폰스를 실제로 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 고민하였습니다.',
     description:
       'API를 전달 받고 협업하는 데에 사용했습니다. 인증이 필요한 요청을 통해 리스폰스를 실제로 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 고민하였습니다.',
+    projects: [],
+  },
+  {
+    name: 'Ruby on Rails',
+    category: '기타',
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg',
+    experience:
+      '프론트엔드만 배운 상태에서 도스트11에 입사해 Rails를 처음 접했습니다. Presenter, Worker, 메일러 수정 등 필요한 부분을 하나씩 익히며 적응 중입니다. 아직 배우는 단계지만, Taxonomy 트리 빌드나 캐시 만료 설정 같은 백엔드 로직도 직접 구현해 봤습니다.',
+    description:
+      '프론트엔드만 배운 상태에서 도스트11에 입사해 Rails를 처음 접했습니다. Presenter, Worker, 메일러 수정 등 필요한 부분을 하나씩 익히며 적응 중입니다. 아직 배우는 단계지만, Taxonomy 트리 빌드나 캐시 만료 설정 같은 백엔드 로직도 직접 구현해 봤습니다.',
     projects: [],
   },
   {

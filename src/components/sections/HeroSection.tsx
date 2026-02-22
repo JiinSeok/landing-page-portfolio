@@ -276,14 +276,13 @@ export default function HeroSection() {
               고객이 믿을 수 있는 웹 경험, 어떻게 만들까?
             </p>
             <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
-              <p>안녕하세요. SQA에서 프론트엔드로 전환한 개발자 석지인입니다.</p>
+              <p>안녕하세요. 석지인입니다.</p>
               <p>
-                4개 회사에서 <strong>B2B SaaS 온보딩, 이슈 트래킹, 대시보드 MVP 개발</strong>을 수행하며
-                복잡한 문제일수록 UI/UX가 중요하다는 것을 체감했습니다.
+                MBC AI 전략자회사 <strong>도스트11</strong>에서 풀스택(Rails + React) 개발자로 일하고 있습니다.
+                디지털 에셋 마켓 도프켓의 한국 시장 로컬라이제이션과 B2B 고객사 온보딩을 담당하고 있어요.
               </p>
               <p>
-                <strong>구조화 · 공통화 · 표준화 · 자동화 · 문서화</strong>로
-                비즈니스 가치를 전하고 사용자를 고객으로 만드는 프론트엔드를 만듭니다.
+                이전 SQA 경력에서 익힌 구조화·문서화 습관을 개발에 활용하고 있습니다.
               </p>
             </div>
             {/*<HeroSection.Summary />*/}
