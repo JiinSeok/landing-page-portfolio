@@ -5,7 +5,7 @@ import PortfolioFAQSection from '@/components/sections/FAQSection'
 import PortfolioHeroSection from '@/components/sections/HeroSection'
 import PersonalSection from '@/components/sections/PersonalSection'
 import TechStackSection from '@/components/sections/TechStackSection'
-import UXDesignSection from '@/components/sections/UXDesignSection'
+// import UXDesignSection from '@/components/sections/UXDesignSection'
 import StepperDialog from '@/components/ui/containers/Modal/StepperDialog'
 import AnnouncementModal from '@/components/ui/containers/Modal/AnnouncementModal'
 import { useModal } from '@/lib/hooks/useModal'
@@ -55,7 +55,7 @@ export default function HomePage() {
           {/*<DemoShowcaseSection />*/}
           {/*<ProjectsSection />*/}
           <TechStackSection />
-          <UXDesignSection />
+          {/*<UXDesignSection />*/}
           <PersonalSection />
           <PortfolioFAQSection />
           <PortfolioCTASection />

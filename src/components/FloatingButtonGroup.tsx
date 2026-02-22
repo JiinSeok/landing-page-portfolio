@@ -127,7 +127,7 @@ export function FloatingButtonGroup({
           if (element.id) {
             return {
               id: element.id,
-              text: element.textContent || '',
+              text: ((element as HTMLElement).innerText || element.textContent || '').replace(/\n/g, ' ').trim(),
               level: parseInt(element.tagName.substring(1), 10),
               element: element as HTMLElement,
             }

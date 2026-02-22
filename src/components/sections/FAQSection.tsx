@@ -4,6 +4,7 @@ import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import { useState, useEffect } from 'react'
 
+
 /**
  * FAQ section component for the homepage
  *
@@ -11,13 +12,7 @@ import { useState, useEffect } from 'react'
  */
 export default function FAQSection() {
   const t = useTranslations('pages.home.sections.faq')
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-
-  // Toggle FAQ item
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
 
   // Get FAQ questions from translations
   // With the updated useTranslations function, this should now return the array directly
@@ -118,66 +113,23 @@ export default function FAQSection() {
                   'border-b border-border last:border-0',
                 ])}
               >
-                <details
-                  className={styles.spacing.paddingY('md')}
-                  open={openIndex === index}
+                <h3
+                  className={styles.combineStyles([
+                    styles.text.heading(4),
+                    styles.spacing.paddingY('md'),
+                  ])}
                 >
-                  <summary
-                    className={styles.combineStyles([
-                      'flex justify-between items-center w-full text-left cursor-pointer',
-                      styles.spacing.paddingY('md'),
-                    ])}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      toggleFAQ(index)
-                    }}
-                    aria-expanded={openIndex === index}
-                  >
-                    <h3 className={styles.text.heading(4)}>{faq.question}</h3>
-                    <span className="text-primary ml-3">
-                      {openIndex === index ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className={styles.sizing.icon('md')}
-                          aria-label={t('faq.collapse-icon')}
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className={styles.sizing.icon('md')}
-                          aria-label={t('faq.expand-icon')}
-                        >
-                          <line x1="12" y1="5" x2="12" y2="19"></line>
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                        </svg>
-                      )}
-                    </span>
-                  </summary>
-                  <div
-                    className={styles.combineStyles([
-                      styles.spacing.marginTop('md'),
-                      styles.spacing.paddingX('md'),
-                      'text-muted-foreground',
-                      styles.text.body('default'),
-                    ])}
-                  >
-                    <p className="pb-3">{faq.answer}</p>
-                  </div>
-                </details>
+                  {faq.question}
+                </h3>
+                <div
+                  className={styles.combineStyles([
+                    styles.spacing.paddingX('md'),
+                    'text-muted-foreground',
+                    styles.text.body('default'),
+                  ])}
+                >
+                  <p className="pb-3">{faq.answer}</p>
+                </div>
               </div>
             ))
           )}

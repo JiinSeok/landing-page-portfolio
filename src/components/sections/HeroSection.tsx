@@ -9,7 +9,6 @@ import { useModal } from '@/lib/hooks/useModal'
 import { useTranslations } from '@/lib/providers/TextContext'
 import handleError from '@/lib/utils/errorHandler'
 import { Link } from '@/navigation'
-import Image from 'next/image'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 // Summary Component
@@ -128,91 +127,94 @@ const useHeroSection = () => {
 export default function HeroSection() {
   const t = useTranslations('pages.home.sections.hero')
   const { openModal } = useModal()
-  const [activeTab, setActiveTab] = useState<string>('code')
+  const [activeTab, setActiveTab] = useState<string>('competencies')
 
   // Define tab content
+  const competencies = t('competencies') as unknown as Array<{ label: string; description: string }>
+  const achievements = t('achievements') as unknown as string[]
+  const education = t('education') as unknown as Array<{ label: string; description: string }>
+  const certifications = t('certifications') as unknown as Array<{ label: string; description: string }>
+
   const tabs: TabItem[] = useMemo<TabItem[]>(
     () => [
       {
-        id: 'code',
-        label: t('tab-code'),
+        id: 'competencies',
+        label: t('tab-competencies'),
         content: (
-          <ContentCard
-            title={t('code-snippet')}
-            icon={<div className="bg-chart-1"></div>}
-          >
-            <div className="bg-secondary p-4 rounded-lg text-sm md:text-base">
-              {t('code-question')}
-            </div>
-            <div className="bg-primary/10 p-4 rounded-lg text-sm md:text-base whitespace-pre-line">
-              {t('code-answer')}
-            </div>
-            <div className="bg-secondary/50 p-4 rounded-lg font-mono">
-              <pre className="text-sm md:text-base whitespace-pre-wrap break-words">
-                {`// Example TypeScript code
-              type User = {
-                id: string;
-                name: string;
-                email: string;
-              };
-
-              const fetchUser = async (id: string): Promise<User> => {
-                const response = await fetch(\`/api/users/\${id}\`);
-                return response.json();
-              }`}
-              </pre>
-            </div>
+          <ContentCard title={t('competencies-title')}>
+            <ul className="space-y-3">
+              {Array.isArray(competencies) && competencies.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="shrink-0 mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/15 text-primary text-xs font-bold">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <span className="font-semibold text-sm md:text-base">{item.label}</span>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-0.5">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </ContentCard>
         ),
       },
       {
-        id: 'seo',
-        label: t('tab-seo'),
+        id: 'achievements',
+        label: t('tab-achievements'),
         content: (
-          <ContentCard
-            title={t('seo-title')}
-            icon={<div className="bg-chart-3"></div>}
-          >
-            <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
-              <Image
-                src="/notion-images/albaform/seo.png"
-                alt="SEO Optimization"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
-              />
-            </div>
-            <p className="mt-4 text-sm md:text-base text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
-              {t('seo-description')}
-            </p>
+          <ContentCard title={t('achievements-title')}>
+            <ul className="space-y-3">
+              {Array.isArray(achievements) && achievements.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm md:text-base">
+                  <span className="shrink-0 text-primary mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                  </span>
+                  <span className="break-keep">{item}</span>
+                </li>
+              ))}
+            </ul>
           </ContentCard>
         ),
       },
       {
-        id: 'demo',
-        label: t('tab-demo'),
+        id: 'education',
+        label: t('tab-education'),
         content: (
-          <ContentCard
-            title={t('demo-title')}
-            icon={<div className="bg-chart-4"></div>}
-          >
-            <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden">
-              <Image
-                src="/notion-images/albaform/login-toast.png"
-                alt="Interactive Demo"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-contain"
-              />
+          <ContentCard title={t('education-title')}>
+            <div className="space-y-5">
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">학력</h4>
+                <ul className="space-y-2">
+                  {Array.isArray(education) && education.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm md:text-base">
+                      <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary" />
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-muted-foreground">— {item.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">자격증</h4>
+                <ul className="space-y-2">
+                  {Array.isArray(certifications) && certifications.map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm md:text-base">
+                      <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary" />
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-muted-foreground">— {item.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <p className="mt-4 text-sm md:text-base text-muted-foreground break-keep whitespace-pre-line leading-relaxed h-24 overflow-hidden">
-              {t('demo-description')}
-            </p>
           </ContentCard>
         ),
       },
     ],
-    [t],
+    [t, competencies, achievements, education, certifications],
   )
 
   // Auto-rotate tabs every 5 seconds
@@ -267,32 +269,21 @@ export default function HeroSection() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-start mb-4"
               id="meta.title"
             >
-              <p>{t('title-highlight1')}</p>
-              {t('title-highlight2')}
+              <span className="block">{t('title-highlight1')}</span>
+              <span className="block">{t('title-highlight2')}</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-start mb-12 max-w-3xl mx-auto">
               고객이 믿을 수 있는 웹 경험, 어떻게 만들까?
             </p>
             <div className="text-base md:text-lg w-full mb-10 font-extralight text-muted-foreground leading-relaxed whitespace-pre-line">
-              <p>안녕하세요.</p>
+              <p>안녕하세요. SQA에서 프론트엔드로 전환한 개발자 석지인입니다.</p>
               <p>
-                소프트웨어를 쉽고 빠르게 만들기 위해 소프트웨어를 즐겨 활용하는
-                석지인입니다
-                <span className={'text-sm'}>
-                  (TypeScript, Next.js, TailwindCSS, shadcn/UI, Claude Code,
-                  etc.)
-                </span>
-                . 저 역시,{' '}
-                <strong>복잡한 기술을 쉽게 이용할 수 있는 프론트엔드</strong>로
-                사용자의 문제를 풀고 싶습니다.
+                4개 회사에서 <strong>B2B SaaS 온보딩, 이슈 트래킹, 대시보드 MVP 개발</strong>을 수행하며
+                복잡한 문제일수록 UI/UX가 중요하다는 것을 체감했습니다.
               </p>
               <p>
-                <strong className={'font-bold'}>
-                  프론트엔드는 비즈니스 가치를 보여줌으로써 사용자를 고객으로
-                  만듭니다.
-                </strong>{' '}
-                방법에 얽매이지 않고 사용자를 고객으로 만드는 프론트엔드를 위해
-                노력하겠습니다.
+                <strong>구조화 · 공통화 · 표준화 · 자동화 · 문서화</strong>로
+                비즈니스 가치를 전하고 사용자를 고객으로 만드는 프론트엔드를 만듭니다.
               </p>
             </div>
             {/*<HeroSection.Summary />*/}

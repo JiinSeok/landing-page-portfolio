@@ -21,7 +21,7 @@
     "home": {
       "meta": {
         "title": "석지인 - 웹 개발자 포트폴리오",
-        "description": "안녕하세요, 웹 개발자 석지인입니다. 창의적인 솔루션과 사용자 중심 디자인으로 가치를 더합니다.",
+        "description": "안녕하세요, 프론트엔드 개발자 석지인입니다. QA 경험을 바탕으로 사용자가 믿고 쓸 수 있는 웹을 만듭니다.",
         "developer-name": "Jiin Seok"
       },
       "sections": {
@@ -39,88 +39,98 @@
           "cta-projects": "프로젝트 보기",
           "cta-contact": "문의하기",
           "view-more": "더 보기",
-          "tab-code": "코드",
-          "tab-seo": "SEO",
-          "tab-demo": "데모",
-          "code-snippet": "코드 스니펫",
-          "code-question": "TypeScript와 Next.js로 어떤 문제를 해결하셨습니까?",
-          "code-answer": "타입 안정성과 서버 사이드 렌더링을 통해\n사용자 경험과 개발 생산성을 향상시켰습니다.",
-          "seo-title": "SEO 최적화",
-          "seo-description": "검색 엔진에서 웹사이트가 잘 노출되고\n목표 대상에게 효과적으로 도달할 수 있도록\nSEO 모범 사례를 구현합니다.",
-          "demo-title": "인터랙티브 데모",
-          "demo-description": "부드러운 사용자 경험과 반응형 디자인을 보여주는\n인터랙티브 데모를 확인해 주세요.",
-          "main-actions": "주요 액션",
-          "cta-trial": "포트폴리오 보기",
-          "cta-demo": "프로젝트 보기",
-          "cta-download": "이력서 다운로드",
-          "ai-assistant": "자주 묻는 질문",
-          "ai-question": "어떤 기술 스택을 주로 사용하시나요?",
-          "ai-answer": "React, Next.js, TypeScript를 주로 사용하며, 백엔드로는 Node.js와 Express를 활용합니다. 사용자 경험을 중시하는 반응형 웹 개발에 전문성을 가지고 있습니다."
+          "tab-competencies": "핵심 역량",
+          "tab-achievements": "주요 성과",
+          "tab-education": "교육 & 자격",
+          "competencies-title": "핵심 역량",
+          "competencies": [
+            { "label": "구조화", "description": "엉킨 문제를 쪼개고 이슈 트래커·위키로 시각화" },
+            { "label": "공통화", "description": "에러 핸들러·Form 컴포넌트 등 반복 제거" },
+            { "label": "표준화", "description": "Git 컨벤션·서비스 용어 통일·디자인 시스템" },
+            { "label": "자동화", "description": "ESLint·Husky·CI/CD로 수작업 최소화" },
+            { "label": "문서화", "description": "기술문서 위키 정리, 온보딩 가이드 작성" }
+          ],
+          "achievements-title": "주요 성과",
+          "achievements": [
+            "대시보드 MVP — D3.js·rechart 버블/트리맵 차트 개발",
+            "랜딩페이지 3페이지를 Claude Code로 7일 내 완성",
+            "MVP 리팩토링 — API route 15개 삭제, 에러 핸들러 공통화",
+            "응답 양식 1페이지 단축 → 프로필 제공률 30% 향상"
+          ],
+          "education-title": "교육 & 자격",
+          "education": [
+            { "label": "연세대학교", "description": "신학 (문헌정보학 복수전공)" },
+            { "label": "코드잇 스프린트", "description": "프론트엔드 양성과정 수료" }
+          ],
+          "certifications": [
+            { "label": "ISTQB CTFL", "description": "국제 소프트웨어 테스팅 자격" },
+            { "label": "CSTS", "description": "소프트웨어 테스트 전문가" }
+          ]
         },
         "demo": {
           "title": "프로젝트 살펴보기",
           "description": "제가 진행한 주요 프로젝트들을 확인해보세요",
-          "introduction": "석지인은 사용자 중심의 웹 개발과 디자인을 통해 혁신적인 디지털 경험을 만듭니다. 다양한 프로젝트를 통해 기술적 역량을 확인하세요.",
+          "introduction": "팀 프로젝트에서 맡았던 작업물이에요. 각 프로젝트에서 어떤 문제를 어떻게 풀었는지 정리했어요.",
           "userJourney": "프로젝트 하이라이트",
           "item1": {
             "alt": "반응형 웹 포트폴리오 프로젝트",
-            "callout": "모든 디바이스에 최적화된 반응형 웹 디자인"
+            "callout": "모든 디바이스에서 잘 보이는 반응형 웹"
           },
           "item2": {
             "alt": "사용자 인터페이스 디자인 샘플",
-            "callout": "직관적이고 사용하기 쉬운 UI/UX 디자인"
+            "callout": "한눈에 이해되는 UI/UX"
           },
           "item3": {
             "alt": "풀스택 웹 애플리케이션 개발",
-            "callout": "React와 Node.js를 활용한 풀스택 웹 애플리케이션"
+            "callout": "React와 Next.js로 만든 웹 애플리케이션"
           },
           "item4": {
             "alt": "코드 샘플 및 기술 스택",
-            "callout": "클린 코드와 최신 기술 스택을 활용한 개발 방법론"
+            "callout": "읽기 쉬운 코드와 일관된 컨벤션"
           }
         },
         "features": {
           "title": "주요 기술 스택",
-          "description": "다양한 웹 개발 프로젝트에 활용하는 기술들",
+          "description": "프로젝트에서 실제로 사용한 기술들",
           "model-management": {
             "title": "프론트엔드 개발",
-            "description": "React, Next.js, TypeScript를 활용한 모던 웹 애플리케이션 개발"
+            "description": "React, Next.js, TypeScript로 웹 애플리케이션을 만들어요"
           },
           "analytics": {
-            "title": "백엔드 개발",
-            "description": "Node.js, Express, MongoDB를 활용한 서버 및 API 개발"
+            "title": "백엔드 연동",
+            "description": "Next.js API Route와 Axios로 서버 통신을 처리했어요"
           },
           "infrastructure": {
-            "title": "클라우드 서비스",
-            "description": "AWS, Vercel을 활용한 안정적인 배포 및 인프라 관리"
+            "title": "배포 환경",
+            "description": "Vercel, AWS Amplify로 배포하고 CloudFront로 HTTPS를 적용했어요"
           },
           "collaboration": {
             "title": "협업 도구",
-            "description": "Git, GitHub, Jira를 활용한 효율적인 프로젝트 관리 및 협업"
+            "description": "Git 컨벤션 정리, Jira 세팅, 코드 리뷰로 팀 작업을 진행했어요"
           },
           "api": {
             "title": "UI/UX 디자인",
-            "description": "Figma, Adobe XD를 활용한 사용자 중심 인터페이스 디자인"
+            "description": "Figma로 프로토타이핑하고, 디자인 시스템에 맞춰 구현했어요"
           },
           "security": {
-            "title": "테스트 및 최적화",
-            "description": "Jest, React Testing Library를 활용한 테스트 및 성능 최적화"
+            "title": "코드 품질",
+            "description": "ESLint, Prettier, Husky로 코드 스타일을 통일하고 품질을 관리해요"
           }
         },
         "benefits": {
-          "title": "석지인과 함께하는 이유",
-          "description": "프로젝트에 가치를 더하는 전문성과 역량",
+          "title": "제가 기여할 수 있는 것",
+          "description": "팀 프로젝트에서 쌓은 경험들",
           "productivity": {
-            "title": "사용자 중심 개발",
-            "description": "사용자의 니즈를 최우선으로 고려한 직관적이고 접근성 높은 웹 서비스를 개발합니다."
+            "title": "사용자 관점 개발",
+            "description": "QA 경험 덕분에 사용자 입장에서 불편한 점을 먼저 발견하고, 이를 반영한 UI를 만들어요."
           },
           "costs": {
-            "title": "효율적인 문제 해결",
-            "description": "복잡한 문제를 분석하고 최적의 솔루션을 제시하여 프로젝트 효율성을 높입니다."
+            "title": "구조화와 자동화",
+            "description": "반복되는 작업은 공통 컴포넌트나 자동화로 줄이고, 구조를 정리해서 유지보수를 쉽게 해요."
           },
           "time-to-market": {
-            "title": "빠른 개발 및 배포",
-            "description": "최신 개발 방법론과 도구를 활용하여 신속하게 프로젝트를 완성하고 배포합니다."
+            "title": "빠른 구현",
+            "description": "Next.js, TailwindCSS, shadcn/ui 등 검증된 도구를 활용해서 빠르게 결과물을 만들어요."
           },
           "metrics": {
             "title": "성과 지표",
@@ -132,7 +142,7 @@
         },
         "cta": {
           "title": "함께 일해요",
-          "description": "새로운 프로젝트나 채용 기회가 있으신가요? 언제든지 연락주세요!",
+          "description": "채용이나 프로젝트 관련 문의가 있으시면 편하게 연락주세요!",
           "button": "문의하기",
           "contact-info": "또는 이메일로 연락하기: seokjiin1073@gmail.com",
           "trial": "포트폴리오 보기",
@@ -140,10 +150,10 @@
         },
         "faq": {
           "title": "자주 묻는 질문",
-          "subtitle": "궁금한 점이 있으신가요? 아래에서 답변을 확인하세요",
+          "subtitle": "저에 대해 궁금한 점이 있다면 확인해 보세요",
           "expand-icon": "질문 펼치기",
           "collapse-icon": "질문 접기",
-          "description": "석지인의 경력과 프로젝트에 대한 일반적인 질문에 대한 답변을 찾아보세요.",
+          "description": "면접이나 대화에서 자주 받았던 질문들을 정리했어요.",
           "questions": [
             {
               "question": "어떤 프로젝트를 주로 진행하나요?",
@@ -151,11 +161,11 @@
             },
             {
               "question": "협업 스타일은 어떤가요?",
-              "answer": "명확한 소통과 정기적인 피드백을 중요하게 생각해요. 애자일 방식을 선호하고, 문서화와 코드 리뷰를 통해 지식을 공유하는 것을 좋아해요."
+              "answer": "명확한 소통과 정기적인 피드백을 중요하게 생각해요. 애자일 방식을 선호하고, 도구 활용법을 적극적으로 공유하며 개발 효율을 높이는 것을 좋아해요."
             },
             {
               "question": "원격 근무가 가능한가요?",
-              "answer": "네, 원격 근무 경험이 있고 협업 도구 사용에 익숙해요. 시차가 있는 팀과도 원활하게 소통할 수 있어요."
+              "answer": "네, 원격 근무 경험이 있고 협업 도구 사용에 매우 익숙해요. 시차가 있는 팀과도 소통할 수 있어요."
             },
             {
               "question": "새로운 기술을 배우는 데 얼마나 걸리나요?",
@@ -163,19 +173,19 @@
             },
             {
               "question": "코드 품질을 어떻게 유지하나요?",
-              "answer": "테스트, 꾸준한 리팩토링, 코드 리뷰, 정적 코드 분석 도구 등을 활용해요. 또한 명확한 코딩 표준과 문서화를 통해 누구나 이해하기 쉬운 코드를 작성하려고 노력해요."
+              "answer": "ESLint, Prettier 같은 도구와 Git Hook으로 기본을 잡고, 코드 리뷰에서 서로 의견을 주고받아요. 나중에 읽었을 때 바로 이해되는 코드를 쓰려고 노력해요."
             }
           ],
           "q1": "어떤 프로젝트를 주로 진행하셨나요?",
-          "a1": "주로 웹 애플리케이션, 반응형 웹사이트, 모바일 최적화 서비스 등 다양한 디지털 프로젝트를 진행했습니다. 특히 사용자 경험을 중시하는 인터페이스 설계와 최신 기술을 활용한 웹 개발에 전문성을 가지고 있습니다.",
-          "q2": "협업 프로세스는 어떻게 진행되나요?",
-          "a2": "초기 기획 단계부터 요구사항 분석, 디자인, 개발, 테스트, 배포까지 전체 과정을 함께 진행합니다. 애자일 방법론을 활용하여 지속적인 피드백과 개선을 통해 최상의 결과물을 만들어냅니다.",
-          "q3": "프로젝트 기간은 얼마나 소요되나요?",
-          "a3": "프로젝트의 규모와 복잡성에 따라 다르지만, 일반적으로 소규모 프로젝트는 2-4주, 중규모 프로젝트는 1-3개월, 대규모 프로젝트는 3-6개월 정도 소요됩니다. 정확한 일정은 초기 상담을 통해 결정됩니다.",
-          "q4": "원격 작업도 가능한가요?",
-          "a4": "네, 원격 작업에 최적화된 협업 도구와 커뮤니케이션 방식을 활용하여 전 세계 어디서든 효율적으로 프로젝트를 진행할 수 있습니다. 정기적인 화상 미팅과 문서화를 통해 원활한 소통을 유지합니다.",
-          "q5": "유지보수 및 지원도 제공하시나요?",
-          "a5": "네, 프로젝트 완료 후에도 일정 기간 동안 무상 유지보수를 제공하며, 이후에는 별도의 유지보수 계약을 통해 지속적인 지원이 가능합니다. 기술적 문제나 업데이트가 필요할 때 신속하게 대응해 드립니다."
+          "a1": "사용자 경험에 신경 쓰는 프론트엔드 프로젝트를 주로 했어요. 반응형 웹, 폼 처리, 상태 관리가 복잡한 화면을 많이 다뤘어요.",
+          "q2": "협업은 어떻게 하시나요?",
+          "a2": "기획 단계부터 참여해서 요구사항을 같이 정리하고, 스프린트 단위로 작업해요. 코드 리뷰와 문서화를 꼭 하는 편이에요.",
+          "q3": "프로젝트 기간은 얼마나 걸리나요?",
+          "a3": "규모에 따라 다르지만, 소규모는 2-4주, 중규모는 1-3개월 정도 걸렸어요. 초기에 범위를 잘 잡는 게 중요하다고 느꼈어요.",
+          "q4": "원격 근무도 가능한가요?",
+          "a4": "네, 원격 근무 경험이 있어요. Slack, GitHub, Jira 등으로 소통하고, 정기 미팅으로 진행 상황을 공유했어요.",
+          "q5": "유지보수도 하시나요?",
+          "a5": "프로젝트 이후에도 버그 수정이나 간단한 개선은 대응해요. 인수인계를 위해 코드 구조와 주요 결정 사항을 문서로 남기는 편이에요."
         },
         "release": {
           "title": "소식 구독하기",
@@ -185,66 +195,80 @@
         },
         "funFacts": {
           "title": "재미있는 사실들",
-          "description": "끝까지 스크롤해 주셔서 감사합니다! 저와 이 웹사이트에 대한 재미있는 사실들을 소개합니다.",
+          "description": "끝까지 스크롤해 주셔서 감사합니다! 저와 이 웹사이트에 대한 재미있는 사실들을 소개할게요.",
           "items": [
-            "이 포트폴리오는 Next.js 14, TypeScript, Tailwind CSS로 만들었어요.",
-            "이 웹사이트를 위해 10,000줄 이상의 코드를 작성했어요.",
-            "이 사이트의 애니메이션은 CSS 트랜지션과 React 훅으로 구현했어요.",
-            "저는 기계식 키보드를 정말 좋아해서 다양한 스위치 타입의 키보드를 여러 개 가지고 있어요.",
-            "이 웹사이트는 완전히 반응형으로 만들어서 휴대폰부터 울트라와이드 모니터까지 모든 기기에서 잘 작동해요."
+            "이 포트폴리오는 Next.js 15, TypeScript, Tailwind CSS로 만들었어요.",
+            "이 웹사이트 코드를 10,000줄 넘게 작성했어요.",
+            "애니메이션은 CSS 트랜지션과 React 훅으로 구현했어요.",
+            "기계식 키보드를 좋아해서 여러 스위치 타입을 모으고 있어요.",
+            "모바일부터 울트라와이드 모니터까지 전부 테스트하면서 만들었어요."
           ]
         }
       }
     },
-    "personal": {
-      "meta": {
-        "title": "나에 대해",
-        "subtitle": "저에 대해 더 알아보세요"
-      },
-      "about-title": "저는 이런 사람이에요",
-      "about-description": "안녕하세요, 석지인입니다. 문제를 발견하고 이를 깔끔하고 효율적인 솔루션으로 만드는 것을 좋아하는 신입 프론트엔드 개발자예요. 이전에는 QA 엔지니어로 일했고, 그 경험을 바탕으로 사용자 경험을 항상 중요하게 생각해요. 기술적인 지식과 사용자 관점에 대한 이해를 바탕으로 모든 프로젝트에 가치를 더하고 싶어요.",
-      "profile-description": "저는 석지인, 문제를 발견하고 이를 깔끔하고 마법 같은 솔루션으로 엮어내는 능력을 가진 프론트엔드 개발자입니다. 이전에는 QA 엔지니어로 일했으며, 여전히 원활한 사용자 경험에 집중하고 있습니다. 기술적 능력과 사용자 요구에 대한 깊은 이해를 결합하여 모든 프로젝트에 독특한 관점을 제공합니다.",
-      "profile-image-alt": "Jiin Seok Profile",
-      "interests-title": "관심사",
-      "interest-1": "JetBrains 도구 - WebStorm과 다른 JetBrains 제품들을 즐겨 사용해요",
-      "interest-2": "기계식 키보드 - 타이핑 감이 좋은 택타일 스위치와 다양한 키보드를 좋아해요",
-      "interest-3": "프론트엔드 기술 - TypeScript, React, Next.js 등 새로운 기술을 계속 배우고 있어요",
-      "values-title": "가치관",
-      "value-1": "클린 코드 - 기능적이면서도 읽기 쉬운 코드를 작성하려고 노력해요",
-      "value-2": "사용자 경험 - 누구나 쉽게 사용할 수 있는 인터페이스를 만들고 싶어요",
-      "value-3": "지속적인 학습 - 웹 표준, 접근성 등 새로운 개념을 꾸준히 공부하고 있어요",
-      "quote": "함께 일하면서 사용자에게 도움이 되는 멋진 경험을 만들어가고 싶어요!",
-      "strengths-title": "강점",
-      "strength-1": "문제 해결 능력 - 복잡한 문제를 분석하고 효율적인 솔루션을 찾는 것을 좋아합니다",
-      "strength-2": "세부 사항에 대한 관심 - 작은 디테일이 큰 차이를 만든다고 믿습니다",
-      "strength-3": "적응력 - 빠르게 변화하는 환경에서 새로운 기술과 방법론을 배우는 것을 즐깁니다",
-      "motivations-title": "동기부여",
-      "motivation-1": "사용자 경험 개선 - 사람들의 삶을 더 쉽고 즐겁게 만드는 제품을 만드는 것을 좋아합니다",
-      "motivation-2": "지속적인 학습 - 새로운 기술과 도구를 배우고 성장하는 것에서 동기를 얻습니다",
-      "motivation-3": "팀 협업 - 다양한 배경과 관점을 가진 사람들과 함께 일하는 것을 즐깁니다",
-      "social-github": "GitHub",
-      "social-linkedin": "LinkedIn",
-      "social-email": "Email"
+    "career": {
+      "section-title": "경력",
+      "careers": [
+        {
+          "company": "체인시프트",
+          "period": "2025.04 ~ 2025.06",
+          "role": "인턴/수습 · 프론트엔드",
+          "contributions": [
+            "D3.js, rechart로 버블/트리맵 차트를 포함한 대시보드 MVP 개발",
+            "Next.js + TailwindCSS로 랜딩페이지 템플릿 개발, Claude Code로 7일 내 3페이지 완성",
+            "MVP B 리팩토링: API route 15개 삭제, React Hook Form 일괄 적용, 에러 핸들러 공통화"
+          ]
+        },
+        {
+          "company": "핏투게더",
+          "period": "2023.08 ~ 2024.02",
+          "role": "소프트웨어개발팀 · SQA",
+          "contributions": [
+            "방치된 기술문서를 위키 형태로 정리해 개발자 온보딩에 기여",
+            "5개 프로덕트별 맞춤형 Jira 프로젝트 제작/관리",
+            "전사 QA TF로 테스트 벤치 마련, iPad 앱 패킷 수신 테스트"
+          ]
+        },
+        {
+          "company": "물류대장",
+          "period": "2022.06 ~ 2023.08",
+          "role": "플랫폼기획팀 · SQA 매니저",
+          "contributions": [
+            "이슈/버그 트래커 도입으로 개발 진행상태 시각화",
+            "입력 컴포넌트 디자인 시스템 마련, 서비스 용어 통일 (유비쿼터스 언어)",
+            "B2B 고객사(CJ대한통운 등) 온보딩 지원, 현장 인터뷰로 이슈 발굴"
+          ]
+        },
+        {
+          "company": "연합뉴스",
+          "period": "2021.08 ~ 2022.03",
+          "role": "DB센터 · 자료조사",
+          "contributions": [
+            "사내 웹앱 이용법 안내 및 버그 리포트로 UX 개선",
+            "응답 양식을 1페이지로 단축해 프로필 제공률 30% 향상"
+          ]
+        }
+      ]
     },
     "motivationFit": {
       "title": "나의 직무 적합성",
-      "subtitle": "제가 잘하는 일과 직업적 여정에서 저를 동기부여하는 것",
-      "strengths-title": "전문적 강점",
+      "subtitle": "어떤 일을 잘하고, 어떤 일에 동기부여를 받는지 정리했어요",
+      "strengths-title": "제가 잘하는 것",
       "strength-1-title": "구조화를 통한 문제 해결",
-      "strength-1-description": "구조화, 표준화, 자동화된 솔루션을 만들어 개발 워크플로우에 효율성을 가져오는 복잡한 문제 해결에 뛰어나고 있습니다.",
-      "strength-2-title": "사용자 중심 개발",
-      "strength-2-description": "사용자의 페인 포인트를 사용성과 접근성을 우선시하는 직관적인 인터페이스로 변환하는 데 능숙하게 대응하고 있습니다.",
-      "strength-3-title": "기술적 커뮤니케이션",
-      "strength-3-description": "기술적 개념을 기술 및 비기술 이해관계자 모두에게 효과적으로 전달하여 개발과 비즈니스 요구 사항 간의 격차를 해소할 수 있습니다.",
-      "motivations-title": "나를 움직이는 원동력",
-      "motivation-1-title": "의미 있는 영향력 창출",
-      "motivation-1-description": "제 작업이 사용자 경험을 직접 개선하고 사람들의 실제 문제를 해결하는 것을 볼 때 동기부여를 받고 있습니다.",
-      "motivation-2-title": "지속적인 학습",
-      "motivation-2-description": "프론트엔드 개발의 최전선에 머물기 위해 새로운 기술과 접근 방식을 배우도록 도전하는 환경에서 성장하고 있습니다.",
-      "motivation-3-title": "협업을 통한 혁신",
-      "motivation-3-description": "개인적으로는 불가능한 혁신적인 솔루션을 만들기 위해 다양한 팀과 협력하는 데서 성취감을 느끼고 있습니다.",
-      "conclusion-title": "이것이 중요한 이유",
-      "conclusion-description": "제 기술적 능력과 내재적 동기부여의 조합은 사용자 경험과 개발자 효율성을 모두 중시하는 기업에 지속 가능한 가치를 창출할 수 있게 합니다."
+      "strength-1-description": "반복 작업을 줄이기 위해 ESLint 규칙을 세팅하고, Git Hook으로 린트/포맷을 자동화하고, 공통 컴포넌트를 만들었어요.",
+      "strength-2-title": "사용자 관점 개발",
+      "strength-2-description": "QA를 하면서 사용자가 헤매는 지점을 많이 봐왔기 때문에, UI를 만들 때 그 경험이 도움이 돼요.",
+      "strength-3-title": "기술적 소통",
+      "strength-3-description": "기획자에게 기술 제약을 설명하거나, 반대로 비즈니스 요구사항을 개발 용어로 정리하는 걸 잘해요.",
+      "motivations-title": "저를 움직이는 것",
+      "motivation-1-title": "눈에 보이는 결과",
+      "motivation-1-description": "내가 고친 UI 덕분에 문의가 줄었다는 이야기를 들으면 진짜 뿌듯해요.",
+      "motivation-2-title": "새로운 시도",
+      "motivation-2-description": "새로운 기술이 나오면 일단 써보는 편이에요. 이 포트폴리오도 Claude Code로 만들면서 배운 게 많아요.",
+      "motivation-3-title": "팀으로 만들기",
+      "motivation-3-description": "팀 프로젝트에서 서로 코드 리뷰하고 의견 나누면서 더 나은 방향을 찾아가는 과정이 좋아요.",
+      "conclusion-title": "정리하면",
+      "conclusion-description": "QA에서 시작해 개발로 넘어온 경험 덕분에, 사용자 관점과 개발 효율 양쪽을 함께 고민할 수 있어요."
     },
     "uxDesign": {
       "meta": {
@@ -273,13 +297,13 @@
       },
       "responsive": {
         "title": "반응형 디자인",
-        "description": "모든 기기에서 최적의 사용자 경험을 제공하는 반응형 레이아웃을 구현했습니다."
+        "description": "모든 기기에서 잘 작동하는 반응형 레이아웃을 구현했습니다."
       }
     },
     "techStack": {
       "meta": {
         "title": "기술 스택",
-        "subtitle": "제가 사용하는 주요 기술과 도구들"
+        "subtitle": "사용하는 주요 기술과 도구"
       },
       "frontend": {
         "title": "프론트엔드",
@@ -376,7 +400,7 @@
     "projects": {
       "meta": {
         "title": "프로젝트",
-        "subtitle": "제가 참여한 주요 프로젝트들을 소개합니다"
+        "subtitle": "제가 참여한 주요 프로젝트들이에요"
       },
       "view-carousel": "하나씩 보기",
       "view-gallery": "갤러리 보기",
@@ -409,7 +433,7 @@
       },
       "project-2": {
         "title": "포트폴리오 웹사이트",
-        "description": "개인 포트폴리오 웹사이트로, 프로젝트 쇼케이스, 기술 스택, 경력 정보를 담고 있습니다. 반응형 디자인과 모던 UI/UX를 적용했습니다.",
+        "description": "지금 보고 계신 이 사이트예요. Next.js, TypeScript, Tailwind CSS로 만들었고, 반응형 디자인과 다크 모드를 지원해요.",
         "role": "풀스택 개발자",
         "duration": "2023년 5월 - 2023년 6월",
         "tech": [
@@ -429,10 +453,16 @@
       },
       "project-3": {
         "title": "스마트 홈 대시보드",
-        "description": "IoT 기기를 모니터링하고 제어하기 위한 웹 애플리케이션. 실시간 데이터 시각화와 자동화 기능을 제공합니다.",
+        "description": "IoT 기기를 모니터링하고 제어하기 위한 웹 애플리케이션. 실시간 데이터 시각화와 자동화 기능을 만들었어요.",
         "role": "UI/UX 디자이너 & 프론트엔드 개발자",
         "duration": "2022년 8월 - 2022년 12월",
-        "tech": ["React", "D3.js", "Socket.io", "Material UI", "Node.js"],
+        "tech": [
+          "React",
+          "D3.js",
+          "Socket.io",
+          "Material UI",
+          "Node.js"
+        ],
         "features": [
           "기기 상태 모니터링",
           "에너지 사용량 차트",
@@ -445,7 +475,7 @@
     "siteBuild": {
       "meta": {
         "title": "사이트 제작 과정",
-        "description": "이 포트폴리오 사이트를 어떻게 만들었는지 설명합니다."
+        "description": "이 포트폴리오 사이트를 어떻게 만들었는지 정리했어요."
       },
       "process": {
         "title": "개발 프로세스"
@@ -463,76 +493,115 @@
     "softSkills": {
       "meta": {
         "title": "개발자 소프트 스킬",
-        "description": "개발자에게 필요한 소프트 스킬 경험을 모아놓은 컬렉션",
-        "subtitle": "개발자에게 필요한 소프트 스킬 경험을 모아놓은 컬렉션입니다. 의사소통, 팀워크, 문제 해결 및 개발자의 성공을 돕는 기타 비기술적 스킬에 대한 성찰입니다."
+        "description": "개발하면서 기술 외에 중요하다고 느낀 것들",
+        "subtitle": "팀 프로젝트를 하면서 기술 외에 중요하다고 느낀 것들을 정리했어요."
       },
       "entries": [
         {
           "title": "효과적인 팀 커뮤니케이션",
-          "description": "프로젝트 스프린트 중 명확한 기대치 설정, 적극적인 경청, 건설적인 피드백 제공을 통해 팀 커뮤니케이션을 개선하는 방법을 배웠습니다.",
-          "tags": ["커뮤니케이션", "팀워크", "리더십"]
+          "description": "스프린트 회고에서 '기대하는 바를 먼저 말하자'는 규칙을 만든 뒤 불필요한 재작업이 줄었어요.",
+          "tags": [
+            "커뮤니케이션",
+            "팀워크",
+            "리더십"
+          ]
         },
         {
-          "title": "크로스 펑셔널 팀에서의 문제 해결",
-          "description": "명확한 문서화, 정기적인 동기화, 협업적 의사 결정에 중점을 두어 크로스 펑셔널 팀에서 복잡한 문제를 해결하기 위한 전략을 개발했습니다.",
-          "tags": ["문제 해결", "협업", "문서화"]
+          "title": "다른 직군과의 협업",
+          "description": "기획·디자인·백엔드 팀과 함께 일하면서, 회의록을 남기고 결정 사항을 문서화하는 습관이 생겼어요.",
+          "tags": [
+            "문제 해결",
+            "협업",
+            "문서화"
+          ]
         },
         {
-          "title": "개발자를 위한 시간 관리",
-          "description": "포모도로 기법, 작업 우선순위 지정, 깊은 작업 중 방해 관리 등 개발자를 위한 효과적인 시간 관리 기법을 탐구했습니다.",
-          "tags": ["시간 관리", "생산성", "워라밸"]
+          "title": "시간 관리",
+          "description": "할 일이 많을 때 우선순위를 정하고, 집중이 필요한 작업은 알림을 꺼두는 나만의 루틴이 생겼어요.",
+          "tags": [
+            "시간 관리",
+            "생산성",
+            "워라밸"
+          ]
         },
         {
           "title": "코드 리뷰 주고받기",
-          "description": "사람이 아닌 코드에 초점을 맞추어 건설적인 코드 리뷰를 제공하고 피드백을 우아하게 받는 기술을 연습했습니다.",
-          "tags": ["코드 리뷰", "피드백", "멘토링"]
+          "description": "'이 코드가 왜 이렇게 되어 있는지' 물어보는 방식으로 리뷰하면 서로 배우는 게 많았어요.",
+          "tags": [
+            "코드 리뷰",
+            "피드백",
+            "멘토링"
+          ]
         },
         {
-          "title": "비기술적 이해관계자에게 기술적 개념 설명하기",
-          "description": "비유, 시각적 보조 자료를 사용하고 비즈니스 가치에 초점을 맞춰 비기술적 이해관계자에게 복잡한 기술적 개념을 설명하는 기술을 개발했습니다.",
-          "tags": ["커뮤니케이션", "프레젠테이션", "이해관계자 관리"]
+          "title": "비개발자에게 기술 설명하기",
+          "description": "기획자에게 기술 이슈를 설명할 때, '이렇게 하면 사용자에게 이런 영향이 있어요'처럼 결과 중심으로 이야기하니 소통이 수월해졌어요.",
+          "tags": [
+            "커뮤니케이션",
+            "프레젠테이션",
+            "이해관계자 관리"
+          ]
         }
       ]
     },
     "til": {
       "meta": {
         "title": "오늘의 배움",
-        "description": "개발자로서의 여정에서 배운 것들을 모아놓은 컬렉션",
-        "subtitle": "개발자로서의 여정에서 배운 것들을 모아놓은 컬렉션입니다. 흥미롭거나 유용하다고 생각한 다양한 주제에 대한 짧은 노트들입니다."
+        "description": "공부하면서 알게 된 것들을 기록하는 공간",
+        "subtitle": "공부하면서 알게 된 것들을 짧게 기록해 두는 공간이에요."
       },
       "all-entries": "모든 항목",
       "entries": [
         {
           "title": "React Hooks 모범 사례",
-          "description": "useEffect의 의존성 배열 및 재사용 가능한 로직을 위한 커스텀 훅을 포함한 React 훅 사용의 모범 사례에 대해 배웠습니다.",
-          "tags": ["React", "Hooks", "프론트엔드"]
+          "description": "useEffect의 의존성 배열 관리와 커스텀 훅으로 로직을 재사용하는 방법을 정리했어요.",
+          "tags": [
+            "React",
+            "Hooks",
+            "프론트엔드"
+          ]
         },
         {
           "title": "TypeScript 유틸리티 타입",
-          "description": "Partial, Pick, Omit, Record와 같은 TypeScript 유틸리티 타입을 탐구했습니다. 이러한 타입은 기존 타입에서 파생된 타입을 만드는 데 도움이 됩니다.",
-          "tags": ["TypeScript", "프론트엔드"]
+          "description": "Partial, Pick, Omit, Record 같은 유틸리티 타입으로 기존 타입에서 새 타입을 만드는 법을 익혔어요.",
+          "tags": [
+            "TypeScript",
+            "프론트엔드"
+          ]
         },
         {
           "title": "Next.js 앱 라우터",
-          "description": "Next.js 13+의 새로운 앱 라우터를 공부했습니다. 중첩 레이아웃, 로딩 상태 및 오류 경계를 사용하여 라우팅을 처리하는 새로운 방법을 제공합니다.",
-          "tags": ["Next.js", "React", "프론트엔드"]
+          "description": "Next.js 13+ 앱 라우터의 중첩 레이아웃, 로딩 상태, 에러 바운더리를 공부했어요.",
+          "tags": [
+            "Next.js",
+            "React",
+            "프론트엔드"
+          ]
         },
         {
           "title": "CSS 그리드 레이아웃",
-          "description": "복잡한 레이아웃을 위한 CSS 그리드 사용을 연습했습니다. 그리드는 행과 열이 있는 2차원 레이아웃에 강력합니다.",
-          "tags": ["CSS", "프론트엔드", "레이아웃"]
+          "description": "복잡한 2차원 레이아웃을 CSS Grid로 구현하는 연습을 했어요.",
+          "tags": [
+            "CSS",
+            "프론트엔드",
+            "레이아웃"
+          ]
         },
         {
           "title": "JavaScript 프로미스와 Async/Await",
-          "description": "비동기 작업을 처리하기 위한 JavaScript 프로미스와 async/await 구문에 대한 이해를 깊게 했습니다.",
-          "tags": ["JavaScript", "비동기", "프론트엔드"]
+          "description": "비동기 처리의 동작 원리와 에러 핸들링 패턴을 깊이 파보았어요.",
+          "tags": [
+            "JavaScript",
+            "비동기",
+            "프론트엔드"
+          ]
         }
       ]
     },
     "contact": {
       "meta": {
         "title": "석지인에게 문의하기",
-        "description": "프로젝트 협업이나 문의사항이 있으신가요? 아래 양식을 작성해 주시면 최대한 빨리 답변해 드리겠습니다."
+        "description": "궁금한 점이 있으시면 편하게 연락주세요."
       },
       "form": {
         "name": "이름",
@@ -541,11 +610,11 @@
         "submit": "제출하기"
       },
       "success-message": {
-        "title": "메시지가 성공적으로 전송되었습니다!",
-        "description": "곧 연락드리겠습니다."
+        "title": "메시지가 전송됐어요!",
+        "description": "확인 후 연락드릴게요."
       },
       "error-message": {
-        "title": "문제가 발생했습니다.",
+        "title": "전송에 실패했어요.",
         "description": "다시 시도해 주세요."
       }
     }
@@ -554,7 +623,7 @@
     "comingSoon": {
       "title": "준비 중입니다",
       "subtitle": "새로운 콘텐츠를 준비하고 있어요",
-      "description": "더 나은 경험을 제공하기 위해 열심히 작업 중입니다. 조금만 기다려주세요!",
+      "description": "열심히 준비하고 있어요. 조금만 기다려주세요!",
       "pageTitle": "페이지 준비 중",
       "homeButton": "홈으로 돌아가기",
       "notifyButton": "업데이트 알림 받기"
@@ -581,7 +650,7 @@
         "category": "문의 유형",
         "categoryPlaceholder": "문의 유형을 선택해 주세요",
         "categoryGeneral": "일반 문의",
-        "categoryTechnical": "기술 지원",
+        "categoryTechnical": "기술 관련",
         "categoryReward": "리워드 문의",
         "categoryPartnership": "제휴 문의",
         "message": "문의 내용",
@@ -590,36 +659,36 @@
       "step3": {
         "title": "확인",
         "summary": "문의 내용 확인",
-        "disclaimer": "제출하신 문의사항은 영업일 기준 1-2일 내에 답변드리겠습니다. 감사합니다."
+        "disclaimer": "영업일 기준 1-2일 내에 답변드릴게요. 감사합니다."
       }
     },
     "categorySummary": {
       "title": "카테고리 요약",
-      "description": "제가 가진 기술과 경험을 카테고리별로 정리했습니다.",
+      "description": "경험한 기술을 분야별로 정리했어요.",
       "learn-more": "더 알아보기",
       "design": {
         "title": "UI/UX 디자인",
-        "description": "사용자 중심의 직관적인 인터페이스 설계와 시각적 요소 구현에 집중합니다."
+        "description": "Figma로 프로토타이핑하고, 디자인 시스템에 맞춰 UI를 구현해요."
       },
       "development": {
         "title": "프론트엔드 개발",
-        "description": "모던 웹 기술을 활용한 반응형 웹 애플리케이션 개발 경험을 보유하고 있습니다."
+        "description": "TypeScript, React, Next.js로 웹 애플리케이션을 만들어요."
       },
       "optimization": {
         "title": "성능 최적화",
-        "description": "빠른 로딩 시간과 부드러운 사용자 경험을 위한 다양한 최적화 기법을 적용합니다."
+        "description": "LCP 단축, 이미지 최적화, 코드 스플리팅 등을 적용해 봤어요."
       },
       "collaboration": {
         "title": "팀 협업",
-        "description": "효과적인 커뮤니케이션과 협업 도구를 활용한 팀 프로젝트 경험이 있습니다."
+        "description": "Git 컨벤션 정리, Jira 세팅, 코드 리뷰 문화를 만들어 본 경험이 있어요."
       },
       "tools": {
         "title": "개발 도구",
-        "description": "다양한 개발 도구와 라이브러리를 활용하여 효율적인 개발 환경을 구축합니다."
+        "description": "ESLint, Prettier, Husky 등으로 팀 개발 환경을 세팅해요."
       },
       "experience": {
         "title": "사용자 경험",
-        "description": "접근성과 사용성을 고려한 포용적인 웹 경험 설계에 중점을 둡니다."
+        "description": "시맨틱 마크업과 키보드 접근성을 신경 쓰면서 만들어요."
       }
     },
     "nav": {
@@ -639,7 +708,7 @@
       "projects": "프로젝트"
     },
     "footer": {
-      "description": "사용자 중심의 웹 개발과 디자인으로 혁신적인 디지털 경험을 만듭니다.",
+      "description": "프론트엔드 개발자 석지인의 포트폴리오",
       "product": "서비스",
       "features": "기술 스택",
       "pricing": "프로젝트",
@@ -674,11 +743,11 @@
   "layout": {
     "loading": {
       "title": "로딩 중",
-      "message": "콘텐츠를 준비하는 동안 잠시만 기다려주세요..."
+      "message": "잠시만 기다려주세요..."
     },
     "error": {
-      "title": "문제가 발생했습니다",
-      "description": "불편을 드려 죄송합니다. 저희 팀에 이 문제가 통보되었습니다.",
+      "title": "문제가 발생했어요",
+      "description": "죄송합니다. 문제가 생겼어요.",
       "tryAgain": "다시 시도",
       "returnHome": "홈으로 돌아가기",
       "errorId": "오류 ID"
@@ -686,10 +755,10 @@
     "notFound": {
       "code": "404",
       "title": "페이지를 찾을 수 없습니다",
-      "description": "찾으시는 페이지가 존재하지 않거나 이동되었습니다.",
+      "description": "찾으시는 페이지가 없거나 이동됐어요.",
       "returnHome": "홈으로 돌아가기",
-      "contactSupport": "고객 지원에 문의하기",
-      "contactMessage": "이 오류가 계속되면 고객 지원팀에 문의하세요."
+      "contactSupport": "문의하기",
+      "contactMessage": "이 오류가 계속되면 연락주세요."
     }
   }
 }
