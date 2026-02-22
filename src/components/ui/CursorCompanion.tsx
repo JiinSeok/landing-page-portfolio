@@ -35,8 +35,8 @@ export default function CursorCompanion() {
       <Image
         src="/images/pochacco.png"
         alt=""
-        width={28}
-        height={28}
+        width={48}
+        height={48}
         className="select-none"
         draggable={false}
       />
