@@ -17,7 +17,7 @@ const sections = [
     id: 'tech-stack',
     title: '기술 스택',
     description: '사용하는 주요 기술과 도구',
-    preview: ['React · TypeScript · Rails', 'Tailwind CSS · Next.js', 'Git · Docker · PostgreSQL'],
+    preview: ['React · TypeScript · Rails', 'Tailwind CSS · Next.js', 'Git · Docker · MySQL'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
         <polyline points="16 18 22 12 16 6" />
