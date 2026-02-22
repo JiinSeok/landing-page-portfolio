@@ -16,16 +16,8 @@ export const metadata: Metadata = {
     '사용자 중심의 웹 개발을 통해 매끄러운 디지털 경험을 만드는 웹 개발자입니다.',
   keywords: '웹 개발, 프론트엔드, 백엔드, React, Next.js, 포트폴리오, 석지인',
   icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
-    other: {
-      rel: 'mask-icon',
-      url: '/favicon.svg',
-    },
+    icon: { url: '/favicon.ico', type: 'image/x-icon' },
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: '석지인 · 웹개발자',
