@@ -163,20 +163,32 @@ export default function PersonalSection() {
           })}
         </div>
 
-        {/* jiin: 경력 외 학력·자격증·수상은 타임라인과 분리해 하단 요약 블록으로 */}
-        <div className="max-w-3xl mx-auto mt-16 pt-10 border-t border-border">
-          <h3 className="mb-6 text-lg font-semibold">{extra.title}</h3>
-          <dl className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-4xl mx-auto mt-20 pt-12 border-t border-border">
+          <h3
+            className={styles.combineStyles([
+              styles.text.heading(3),
+              'text-center mb-10',
+            ])}
+          >
+            {extra.title}
+          </h3>
+          <dl>
             {extra.groups.map((group, index) => (
-              <div key={index}>
-                <dt className="mb-2 text-sm font-medium text-primary">
+              <div
+                key={index}
+                className="flex flex-col md:flex-row gap-3 md:gap-10 py-6 border-b border-border last:border-0"
+              >
+                <dt className="md:w-40 shrink-0 text-lg font-semibold text-primary">
                   {group.label}
                 </dt>
-                <dd>
-                  <ul className="space-y-1">
+                <dd className="flex-1">
+                  <ul className="space-y-2">
                     {group.items.map((item, i) => (
-                      <li key={i} className={styles.text.body('small')}>
-                        {item}
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2.5" />
+                        <span className={styles.text.body('default')}>
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>

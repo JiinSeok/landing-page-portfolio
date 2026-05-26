@@ -1,7 +1,6 @@
 'use client'
 
 import { TabComponent, TabItem } from '@/components/ui/TabComponent'
-import { ContentCard } from '@/components/ui/ContentCard'
 import {
   TECH_STACK_CATEGORIES,
   TECH_STACK_WITH_EXPERIENCE,
@@ -32,7 +31,7 @@ export default function TechStackSection() {
     id: category,
     label: category,
     content: (
-      <ContentCard className="w-full">
+      <div className="w-full">
         <div className="space-y-6 grid grid-cols-1 gap-4">
           {(() => {
             const filteredTech = TECH_STACK_WITH_EXPERIENCE.filter(
@@ -96,7 +95,7 @@ export default function TechStackSection() {
             ))
           })()}
         </div>
-      </ContentCard>
+      </div>
     ),
   }))
 

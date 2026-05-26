@@ -3,7 +3,6 @@
 import { useTranslations } from '@/lib/providers/TextContext'
 import { useState, useEffect } from 'react'
 
-// Section preview data
 const previewSections = [
   {
     id: 'career',
@@ -44,7 +43,7 @@ const previewSections = [
     title: '자주 묻는 질문',
     description: '궁금하실 수 있는 점들',
     preview: [
-      '현재 어떤 일을 하고 있어요?',
+      '현재 어떤 일을 하고 있나요?',
       'SQA 경험이 어떻게 도움이 되었나요?',
       '협업 스타일은 어떤가요?',
     ],
@@ -76,14 +75,12 @@ export default function HeroSection() {
   return (
     <section id="hero" className="w-full bg-primary text-white py-16 md:py-20 px-6 md:px-8 lg:px-12">
       <style>{`
-        @keyframes cardPop {
-          0% { opacity: 0; transform: translateY(16px); }
-          60% { opacity: 1; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
-          100% { opacity: 1; transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
       <div className="max-w-7xl mx-auto">
-        {/* CTA heading */}
         <div className="text-center mb-10">
           <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold mb-3">
             {t('title')}
@@ -93,19 +90,17 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Section preview nav cards — 3 columns */}
         <nav className="grid grid-cols-1 sm:grid-cols-3 gap-5" aria-label="섹션 미리보기">
           {previewSections.map((section, index) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}
-              className="group text-left rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm transition-all duration-200 cursor-pointer flex flex-col overflow-hidden hover:-translate-y-1.5 hover:bg-white/15 hover:border-white/25 hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)]"
+              className="group flex flex-col overflow-hidden text-left rounded-xl border border-white/15 bg-white/10 transition-colors cursor-pointer hover:bg-white/15 hover:border-white/25"
               style={{
                 opacity: mounted ? undefined : 0,
-                animation: mounted ? `cardPop 0.5s ease ${index * 0.15}s both` : 'none',
+                animation: mounted ? `fadeUp 0.4s ease ${index * 0.08}s both` : 'none',
               }}
             >
-              {/* Header with icon */}
               <div className="px-5 pt-5 pb-3 flex items-center gap-3">
                 <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/15 text-white shrink-0">
                   {section.icon}
@@ -116,10 +111,8 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Divider */}
               <div className="mx-5 border-t border-white/10" />
 
-              {/* Preview list */}
               <ul className="px-5 pt-3 pb-4 space-y-1.5 flex-1">
                 {section.preview.map((item, i) => (
                   <li key={i} className="flex items-center gap-2.5 text-sm text-white/70">
@@ -129,7 +122,6 @@ export default function HeroSection() {
                 ))}
               </ul>
 
-              {/* Footer action hint */}
               <div className="px-5 pb-4 flex items-center gap-1 text-xs text-white/40 group-hover:text-white/80 transition-colors">
                 <span>자세히 보기</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5">
