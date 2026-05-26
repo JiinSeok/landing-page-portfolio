@@ -73,6 +73,7 @@ export default function TechStackSection() {
                       alt={tech.name}
                       width={32}
                       height={32}
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                   </div>
                   <h5 className="font-semibold text-base">{tech.name}</h5>

@@ -379,6 +379,8 @@ function SliderImage({
           objectPosition: 'center',
           maxHeight: '66.67vh', // 2/3 of viewport height
           margin: '0 auto', // Center horizontally
+          width: 'auto',
+          height: 'auto',
         }}
       />
     )

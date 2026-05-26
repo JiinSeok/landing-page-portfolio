@@ -67,6 +67,7 @@ export default function CursorCompanion() {
         height={48}
         className="select-none"
         draggable={false}
+        style={{ width: 'auto', height: 'auto' }}
       />
     </div>
   )

@@ -113,6 +113,7 @@ export default function PersonalSection() {
                             width={32}
                             height={32}
                             className="object-contain"
+                            style={{ width: 'auto', height: 'auto' }}
                           />
                         </div>
                       )}
