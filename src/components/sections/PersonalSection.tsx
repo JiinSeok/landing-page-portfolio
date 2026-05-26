@@ -19,6 +19,11 @@ type CareerEntry = {
   contributions: string[]
 }
 
+type CareerExtra = {
+  title: string
+  groups: { label: string; items: string[] }[]
+}
+
 const COMPANY_LOGOS: Record<string, string> = {
   '도스트11': '/images/logos/dost11.png',
   '체인시프트': '/images/logos/chainshift.png',
@@ -73,6 +78,7 @@ export default function PersonalSection() {
   }
 
   const careers = t('pages.career.careers') as unknown as CareerEntry[]
+  const extra = t('pages.career.more') as unknown as CareerExtra
 
   return (
     <section id="career" className="w-full py-16 md:py-20 bg-secondary/10">
@@ -155,6 +161,29 @@ export default function PersonalSection() {
               </div>
             )
           })}
+        </div>
+
+        {/* jiin: 경력 외 학력·자격증·수상은 타임라인과 분리해 하단 요약 블록으로 */}
+        <div className="max-w-3xl mx-auto mt-16 pt-10 border-t border-border">
+          <h3 className="mb-6 text-lg font-semibold">{extra.title}</h3>
+          <dl className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {extra.groups.map((group, index) => (
+              <div key={index}>
+                <dt className="mb-2 text-sm font-medium text-primary">
+                  {group.label}
+                </dt>
+                <dd>
+                  <ul className="space-y-1">
+                    {group.items.map((item, i) => (
+                      <li key={i} className={styles.text.body('small')}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
