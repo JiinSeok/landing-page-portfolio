@@ -36,6 +36,14 @@ export default function Footer() {
           SEO 라이트닝 토크
         </a>
         <a
+          href="https://mellow-pika-ec5224.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          정산 기능 설계
+        </a>
+        <a
           href={ROUTER.GitHub.path}
           target="_blank"
           rel="noopener noreferrer"

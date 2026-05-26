@@ -1,9 +1,6 @@
-const path = require('path')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // output: 'standalone', // Vercel에서는 불필요
-    eslint: { ignoreDuringBuilds: true },
     images: {
         remotePatterns: [
             { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
@@ -15,13 +12,7 @@ const nextConfig = {
         dangerouslyAllowSVG: true,
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
-    // Include content directory in transpilation
-    transpilePackages: ['content'],
-    // Add content directory to webpack resolve modules
-    webpack: (config) => {
-        config.resolve.modules.push(path.resolve('./content'))
-        return config
-    },
 }
 
 module.exports = nextConfig
+
