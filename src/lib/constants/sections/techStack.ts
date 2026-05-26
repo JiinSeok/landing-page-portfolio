@@ -394,16 +394,6 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     projects: [],
   },
   {
-    name: 'Yarn Berry Zero Install',
-    category: '도구',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg',
-    experience:
-      '개발 환경과의 차이로 인한 문제를 피하려 설치했지만, Docker에서 빌드를 run 하는 데 실패해 스크립트를 수정하고 있습니다.',
-    description:
-      '개발 환경과의 차이로 인한 문제를 피하려 설치했지만, Docker에서 빌드를 run 하는 데 실패해 스크립트를 수정하고 있습니다.',
-    projects: [],
-  },
-  {
     name: 'Jira',
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
