@@ -49,7 +49,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          협업 제안 페이지 & 포토부스 프로토타입
+          이벤트 협업 제안 & 포토부스 프로토타입
         </a>
         <a
           href={ROUTER.GitHub.path}
