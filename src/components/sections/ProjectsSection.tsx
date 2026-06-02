@@ -94,6 +94,7 @@ new QueryClient({
     url: 'https://albaform.usejiin.link',
     imageUrl: '/images/projects/albaform.png',
     alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
+    notionUrl: 'https://jiin-seok.notion.site/albaform',
     codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
 export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
