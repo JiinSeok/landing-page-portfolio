@@ -18,12 +18,6 @@ interface Material {
 
 const materials: Material[] = [
   {
-    title: 'Notion 포트폴리오',
-    kind: '포트폴리오',
-    description: '프로젝트와 작업 과정을 더 자세히 정리한 Notion 포트폴리오입니다.',
-    url: 'https://jiin-seok.notion.site/portfolio',
-  },
-  {
     title: 'Claude Code 설정 (dotfiles)',
     kind: '오픈소스 · AI 워크플로',
     description:

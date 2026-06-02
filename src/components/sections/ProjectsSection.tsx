@@ -30,7 +30,11 @@ export interface ProjectWithMedia {
   imageUrl: string
   alt: string
   codeSnippet?: string
+  notionUrl?: string
 }
+
+// 프로젝트별 세부 페이지가 따로 없으면 전체 포트폴리오로 연결
+const NOTION_PORTFOLIO_URL = 'https://jiin-seok.notion.site/portfolio'
 
 const projectsData: ProjectWithMedia[] = [
   {
@@ -338,6 +342,15 @@ function ProjectCard({ project }: { project: ProjectWithMedia }) {
                 </Button>
               </Link>
             )}
+            <a
+              href={project.notionUrl ?? NOTION_PORTFOLIO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" size="sm">
+                Notion에서 보기
+              </Button>
+            </a>
           </footer>
         </div>
       </ContentCard>
