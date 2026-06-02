@@ -25,7 +25,7 @@ export const ROUTER: Record<string, RouterItem> = {
     getName: (customName?: string) => customName || 'How This Site Was Built',
   },
   Resume: {
-    path: '/files/resume.pdf',
+    path: '/resume.html',
     getName: (customName?: string) => customName || 'Resume',
   },
   TIL: {

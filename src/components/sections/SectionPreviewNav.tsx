@@ -4,7 +4,7 @@ const sections = [
   {
     id: 'career',
     title: '경력',
-    description: '5개 회사에서의 경험',
+    description: '다섯 곳에서 쌓은 경험을 담았습니다',
     preview: ['도스트11 · 풀스택 개발자', '체인시프트 · 프론트엔드', '핏투게더 · SQA', '물류대장 · SQA 매니저', '연합뉴스 · 자료조사'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -16,7 +16,7 @@ const sections = [
   {
     id: 'tech-stack',
     title: '기술 스택',
-    description: '사용하는 주요 기술과 도구',
+    description: '주로 사용하는 기술과 도구입니다',
     preview: ['React · TypeScript · Rails', 'Tailwind CSS · Next.js', 'Git · Docker · MySQL'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -28,7 +28,7 @@ const sections = [
   {
     id: 'faq',
     title: '자주 묻는 질문',
-    description: '궁금하실 수 있는 점들',
+    description: '많이들 궁금해하시는 내용을 정리했습니다',
     preview: ['현재 어떤 일을 하고 있나요?', 'SQA 경험이 어떻게 도움이 되나요?', '협업 스타일은 어떤가요?'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">

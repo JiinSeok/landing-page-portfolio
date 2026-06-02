@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
 import {
@@ -30,130 +32,91 @@ export interface ProjectWithMedia {
   codeSnippet?: string
 }
 
-// 이미지와 코드 스니펫이 포함된 샘플 프로젝트 데이터
 const projectsData: ProjectWithMedia[] = [
   {
-    title: '넥스카 - 자동차 관리 플랫폼',
-    year: 2023,
+    title: 'formkit-react',
+    year: 2025,
     description:
-      '차량 관리, 정비 예약, 부품 구매를 위한 원스톱 솔루션. 사용자 친화적인 인터페이스와 실시간 알림 기능을 갖추고 있습니다. React, TypeScript, Redux, Styled Components, Firebase를 활용하여 개발했습니다.',
-    url: '/blog/nexca-project',
-    imageUrl: '/images/demo/examples/home-screen.svg',
-    alt: '넥스카 자동차 관리 플랫폼 대시보드 화면',
-    codeSnippet: `// 넥스카 차량 정보 컴포넌트
-import React, { useState, useEffect } from 'react';
-import { fetchVehicleInfo, VehicleType } from '../api/vehicles';
-import { useAuth } from '../contexts/AuthContext';
+      '직접 만들어 npm에 배포한 React 폼 라이브러리입니다. Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
+    url: 'https://www.npmjs.com/package/@jiin.seok/formkit-react',
+    imageUrl: '/images/projects/formkit-react.png',
+    alt: 'formkit-react 폼 라이브러리 예제 화면',
+    codeSnippet: `import FormKit from '@jiin.seok/formkit-react'
+import { z } from 'zod'
 
-export const VehicleInfoCard: React.FC = () => {
-  const { user } = useAuth();
-  const [vehicle, setVehicle] = useState<VehicleType | null>(null);
-  const [loading, setLoading] = useState(true);
+const schema = z.object({
+  email: z.string().email('이메일 형식이 올바르지 않습니다'),
+  password: z.string().min(8, '8자 이상 입력해 주세요'),
+})
 
-  useEffect(() => {
-    const loadVehicleInfo = async () => {
-      if (user?.id) {
-        const data = await fetchVehicleInfo(user.id);
-        setVehicle(data);
-        setLoading(false);
-      }
-    };
-
-    loadVehicleInfo();
-  }, [user]);
-
+export function LoginForm() {
   return (
-    <div className="vehicle-info-card">
-      {loading ? (
-        <p>차량 정보를 불러오는 중...</p>
-      ) : vehicle ? (
-        <div>
-          <h3>{vehicle.manufacturer} {vehicle.model}</h3>
-          <p>연식: {vehicle.year}</p>
-          <p>주행거리: {vehicle.mileage}km</p>
-          <p>다음 정비: {vehicle.nextService}</p>
-        </div>
-      ) : (
-        <p>등록된 차량이 없습니다.</p>
-      )}
-    </div>
-  );
-};`,
+    <FormKit.Root formId="login" schema={schema} onSubmit={handleSubmit}>
+      <FormKit.Field>
+        <FormKit.Label>이메일</FormKit.Label>
+        <FormKit.Input name="email" type="email" required />
+      </FormKit.Field>
+      <FormKit.SubmitButton>로그인</FormKit.SubmitButton>
+    </FormKit.Root>
+  )
+}`,
   },
   {
-    title: '포트폴리오 웹사이트',
+    title: 'bodycodi',
+    year: 2025,
+    description:
+      '2016년부터 운영된 JSP 레거시와 공존하는 React 화면을 점진적으로 통합한 프로젝트입니다. JSP의 전역 CSS와 Tailwind가 충돌하던 문제를 tw- prefix 전략과 컨벤션 문서로 정리했고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
+    url: 'https://github.com/JiinSeok/bodycodi-frontend',
+    imageUrl: '/images/projects/bodycodi.png',
+    alt: 'bodycodi 프로젝트 소개 카드 (JSP 레거시와 React 통합)',
+    codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
+// tailwind.config.js
+export default {
+  prefix: 'tw-', // .container / .card / .btn 충돌 방지
+}
+
+// TanStack Query 한곳에서 에러 처리
+new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => handleApiError(error),
+  }),
+})`,
+  },
+  {
+    title: 'albaform',
     year: 2024,
     description:
-      '개인 포트폴리오 웹사이트로, 프로젝트 쇼케이스, 기술 스택, 경력 정보를 담고 있습니다. Next.js, TypeScript, Tailwind CSS를 활용하여 반응형 디자인과 모던 UI/UX를 구현했습니다. 다크 모드 지원과 성능 최적화에 중점을 두었습니다.',
-    url: '/site-build',
-    imageUrl: '/images/demo/examples/home-screen-quick-actions.svg',
-    alt: '포트폴리오 웹사이트 홈페이지',
-    codeSnippet: `// 다크 모드 토글 컴포넌트
-import { useTheme } from 'next-themes';
-import { SunIcon, MoonIcon } from 'lucide-react';
-
-export const ThemeToggle: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-
-  return (
-    <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors"
-      aria-label="다크 모드 전환"
-    >
-      {theme === 'dark' ? (
-        <SunIcon className="h-5 w-5" />
-      ) : (
-        <MoonIcon className="h-5 w-5" />
-      )}
-    </button>
-  );
-};`,
+      '여러 명이 함께 만든 알바 구인구직 플랫폼입니다. 검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
+    url: 'https://albaform.usejiin.link',
+    imageUrl: '/images/projects/albaform.png',
+    alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
+    codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
+export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
   {
-    title: '스마트 홈 대시보드',
-    year: 2022,
+    title: 'tappytype',
+    year: 2026,
     description:
-      'IoT 기기를 모니터링하고 제어하기 위한 웹 애플리케이션입니다. 실시간 데이터 시각화와 자동화 기능을 제공합니다. React, D3.js, Socket.io, Material UI, Node.js를 활용하여 개발했으며, 에너지 사용량 모니터링과 기기 제어 기능을 구현했습니다.',
-    url: '/projects/smart-home',
-    imageUrl: '/images/demo/examples/notifications.svg',
-    alt: '스마트 홈 대시보드 인터페이스',
-    codeSnippet: `// 실시간 에너지 사용량 차트 컴포넌트
-import React, { useEffect, useRef } from 'react';
-import * as d3 from 'd3';
-import { useSocket } from '../hooks/useSocket';
+      '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다. (React Native가 아닌 네이티브 Swift입니다.)',
+    url: 'https://github.com/JiinSeok/typetap',
+    imageUrl: '/images/projects/tappytype-card.png',
+    alt: 'tappytype iOS 앱 소개 카드',
+    codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
+protocol HandwritingGenerator {
+    func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]
+}
 
-export const EnergyUsageChart: React.FC = () => {
-  const chartRef = useRef<SVGSVGElement>(null);
-  const { socket } = useSocket();
-
-  useEffect(() => {
-    if (!chartRef.current) return;
-
-    // D3.js를 사용한 차트 초기화
-    const svg = d3.select(chartRef.current);
-    const width = 600;
-    const height = 300;
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-
-    // 실시간 데이터 수신 및 차트 업데이트
-    socket.on('energy-update', (data) => {
-      // 차트 업데이트 로직
-      updateChart(data);
-    });
-
-    return () => {
-      socket.off('energy-update');
-    };
-  }, [socket]);
-
-  return (
-    <div className="energy-chart">
-      <h3>실시간 에너지 사용량</h3>
-      <svg ref={chartRef} width="100%" height="300"></svg>
-    </div>
-  );
-};`,
+// 서버를 호출하는 구현체만 갈아끼우면 됩니다
+struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
+  },
+  {
+    title: '포트폴리오 사이트',
+    year: 2025,
+    description:
+      '지금 보고 계신 이 사이트입니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일해 유지보수하기 쉽게 정리했습니다.',
+    url: '/site-build',
+    imageUrl: '/images/projects/portfolio.png',
+    alt: '포트폴리오 사이트 첫 화면',
   },
 ]
 
@@ -305,6 +268,7 @@ export default function ProjectsSection() {
 function ProjectCard({ project }: { project: ProjectWithMedia }) {
   const t = useTranslations('pages.projects')
   const [showCode, setShowCode] = useState(false)
+  const isExternal = project.url.startsWith('http')
 
   return (
     <article
@@ -361,11 +325,19 @@ function ProjectCard({ project }: { project: ProjectWithMedia }) {
                 {showCode ? t('view-image') : t('view-code')}
               </Button>
             )}
-            <Link href={project.url}>
-              <Button variant="default" size="sm">
-                {t('view-project')}
-              </Button>
-            </Link>
+            {isExternal ? (
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                <Button variant="default" size="sm">
+                  {t('view-project')}
+                </Button>
+              </a>
+            ) : (
+              <Link href={project.url}>
+                <Button variant="default" size="sm">
+                  {t('view-project')}
+                </Button>
+              </Link>
+            )}
           </footer>
         </div>
       </ContentCard>

@@ -7,7 +7,7 @@ const previewSections = [
   {
     id: 'career',
     title: '경력',
-    description: '도스트11에서 풀스택 개발 중 · SQA 출신',
+    description: '도스트11에서 풀스택으로 일하고 있습니다 · SQA 출신',
     preview: [
       '도스트11 · 풀스택 (Rails + React)',
       '체인시프트 · 프론트엔드',
@@ -41,7 +41,7 @@ const previewSections = [
   {
     id: 'faq',
     title: '자주 묻는 질문',
-    description: '궁금하실 수 있는 점들',
+    description: '많이들 궁금해하시는 내용을 정리했습니다',
     preview: [
       '현재 어떤 일을 하고 있나요?',
       'SQA 경험이 어떻게 도움이 되었나요?',

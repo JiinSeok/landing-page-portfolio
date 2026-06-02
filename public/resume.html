@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>석지인 · 이력서</title>
+<meta name="description" content="프론트엔드 개발자 석지인의 이력서 — 웹·앱·디자인시스템·레거시 현대화" />
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --ink:#1f2328; --sub:#57606a; --muted:#8b949e; --line:#e6e8eb;
+    --accent:#6d4aff; --accent-soft:#f0ecff;
+    --chip:#f2f3f5; --chip-ink:#3a4048;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,
+      "Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    color:var(--ink); background:#f4f5f7; line-height:1.62; font-size:15px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .topbar{position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line);
+    display:flex; gap:10px; align-items:center; padding:10px 16px}
+  .topbar .home{font-weight:700; color:var(--ink)}
+  .topbar .home b{color:var(--accent)}
+  .topbar .spacer{flex:1}
+  .btn{border:1px solid var(--line); background:#fff; color:var(--sub); padding:7px 13px;
+    border-radius:8px; font-size:13px; cursor:pointer; font-weight:600}
+  .btn:hover{border-color:var(--muted)}
+  .stage{padding:22px 16px 80px}
+  .doc{max-width:880px; margin:0 auto; background:#fff; border:1px solid var(--line);
+    border-radius:12px; padding:46px 52px; box-shadow:0 1px 3px rgba(16,22,26,.04),0 8px 24px rgba(16,22,26,.05)}
+  .r-head{display:flex; justify-content:space-between; gap:24px; align-items:flex-start;
+    border-bottom:2px solid var(--ink); padding-bottom:18px}
+  .r-head h1{font-size:30px; margin:0 0 6px; letter-spacing:-.01em}
+  .r-head .role{color:var(--accent); font-weight:700; font-size:14.5px; margin-bottom:10px}
+  .r-head .meta{font-size:13px; color:var(--sub); line-height:1.9; text-align:right}
+  .r-head .meta b{color:var(--ink); font-weight:600}
+  .tagline{font-size:14.5px; color:var(--sub); margin:16px 0 4px}
+  .tagline strong{color:var(--ink)}
+  section.blk{display:grid; grid-template-columns:128px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--line)}
+  .blk > h2{margin:0; font-size:15px; letter-spacing:.02em; color:var(--ink); font-weight:800}
+  .blk > h2 .en{display:block; font-size:11px; color:var(--muted); font-weight:600; margin-top:2px; letter-spacing:.04em}
+  .blk .body{min-width:0}
+  .lead{color:var(--sub); font-size:13.5px; margin:0 0 14px; padding:10px 14px;
+    background:var(--accent-soft); border-radius:8px; border-left:3px solid var(--accent)}
+  .kv{color:#34393f; font-size:13.7px; margin:5px 0}
+  .kv b{color:var(--ink)}
+  .note-inline{color:var(--muted); font-size:12.6px}
+  .item{margin:0 0 18px}
+  .item .top{display:flex; justify-content:space-between; gap:12px; align-items:baseline; flex-wrap:wrap}
+  .item .org{font-weight:700; font-size:15px}
+  .item .when{color:var(--muted); font-size:12.5px; white-space:nowrap}
+  .item .sub{color:var(--sub); font-size:13px; margin:1px 0 8px}
+  .item .desc{color:var(--sub); font-size:13.5px; margin:0 0 8px}
+  ul.dots{margin:6px 0 0; padding-left:0; list-style:none}
+  ul.dots li{position:relative; padding-left:15px; margin:6px 0; font-size:13.7px; color:#34393f}
+  ul.dots li::before{content:""; position:absolute; left:2px; top:9px; width:5px; height:5px; border-radius:50%; background:var(--accent)}
+  ul.dots li b, .item b{font-weight:700; color:var(--ink)}
+  .src{color:var(--muted); font-size:12px}
+  .skills-grid{display:grid; gap:10px}
+  .skill{padding:11px 14px; border:1px solid var(--line); border-radius:9px; background:#fcfcfd}
+  .skill .t{font-weight:700; font-size:13.7px; color:var(--ink)}
+  .skill .d{font-size:12.8px; color:var(--sub); margin-top:3px}
+  .skill .ev{font-size:11.5px; color:var(--accent); margin-top:5px; font-weight:600}
+  .proj{padding:16px 0; border-top:1px dashed var(--line)}
+  .proj:first-child{border-top:none; padding-top:2px}
+  .proj h3{margin:0 0 2px; font-size:15px}
+  .proj .plinks{font-size:12px; color:var(--muted); margin:0 0 4px}
+  .proj .stack{font-size:12.3px; color:var(--chip-ink); background:var(--chip); display:inline-block; padding:3px 9px; border-radius:6px; margin:4px 0 8px}
+  .badge{display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; background:var(--accent-soft); color:var(--accent); margin-left:6px; vertical-align:middle}
+  .badge.gray{background:var(--chip); color:var(--chip-ink)}
+  .app-shot{display:flex; align-items:center; gap:14px; margin:10px 0 6px}
+  .app-shot img{width:84px; height:84px; border-radius:19px; border:1px solid var(--line); box-shadow:0 4px 14px rgba(16,22,26,.12); flex:none}
+  .app-shot figcaption{font-size:12px; color:var(--sub); margin:0}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin:4px 0 2px}
+  .chips span{font-size:12.5px; background:var(--chip); color:var(--chip-ink); padding:4px 11px; border-radius:999px}
+  @media print{
+    body{background:#fff; font-size:11.6px}
+    .topbar{display:none}
+    .stage{padding:0}
+    .doc{box-shadow:none; border:none; border-radius:0; max-width:none; margin:0; padding:0}
+    section.blk{break-inside:avoid}
+    .proj,.item{break-inside:avoid}
+    @page{size:A4; margin:14mm 14mm}
+  }
+  @media (max-width:680px){
+    .doc{padding:30px 20px}
+    section.blk{grid-template-columns:1fr; gap:8px}
+    .r-head{flex-direction:column}
+    .r-head .meta{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="home" href="/">← <b>석지인</b> 포트폴리오</a>
+  <span class="spacer"></span>
+  <button class="btn" onclick="window.print()">🖨 PDF로 저장 / 인쇄</button>
+</div>
+
+<div class="stage">
+<article class="doc">
+
+  <div class="r-head">
+    <div>
+      <h1>석지인</h1>
+      <div class="role">프론트엔드 개발자 — 웹 · 앱 · 어드민 / 디자인시스템 · 레거시 현대화</div>
+      <p class="tagline"><strong>믿을 수 있고 이해할 수 있는 프론트엔드를 지향하는 경험 중심 개발자입니다.</strong> React·Next.js·TypeScript·TanStack Query로 웹과 어드민을 만들고, 직접 만든 폼 라이브러리를 npm에 배포했으며, 네이티브 iOS 앱을 0→1로 출시 준비 단계까지 만들어 왔습니다.</p>
+    </div>
+    <div class="meta">
+      <div>여성 · <b>1996년생</b></div>
+      <div><a href="mailto:seokjiin1073@gmail.com">seokjiin1073@gmail.com</a></div>
+      <div><a href="https://github.com/JiinSeok">github.com/JiinSeok</a></div>
+      <div><a href="https://usejiin.link">usejiin.link</a></div>
+    </div>
+  </div>
+
+  <section class="blk">
+    <h2>소개<span class="en">ABOUT</span></h2>
+    <div class="body">
+      <p class="kv">React·Next.js·TypeScript·TanStack Query를 여러 프로젝트에서 다루며 웹과 어드민을 만들어 왔습니다. 공통 모듈과 디자인 토큰, 타입과 디자인의 일관성을 <b>직접 라이브러리로 만들어 npm에 배포</b>했고(formkit-react), 130만 사용자·결제를 가진 <b>JSP 레거시와 공존하는 React 화면을 점진적으로 통합</b>했습니다(bodycodi). QA에서 시작해 품질과 테스트, 디자인의 일관성을 코드로 보증하는 일에 익숙하며, 생성형 AI는 그대로 받아들이기보다 <b>직접 검증하고 고쳐 쓰는</b> 방식으로 활용하고 있습니다. 의도한 대로 가치를 전하기 위해 에러 처리와 일관성 있는 인터페이스, 요구사항의 분석, 효율적인 개발 환경 구축에 집중하고 있습니다.</p>
+      <p class="kv note-inline">※ 아직 React Native로 앱을 출시·운영해 본 경험은 없습니다. 네이티브 iOS 앱을 0→1로 만들어 온 감각과 앱·서버의 경계를 설계해 본 경험을 바탕으로, React Native를 다음 목표로 익혀 가고자 합니다.</p>
+    </div>
+  </section>
+
+  <section class="blk">
+    <h2>핵심 역량<span class="en">STRENGTHS</span></h2>
+    <div class="body skills-grid">
+      <div class="skill">
+        <div class="t">React · Next.js · TypeScript · TanStack Query</div>
+        <div class="d">여러 프로젝트에서 모던 스택을 다뤘습니다. SSR과 CSR의 경계를 나누고, 낙관적 업데이트와 사용자 상태별 권한·렌더링 분기를 직접 구현했습니다.</div>
+        <div class="ev">albaform · 체인시프트 인턴 · 포트폴리오 · 도스트11</div>
+      </div>
+      <div class="skill">
+        <div class="t">JSP 레거시의 점진적·무중단 마이그레이션</div>
+        <div class="d">2016년부터 운영된 JSP 시스템(130만 사용자·결제를 보유한 서비스)과 공존하는 React 화면을 점진적으로 통합했습니다. 스타일 클래스가 충돌하는 문제를 tw- prefix 전략과 컨벤션 문서로 정리했습니다.</div>
+        <div class="ev">bodycodi-frontend</div>
+      </div>
+      <div class="skill">
+        <div class="t">공통 모듈·디자인 토큰·일관성 설계</div>
+        <div class="d">Compound Component·Zod·접근성(ARIA)·TypeScript 타입을 한 패키지로 정리해 npm에 배포했습니다. 일관성을 라이브러리 수준으로 다뤘습니다.</div>
+        <div class="ev">formkit-react (npm @jiin.seok/formkit-react) · albaform · 물류대장</div>
+      </div>
+      <div class="skill">
+        <div class="t">앱·서버 경계 설계 — 모바일·하이브리드 감각</div>
+        <div class="d">모델을 바꿔도 앱 코드를 고치지 않도록 앱과 서버를 REST 계약과 프로토콜로 분리했습니다. (네이티브 iOS 앱 기준이며, RN 브릿지/WebView 직접 구현 경험은 아닙니다.)</div>
+        <div class="ev">tappytype (네이티브 iOS)</div>
+      </div>
+      <div class="skill">
+        <div class="t">운영 안정성·에러 일관성·성능 최적화</div>
+        <div class="d">에러 처리를 한곳에 모으고 HTTP 상태코드 기준 기본 메시지를 두었습니다. 대량 리스트 조건부 가상화, 만료되는 외부 자원 장애를 배포 전략 전환으로 대처, 빌드 시간 단축을 했습니다.</div>
+        <div class="ev">bodycodi · albaform · 도스트11</div>
+      </div>
+      <div class="skill">
+        <div class="t">품질을 코드로 보증하는 프론트엔드 — QA 출신 + 테스트</div>
+        <div class="d">계약 가드 테스트, QA TF·디자인 시스템 구축 경험이 있습니다. ISTQB·CSTS 자격으로 품질을 코드와 절차로 보증합니다.</div>
+        <div class="ev">tappytype · 물류대장 · 핏투게더 · 자격증</div>
+      </div>
+      <div class="skill">
+        <div class="t">생성형 AI를 검증해서 쓰는 태도</div>
+        <div class="d">AI가 만든 코드를 직접 작성한 코드로 바꿔 에러 처리를 통일했습니다. few-shot 폰트 자동 생성 파이프라인과 ML 포함 모노레포를 다뤘고, 개인 코드 스타일·작업 규칙을 Claude Code에 규칙으로 주입하는 설정을 공개했습니다.</div>
+        <div class="ev">bodycodi · tappytype · 도스트11 · <a href="https://github.com/JiinSeok/dotfiles-claude-public">dotfiles-claude-public</a></div>
+      </div>
+      <div class="skill">
+        <div class="t">이해관계자 협업 — 직군 간 소통 비용 절감</div>
+        <div class="d">개발팀-CG팀 용어표, 전 직군 용어 사전, 사내 유저 인터뷰로 합의를 만들었습니다. 팀 협업에서 최다 수준으로 기여했습니다.</div>
+        <div class="ev">도스트11 · 물류대장 · albaform</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <h2>개인 프로젝트 · 오픈소스<span class="en">PROJECTS</span></h2>
+    <div class="body">
+      <p class="lead">직접 만든 프로젝트들입니다. GitHub <a href="https://github.com/JiinSeok">github.com/JiinSeok</a>. (코드·문서·npm 레지스트리로 확인하실 수 있습니다.)</p>
+
+      <div class="proj">
+        <h3>formkit-react <span class="badge">npm 배포</span></h3>
+        <div class="plinks"><a href="https://www.npmjs.com/package/@jiin.seok/formkit-react">npm @jiin.seok/formkit-react</a> · <a href="https://github.com/JiinSeok/formkit-react">github.com/JiinSeok/formkit-react</a> · 단독</div>
+        <div class="stack">React Hook Form · Zod · Radix UI · Tailwind · TypeScript · Vite · GitHub Actions CI · MIT</div>
+        <ul class="dots">
+          <li><b>공통 모듈·디자인 토큰·일관성을 라이브러리로 정리해 배포</b> — Compound Component 패턴으로 조합 가능한 API를 만들고, 타입 안전성(Zod)·접근성(ARIA)·스타일(Tailwind)을 한 패키지로 정리했습니다.</li>
+          <li><b>릴리스 과정 직접 운영</b> — Vite로 ESM/CJS/타입선언을 출력하고, GitHub Actions로 검증한 뒤 npm에 배포했습니다.</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <h3>bodycodi-frontend <span class="badge">JSP 레거시 마이그레이션</span></h3>
+        <div class="plinks"><a href="https://github.com/JiinSeok/bodycodi-frontend">github.com/JiinSeok/bodycodi-frontend</a> · 단독</div>
+        <div class="stack">React 18 · TypeScript · Vite · TanStack Query · Tailwind(tw- prefix) · react-window</div>
+        <ul class="dots">
+          <li><b>JSP 레거시의 점진적·무중단 통합</b> — 2016년부터의 JSP 레거시(130만 사용자·결제 보유 서비스) 위에서 React 화면을 점진적으로 통합했습니다. 충돌을 스스로 정의(JSP 전역 CSS 클래스와 Tailwind 클래스 충돌)하고 tw- prefix 전략과 컨벤션 문서로 해결했습니다.</li>
+          <li><b>운영 안정성·에러 일관성</b> — Pass-Through 방식의 통신과 TanStack Query로 에러 처리를 한곳에 모았습니다. UI/Service를 분리하고 레이어로 구조를 정리했습니다.</li>
+          <li><b>성능·AI 검증 활용</b> — 대량 리스트 조건부 가상화(50/1000개 임계). AI가 만든 코드를 직접 작성한 코드로 바꿔 에러 처리를 통일했습니다.</li>
+        </ul>
+        <div class="note-inline">※ 130만 사용자·결제는 대상 서비스(바디코디)의 규모이며, 제가 직접 운영한 트래픽 지표는 아닙니다.</div>
+      </div>
+
+      <div class="proj">
+        <h3>albaform — 알바 구인구직 플랫폼 <span class="badge gray">팀 협업</span></h3>
+        <div class="plinks"><a href="https://albaform.usejiin.link">albaform.usejiin.link</a> · <a href="https://github.com/JiinSeok/albaform">github.com/JiinSeok/albaform</a> · 팀 내 최다 수준 기여</div>
+        <div class="stack">Next.js · TanStack Query · Zustand · TypeScript · AWS Amplify</div>
+        <ul class="dots">
+          <li><b>렌더링·권한 경계 설계</b> — 사용자 상태 6종(로그인 여부/사장님·지원자/작성·지원)에 따라 UI와 권한을 분기하고, 비인가 접근을 렌더링 시점에서 차단했습니다.</li>
+          <li><b>검색 노출과 인터랙션 분리</b> — 검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 전역 설정을 분리해 SSR을 유지했습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트를 적용했습니다.</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <h3>tappytype — 네이티브 iOS 앱 <span class="badge gray">개발 중 · 출시 준비</span></h3>
+        <div class="plinks">브랜드 <b>tappytype</b>(개발 리포지토리명 typetap) · <a href="https://github.com/JiinSeok/typetap">github.com/JiinSeok/typetap</a> · 단독 · 인스타그램 사전 마케팅 진행 중</div>
+        <div class="app-shot">
+          <img src="/images/projects/tappytype.png" alt="tappytype 앱 아이콘">
+          <figcaption>애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 앱입니다. (React Native가 아닌 네이티브 Swift이며, 현재 출시 준비 단계입니다.)</figcaption>
+        </div>
+        <div class="stack">클라이언트: Swift · SwiftUI · PencilKit / 서버: FastAPI · 생성형 AI</div>
+        <ul class="dots">
+          <li><b>앱·서버 경계 설계</b> — 생성 모델을 바꿔도 앱 코드를 고치지 않도록 앱과 서버를 REST 계약으로 분리하고 프로토콜로 경계를 두었습니다.</li>
+          <li><b>네이티브 레이어 + 생성형 AI</b> — 순수 Swift로 TrueType 폰트 writer를 직접 구현했고, few-shot 손글씨 폰트 생성 파이프라인을 구성했습니다.</li>
+          <li><b>제품을 끝까지 — 브랜딩·마케팅까지</b> — 직접 브랜딩하고 인스타그램으로 사전 마케팅을 진행하며, 기획·개발·디자인·마케팅을 혼자 끌고 가고 있습니다.</li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <h3>포트폴리오 사이트 <span class="badge gray">단독</span></h3>
+        <div class="plinks"><a href="https://github.com/JiinSeok/landing-page-portfolio">github.com/JiinSeok/landing-page-portfolio</a> · <a href="https://usejiin.link">usejiin.link</a></div>
+        <div class="stack">Next.js App Router · React · TypeScript · Tailwind · ESLint/Prettier · Husky · pnpm</div>
+        <ul class="dots">
+          <li>검증된 도구로 코드 스타일을 통일하고, 공통 컴포넌트와 자동화로 유지보수하기 쉽게 정리했습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <h2>경력<span class="en">EXPERIENCE · 총 4년</span></h2>
+    <div class="body">
+      <p class="lead">프론트엔드 개발은 도스트11·체인시프트에서 했고, QA(물류대장·핏투게더)와 자료 관리(연합뉴스) 경험은 품질과 일관성, 사용자 관점이라는 지금의 강점으로 이어졌습니다.</p>
+
+      <div class="item">
+        <div class="top"><span class="org">(주)도스트11 — 개발자 / AI 개발팀</span><span class="when">2025.09 ~ 재직 중 · 10개월</span></div>
+        <div class="desc">디지털 에셋 이커머스를 풀스택으로 개발하며 프론트엔드 개발 환경·성능·장애 대응을 맡았습니다.</div>
+        <ul class="dots">
+          <li><b>디지털 에셋 이커머스</b> (Ruby on Rails, React, TailwindCSS, Docker, MySQL) — 포토부스 기능 프로토타입과 제안용 랜딩을 0→1로 만든 뒤 범용 기능으로 정리했습니다. 블로그·어드민(AWS S3, slug, Tiptap), Grafana 운영 지표·대시보드, 셀러 페이지 커스터마이징 데모.</li>
+          <li><b>개발 속도·테스트 개선</b> — 타입체크 비동기화와 SSR 빌드 설정으로 코드 변경부터 결과 확인까지의 시간을 줄였고, PR Checks에 SSR 스모크 테스트를 더했습니다.</li>
+          <li><b>기업 랜딩</b> (Next.js, GitHub Actions) — 비개발자가 Notion으로 관리하도록 다시 설계하고 CI/CD를 만들었습니다. 한 시간마다 만료되는 Notion 파일 URL 문제를, 배포 시점에 자료를 내려받아 WebP/WebM으로 변환하고 배포 방식을 바꿔 해결했습니다.</li>
+          <li><b>방송용 CG 디자인 AX</b> — 사내 유저 인터뷰, 사용자 노출 메시지 번역·통일, 개발팀-CG팀 용어표를 만들었습니다. ML 포함 모노레포(Python Gradio → React 마이그레이션).</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="top"><span class="org">(주)체인시프트 — 프론트엔드 개발 인턴</span><span class="when">2025.04 ~ 2025.06 · 3개월</span></div>
+        <div class="desc">B2B 서비스 데모용 MVP 프론트엔드를 짧은 주기로 개발했습니다.</div>
+        <ul class="dots">
+          <li>스택: Next.js 15 App Router · TypeScript · Tailwind CSS · TanStack React Query · Zustand · React Hook Form</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="top"><span class="org">주식회사물류대장 — QA 매니저 / 플랫폼기획팀</span><span class="when">2022.06 ~ 2023.08 · 1년 3개월</span></div>
+        <div class="sub">물류 SaaS(OMS/WMS) ‘물류대장’ QA</div>
+        <ul class="dots">
+          <li><b>입력 컴포넌트 통합 디자인 시스템 구축</b> — 상태별 디자인 시스템과 UI 통일로 입력 오류와 문의를 줄였습니다.</li>
+          <li><b>유비쿼터스 사전 제작</b> — 전 직군 용어를 통일해 전사 커뮤니케이션 비용을 줄이고 온보딩을 개선했습니다.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="top"><span class="org">주식회사핏투게더 — QA 엔지니어 / 소프트웨어개발팀</span><span class="when">2023.08 ~ 2024.02 · 7개월</span></div>
+        <div class="sub">축구 데이터 올인원 ‘오코치’ SW QA (Web, Windows/macOS, iPad)</div>
+        <ul class="dots">
+          <li>QA TF로 스펙과 지원 사양을 합의하고 테스트 벤치를 마련해 품질을 높이고 디버깅 리소스를 줄였습니다.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="top"><span class="org">(주)연합뉴스 — 인물자료 담당사원 / 출판국 DB센터</span><span class="when">2021.08 ~ 2022.03 · 8개월</span></div>
+        <div class="sub">인물 자료 관리</div>
+        <ul class="dots">
+          <li><b>동의 절차 간편화</b> — 요청 채널을 늘리고 레이아웃을 개선해 응답 양식을 50% 줄였고, 당사자 동의 인물 DB 응답률을 30% 높였습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <h2>스킬 · 학력<span class="en">SKILLS · EDU</span></h2>
+    <div class="body">
+      <div class="kv"><b>프론트엔드</b></div>
+      <div class="chips">
+        <span>React</span><span>Next.js (App Router)</span><span>TypeScript</span><span>TanStack Query</span>
+        <span>Zustand</span><span>React Hook Form</span><span>Zod</span><span>Tailwind CSS</span>
+        <span>Radix UI</span><span>Compound Component</span><span>접근성(ARIA)</span><span>HTML/CSS</span>
+      </div>
+      <div class="kv" style="margin-top:10px"><b>도구 · 인프라</b></div>
+      <div class="chips">
+        <span>Git</span><span>Vite</span><span>Docker</span><span>CI/CD(GitHub Actions)</span>
+        <span>npm 패키지 배포</span><span>ESLint/Prettier</span><span>Figma</span><span>CLI</span>
+      </div>
+      <div class="kv" style="margin-top:10px"><b>도메인 · 기타</b></div>
+      <div class="chips">
+        <span>이커머스/결제 맥락</span><span>생성형 AI 활용 개발</span><span>네이티브 iOS(Swift/SwiftUI)</span>
+        <span>디자인 시스템·용어 통일</span><span>QA 기반 품질·테스트</span>
+      </div>
+      <div class="kv" style="margin-top:14px"><b>학력</b> · 연세대학교 학사, 문헌정보학 (2015~2021)</div>
+      <div class="kv"><b>자격증</b> · ISTQB Certified Tester Foundation · 소프트웨어테스트전문가(CSTS) Foundation</div>
+      <div class="kv"><b>외국어</b> · 영어 일상 회화 가능 &nbsp;|&nbsp; <b>기타</b> · 코드잇 스프린트 프론트엔드 트랙 7기</div>
+    </div>
+  </section>
+
+</article>
+</div>
+</body>
+</html>

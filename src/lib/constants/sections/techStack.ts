@@ -131,8 +131,8 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     name: 'TypeScript',
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    experience: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다. 도스트11에서 Rails + React 프로젝트의 프론트엔드 타입 안정성을 확보하는 데 활용 중입니다.',
-    description: '런타임 에러 방지와 API 통신의 안정성을 위해 사용했습니다. 도스트11에서 Rails + React 프로젝트의 프론트엔드 타입 안정성을 확보하는 데 활용 중입니다.',
+    experience: '런타임 에러를 줄이고 API 통신을 안정적으로 다루기 위해 사용했습니다. 도스트11에서 Rails와 React를 함께 쓰는 프로젝트의 프론트엔드 타입을 잡는 데 쓰고 있습니다.',
+    description: '런타임 에러를 줄이고 API 통신을 안정적으로 다루기 위해 사용했습니다. 도스트11에서 Rails와 React를 함께 쓰는 프로젝트의 프론트엔드 타입을 잡는 데 쓰고 있습니다.',
     projects: [],
   },
   {
@@ -140,9 +140,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
     experience:
-      '동적인 프론트엔드 개발을 위해 ES6+ 이상의 최신 EcmaScript를 사용했습니다. CommonJS와 ESM을 사용하는 설정 파일을 다룰 수 있습니다.',
+      'ES6+ 문법을 기본으로 프론트엔드 개발에 사용했습니다. CommonJS와 ESM 방식의 설정 파일을 모두 다룰 수 있습니다.',
     description:
-      '동적인 프론트엔드 개발을 위해 ES6+ 이상의 최신 EcmaScript를 사용했습니다. CommonJS와 ESM을 사용하는 설정 파일을 다룰 수 있습니다.',
+      'ES6+ 문법을 기본으로 프론트엔드 개발에 사용했습니다. CommonJS와 ESM 방식의 설정 파일을 모두 다룰 수 있습니다.',
     projects: [],
   },
   {
@@ -150,9 +150,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     experience:
-      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 등 다양한 컴포넌트를 개발 중입니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 활용하고 있습니다.',
+      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 같은 컴포넌트를 개발하고 있습니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 다루고 있습니다.',
     description:
-      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 등 다양한 컴포넌트를 개발 중입니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 활용하고 있습니다.',
+      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 같은 컴포넌트를 개발하고 있습니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 다루고 있습니다.',
     projects: [],
   },
   {
@@ -160,9 +160,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     experience:
-      '서버를 공격으로부터 보호하기 위해 next api를 프록시로, next auth 세션을 인증방법으로 사용해 민감정보의 브라우저 노출을 피했습니다. SEO 등 최적화를 위해 서버사이드 렌더링과 정적 사이트 생성, 앱 라우터의 레이아웃을 활용했습니다.',
+      'Next API를 프록시로, NextAuth 세션을 인증 수단으로 두어 민감 정보가 브라우저에 노출되지 않도록 했습니다. SEO와 성능을 위해 서버사이드 렌더링, 정적 사이트 생성, 앱 라우터 레이아웃을 사용했습니다.',
     description:
-      '서버를 공격으로부터 보호하기 위해 next api를 프록시로, next auth 세션을 인증방법으로 사용해 민감정보의 브라우저 노출을 피했습니다. SEO 등 최적화를 위해 서버사이드 렌더링과 정적 사이트 생성, 앱 라우터의 레이아웃을 활용했습니다.',
+      'Next API를 프록시로, NextAuth 세션을 인증 수단으로 두어 민감 정보가 브라우저에 노출되지 않도록 했습니다. SEO와 성능을 위해 서버사이드 렌더링, 정적 사이트 생성, 앱 라우터 레이아웃을 사용했습니다.',
     projects: [],
   },
   {
@@ -170,9 +170,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
     experience:
-      '마크업 태그를 이용한 LCP 단축, 스크립트 로드 조절, 무한 스크롤 요소 선택 등으로 활용했습니다.',
+      '시맨틱 마크업으로 LCP를 줄이고, 스크립트 로드 시점을 조절하거나 무한 스크롤의 기준 요소를 잡는 데 사용했습니다.',
     description:
-      '마크업 태그를 이용한 LCP 단축, 스크립트 로드 조절, 무한 스크롤 요소 선택 등으로 활용했습니다.',
+      '시맨틱 마크업으로 LCP를 줄이고, 스크립트 로드 시점을 조절하거나 무한 스크롤의 기준 요소를 잡는 데 사용했습니다.',
     projects: [],
   },
   {
@@ -180,9 +180,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
     experience:
-      '체인시프트, 도스트11에서 실무로 사용 중입니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선 등에 활용했습니다.',
+      '체인시프트와 도스트11에서 실무로 쓰고 있습니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선에 사용했습니다.',
     description:
-      '체인시프트, 도스트11에서 실무로 사용 중입니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선 등에 활용했습니다.',
+      '체인시프트와 도스트11에서 실무로 쓰고 있습니다. 도프켓 랜딩 페이지 리팩토링, 프로필 리디자인, 다크모드 시인성 개선에 사용했습니다.',
     projects: [],
   },
   {
@@ -198,9 +198,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
     experience:
-      'CSS 가독성을 높여 반응형 웹뷰와 디자인 시스템을 효율적으로 구현하는 데 사용했습니다.',
+      'CSS 가독성을 높여 반응형 웹뷰와 디자인 시스템을 구현하는 데 사용했습니다.',
     description:
-      'CSS 가독성을 높여 반응형 웹뷰와 디자인 시스템을 효율적으로 구현하는 데 사용했습니다.',
+      'CSS 가독성을 높여 반응형 웹뷰와 디자인 시스템을 구현하는 데 사용했습니다.',
     projects: [],
   },
   {
@@ -208,9 +208,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
     experience:
-      '기본 CSS 문법을 전역 관리 없이 사용할 수 있어 속도를 위해 선택했습니다.',
+      '전역 관리 없이 기본 CSS 문법을 그대로 쓸 수 있어 빠른 개발이 필요할 때 선택했습니다.',
     description:
-      '기본 CSS 문법을 전역 관리 없이 사용할 수 있어 속도를 위해 선택했습니다.',
+      '전역 관리 없이 기본 CSS 문법을 그대로 쓸 수 있어 빠른 개발이 필요할 때 선택했습니다.',
     projects: [],
   },
   {
@@ -218,9 +218,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '상태 API',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/reactquery.svg',
     experience:
-      'API 리퀘스트의 에러 처리를 공통화하고, isLoading 등으로 상태를 관리했습니다.',
+      'API 요청의 에러 처리를 공통화하고, isLoading 같은 상태로 로딩을 관리했습니다.',
     description:
-      'API 리퀘스트의 에러 처리를 공통화하고, isLoading 등으로 상태를 관리했습니다.',
+      'API 요청의 에러 처리를 공통화하고, isLoading 같은 상태로 로딩을 관리했습니다.',
     projects: [],
   },
   {
@@ -228,9 +228,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '상태 API',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     experience:
-      '<label>의 id 값을 자동 생성하기 위해 공통 Form 컴포넌트에 포함되었습니다.',
+      '공통 Form 컴포넌트에서 <label>의 id 값을 자동으로 생성하는 데 사용했습니다.',
     description:
-      '<label>의 id 값을 자동 생성하기 위해 공통 Form 컴포넌트에 포함되었습니다.',
+      '공통 Form 컴포넌트에서 <label>의 id 값을 자동으로 생성하는 데 사용했습니다.',
     projects: [],
   },
   {
@@ -246,9 +246,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '상태 API',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/reacthookform.svg',
     experience:
-      '조립식 Form 컴포넌트의 타입 정의, 상태관리, 유효성 검사를 위해 도입했습니다.',
+      '조립식 Form 컴포넌트의 타입 정의, 상태 관리, 유효성 검사를 위해 도입했습니다.',
     description:
-      '조립식 Form 컴포넌트의 타입 정의, 상태관리, 유효성 검사를 위해 도입했습니다.',
+      '조립식 Form 컴포넌트의 타입 정의, 상태 관리, 유효성 검사를 위해 도입했습니다.',
     projects: [],
   },
   {
@@ -256,9 +256,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '상태 API',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/axios.svg',
     experience:
-      'API 호출에 cookie, token을 추가하기 위해 intercepter를 사용했습니다. 리스폰스의 JSON parsing을 생략하기 위해 사용했습니다.',
+      'API 호출에 쿠키와 토큰을 붙이기 위해 인터셉터를 사용했고, 응답의 JSON 파싱을 따로 하지 않아도 되는 점도 활용했습니다.',
     description:
-      'API 호출에 cookie, token을 추가하기 위해 intercepter를 사용했습니다. 리스폰스의 JSON parsing을 생략하기 위해 사용했습니다.',
+      'API 호출에 쿠키와 토큰을 붙이기 위해 인터셉터를 사용했고, 응답의 JSON 파싱을 따로 하지 않아도 되는 점도 활용했습니다.',
     projects: [],
   },
   {
@@ -266,9 +266,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     experience:
-      '리니어 히스토리 컨벤션을 만들고 Git Hook으로 강제했습니다. 도스트11에서 Overcommit 기반 Git Hook과 PR 기반 워크플로를 사용하고 있습니다.',
+      '리니어 히스토리 컨벤션을 정하고 Git Hook으로 지키도록 했습니다. 도스트11에서는 Overcommit 기반 Git Hook과 PR 중심 워크플로를 쓰고 있습니다.',
     description:
-      '리니어 히스토리 컨벤션을 만들고 Git Hook으로 강제했습니다. 도스트11에서 Overcommit 기반 Git Hook과 PR 기반 워크플로를 사용하고 있습니다.',
+      '리니어 히스토리 컨벤션을 정하고 Git Hook으로 지키도록 했습니다. 도스트11에서는 Overcommit 기반 Git Hook과 PR 중심 워크플로를 쓰고 있습니다.',
     projects: [],
   },
   {
@@ -286,9 +286,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg',
     experience:
-      '코드 품질 관리와 코드 스타일 통일을 위해 설정했습니다. 관리 용이성을 위해 설정 파일을 config 디렉토리에 보관하고 ignore 파일을 따로 만들지 않았습니다.',
+      '코드 품질과 스타일을 통일하기 위해 설정했습니다. 관리하기 쉽도록 설정 파일은 config 디렉터리에 모으고 ignore 파일은 따로 두지 않았습니다.',
     description:
-      '코드 품질 관리와 코드 스타일 통일을 위해 설정했습니다. 관리 용이성을 위해 설정 파일을 config 디렉토리에 보관하고 ignore 파일을 따로 만들지 않았습니다.',
+      '코드 품질과 스타일을 통일하기 위해 설정했습니다. 관리하기 쉽도록 설정 파일은 config 디렉터리에 모으고 ignore 파일은 따로 두지 않았습니다.',
     projects: [],
   },
   {
@@ -304,9 +304,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
     experience:
-      'Adobe XD와 Figma로 디지털 프로토타이핑을 할 수 있습니다. 디자인 시스템을 정리하기 위해 사용했습니다.',
+      'Adobe XD와 Figma로 프로토타이핑을 할 수 있습니다. 디자인 시스템을 정리하는 데 사용했습니다.',
     description:
-      'Adobe XD와 Figma로 디지털 프로토타이핑을 할 수 있습니다. 디자인 시스템을 정리하기 위해 사용했습니다.',
+      'Adobe XD와 Figma로 프로토타이핑을 할 수 있습니다. 디자인 시스템을 정리하는 데 사용했습니다.',
     projects: [],
   },
   {
@@ -332,9 +332,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: '/aws-logo.svg',
     experience:
-      '저렴한 유지비용을 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에 Certificate Manager, CloudFront를 사용했습니다.',
+      '유지 비용을 낮추기 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에는 Certificate Manager와 CloudFront를 사용했습니다.',
     description:
-      '저렴한 유지비용을 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에 Certificate Manager, CloudFront를 사용했습니다.',
+      '유지 비용을 낮추기 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에는 Certificate Manager와 CloudFront를 사용했습니다.',
     projects: [],
   },
   {
@@ -360,9 +360,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
     experience:
-      '개발용 DB와 데이터가 없는 상황에서 대시보드를 만들기 위해 DB를 로컬 구동했습니다.',
+      '개발용 DB도 데이터도 없는 상황에서 대시보드를 만들기 위해 DB를 로컬에 띄워 사용했습니다.',
     description:
-      '개발용 DB와 데이터가 없는 상황에서 대시보드를 만들기 위해 DB를 로컬 구동했습니다.',
+      '개발용 DB도 데이터도 없는 상황에서 대시보드를 만들기 위해 DB를 로컬에 띄워 사용했습니다.',
     projects: [],
   },
   {
@@ -388,9 +388,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg',
     experience:
-      'npm 패키지를 직접 만들어 배포한 경험이 있습니다. 의존성 관리와 패키지 버전 관리에 활용하고 있습니다.',
+      'npm 패키지를 직접 만들어 배포해 봤습니다. 의존성과 패키지 버전을 관리하는 데 쓰고 있습니다.',
     description:
-      'npm 패키지를 직접 만들어 배포한 경험이 있습니다. 의존성 관리와 패키지 버전 관리에 활용하고 있습니다.',
+      'npm 패키지를 직접 만들어 배포해 봤습니다. 의존성과 패키지 버전을 관리하는 데 쓰고 있습니다.',
     projects: [],
   },
   {
@@ -398,9 +398,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
     experience:
-      '실무에서 개발 리소스의 효율적인 배치를 위해 Agile, Sprint, Kanban 개념에 따라 5개 서비스의 Jira 프로젝트를 설정하고 사용했습니다. Asana에 Slack 인터그레이션을 적용해 담당 개발자 멘션을 자동화했습니다.',
+      '실무에서 개발 리소스를 적절히 배분하기 위해 Agile, Sprint, Kanban 개념에 맞춰 5개 서비스의 Jira 프로젝트를 설정하고 운영했습니다.',
     description:
-      '실무에서 개발 리소스의 효율적인 배치를 위해 Agile, Sprint, Kanban 개념에 따라 5개 서비스의 Jira 프로젝트를 설정하고 사용했습니다. Asana에 Slack 인터그레이션을 적용해 담당 개발자 멘션을 자동화했습니다.',
+      '실무에서 개발 리소스를 적절히 배분하기 위해 Agile, Sprint, Kanban 개념에 맞춰 5개 서비스의 Jira 프로젝트를 설정하고 운영했습니다.',
     projects: [],
   },
   {
@@ -408,9 +408,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/asana.svg',
     experience:
-      'Asana에 Slack 인터그레이션을 적용해 담당 개발자 멘션을 자동화했습니다.',
+      'Asana에 Slack 연동을 붙여 담당 개발자 멘션을 자동화했습니다.',
     description:
-      'Asana에 Slack 인터그레이션을 적용해 담당 개발자 멘션을 자동화했습니다.',
+      'Asana에 Slack 연동을 붙여 담당 개발자 멘션을 자동화했습니다.',
     projects: [],
   },
   {
@@ -434,9 +434,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swagger.svg',
     experience:
-      'API를 전달 받고 협업하는 데에 사용했습니다. 인증이 필요한 요청을 통해 리스폰스를 실제로 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 고민하였습니다.',
+      'API 명세를 주고받으며 협업하는 데 사용했습니다. 인증이 필요한 요청으로 응답을 직접 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 설계했습니다.',
     description:
-      'API를 전달 받고 협업하는 데에 사용했습니다. 인증이 필요한 요청을 통해 리스폰스를 실제로 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 고민하였습니다.',
+      'API 명세를 주고받으며 협업하는 데 사용했습니다. 인증이 필요한 요청으로 응답을 직접 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 설계했습니다.',
     projects: [],
   },
   {
@@ -454,9 +454,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     experience:
-      'AWS S3에서 Production 데이터를 복사 붙여넣기 하여 버그를 파악할 때 사용했습니다. 반복 UI 테스트 자동화를 위해 Selenium, Pyautogui를 학습했습니다.',
+      'AWS S3의 프로덕션 데이터를 가져와 버그를 재현하고 파악할 때 사용했습니다. 반복적인 UI 테스트를 자동화하기 위해 Selenium과 Pyautogui를 학습했습니다.',
     description:
-      'AWS S3에서 Production 데이터를 복사 붙여넣기 하여 버그를 파악할 때 사용했습니다. 반복 UI 테스트 자동화를 위해 Selenium, Pyautogui를 학습했습니다.',
+      'AWS S3의 프로덕션 데이터를 가져와 버그를 재현하고 파악할 때 사용했습니다. 반복적인 UI 테스트를 자동화하기 위해 Selenium과 Pyautogui를 학습했습니다.',
     projects: [],
   },
   {
@@ -472,9 +472,9 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kakao.svg',
     experience:
-      'OAuth 2.0, 공유하기에 사용했습니다. 따로 생성된 카카오 앱 3개를 단일화했습니다.',
+      'OAuth 2.0 로그인과 공유하기 기능에 사용했습니다. 따로 만들어져 있던 카카오 앱 3개를 하나로 통합했습니다.',
     description:
-      'OAuth 2.0, 공유하기에 사용했습니다. 따로 생성된 카카오 앱 3개를 단일화했습니다.',
+      'OAuth 2.0 로그인과 공유하기 기능에 사용했습니다. 따로 만들어져 있던 카카오 앱 3개를 하나로 통합했습니다.',
     projects: [],
   },
 ]

@@ -2,7 +2,9 @@
 
 import PortfolioFAQSection from '@/components/sections/FAQSection'
 import PortfolioHeroSection from '@/components/sections/HeroSection'
+import MaterialsSection from '@/components/sections/MaterialsSection'
 import PersonalSection from '@/components/sections/PersonalSection'
+import ProjectsSection from '@/components/sections/ProjectsSection'
 import TechStackSection from '@/components/sections/TechStackSection'
 // import UXDesignSection from '@/components/sections/UXDesignSection'
 import StepperDialog from '@/components/ui/containers/Modal/StepperDialog'
@@ -52,10 +54,11 @@ export default function HomePage() {
         <div className="w-full bg-gradient-to-b from-background to-secondary/5">
           <PortfolioHeroSection />
           {/*<DemoShowcaseSection />*/}
-          {/*<ProjectsSection />*/}
+          <ProjectsSection />
           <PersonalSection />
           <TechStackSection />
           {/*<UXDesignSection />*/}
+          <MaterialsSection />
           <PortfolioFAQSection />
           {/*<NewsletterSection />*/}
         </div>
