@@ -31,8 +31,8 @@ export default function WaitlistEmbed({ caption }: { caption: string }) {
 
   return (
     <div className="mx-auto mt-12 max-w-4xl">
-      <p className="mb-3 text-center text-sm text-[#6B4750]/60">{caption}</p>
-      <div className="overflow-hidden rounded-xl border border-[#F3D5DD] bg-[#FFFBFB] shadow-sm">
+      <p className="mb-3 text-center text-sm text-[#7C5566]/60">{caption}</p>
+      <div className="overflow-hidden rounded-xl border border-[#F6DCE7] bg-[#FFFCFD] shadow-sm">
         <iframe
           src={WAITLIST_EMBED_URL}
           title="tappytype 사전 신청 폼"
