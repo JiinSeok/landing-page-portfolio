@@ -6,8 +6,13 @@ import WaitlistEmbed from '@/components/TappytypePage/WaitlistEmbed'
  * TappyType 사전 신청 페이지의 공통 본문. locale('ko' | 'en')에 따라 카피만 바뀐다.
  * - 모든 기기: 공개 폼을 새 탭에서 여는 CTA (인스타 인앱 브라우저 포함 안정적)
  * - 데스크톱: 인라인 Notion 임베드(WaitlistEmbed, 모바일/인앱에서는 렌더 안 함)
- * 브랜딩은 typetap 브랜드 가이드의 연한 팔레트(Cream / Warm White / Cocoa Brown,
- * 강조 Lavender, CTA만 Coral)를 따른다.
+ *
+ * 컬러: Pinterest coquette 무드(블러시 핑크 / 크림 / 체리 로즈 / 모브 텍스트).
+ * 팔레트 토큰:
+ *   bg     #FDE9EE→#FFF7F4 (블러시→크림)
+ *   text   #6B4750 (모브)
+ *   accent #C75C72 (체리 로즈)  cta #E27396 (코케트 로즈)
+ *   card   #FFFBFB   border #F3D5DD (페일 핑크)
  */
 
 export type WaitlistLocale = 'ko' | 'en'
@@ -67,13 +72,13 @@ export default function WaitlistContent({
   const t = COPY[locale]
 
   return (
-    <main className="min-h-screen w-full bg-gradient-to-b from-[#FFF3E8] to-[#FFFDF9] text-[#7B5A4A]">
+    <main className="min-h-screen w-full bg-gradient-to-b from-[#FDE9EE] to-[#FFF7F4] text-[#6B4750]">
       <div className="w-full px-4 py-12 sm:px-6 sm:py-16">
         {/* 언어 토글 */}
         <div className="mx-auto mb-6 flex max-w-2xl justify-end">
           <a
             href={t.toggleHref}
-            className="rounded-full border border-[#E9E3DE] px-3 py-1 text-xs font-medium text-[#7B5A4A]/70 transition-colors hover:bg-[#E9E3DE]/40"
+            className="rounded-full border border-[#F3D5DD] px-3 py-1 text-xs font-medium text-[#6B4750]/70 transition-colors hover:bg-[#F3D5DD]/50"
           >
             {t.toggleLabel}
           </a>
@@ -81,29 +86,29 @@ export default function WaitlistContent({
 
         {/* 헤더 / 카피 */}
         <header className="mx-auto max-w-2xl text-center">
-          <span className="inline-block rounded-full bg-[#A98AF9]/12 px-3 py-1 text-xs font-medium tracking-wide text-[#A98AF9]">
+          <span className="inline-block rounded-full bg-[#C75C72]/12 px-3 py-1 text-xs font-medium tracking-wide text-[#C75C72]">
             {t.eyebrow}
           </span>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-[#7B5A4A]">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-[#6B4750]">
             {t.title}
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#7B5A4A]/80">
+          <p className="mt-4 text-base leading-relaxed text-[#6B4750]/80">
             {t.lead[0]}
             <br className="hidden sm:block" />
             {t.lead[1]}
           </p>
-          <p className="mt-3 text-sm text-[#7B5A4A]/60">{t.sub}</p>
+          <p className="mt-3 text-sm text-[#6B4750]/60">{t.sub}</p>
 
           {/* CTA: 모든 기기에서 동작 (새 탭에서 공개 폼 열기) */}
           <a
             href={WAITLIST_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center justify-center rounded-xl bg-[#FF7B73] px-6 py-3 text-base font-semibold text-white shadow-sm transition-opacity duration-200 hover:opacity-90"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-[#E27396] px-6 py-3 text-base font-semibold text-white shadow-sm transition-opacity duration-200 hover:opacity-90"
           >
             {t.cta}
           </a>
-          <p className="mt-3 text-xs text-[#7B5A4A]/50">{t.hint}</p>
+          <p className="mt-3 text-xs text-[#6B4750]/50">{t.hint}</p>
         </header>
 
         {/* 데스크톱 전용 인라인 임베드 (모바일·인앱 브라우저에서는 렌더하지 않음) */}
