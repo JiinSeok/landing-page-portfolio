@@ -255,12 +255,20 @@ export function ProjectEntry({ item }: { item: GalleryItem }) {
               <code>{item.codeSnippet}</code>
             </pre>
           ) : (
-            <Image
-              src={item.imageUrl}
-              alt={item.alt ?? item.title}
-              fill
-              className="object-cover"
-            />
+            <a
+              href={item.imageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${item.alt ?? item.title} 크게 보기`}
+              className="absolute inset-0 cursor-zoom-in"
+            >
+              <Image
+                src={item.imageUrl}
+                alt={item.alt ?? item.title}
+                fill
+                className="object-cover"
+              />
+            </a>
           )}
         </figure>
       )}
