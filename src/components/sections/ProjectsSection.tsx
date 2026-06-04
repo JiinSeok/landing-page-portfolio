@@ -102,7 +102,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     year: 2025,
     tags: ['과제'],
     description:
-      '2016년부터 운영된 JSP 레거시와 공존하는 React 화면을 점진적으로 통합한 과제입니다. JSP의 전역 CSS와 Tailwind가 충돌하던 문제를 tw- prefix 전략과 컨벤션 문서로 정리했고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
+      '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. JSP 전역 CSS와 충돌하지 않도록 tw- prefix 전략과 컨벤션 문서를 만들었고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
     url: 'https://github.com/JiinSeok/bodycodi-frontend',
     imageUrl: '/images/projects/bodycodi.png',
     alt: 'bodycodi 과제 소개 카드 (JSP 레거시와 React 통합)',
