@@ -161,7 +161,10 @@ export default function PersonalSection() {
                 <div key={item.project.title} className="flex gap-4 md:gap-6">
                   <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
+                    <div
+                      className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
+                    />
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0" />
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div

@@ -85,7 +85,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     period: '2025.05 ~ 현재',
     tags: ['프로젝트'],
     description:
-      '지금 보고 계신 이 사이트입니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일해 유지보수하기 쉽게 정리했습니다.',
+      '지금 보고 계신 이 사이트입니다. 경력·프로젝트·교육을 생성형 AI 연표와 나란히 보여주는 타임라인형 디자인이고, 마우스를 따라다니는 포차코 커서 컴패니언이 숨어 있습니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일했습니다.',
     url: 'https://github.com/JiinSeok/landing-page-portfolio',
     linkLabel: '코드 저장소 보기',
     imageUrl: '/images/projects/portfolio.png',
