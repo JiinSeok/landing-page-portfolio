@@ -75,19 +75,15 @@ export default function PersonalSection() {
   ].sort((a, b) => b.sort.localeCompare(a.sort))
 
   return (
-    <section id="career" className="w-full py-16 md:py-20 bg-secondary/10">
+    <section
+      id="career"
+      aria-label="타임라인"
+      className="w-full py-16 md:py-20 bg-secondary/10"
+    >
       <div className="px-6 md:px-8 lg:px-12">
-        <header className="max-w-3xl mx-auto text-center mb-12">
-          <h2
-            className={styles.combineStyles([styles.text.heading(2), 'mb-4'])}
-            id="career-title"
-          >
-            {t('pages.career.section-title') as string}
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            타임라인의 회색 마커는 같은 시기 생성형 AI의 주요 출시 시점입니다
-          </p>
-        </header>
+        <p className="max-w-3xl mx-auto text-center text-sm text-muted-foreground mb-12">
+          타임라인의 회색 마커는 같은 시기 생성형 AI의 주요 출시 시점입니다
+        </p>
 
         <div className="max-w-7xl mx-auto pl-4 md:pl-0">
           {timeline.map((item, index) => {
