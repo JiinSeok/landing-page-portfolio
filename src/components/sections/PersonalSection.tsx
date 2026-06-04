@@ -9,13 +9,18 @@ import {
 } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
+type ContributionGroup = {
+  title?: string
+  items: string[]
+}
+
 type CareerEntry = {
   company: string
   description?: string
   url?: string
   period: string
   role: string
-  contributions: string[]
+  contributions: (string | ContributionGroup)[]
 }
 
 type CareerExtra = {
@@ -249,16 +254,31 @@ export default function PersonalSection() {
                     </span>
                   </p>
 
-                  <ul className="space-y-2">
-                    {career.contributions.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                        <span className={styles.text.body('small')}>
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-4">
+                    {career.contributions.map((entry, i) => {
+                      const group: ContributionGroup =
+                        typeof entry === 'string' ? { items: [entry] } : entry
+                      return (
+                        <div key={group.title ?? i}>
+                          {group.title && (
+                            <h4 className="mb-1.5 text-sm font-semibold">
+                              {group.title}
+                            </h4>
+                          )}
+                          <ul className="space-y-2">
+                            {group.items.map((item) => (
+                              <li key={item} className="flex items-start gap-2">
+                                <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                <span className={styles.text.body('small')}>
+                                  {item}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             )
