@@ -17,7 +17,7 @@ export interface GalleryItem {
   year?: number
   tags: string[]
   description: string
-  url: string
+  url?: string
   linkLabel?: string
   imageUrl?: string
   alt?: string
@@ -100,12 +100,11 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
   {
     title: 'bodycodi',
     year: 2025,
-    tags: ['과제'],
+    tags: ['채용 과제'],
     description:
-      '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. JSP 전역 CSS와 충돌하지 않도록 tw- prefix 전략과 컨벤션 문서를 만들었고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
-    url: 'https://github.com/JiinSeok/bodycodi-frontend',
+      '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. JSP 전역 CSS와 충돌하지 않도록 tw- prefix 전략과 컨벤션 문서를 만들었고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다. 과제 특성상 코드는 비공개이며 요청 시 공유 가능합니다.',
     imageUrl: '/images/projects/bodycodi.png',
-    alt: 'bodycodi 과제 소개 카드 (JSP 레거시와 React 통합)',
+    alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
 // tailwind.config.js
 export default {
@@ -234,11 +233,13 @@ function GalleryCard({ item }: { item: GalleryItem }) {
                 {showCode ? t('view-image') : t('view-code')}
               </Button>
             )}
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <Button variant="default" size="sm">
-                {item.linkLabel ?? t('view-project')}
-              </Button>
-            </a>
+            {item.url && (
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <Button variant="default" size="sm">
+                  {item.linkLabel ?? t('view-project')}
+                </Button>
+              </a>
+            )}
             {item.notionUrl && (
               <a
                 href={item.notionUrl}
