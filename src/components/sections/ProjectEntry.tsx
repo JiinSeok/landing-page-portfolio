@@ -63,7 +63,7 @@ export function LoginForm() {
 export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
   {
-    title: 'tappytype',
+    title: 'TappyType',
     period: '2026.05 ~ 현재',
     tags: ['프로젝트', 'iOS'],
     description:
@@ -71,7 +71,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
     imageUrl: '/images/projects/tappytype-card.png',
-    alt: 'tappytype iOS 앱 소개 카드',
+    alt: 'TappyType iOS 앱 소개 카드',
     codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
 protocol HandwritingGenerator {
     func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]

@@ -85,11 +85,26 @@ export default function PersonalSection() {
       className="w-full py-16 md:py-20 bg-secondary/10"
     >
       <div className="px-6 md:px-8 lg:px-12">
-        <p className="max-w-3xl mx-auto text-center text-sm text-muted-foreground mb-12">
-          타임라인의 회색 마커는 같은 시기 생성형 AI의 주요 출시 시점입니다
-        </p>
-
         <div className="max-w-7xl mx-auto pl-4 md:pl-0">
+          <div className="flex gap-4 md:gap-6 mb-8 md:mb-10">
+            <div className="hidden md:flex md:w-56 lg:w-72 shrink-0 justify-end items-end">
+              <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
+                <span className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background" />
+                생성형 AI 주요 출시
+              </span>
+            </div>
+            <div className="w-6 shrink-0" />
+            <div className="flex-1 flex flex-col gap-1.5">
+              <span className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wide">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+                경력 · 프로젝트 · 교육
+              </span>
+              <span className="flex md:hidden items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
+                <span className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background" />
+                생성형 AI 주요 출시
+              </span>
+            </div>
+          </div>
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
 
