@@ -25,7 +25,7 @@ export interface GalleryItem {
   notionUrl?: string
 }
 
-const galleryItems: GalleryItem[] = [
+export const galleryItems: GalleryItem[] = [
   {
     title: 'formkit-react',
     period: '2025.08',

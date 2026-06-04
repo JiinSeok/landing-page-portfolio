@@ -2,6 +2,7 @@
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
+import { galleryItems } from '@/components/sections/ProjectsSection'
 import Image from 'next/image'
 
 type CareerEntry = {
@@ -14,13 +15,16 @@ type CareerEntry = {
 }
 
 type CareerExtra = {
-  title: string
-  groups: { label: string; items: string[] }[]
+  tag: string
+  label: string
+  period: string
+  sort: string
 }
 
 type TimelineItem =
   | { kind: 'career'; sort: string; career: CareerEntry }
   | { kind: 'milestone'; sort: string; label: string }
+  | { kind: 'extra'; sort: string; extra: CareerExtra }
 
 const COMPANY_LOGOS: Record<string, string> = {
   도스트11: '/images/logos/dost11.png',
@@ -31,7 +35,7 @@ const COMPANY_LOGOS: Record<string, string> = {
 }
 
 const LLM_MILESTONES = [
-  { sort: '2025.05', label: 'Claude 4 · Claude Code 정식 출시' },
+  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시' },
   { sort: '2025.02', label: 'Claude Code 리서치 프리뷰' },
   { sort: '2024.06', label: 'Claude 3.5 Sonnet 출시' },
   { sort: '2023.03', label: 'GPT-4 출시' },
@@ -42,7 +46,7 @@ export default function PersonalSection() {
   const t = useTranslations()
 
   const careers = t('pages.career.careers') as unknown as CareerEntry[]
-  const extra = t('pages.career.more') as unknown as CareerExtra
+  const extras = t('pages.career.extras') as unknown as CareerExtra[]
 
   const timeline: TimelineItem[] = [
     ...careers.map((career) => ({
@@ -50,6 +54,23 @@ export default function PersonalSection() {
       sort: career.period.slice(0, 7),
       career,
     })),
+    ...extras.map((extra) => ({
+      kind: 'extra' as const,
+      sort: extra.sort,
+      extra,
+    })),
+    ...galleryItems
+      .filter((g) => g.period)
+      .map((g) => ({
+        kind: 'extra' as const,
+        sort: (g.period as string).slice(0, 7),
+        extra: {
+          tag: g.tags[0],
+          label: g.title,
+          period: g.period as string,
+          sort: (g.period as string).slice(0, 7),
+        },
+      })),
     ...LLM_MILESTONES.map((m) => ({ kind: 'milestone' as const, ...m })),
   ].sort((a, b) => b.sort.localeCompare(a.sort))
 
@@ -75,8 +96,8 @@ export default function PersonalSection() {
             if (item.kind === 'milestone') {
               return (
                 <div key={`m-${item.sort}`} className="flex gap-4 md:gap-6">
-                  <div className="hidden md:flex md:w-48 shrink-0 justify-end">
-                    <span className="text-xs text-muted-foreground text-right leading-snug">
+                  <div className="hidden md:flex md:w-56 lg:w-72 shrink-0 justify-end">
+                    <span className="text-xs text-muted-foreground text-right leading-snug lg:whitespace-nowrap">
                       {item.sort} · {item.label}
                     </span>
                   </div>
@@ -96,12 +117,36 @@ export default function PersonalSection() {
               )
             }
 
+            if (item.kind === 'extra') {
+              const { extra } = item
+              return (
+                <div key={extra.label} className="flex gap-4 md:gap-6">
+                  <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
+                  <div className="flex flex-col items-center shrink-0 w-6">
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
+                    {!isLast && <div className="flex-1 w-px bg-border" />}
+                  </div>
+                  <div
+                    className={`flex-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 ${isLast ? '' : 'pb-8 md:pb-10'}`}
+                  >
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                      {extra.tag}
+                    </span>
+                    <span className="font-medium">{extra.label}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {extra.period}
+                    </span>
+                  </div>
+                </div>
+              )
+            }
+
             const { career } = item
             const logo = COMPANY_LOGOS[career.company]
 
             return (
               <div key={career.company} className="flex gap-4 md:gap-6">
-                <div className="hidden md:block md:w-48 shrink-0" />
+                <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
                   <div className="w-3 h-3 rounded-full bg-primary shrink-0 mt-1.5" />
                   {!isLast && <div className="flex-1 w-px bg-border" />}
@@ -166,41 +211,6 @@ export default function PersonalSection() {
               </div>
             )
           })}
-        </div>
-
-        <div className="max-w-4xl mx-auto mt-20 pt-12 border-t border-border">
-          <h3
-            className={styles.combineStyles([
-              styles.text.heading(3),
-              'text-center mb-10',
-            ])}
-          >
-            {extra.title}
-          </h3>
-          <dl>
-            {extra.groups.map((group, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row gap-3 md:gap-10 py-6 border-b border-border last:border-0"
-              >
-                <dt className="md:w-40 shrink-0 text-lg font-semibold text-primary">
-                  {group.label}
-                </dt>
-                <dd className="flex-1">
-                  <ul className="space-y-2">
-                    {group.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2.5" />
-                        <span className={styles.text.body('default')}>
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>

@@ -5,10 +5,6 @@
         "hero": {
           "cta-resume": "이력서 보기"
         },
-        "cta": {
-          "title": "함께 일해요",
-          "description": "프로젝트 관련 문의가 있으시면 편하게 연락 주세요."
-        },
         "faq": {
           "title": "자주 묻는 질문",
           "subtitle": "궁금하실 만한 점들을 정리했습니다.",
@@ -103,25 +99,32 @@
           ]
         }
       ],
-      "more": {
-        "title": "교육 · 자격",
-        "groups": [
-          {
-            "label": "교육",
-            "items": [
-              "연세대학교 · 문헌정보학 학사 (2015 ~ 2021)",
-              "코드잇 스프린트 프론트엔드 트랙 7기"
-            ]
-          },
-          {
-            "label": "자격",
-            "items": [
-              "ISTQB Certified Tester Foundation Level (CTFL)",
-              "소프트웨어테스트전문가(CSTS) Foundation Level"
-            ]
-          }
-        ]
-      }
+      "extras": [
+        {
+          "tag": "교육",
+          "label": "코드잇 스프린트 프론트엔드 트랙 7기",
+          "period": "2024.04 ~ 2024.10",
+          "sort": "2024.04"
+        },
+        {
+          "tag": "자격",
+          "label": "ISTQB CTFL · 소프트웨어테스트전문가(CSTS) FL 취득",
+          "period": "2023.08 ~ 09",
+          "sort": "2023.08"
+        },
+        {
+          "tag": "자격",
+          "label": "KBS한국어능력시험 1급 취득",
+          "period": "2021",
+          "sort": "2021.07"
+        },
+        {
+          "tag": "교육",
+          "label": "연세대학교 · 문헌정보학 학사",
+          "period": "2015 ~ 2021",
+          "sort": "2015.03"
+        }
+      ]
     },
     "techStack": {
       "meta": {
