@@ -2,7 +2,11 @@
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
-import { galleryItems } from '@/components/sections/ProjectsSection'
+import {
+  galleryItems,
+  GalleryItem,
+  ProjectEntry,
+} from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
 type CareerEntry = {
@@ -25,6 +29,7 @@ type TimelineItem =
   | { kind: 'career'; sort: string; career: CareerEntry }
   | { kind: 'milestone'; sort: string; label: string }
   | { kind: 'extra'; sort: string; extra: CareerExtra }
+  | { kind: 'project'; sort: string; project: GalleryItem }
 
 const COMPANY_LOGOS: Record<string, string> = {
   도스트11: '/images/logos/dost11.png',
@@ -35,11 +40,15 @@ const COMPANY_LOGOS: Record<string, string> = {
 }
 
 const LLM_MILESTONES = [
+  { sort: '2026.05', label: '3사 플래그십 동시 교체' },
+  { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시' },
+  { sort: '2025.08', label: 'GPT-5·나노 바나나 출시' },
   { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시' },
-  { sort: '2025.02', label: 'Claude Code 리서치 프리뷰' },
-  { sort: '2024.06', label: 'Claude 3.5 Sonnet 출시' },
-  { sort: '2023.03', label: 'GPT-4 출시' },
-  { sort: '2022.11', label: 'ChatGPT 출시' },
+  { sort: '2025.02', label: 'Claude Code 공개·에이전틱 코딩' },
+  { sort: '2024.06', label: 'Claude 3.5·AI 코딩 실용화' },
+  { sort: '2023.03', label: 'GPT-4 출시·Cursor 등장' },
+  { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화' },
+  { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
 ]
 
 export default function PersonalSection() {
@@ -62,14 +71,9 @@ export default function PersonalSection() {
     ...galleryItems
       .filter((g) => g.period)
       .map((g) => ({
-        kind: 'extra' as const,
+        kind: 'project' as const,
         sort: (g.period as string).slice(0, 7),
-        extra: {
-          tag: g.tags[0],
-          label: g.title,
-          period: g.period as string,
-          sort: (g.period as string).slice(0, 7),
-        },
+        project: g,
       })),
     ...LLM_MILESTONES.map((m) => ({ kind: 'milestone' as const, ...m })),
   ].sort((a, b) => b.sort.localeCompare(a.sort))
@@ -132,6 +136,23 @@ export default function PersonalSection() {
                     <span className="text-sm text-muted-foreground">
                       {extra.period}
                     </span>
+                  </div>
+                </div>
+              )
+            }
+
+            if (item.kind === 'project') {
+              return (
+                <div key={item.project.title} className="flex gap-4 md:gap-6">
+                  <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
+                  <div className="flex flex-col items-center shrink-0 w-6">
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
+                    {!isLast && <div className="flex-1 w-px bg-border" />}
+                  </div>
+                  <div
+                    className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
+                  >
+                    <ProjectEntry item={item.project} />
                   </div>
                 </div>
               )

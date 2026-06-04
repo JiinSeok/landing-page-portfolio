@@ -5,12 +5,6 @@ import { useState } from 'react'
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import { Button } from '@/components/ui/Button/Button'
-import { ContentCard } from '@/components/ui/ContentCard'
-import { GridLayout } from '@/components/ui/containers/ContentLayout'
-import {
-  SectionContainer,
-  SectionHeader,
-} from '@/components/ui/containers/SectionContainer'
 
 export interface GalleryItem {
   title: string
@@ -152,109 +146,81 @@ new QueryClient({
   },
 ]
 
-export default function ProjectsSection() {
-  const t = useTranslations('pages.projects')
-
-  return (
-    <SectionContainer id="projects" padding="py-20 px-6 md:px-8 lg:px-12">
-      <SectionHeader
-        title={t('meta.title')}
-        subtitle={t('meta.subtitle')}
-        titleClassName="text-[clamp(2rem,4vw,3rem)]"
-        subtitleClassName="text-[clamp(1.125rem,2vw,1.375rem)] max-w-2xl"
-      />
-
-      <GridLayout cols={{ default: 1, md: 2, lg: 3 }} gap="gap-8">
-        {galleryItems.map((item) => (
-          <GalleryCard key={item.title} item={item} />
-        ))}
-      </GridLayout>
-    </SectionContainer>
-  )
-}
-
-function GalleryCard({ item }: { item: GalleryItem }) {
+export function ProjectEntry({ item }: { item: GalleryItem }) {
   const t = useTranslations('pages.projects')
   const [showCode, setShowCode] = useState(false)
 
   return (
-    <article aria-label={item.title}>
-      <ContentCard className="h-full flex flex-col">
-        <div className="flex flex-col h-full">
-          <header className="flex justify-between items-start mb-3">
-            <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold">
-              {item.title}
-            </h3>
-            {item.period && (
-              <span className="text-sm text-muted-foreground whitespace-nowrap">
-                {item.period}
-              </span>
-            )}
-          </header>
-
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {item.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {item.imageUrl && (
-            <figure className="relative mb-4 overflow-hidden rounded-md aspect-video bg-muted">
-              {showCode && item.codeSnippet ? (
-                <pre className="p-4 h-full bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
-                  <code>{item.codeSnippet}</code>
-                </pre>
-              ) : (
-                <Image
-                  src={item.imageUrl}
-                  alt={item.alt ?? item.title}
-                  fill
-                  className="object-cover"
-                />
-              )}
-            </figure>
+    <article
+      aria-label={item.title}
+      className="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 min-w-0"
+    >
+      <div className="flex-1 min-w-0">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 className="font-semibold text-lg">{item.title}</h3>
+          {item.period && (
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
+              {item.period}
+            </span>
           )}
-
-          <p className="flex-grow mb-4 text-[clamp(0.875rem,1.25vw,1rem)] text-muted-foreground">
-            {item.description}
-          </p>
-
-          <footer className="flex flex-wrap gap-2 mt-auto">
-            {item.codeSnippet && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowCode(!showCode)}
-              >
-                {showCode ? t('view-image') : t('view-code')}
-              </Button>
-            )}
-            {item.url && (
-              <a href={item.url} target="_blank" rel="noopener noreferrer">
-                <Button variant="default" size="sm">
-                  {item.linkLabel ?? t('view-project')}
-                </Button>
-              </a>
-            )}
-            {item.notionUrl && (
-              <a
-                href={item.notionUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="outline" size="sm">
-                  Notion에서 보기
-                </Button>
-              </a>
-            )}
-          </footer>
         </div>
-      </ContentCard>
+
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <p className="mb-4 text-sm text-muted-foreground">{item.description}</p>
+
+        <footer className="flex flex-wrap gap-2">
+          {item.codeSnippet && item.imageUrl && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowCode(!showCode)}
+            >
+              {showCode ? t('view-image') : t('view-code')}
+            </Button>
+          )}
+          {item.url && (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <Button variant="default" size="sm">
+                {item.linkLabel ?? t('view-project')}
+              </Button>
+            </a>
+          )}
+          {item.notionUrl && (
+            <a href={item.notionUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm">
+                Notion에서 보기
+              </Button>
+            </a>
+          )}
+        </footer>
+      </div>
+
+      {item.imageUrl && (
+        <figure className="relative md:w-80 lg:w-96 shrink-0 self-start w-full overflow-hidden rounded-md aspect-video bg-muted">
+          {showCode && item.codeSnippet ? (
+            <pre className="p-4 h-full bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
+              <code>{item.codeSnippet}</code>
+            </pre>
+          ) : (
+            <Image
+              src={item.imageUrl}
+              alt={item.alt ?? item.title}
+              fill
+              className="object-cover"
+            />
+          )}
+        </figure>
+      )}
     </article>
   )
 }
