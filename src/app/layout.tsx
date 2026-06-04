@@ -11,18 +11,18 @@ import ScrollToTop from '@/components/ui/ScrollToTop'
 import CursorCompanion from '@/components/ui/CursorCompanion'
 
 export const metadata: Metadata = {
-  title: '석지인 · 웹개발자',
+  title: '석지인 · 개발자',
   description:
-    '사용자 중심의 웹 개발을 통해 매끄러운 디지털 경험을 만드는 웹 개발자입니다.',
+    '사용자 중심의 개발로 매끄러운 디지털 경험을 만드는 개발자입니다.',
   keywords: '웹 개발, 프론트엔드, 백엔드, React, Next.js, 포트폴리오, 석지인',
   icons: {
     icon: { url: '/favicon.ico', type: 'image/x-icon' },
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: '석지인 · 웹개발자',
+    title: '석지인 · 개발자',
     description:
-      '석지인은 사용자 중심의 웹 개발과 디자인을 통해 혁신적인 디지털 경험을 만드는 웹 개발자입니다.',
+      '석지인은 사용자 중심의 개발과 디자인으로 매끄러운 디지털 경험을 만드는 개발자입니다.',
     url: 'https://usejiin.link',
     siteName: 'Jiin Seok',
     locale: 'ko_KR',
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps) {
       `,
           }}
         />
-        <title>석지인 · 웹개발자</title>
+        <title>석지인 · 개발자</title>
       </head>
       <body
         className={cn(

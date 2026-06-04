@@ -94,10 +94,14 @@ export default function PersonalSection() {
               </span>
             </div>
             <div className="w-6 shrink-0" />
-            <div className="flex-1 flex flex-col gap-1.5">
+            <div className="flex-1 flex flex-wrap gap-x-5 gap-y-1.5">
               <span className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-                경력 · 프로젝트 · 교육
+                <span className="w-3 h-3 rounded-full bg-primary" />
+                경력
+              </span>
+              <span className="flex items-center gap-2 text-xs font-semibold text-primary/70 tracking-wide">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary/50" />
+                프로젝트 · 교육 · 자격
               </span>
               <span className="flex md:hidden items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
                 <span className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background" />
@@ -138,19 +142,26 @@ export default function PersonalSection() {
                 <div key={extra.label} className="flex gap-4 md:gap-6">
                   <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
+                    <div
+                      className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
+                    />
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0" />
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div
-                    className={`flex-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 ${isLast ? '' : 'pb-8 md:pb-10'}`}
+                    className={`flex-1 min-w-0 ${isLast ? '' : 'pb-8 md:pb-10'}`}
                   >
-                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full">
-                      {extra.tag}
-                    </span>
-                    <span className="font-medium">{extra.label}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {extra.period}
-                    </span>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      <span className="px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+                        {extra.tag}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h3 className="font-medium">{extra.label}</h3>
+                      <span className="text-sm text-muted-foreground whitespace-nowrap">
+                        {extra.period}
+                      </span>
+                    </div>
                   </div>
                 </div>
               )
@@ -183,54 +194,60 @@ export default function PersonalSection() {
               <div key={career.company} className="flex gap-4 md:gap-6">
                 <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
-                  <div className="w-3 h-3 rounded-full bg-primary shrink-0 mt-1.5" />
+                  <div
+                    className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
+                  />
+                  <div className="w-3 h-3 rounded-full bg-primary shrink-0" />
                   {!isLast && <div className="flex-1 w-px bg-border" />}
                 </div>
 
                 <div
-                  className={`flex-1 flex flex-col md:flex-row gap-4 md:gap-10 ${isLast ? '' : 'pb-10 md:pb-12'}`}
+                  className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
                 >
-                  <div className="md:w-56 shrink-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      {logo && (
-                        <div className="shrink-0 w-8 h-8 relative rounded overflow-hidden bg-white flex items-center justify-center">
-                          <Image
-                            src={logo}
-                            alt={career.company}
-                            width={32}
-                            height={32}
-                            className="object-contain"
-                            style={{ width: 'auto', height: 'auto' }}
-                          />
-                        </div>
-                      )}
-                      <h3 className="font-semibold text-lg">
-                        {career.url ? (
-                          <a
-                            href={career.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-primary transition-colors"
-                          >
-                            {career.company}
-                          </a>
-                        ) : (
-                          career.company
-                        )}
-                      </h3>
-                    </div>
-                    {career.description && (
-                      <p className="text-xs text-muted-foreground mb-1.5">
-                        {career.description}
-                      </p>
-                    )}
-                    <p className="text-sm text-muted-foreground">
-                      {career.period}
-                    </p>
-                    <p className="text-sm font-medium text-primary mt-0.5">
-                      {career.role}
-                    </p>
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    <span className="px-2.5 py-0.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                      경력
+                    </span>
                   </div>
+
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1.5">
+                    {logo && (
+                      <span className="shrink-0 w-7 h-7 relative rounded overflow-hidden bg-white inline-flex items-center justify-center">
+                        <Image
+                          src={logo}
+                          alt={career.company}
+                          width={28}
+                          height={28}
+                          className="object-contain"
+                          style={{ width: 'auto', height: 'auto' }}
+                        />
+                      </span>
+                    )}
+                    <h3 className="font-semibold text-lg">
+                      {career.url ? (
+                        <a
+                          href={career.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-primary transition-colors"
+                        >
+                          {career.company}
+                        </a>
+                      ) : (
+                        career.company
+                      )}
+                    </h3>
+                    <span className="text-sm text-muted-foreground whitespace-nowrap">
+                      {career.period}
+                    </span>
+                  </div>
+
+                  <p className="mb-3 text-sm text-muted-foreground">
+                    {career.description && <>{career.description} · </>}
+                    <span className="font-medium text-primary">
+                      {career.role}
+                    </span>
+                  </p>
 
                   <ul className="space-y-2">
                     {career.contributions.map((item, i) => (

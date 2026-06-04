@@ -17,6 +17,7 @@ export interface GalleryItem {
   alt?: string
   codeSnippet?: string
   notionUrl?: string
+  embedUrl?: string
 }
 
 export const galleryItems: GalleryItem[] = [
@@ -119,6 +120,8 @@ new QueryClient({
     description:
       '생성형 AI(Claude Code)에 개인 코드 스타일과 작업 규칙을 규칙으로 주입해 일관되게 협업하는 설정입니다. 민감정보를 제외한 공개판입니다.',
     url: 'https://github.com/JiinSeok/dotfiles-claude-public',
+    imageUrl: '/images/projects/dotfiles.png',
+    alt: 'dotfiles-claude-public GitHub 저장소 화면',
   },
   {
     title: 'SEO 라이트닝 토크',
@@ -127,6 +130,21 @@ new QueryClient({
     description: 'SEO를 주제로 발표한 라이트닝 토크 자료입니다.',
     url: 'https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1',
     linkLabel: '발표 자료 보기',
+    imageUrl: '/images/projects/seo-talk.png',
+    alt: 'SEO 라이트닝 토크 발표 자료 표지',
+    embedUrl:
+      'https://embed.figma.com/deck/jdocRc3a37rnNsTRm1crbD/?embed-host=share',
+  },
+  {
+    title: '서비스직으로서의 개발자 라이트닝 토크',
+    period: '2025.11',
+    tags: ['발표'],
+    description:
+      "'서비스직으로서의 개발자'를 주제로 발표한 라이트닝 토크 자료입니다.",
+    url: 'https://www.figma.com/slides/mLvVokRYLlCTnEB3VGn1On/',
+    linkLabel: '발표 자료 보기',
+    embedUrl:
+      'https://embed.figma.com/slides/mLvVokRYLlCTnEB3VGn1On/?embed-host=share',
   },
   {
     title: '정산 기능 설계',
@@ -135,6 +153,8 @@ new QueryClient({
     description: '정산 기능을 설계한 과정과 결과를 정리한 자료입니다.',
     url: 'https://mellow-pika-ec5224.netlify.app',
     linkLabel: '자료 보기',
+    imageUrl: '/images/projects/settlement-design.png',
+    alt: '정산 백엔드 설계 문서 화면',
   },
   {
     title: '이벤트 협업 제안 · 포토부스 프로토타입',
@@ -143,6 +163,8 @@ new QueryClient({
     description: '이벤트 협업을 제안하며 만든 포토부스 기능 프로토타입입니다.',
     url: 'https://staging.doppket.com/proposals/mudo-run',
     linkLabel: '프로토타입 보기',
+    imageUrl: '/images/projects/photobooth.png',
+    alt: '포토부스 이벤트 제안 랜딩 페이지 화면',
   },
 ]
 
@@ -205,7 +227,19 @@ export function ProjectEntry({ item }: { item: GalleryItem }) {
         </footer>
       </div>
 
-      {item.imageUrl && (
+      {item.embedUrl && (
+        <figure className="relative md:w-80 lg:w-96 shrink-0 self-start w-full overflow-hidden rounded-md aspect-video bg-muted">
+          <iframe
+            src={item.embedUrl}
+            title={item.title}
+            loading="lazy"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full border-0"
+          />
+        </figure>
+      )}
+
+      {!item.embedUrl && item.imageUrl && (
         <figure className="relative md:w-80 lg:w-96 shrink-0 self-start w-full overflow-hidden rounded-md aspect-video bg-muted">
           {showCode && item.codeSnippet ? (
             <pre className="p-4 h-full bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">

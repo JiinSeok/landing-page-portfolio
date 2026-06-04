@@ -10,12 +10,18 @@ import {
   TocMenu,
   ShareMenu,
 } from '@/components/FloatingButtonGroup'
+import { ROUTER } from '@/lib/constants/router'
 
 const NAV_ITEMS = [
   { id: 'career', label: '경력' },
   { id: 'tech-stack', label: '기술 스택' },
   { id: 'faq', label: 'FAQ' },
-  { id: 'footer', label: '더 보기' },
+]
+
+const EXTERNAL_LINKS = [
+  { label: 'GitHub', href: ROUTER.GitHub.path },
+  { label: 'LinkedIn', href: ROUTER.LinkedIn.path },
+  { label: 'Email', href: ROUTER.Email.path },
 ]
 
 const CONTACT_INFO = [
@@ -48,7 +54,6 @@ export default function Navigation() {
   const [copied, setCopied] = useState(false)
   const contactRef = useRef<HTMLDivElement>(null)
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (
@@ -69,7 +74,6 @@ export default function Navigation() {
     try {
       await navigator.clipboard.writeText(text)
     } catch {
-      // fallback for non-secure contexts (http, SSR)
       const ta = document.createElement('textarea')
       ta.value = text
       ta.style.position = 'fixed'
@@ -97,14 +101,13 @@ export default function Navigation() {
       }
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6 flex justify-between items-center">
-        {/* Left: name + copy info */}
         <div className="flex items-center gap-4 relative" ref={contactRef}>
           <Link
             href="/"
             className="w-fit text-lg md:text-xl font-bold text-white whitespace-nowrap"
           >
             석지인<span className="text-zinc-500 font-normal mx-1.5">·</span>
-            <span className="text-zinc-400 font-normal">웹 개발자</span>
+            <span className="text-zinc-400 font-normal">개발자</span>
           </Link>
           <button
             onClick={copyAndShow}
@@ -118,7 +121,6 @@ export default function Navigation() {
             <span>{copied ? 'Copied!' : 'Copy Info'}</span>
           </button>
 
-          {/* Copied confirmation dropdown */}
           {contactOpen && (
             <div className="absolute top-full left-0 mt-3 w-72 bg-zinc-800 border border-zinc-700 rounded-xl shadow-lg p-4 animate-in slide-in-from-top-2 duration-150 z-50">
               <p className="flex items-center gap-1.5 text-xs text-emerald-400 mb-3">
@@ -142,30 +144,58 @@ export default function Navigation() {
           )}
         </div>
 
-        {/* Desktop nav links */}
-        <ul className="hidden sm:flex items-center gap-6">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.id}>
-              <button
-                onClick={() => scrollTo(item.id)}
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-          <li className="nav-floating-buttons">
-            <FloatingButtonGroup className="static flex-row">
-              <ButtonContainer>
-                <TocButton />
-              </ButtonContainer>
-              <TocMenu />
-              <ShareMenu />
-            </FloatingButtonGroup>
-          </li>
-        </ul>
+        <div className="hidden sm:flex items-center gap-6">
+          <a
+            href={ROUTER.Resume.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
+          >
+            이력서
+          </a>
 
-        {/* Mobile menu button */}
+          <span className="h-4 w-px bg-zinc-700" aria-hidden />
+
+          <ul className="flex items-center gap-6">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => scrollTo(item.id)}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <span className="h-4 w-px bg-zinc-700" aria-hidden />
+
+          <ul className="flex items-center gap-5">
+            {EXTERNAL_LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-zinc-400 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li className="nav-floating-buttons">
+              <FloatingButtonGroup className="static flex-row">
+                <ButtonContainer>
+                  <TocButton />
+                </ButtonContainer>
+                <TocMenu />
+                <ShareMenu />
+              </FloatingButtonGroup>
+            </li>
+          </ul>
+        </div>
+
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 focus:outline-none sm:hidden"
@@ -200,7 +230,6 @@ export default function Navigation() {
         </button>
       </div>
 
-      {/* Mobile menu dropdown */}
       {isMenuOpen && (
         <div
           id="mobile-menu"
@@ -208,6 +237,17 @@ export default function Navigation() {
           role="menu"
         >
           <ul className="flex flex-col py-2 px-4">
+            <li role="menuitem">
+              <a
+                href={ROUTER.Resume.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 block"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                이력서
+              </a>
+            </li>
             {NAV_ITEMS.map((item) => (
               <li key={item.id} role="menuitem">
                 <button
@@ -219,6 +259,19 @@ export default function Navigation() {
                 >
                   {item.label}
                 </button>
+              </li>
+            ))}
+            {EXTERNAL_LINKS.map((link) => (
+              <li key={link.label} role="menuitem">
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 block"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
               </li>
             ))}
             <li role="menuitem">
