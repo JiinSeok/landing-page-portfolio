@@ -156,16 +156,7 @@ export function ProjectEntry({ item }: { item: GalleryItem }) {
       className="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 min-w-0"
     >
       <div className="flex-1 min-w-0">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <h3 className="font-semibold text-lg">{item.title}</h3>
-          {item.period && (
-            <span className="text-sm text-muted-foreground whitespace-nowrap">
-              {item.period}
-            </span>
-          )}
-        </div>
-
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        <div className="flex flex-wrap gap-1.5 mb-2">
           {item.tags.map((tag) => (
             <span
               key={tag}
@@ -174,6 +165,15 @@ export function ProjectEntry({ item }: { item: GalleryItem }) {
               {tag}
             </span>
           ))}
+        </div>
+
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h3 className="font-semibold text-lg">{item.title}</h3>
+          {item.period && (
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
+              {item.period}
+            </span>
+          )}
         </div>
 
         <p className="mb-4 text-sm text-muted-foreground">{item.description}</p>
