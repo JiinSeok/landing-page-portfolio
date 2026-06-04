@@ -347,9 +347,17 @@
         border-radius: 999px;
       }
       @media print {
+        @page {
+          size: A4;
+          margin: 12mm 13mm;
+        }
+        html,
         body {
           background: #fff;
-          font-size: 11.6px;
+          font-size: 11.2px;
+          line-height: 1.5;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
         }
         .topbar {
           display: none;
@@ -366,15 +374,59 @@
           padding: 0;
         }
         section.blk {
+          break-inside: auto;
+          display: block;
+          padding: 12px 0;
+        }
+        .blk > h2 {
+          break-after: avoid;
+          margin-bottom: 8px;
+        }
+        .blk > h2 .en {
+          display: inline;
+          margin-left: 6px;
+        }
+        .r-head {
+          break-after: avoid;
+          padding-bottom: 12px;
+        }
+        .lead {
           break-inside: avoid;
         }
+        .skill,
         .proj,
-        .item {
+        .item,
+        .kv,
+        ul.dots li {
           break-inside: avoid;
         }
-        @page {
-          size: A4;
-          margin: 14mm 14mm;
+        section.blk:last-of-type {
+          break-inside: avoid;
+        }
+        .proj h3,
+        .item .top,
+        .item .sub {
+          break-after: avoid;
+        }
+        .skills-grid {
+          gap: 6px;
+        }
+        .skill {
+          padding: 8px 11px;
+        }
+        .proj {
+          padding: 10px 0;
+        }
+        .item {
+          margin: 0 0 12px;
+        }
+        .app-shot img {
+          max-height: 70mm;
+          width: auto;
+        }
+        a {
+          color: var(--accent);
+          text-decoration: none;
         }
       }
       @media (max-width: 680px) {
@@ -406,22 +458,12 @@
         <div class="r-head">
           <div>
             <h1>석지인</h1>
-            <div class="role">
-              프론트엔드 개발자 — 웹 · 앱 · 어드민 / 디자인시스템 · 레거시
-              현대화
-            </div>
             <p class="tagline">
-              <strong
-                >믿을 수 있고 이해할 수 있는 프론트엔드를 지향하는 경험 중심
-                개발자입니다.</strong
-              >
-              React·Next.js·TypeScript·TanStack Query로 웹과 어드민을 만들고,
-              직접 만든 폼 라이브러리를 npm에 배포했으며, 네이티브 iOS 앱을
-              0→1로 출시 준비 단계까지 만들어 왔습니다.
+              <strong>고객이 기꺼이 값을 지불할, 필요한 가치를 더하는
+                개발자입니다.</strong>
             </p>
           </div>
           <div class="meta">
-            <div>여성 · <b>1996년생</b></div>
             <div>
               <a href="mailto:seokjiin1073@gmail.com">seokjiin1073@gmail.com</a>
             </div>
@@ -436,22 +478,12 @@
           <h2>소개<span class="en">ABOUT</span></h2>
           <div class="body">
             <p class="kv">
-              React·Next.js·TypeScript·TanStack Query를 여러 프로젝트에서 다루며
-              웹과 어드민을 만들어 왔습니다. 공통 모듈과 디자인 토큰, 타입과
-              디자인의 일관성을
-              <b>직접 라이브러리로 만들어 npm에 배포</b>했고(formkit-react),
-              130만 사용자·결제를 가진 JSP 레거시 서비스를 직접 조사해
-              <b>레거시와의 공존을 전제로 한 React 화면을 설계</b>했습니다(채용
-              과제 bodycodi). QA에서 시작해 품질과 테스트, 디자인의 일관성을
-              코드로 보증하는 일에 익숙하며, 생성형 AI는 그대로 받아들이기보다
-              <b>직접 검증하고 고쳐 쓰는</b> 방식으로 활용하고 있습니다. 의도한
-              대로 가치를 전하기 위해 에러 처리와 일관성 있는 인터페이스,
-              요구사항의 분석, 효율적인 개발 환경 구축에 집중하고 있습니다.
-            </p>
-            <p class="kv note-inline">
-              ※ 아직 React Native로 앱을 출시·운영해 본 경험은 없습니다.
-              네이티브 iOS 앱을 0→1로 만들어 온 감각과 앱·서버의 경계를 설계해
-              본 경험을 바탕으로, React Native를 다음 목표로 익혀 가고자 합니다.
+              안녕하세요. 믿을 수 있고 이해할 수 있는 프론트엔드를 위한, 경험
+              중심 개발자 석지인입니다. 스타트업의 MVP를 맡아 빠른 템포로
+              Next.js 앱을 개발했고, 현재는 풀스택 개발자로서 프로젝트 전체를
+              관리하는 경험을 쌓는 중입니다. 의도한 대로 가치를 전하기 위해,
+              에러 처리와 일관성 있는 인터페이스 구현, 요구사항의 철저한 분석,
+              그리고 효율적인 개발 환경 구축을 노력하고 있습니다.
             </p>
           </div>
         </section>
