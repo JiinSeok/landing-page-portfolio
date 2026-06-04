@@ -36,7 +36,7 @@ const previewSections = [
     description: 'Rails + React + TypeScript 환경',
     preview: [
       'React · TypeScript · Next.js',
-      'Ruby on Rails · PostgreSQL',
+      'Ruby on Rails · MySQL',
       'Tailwind CSS · Git · Docker',
     ],
     icon: (

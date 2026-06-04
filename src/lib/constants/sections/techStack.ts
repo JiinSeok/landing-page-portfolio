@@ -28,14 +28,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     description:
-      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 트리, 캐러셀, 블로그 CMS 같은 컴포넌트를 개발하고 있습니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 다루고 있습니다.',
+      '도스트11에서 react-on-rails 기반으로 도프켓의 카테고리 에디터, 이벤트 배너 캐러셀, 블로그 CMS, 정산 설정 UI를 개발했습니다. 하이드레이션, 커스텀 훅, Context API를 실무에서 다루고 있습니다.',
   },
   {
     name: 'Next.js',
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     description:
-      'Next API를 프록시로, NextAuth 세션을 인증 수단으로 두어 민감 정보가 브라우저에 노출되지 않도록 했습니다. SEO와 성능을 위해 서버사이드 렌더링, 정적 사이트 생성, 앱 라우터 레이아웃을 사용했습니다.',
+      'Next API를 프록시로, NextAuth 세션을 인증 수단으로 두어 민감 정보가 브라우저에 노출되지 않도록 했습니다. 도스트11에서는 기업 랜딩 페이지를 Next.js와 GitHub Actions로 만들어 비개발자가 Notion으로 콘텐츠를 관리하도록 구성했습니다.',
   },
   {
     name: 'HTML5 / CSS3',
@@ -110,7 +110,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     description:
-      '리니어 히스토리 컨벤션을 정하고 Git Hook으로 지키도록 했습니다. 도스트11에서는 Overcommit 기반 Git Hook과 PR 중심 워크플로를 쓰고 있습니다.',
+      '리니어 히스토리 컨벤션을 정하고 Git Hook으로 지키도록 했습니다. 도스트11에서는 Overcommit 기반 pre-push 훅(SSR 빌드 검증, 관련 RSpec만 선별 실행)을 직접 고치며 PR 중심 워크플로로 일하고 있습니다.',
   },
   {
     name: 'GitHub',
@@ -164,7 +164,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
     description:
-      '도스트11에서 devcontainer로 개발 환경을 구성하고 있습니다. 로컬 DB·서버 구동, CI/CD 스크립트 수정에도 활용했습니다.',
+      '도스트11에서 devcontainer로 개발 환경을 구성하고 있습니다. 캐시를 named volume으로 분리해 컨테이너 빌드 오류를 없애는 등 개발 환경을 직접 개선했고, 로컬 DB·서버 구동과 CI/CD 스크립트 수정에도 활용합니다.',
   },
   {
     name: 'MongoDB / Mongoose',
@@ -237,14 +237,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg',
     description:
-      '프론트엔드만 배운 상태에서 도스트11에 입사해 Rails를 처음 접했습니다. Presenter, Worker, 메일러 수정 등 필요한 부분을 하나씩 익히며 적응 중입니다. 아직 배우는 단계지만, Taxonomy 트리 빌드나 캐시 만료 설정 같은 백엔드 로직도 직접 구현해 봤습니다.',
+      '도스트11에서 풀스택으로 일하며 영수증·거래명세서·카테고리 Presenter, 메일러, 라우팅을 수정하고, 상품 에디터의 전체 카테고리 선택 데이터(taxonomies_for_editor, Rails.cache 1시간 만료)와 VAT·가격 스냅샷 저장·백필 같은 백엔드 로직을 구현했습니다. RSpec 테스트를 함께 작성합니다.',
   },
   {
     name: 'Python',
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     description:
-      'AWS S3의 프로덕션 데이터를 가져와 버그를 재현하고 파악할 때 사용했습니다. 반복적인 UI 테스트를 자동화하기 위해 Selenium과 Pyautogui를 학습했습니다.',
+      'AWS S3의 프로덕션 데이터를 가져와 버그를 재현하고 파악할 때 사용했습니다. 반복적인 UI 테스트를 자동화하기 위해 Selenium과 Pyautogui를 학습했습니다. 도스트11에서는 CI의 Selenium 테스트가 Chrome profile을 공유해 깨지던 문제를 profile 분리로 안정화했습니다.',
   },
   {
     name: 'Google Analytics',

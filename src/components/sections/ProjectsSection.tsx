@@ -14,7 +14,7 @@ import {
 
 export interface GalleryItem {
   title: string
-  year?: number
+  period?: string
   tags: string[]
   description: string
   url?: string
@@ -28,7 +28,7 @@ export interface GalleryItem {
 const galleryItems: GalleryItem[] = [
   {
     title: 'formkit-react',
-    year: 2025,
+    period: '2025.08',
     tags: ['프로젝트', '오픈소스'],
     description:
       '직접 만들어 npm에 배포한 React 폼 라이브러리입니다. Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
@@ -57,7 +57,7 @@ export function LoginForm() {
   },
   {
     title: 'albaform',
-    year: 2024,
+    period: '2024.08 ~ 2025.01',
     tags: ['프로젝트', '팀'],
     description:
       '여러 명이 함께 만든 알바 구인구직 플랫폼입니다. 검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
@@ -70,7 +70,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
   {
     title: 'tappytype',
-    year: 2026,
+    period: '2026.05 ~ 현재',
     tags: ['프로젝트', 'iOS'],
     description:
       '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다. (React Native가 아닌 네이티브 Swift입니다.)',
@@ -88,7 +88,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
   },
   {
     title: '포트폴리오 사이트',
-    year: 2025,
+    period: '2025.05 ~ 현재',
     tags: ['프로젝트'],
     description:
       '지금 보고 계신 이 사이트입니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일해 유지보수하기 쉽게 정리했습니다.',
@@ -99,7 +99,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
   },
   {
     title: 'bodycodi',
-    year: 2025,
+    period: '2025.09',
     tags: ['채용 과제'],
     description:
       '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. tw- prefix 컨벤션 문서, 예측 가능/불가능을 구분하는 중앙 에러 처리, 50개 임계 조건부 가상화(7,000개에서도 부드러운 스크롤), 평가자가 데이터 크기와 네트워크 지연을 직접 바꿔 검증하는 테스트 제어 패널까지 담았습니다. 코드는 비공개이며 요청 주시면 공유드립니다.',
@@ -120,6 +120,7 @@ new QueryClient({
   },
   {
     title: 'Claude Code 설정 (dotfiles)',
+    period: '2026.06',
     tags: ['오픈소스', 'AI 워크플로'],
     description:
       '생성형 AI(Claude Code)에 개인 코드 스타일과 작업 규칙을 규칙으로 주입해 일관되게 협업하는 설정입니다. 민감정보를 제외한 공개판입니다.',
@@ -134,6 +135,7 @@ new QueryClient({
   },
   {
     title: '정산 기능 설계',
+    period: '2026.04',
     tags: ['설계'],
     description: '정산 기능을 설계한 과정과 결과를 정리한 자료입니다.',
     url: 'https://mellow-pika-ec5224.netlify.app',
@@ -141,6 +143,7 @@ new QueryClient({
   },
   {
     title: '이벤트 협업 제안 · 포토부스 프로토타입',
+    period: '2026.05',
     tags: ['프로토타입'],
     description: '이벤트 협업을 제안하며 만든 포토부스 기능 프로토타입입니다.',
     url: 'https://staging.doppket.com/proposals/mudo-run',
@@ -175,19 +178,16 @@ function GalleryCard({ item }: { item: GalleryItem }) {
 
   return (
     <article aria-label={item.title}>
-      <ContentCard title={item.title} className="h-full flex flex-col">
+      <ContentCard className="h-full flex flex-col">
         <div className="flex flex-col h-full">
           <header className="flex justify-between items-start mb-3">
             <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold">
               {item.title}
             </h3>
-            {item.year && (
-              <time
-                dateTime={`${item.year}`}
-                className="text-sm text-muted-foreground"
-              >
-                {item.year}
-              </time>
+            {item.period && (
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
+                {item.period}
+              </span>
             )}
           </header>
 
