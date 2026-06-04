@@ -128,6 +128,7 @@ new QueryClient({
   },
   {
     title: 'SEO 라이트닝 토크',
+    period: '2026.01',
     tags: ['발표'],
     description: 'SEO를 주제로 발표한 라이트닝 토크 자료입니다.',
     url: 'https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1',
