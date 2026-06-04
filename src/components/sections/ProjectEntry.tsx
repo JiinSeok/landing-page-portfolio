@@ -140,11 +140,11 @@ new QueryClient({
     period: '2025.11',
     tags: ['발표'],
     description:
-      "'서비스직으로서의 개발자'를 주제로 발표한 라이트닝 토크 자료입니다.",
-    url: 'https://www.figma.com/slides/mLvVokRYLlCTnEB3VGn1On/',
+      "도스트11 데브 미팅에서 '서비스직으로서의 개발자: 알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크 자료입니다.",
+    url: 'https://www.figma.com/deck/mLvVokRYLlCTnEB3VGn1On/',
     linkLabel: '발표 자료 보기',
     embedUrl:
-      'https://embed.figma.com/slides/mLvVokRYLlCTnEB3VGn1On/?embed-host=share',
+      'https://embed.figma.com/deck/mLvVokRYLlCTnEB3VGn1On/?embed-host=share',
   },
   {
     title: '정산 기능 설계',
