@@ -102,7 +102,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     year: 2025,
     tags: ['채용 과제'],
     description:
-      '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. JSP 전역 CSS와 충돌하지 않도록 tw- prefix 전략과 컨벤션 문서를 만들었고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다. 과제 특성상 코드는 비공개이며 요청 시 공유 가능합니다.',
+      '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. tw- prefix 컨벤션 문서, 예측 가능/불가능을 구분하는 중앙 에러 처리, 50개 임계 조건부 가상화(7,000개에서도 부드러운 스크롤), 평가자가 데이터 크기와 네트워크 지연을 직접 바꿔 검증하는 테스트 제어 패널까지 담았습니다. 코드는 비공개이며 요청 주시면 공유드립니다.',
     imageUrl: '/images/projects/bodycodi.png',
     alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
