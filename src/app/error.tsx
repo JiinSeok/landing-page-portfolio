@@ -12,7 +12,7 @@ interface ErrorPageProps {
 }
 
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
-  const t = useTranslations('ErrorPage')
+  const t = useTranslations('layout.error')
 
   useEffect(() => {
     // Log the error to an error reporting service

@@ -7,7 +7,7 @@ export default function robots() {
         userAgent: '*',
       },
     ],
-    sitemap: `${metaData.baseUrl}/sitemap.xml`,
+    sitemap: new URL('/sitemap.xml', metaData.baseUrl).toString(),
     revalidate: false,
   }
 }

@@ -6,9 +6,9 @@ import { LayoutProps } from '@/lib/types'
 import { cn } from '@/lib/utils/classnames'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
-import Footer from "@/components/layout/Footer"
-import ScrollToTop from "@/components/ui/ScrollToTop"
-import CursorCompanion from "@/components/ui/CursorCompanion"
+import Footer from '@/components/layout/Footer'
+import ScrollToTop from '@/components/ui/ScrollToTop'
+import CursorCompanion from '@/components/ui/CursorCompanion'
 
 export const metadata: Metadata = {
   title: '석지인 · 웹개발자',
@@ -33,35 +33,38 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="ko">
-    <head>
-      <script async src="https://unpkg.com/ios-pwa-splash@1.0.0/cdn.min.js"></script>
-      <script dangerouslySetInnerHTML={{ __html: `
+      <head>
+        <script
+          async
+          src="https://unpkg.com/ios-pwa-splash@1.0.0/cdn.min.js"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
         document.addEventListener('DOMContentLoaded', function() {
           if (typeof iosPWASplash === 'function') {
             iosPWASplash('/apple-touch-icon.png', '#FFFFFF');
           }
         });
-      `}} />
-      <title>석지인 · 웹개발자</title>
-    </head>
-    <body
-      className={cn(
-        'min-h-screen w-full bg-background text-[clamp(16px,1vw,18px)]',
-      )}
-    >
-    <TextProvider>
-      {/* Navigation */}
-      <ClientSideProviders />
-      <Suspense fallback={<HomePageSkeleton />}>
-
-        {children}
-      </Suspense>
-      <Footer />
-      <ScrollToTop />
-      <CursorCompanion />
-    </TextProvider>
-    </body>
+      `,
+          }}
+        />
+        <title>석지인 · 웹개발자</title>
+      </head>
+      <body
+        className={cn(
+          'min-h-screen w-full bg-background text-[clamp(16px,1vw,18px)]',
+        )}
+      >
+        <TextProvider>
+          {/* Navigation */}
+          <ClientSideProviders />
+          <Suspense fallback={<HomePageSkeleton />}>{children}</Suspense>
+          <Footer />
+          <ScrollToTop />
+          <CursorCompanion />
+        </TextProvider>
+      </body>
     </html>
-
   )
 }

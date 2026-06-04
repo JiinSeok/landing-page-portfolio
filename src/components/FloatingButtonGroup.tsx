@@ -13,9 +13,9 @@ declare global {
   interface Window {
     Kakao?: {
       Link: {
-        sendDefault: (options: any) => void;
-      };
-    };
+        sendDefault: (options: any) => void
+      }
+    }
   }
 }
 
@@ -127,7 +127,13 @@ export function FloatingButtonGroup({
           if (element.id) {
             return {
               id: element.id,
-              text: ((element as HTMLElement).innerText || element.textContent || '').replace(/\n/g, ' ').trim(),
+              text: (
+                (element as HTMLElement).innerText ||
+                element.textContent ||
+                ''
+              )
+                .replace(/\n/g, ' ')
+                .trim(),
               level: parseInt(element.tagName.substring(1), 10),
               element: element as HTMLElement,
             }
@@ -135,11 +141,11 @@ export function FloatingButtonGroup({
           return null
         })
         .filter(Boolean) as Array<{
-          id: string
-          text: string
-          level: number
-          element: HTMLElement
-        }>
+        id: string
+        text: string
+        level: number
+        element: HTMLElement
+      }>
 
       setHeadings(headingElements)
     }
@@ -387,7 +393,8 @@ export function FloatingButtonGroup({
           className={cn(
             'flex items-end gap-4',
             // Apply fixed positioning only if className doesn't contain 'static'
-            !className?.includes('static') && 'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex-col',
+            !className?.includes('static') &&
+              'fixed top-[var(--navbar-height)] right-4 sm:right-6 md:right-8 lg:right-12 z-50 flex-col',
             className,
           )}
         >
@@ -407,19 +414,22 @@ export function ButtonContainer({ children }: ButtonContainerProps) {
   const { isMobile } = useFloatingButton()
 
   // Check if we're in a navigation context
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
-    <div className={cn(
-      "flex flex-row animate-in fade-in duration-300",
-      // Different styling based on context
-      isInNavigation
-        ? "gap-4 sm:gap-5 md:gap-6 lg:gap-8" // Match navigation item spacing
-        : "gap-2 bg-primary rounded-full shadow-lg p-1", // Original floating button styling
-      // Add more gap for floating buttons when not in navigation
-      !isMobile && !isInNavigation && "gap-4"
-    )}>
+    <div
+      className={cn(
+        'flex flex-row animate-in fade-in duration-300',
+        // Different styling based on context
+        isInNavigation
+          ? 'gap-4 sm:gap-5 md:gap-6 lg:gap-8' // Match navigation item spacing
+          : 'gap-2 bg-primary rounded-full shadow-lg p-1', // Original floating button styling
+        // Add more gap for floating buttons when not in navigation
+        !isMobile && !isInNavigation && 'gap-4',
+      )}
+    >
       {children}
     </div>
   )
@@ -445,19 +455,20 @@ export function TocButton() {
   if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
     <Button
-      variant={isInNavigation ? "ghost" : "default"}
-      size={isInNavigation ? "sm" : "icon"}
+      variant={isInNavigation ? 'ghost' : 'default'}
+      size={isInNavigation ? 'sm' : 'icon'}
       onClick={toggleTocMenu}
       className={cn(
         // Different styling based on context
         isInNavigation
-          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto"
-          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+          ? 'text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto'
+          : 'rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16',
       )}
       aria-label={
         activeButton === 'toc'
@@ -480,13 +491,11 @@ export function TocButton() {
             </>
           )}
         </span>
+      ) : // Icon-only version for floating buttons
+      activeButton === 'toc' ? (
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-        // Icon-only version for floating buttons
-        activeButton === 'toc' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        ) : (
-          <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        )
+        <Menu className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -512,19 +521,20 @@ export function ContactButton() {
   if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
     <Button
-      variant={isInNavigation ? "ghost" : "default"}
-      size={isInNavigation ? "sm" : "icon"}
+      variant={isInNavigation ? 'ghost' : 'default'}
+      size={isInNavigation ? 'sm' : 'icon'}
       onClick={toggleContactMenu}
       className={cn(
         // Different styling based on context
         isInNavigation
-          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto"
-          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+          ? 'text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto'
+          : 'rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16',
       )}
       aria-label={
         activeButton === 'contact' ? 'Close contact menu' : 'Open contact menu'
@@ -545,13 +555,11 @@ export function ContactButton() {
             </>
           )}
         </span>
+      ) : // Icon-only version for floating buttons
+      activeButton === 'contact' ? (
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-        // Icon-only version for floating buttons
-        activeButton === 'contact' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        ) : (
-          <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        )
+        <UserIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -577,19 +585,20 @@ export function ShareButton() {
   if (typeof window === 'undefined' || !isMounted) return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
     <Button
-      variant={isInNavigation ? "ghost" : "default"}
-      size={isInNavigation ? "sm" : "icon"}
+      variant={isInNavigation ? 'ghost' : 'default'}
+      size={isInNavigation ? 'sm' : 'icon'}
       onClick={toggleShareMenu}
       className={cn(
         // Different styling based on context
         isInNavigation
-          ? "text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto"
-          : "rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+          ? 'text-sm md:text-base text-foreground hover:text-primary transition-colors p-0 h-auto'
+          : 'rounded-full bg-primary h-12 w-12 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16',
       )}
       aria-label={
         activeButton === 'share' ? 'Close share menu' : 'Open share menu'
@@ -610,13 +619,11 @@ export function ShareButton() {
             </>
           )}
         </span>
+      ) : // Icon-only version for floating buttons
+      activeButton === 'share' ? (
+        <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       ) : (
-        // Icon-only version for floating buttons
-        activeButton === 'share' ? (
-          <XIcon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        ) : (
-          <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-        )
+        <Share2Icon className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
       )}
     </Button>
   )
@@ -624,11 +631,7 @@ export function ShareButton() {
 
 // Contact Menu Component
 export function ContactMenu() {
-  const {
-    activeButton,
-    copied,
-    copyContactToClipboard,
-  } = useFloatingButton()
+  const { activeButton, copied, copyContactToClipboard } = useFloatingButton()
 
   // Don't render anything during server-side rendering
   if (typeof window === 'undefined') return null
@@ -636,17 +639,18 @@ export function ContactMenu() {
   if (activeButton !== 'contact') return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
-    <div className={cn(
-      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
-      // Position differently based on context
-      isInNavigation
-        ? "absolute top-full right-0 mt-2"
-        : "mt-4"
-    )}>
+    <div
+      className={cn(
+        'flex flex-col gap-4 animate-in slide-in-from-top duration-200',
+        // Position differently based on context
+        isInNavigation ? 'absolute top-full right-0 mt-2' : 'mt-4',
+      )}
+    >
       <ContentCard
         title="Jiin Seok"
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
@@ -728,17 +732,18 @@ export function ShareMenu() {
   if (activeButton !== 'share') return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
-    <div className={cn(
-      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
-      // Position differently based on context
-      isInNavigation
-        ? "absolute top-full right-0 mt-2"
-        : "mt-4"
-    )}>
+    <div
+      className={cn(
+        'flex flex-col gap-4 animate-in slide-in-from-top duration-200',
+        // Position differently based on context
+        isInNavigation ? 'absolute top-full right-0 mt-2' : 'mt-4',
+      )}
+    >
       <ContentCard
         title="Share This Page"
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
@@ -835,17 +840,18 @@ export function TocMenu() {
   if (activeButton !== 'toc') return null
 
   // Check if we're in a navigation context by looking for the nav-floating-buttons class
-  const isInNavigation = typeof document !== 'undefined' &&
+  const isInNavigation =
+    typeof document !== 'undefined' &&
     document.querySelector('.nav-floating-buttons') !== null
 
   return (
-    <div className={cn(
-      "flex flex-col gap-4 animate-in slide-in-from-top duration-200",
-      // Position differently based on context
-      isInNavigation
-        ? "absolute top-full right-0 mt-2"
-        : "mt-4"
-    )}>
+    <div
+      className={cn(
+        'flex flex-col gap-4 animate-in slide-in-from-top duration-200',
+        // Position differently based on context
+        isInNavigation ? 'absolute top-full right-0 mt-2' : 'mt-4',
+      )}
+    >
       <ContentCard
         title="Table of Contents"
         className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"

@@ -1,42 +1,35 @@
 'use client'
 
+import Image from 'next/image'
+import { useState } from 'react'
+
+import { useTranslations } from '@/lib/providers/TextContext'
 import { Button } from '@/components/ui/Button/Button'
 import { ContentCard } from '@/components/ui/ContentCard'
+import { GridLayout } from '@/components/ui/containers/ContentLayout'
 import {
   SectionContainer,
   SectionHeader,
 } from '@/components/ui/containers/SectionContainer'
-import {
-  ContentLayout,
-  GridLayout,
-} from '@/components/ui/containers/ContentLayout'
-import { Link } from '@/navigation'
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  LayoutGridIcon,
-  LayoutIcon,
-} from 'lucide-react'
-import { useTranslations } from '@/lib/providers/TextContext'
-import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
 
-// 이미지/GIF URL과 대체 텍스트가 포함된 프로젝트 인터페이스
-export interface ProjectWithMedia {
+export interface GalleryItem {
   title: string
-  year: number
+  year?: number
+  tags: string[]
   description: string
   url: string
-  imageUrl: string
-  alt: string
+  linkLabel?: string
+  imageUrl?: string
+  alt?: string
   codeSnippet?: string
   notionUrl?: string
 }
 
-const projectsData: ProjectWithMedia[] = [
+const galleryItems: GalleryItem[] = [
   {
     title: 'formkit-react',
     year: 2025,
+    tags: ['프로젝트', '오픈소스'],
     description:
       '직접 만들어 npm에 배포한 React 폼 라이브러리입니다. Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
     url: 'https://www.npmjs.com/package/@jiin.seok/formkit-react',
@@ -63,13 +56,56 @@ export function LoginForm() {
 }`,
   },
   {
+    title: 'albaform',
+    year: 2024,
+    tags: ['프로젝트', '팀'],
+    description:
+      '여러 명이 함께 만든 알바 구인구직 플랫폼입니다. 검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
+    url: 'https://albaform.usejiin.link',
+    imageUrl: '/images/projects/albaform.png',
+    alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
+    notionUrl: 'https://jiin-seok.notion.site/albaform',
+    codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
+export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
+  },
+  {
+    title: 'tappytype',
+    year: 2026,
+    tags: ['프로젝트', 'iOS'],
+    description:
+      '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다. (React Native가 아닌 네이티브 Swift입니다.)',
+    url: 'https://www.instagram.com/tappytype/',
+    linkLabel: '인스타그램 보기',
+    imageUrl: '/images/projects/tappytype-card.png',
+    alt: 'tappytype iOS 앱 소개 카드',
+    codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
+protocol HandwritingGenerator {
+    func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]
+}
+
+// 서버를 호출하는 구현체만 갈아끼우면 됩니다
+struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
+  },
+  {
+    title: '포트폴리오 사이트',
+    year: 2025,
+    tags: ['프로젝트'],
+    description:
+      '지금 보고 계신 이 사이트입니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일해 유지보수하기 쉽게 정리했습니다.',
+    url: 'https://github.com/JiinSeok/landing-page-portfolio',
+    linkLabel: '코드 저장소 보기',
+    imageUrl: '/images/projects/portfolio.png',
+    alt: '포트폴리오 사이트 첫 화면',
+  },
+  {
     title: 'bodycodi',
     year: 2025,
+    tags: ['과제'],
     description:
-      '2016년부터 운영된 JSP 레거시와 공존하는 React 화면을 점진적으로 통합한 프로젝트입니다. JSP의 전역 CSS와 Tailwind가 충돌하던 문제를 tw- prefix 전략과 컨벤션 문서로 정리했고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
+      '2016년부터 운영된 JSP 레거시와 공존하는 React 화면을 점진적으로 통합한 과제입니다. JSP의 전역 CSS와 Tailwind가 충돌하던 문제를 tw- prefix 전략과 컨벤션 문서로 정리했고, Axios와 TanStack Query로 에러 처리를 한곳에 모았습니다.',
     url: 'https://github.com/JiinSeok/bodycodi-frontend',
     imageUrl: '/images/projects/bodycodi.png',
-    alt: 'bodycodi 프로젝트 소개 카드 (JSP 레거시와 React 통합)',
+    alt: 'bodycodi 과제 소개 카드 (JSP 레거시와 React 통합)',
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
 // tailwind.config.js
 export default {
@@ -84,74 +120,37 @@ new QueryClient({
 })`,
   },
   {
-    title: 'albaform',
-    year: 2024,
+    title: 'Claude Code 설정 (dotfiles)',
+    tags: ['오픈소스', 'AI 워크플로'],
     description:
-      '여러 명이 함께 만든 알바 구인구직 플랫폼입니다. 검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
-    url: 'https://albaform.usejiin.link',
-    imageUrl: '/images/projects/albaform.png',
-    alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
-    notionUrl: 'https://jiin-seok.notion.site/albaform',
-    codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
-export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
+      '생성형 AI(Claude Code)에 개인 코드 스타일과 작업 규칙을 규칙으로 주입해 일관되게 협업하는 설정입니다. 민감정보를 제외한 공개판입니다.',
+    url: 'https://github.com/JiinSeok/dotfiles-claude-public',
   },
   {
-    title: 'tappytype',
-    year: 2026,
-    description:
-      '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다. (React Native가 아닌 네이티브 Swift입니다.)',
-    url: 'https://github.com/JiinSeok/typetap',
-    imageUrl: '/images/projects/tappytype-card.png',
-    alt: 'tappytype iOS 앱 소개 카드',
-    codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
-protocol HandwritingGenerator {
-    func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]
-}
-
-// 서버를 호출하는 구현체만 갈아끼우면 됩니다
-struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
+    title: 'SEO 라이트닝 토크',
+    tags: ['발표'],
+    description: 'SEO를 주제로 발표한 라이트닝 토크 자료입니다.',
+    url: 'https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1',
+    linkLabel: '발표 자료 보기',
   },
   {
-    title: '포트폴리오 사이트',
-    year: 2025,
-    description:
-      '지금 보고 계신 이 사이트입니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일해 유지보수하기 쉽게 정리했습니다.',
-    url: '/site-build',
-    imageUrl: '/images/projects/portfolio.png',
-    alt: '포트폴리오 사이트 첫 화면',
+    title: '정산 기능 설계',
+    tags: ['설계'],
+    description: '정산 기능을 설계한 과정과 결과를 정리한 자료입니다.',
+    url: 'https://mellow-pika-ec5224.netlify.app',
+    linkLabel: '자료 보기',
+  },
+  {
+    title: '이벤트 협업 제안 · 포토부스 프로토타입',
+    tags: ['프로토타입'],
+    description: '이벤트 협업을 제안하며 만든 포토부스 기능 프로토타입입니다.',
+    url: 'https://staging.doppket.com/proposals/mudo-run',
+    linkLabel: '프로토타입 보기',
   },
 ]
 
 export default function ProjectsSection() {
   const t = useTranslations('pages.projects')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isGridView, setIsGridView] = useState(false)
-  const carouselRef = useRef<HTMLDivElement>(null)
-
-  // 다음 프로젝트로 이동하는 함수
-  const nextProject = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === projectsData.length - 1 ? 0 : prevIndex + 1,
-    )
-  }
-
-  // 이전 프로젝트로 이동하는 함수
-  const prevProject = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projectsData.length - 1 : prevIndex - 1,
-    )
-  }
-
-  // 인덱스 변경 시 현재 프로젝트로 스크롤
-  useEffect(() => {
-    if (carouselRef.current && !isGridView) {
-      const scrollPosition = currentIndex * carouselRef.current.offsetWidth
-      carouselRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth',
-      })
-    }
-  }, [currentIndex, isGridView])
 
   return (
     <SectionContainer id="projects" padding="py-20 px-6 md:px-8 lg:px-12">
@@ -162,163 +161,71 @@ export default function ProjectsSection() {
         subtitleClassName="text-[clamp(1.125rem,2vw,1.375rem)] max-w-2xl"
       />
 
-      {/* 보기 전환 및 탐색 컨트롤 */}
-      <ContentLayout
-        direction="row"
-        justify="between"
-        align="center"
-        className="mb-8"
-      >
-        <nav className="flex space-x-2" aria-label={t('view-options')}>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setIsGridView(false)}
-            className={!isGridView ? 'bg-primary text-primary-foreground' : ''}
-            aria-pressed={!isGridView}
-          >
-            <LayoutIcon className="w-4 h-4 mr-1" />
-            <span>{t('view-carousel')}</span>
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setIsGridView(true)}
-            className={isGridView ? 'bg-primary text-primary-foreground' : ''}
-            aria-pressed={isGridView}
-          >
-            <LayoutGridIcon className="w-4 h-4 mr-1" />
-            <span>{t('view-gallery')}</span>
-          </Button>
-        </nav>
-
-        {!isGridView && (
-          <nav className="flex space-x-2" aria-label={t('carousel-navigation')}>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevProject}
-              aria-label={t('previous-project')}
-            >
-              <ChevronLeftIcon className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextProject}
-              aria-label={t('next-project')}
-            >
-              <ChevronRightIcon className="w-4 h-4" />
-            </Button>
-          </nav>
-        )}
-      </ContentLayout>
-
-      {/* 프로젝트 표시 - 캐러셀 또는 그리드 */}
-      {isGridView ? (
-        <GridLayout cols={{ default: 1, md: 2, lg: 3 }} gap="gap-8">
-          {projectsData.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </GridLayout>
-      ) : (
-        <div
-          ref={carouselRef}
-          className="flex overflow-x-hidden snap-x snap-mandatory"
-          role="region"
-          aria-label={t('projects.carousel')}
-        >
-          {projectsData.map((project, index) => (
-            <div
-              key={index}
-              className="w-full flex-shrink-0 snap-center px-4"
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${t('projects.slide')} ${index + 1} ${t('projects.of')} ${projectsData.length}`}
-            >
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* 캐러셀 인디케이터 */}
-      {!isGridView && (
-        <ContentLayout
-          direction="row"
-          justify="center"
-          className="mt-8 space-x-2"
-        >
-          {projectsData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full ${currentIndex === index
-                  ? 'bg-primary'
-                  : 'bg-gray-300 dark:bg-gray-700'
-                }`}
-              aria-label={`${t('projects.go-to-project')} ${index + 1}`}
-            />
-          ))}
-        </ContentLayout>
-      )}
+      <GridLayout cols={{ default: 1, md: 2, lg: 3 }} gap="gap-8">
+        {galleryItems.map((item) => (
+          <GalleryCard key={item.title} item={item} />
+        ))}
+      </GridLayout>
     </SectionContainer>
   )
 }
 
-// 프로젝트 카드 컴포넌트
-function ProjectCard({ project }: { project: ProjectWithMedia }) {
+function GalleryCard({ item }: { item: GalleryItem }) {
   const t = useTranslations('pages.projects')
   const [showCode, setShowCode] = useState(false)
-  const isExternal = project.url.startsWith('http')
 
   return (
-    <article
-      role="listitem"
-      aria-labelledby={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
-    >
-      <ContentCard title={project.title} className="h-full flex flex-col">
+    <article aria-label={item.title}>
+      <ContentCard title={item.title} className="h-full flex flex-col">
         <div className="flex flex-col h-full">
-          <header className="flex justify-between items-start mb-4">
-            <h3
-              id={`project-title-${project.title.replace(/\s+/g, '-').toLowerCase()}`}
-              className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold"
-            >
-              {project.title}
+          <header className="flex justify-between items-start mb-3">
+            <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold">
+              {item.title}
             </h3>
-            <time
-              dateTime={`${project.year}`}
-              className="text-sm text-muted-foreground"
-            >
-              {project.year}
-            </time>
+            {item.year && (
+              <time
+                dateTime={`${item.year}`}
+                className="text-sm text-muted-foreground"
+              >
+                {item.year}
+              </time>
+            )}
           </header>
 
-          {/* 프로젝트 이미지 또는 코드 스니펫 */}
-          <figure className="relative mb-4 overflow-hidden rounded-md aspect-video bg-muted">
-            {showCode && project.codeSnippet ? (
-              <pre className="p-4 text-xs overflow-auto h-full bg-gray-900 text-gray-100 rounded-md">
-                <code>{project.codeSnippet}</code>
-              </pre>
-            ) : (
-              <Image
-                src={project.imageUrl}
-                alt={project.alt}
-                fill
-                className="object-cover"
-              />
-            )}
-            {!showCode && (
-              <figcaption className="sr-only">{project.alt}</figcaption>
-            )}
-          </figure>
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {item.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
 
-          <p className="text-[clamp(0.875rem,1.25vw,1rem)] text-muted-foreground mb-4 flex-grow">
-            {project.description}
+          {item.imageUrl && (
+            <figure className="relative mb-4 overflow-hidden rounded-md aspect-video bg-muted">
+              {showCode && item.codeSnippet ? (
+                <pre className="p-4 h-full bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
+                  <code>{item.codeSnippet}</code>
+                </pre>
+              ) : (
+                <Image
+                  src={item.imageUrl}
+                  alt={item.alt ?? item.title}
+                  fill
+                  className="object-cover"
+                />
+              )}
+            </figure>
+          )}
+
+          <p className="flex-grow mb-4 text-[clamp(0.875rem,1.25vw,1rem)] text-muted-foreground">
+            {item.description}
           </p>
 
           <footer className="flex flex-wrap gap-2 mt-auto">
-            {project.codeSnippet && (
+            {item.codeSnippet && (
               <Button
                 variant="outline"
                 size="sm"
@@ -327,22 +234,14 @@ function ProjectCard({ project }: { project: ProjectWithMedia }) {
                 {showCode ? t('view-image') : t('view-code')}
               </Button>
             )}
-            {isExternal ? (
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                <Button variant="default" size="sm">
-                  {t('view-project')}
-                </Button>
-              </a>
-            ) : (
-              <Link href={project.url}>
-                <Button variant="default" size="sm">
-                  {t('view-project')}
-                </Button>
-              </Link>
-            )}
-            {project.notionUrl && (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <Button variant="default" size="sm">
+                {item.linkLabel ?? t('view-project')}
+              </Button>
+            </a>
+            {item.notionUrl && (
               <a
-                href={project.notionUrl}
+                href={item.notionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

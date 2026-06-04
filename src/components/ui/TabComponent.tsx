@@ -59,7 +59,9 @@ export function TabComponent({
       </div>
 
       {/* Tab content — scrollable */}
-      <div className={`flex-1 min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${contentClassName}`}>
+      <div
+        className={`flex-1 min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${contentClassName}`}
+      >
         {tabs.map(
           (tab) =>
             activeTab === tab.id && (

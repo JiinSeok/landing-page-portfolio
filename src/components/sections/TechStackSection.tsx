@@ -33,67 +33,32 @@ export default function TechStackSection() {
     content: (
       <div className="w-full">
         <div className="space-y-6 grid grid-cols-1 gap-4">
-          {(() => {
-            const filteredTech = TECH_STACK_WITH_EXPERIENCE.filter(
-              (tech) => tech.category === category,
-            )
-
-            if (filteredTech.length === 0) {
-              return (
-                <div className="border-b pb-4 last:border-0">
-                  <div className="flex items-center mb-2">
-                    <div className="w-8 h-8 mr-3 relative bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-lg">📚</span>
-                    </div>
-                    <h5
-                      className="font-medium text-base"
-                      id={category.toLowerCase().replace(/\s+/g, '-')}
-                    >
-                      {category} 기술
-                    </h5>
-                  </div>
-                  <p className={styles.combineStyles([styles.text.body('small'), 'text-muted-foreground'])}>
-                    {category} 관련 기술을 사용한 경험이 있습니다. 자세한 내용은
-                    추가될 예정입니다.
-                  </p>
+          {TECH_STACK_WITH_EXPERIENCE.filter(
+            (tech) => tech.category === category,
+          ).map((tech) => (
+            <div key={tech.name} className="border-b pb-4 last:border-0">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 mr-3 relative">
+                  <Image
+                    src={tech.logo}
+                    alt={tech.name}
+                    width={32}
+                    height={32}
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
                 </div>
-              )
-            }
-
-            return filteredTech.map((tech, index) => (
-              <div key={index} className="border-b pb-4 last:border-0">
-                <div className="flex items-center mb-2">
-                  <div className="w-8 h-8 mr-3 relative">
-                    <Image
-                      src={
-                        tech.logo ||
-                        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
-                      }
-                      alt={tech.name}
-                      width={32}
-                      height={32}
-                      style={{ width: 'auto', height: 'auto' }}
-                    />
-                  </div>
-                  <h5 className="font-semibold text-base">{tech.name}</h5>
-                </div>
-                <p className={styles.combineStyles([styles.text.body('small'), 'text-muted-foreground mb-3'])}>
-                  {tech.description}
-                </p>
-                <div className="space-y-1.5">
-                  {tech.projects.map((project, idx) => (
-                    <div
-                      key={idx}
-                      className="text-xs flex items-start gap-2 text-muted-foreground"
-                    >
-                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-1.5" />
-                      <span>{project}</span>
-                    </div>
-                  ))}
-                </div>
+                <h5 className="font-semibold text-base">{tech.name}</h5>
               </div>
-            ))
-          })()}
+              <p
+                className={styles.combineStyles([
+                  styles.text.body('small'),
+                  'text-muted-foreground',
+                ])}
+              >
+                {tech.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     ),
@@ -106,7 +71,12 @@ export default function TechStackSection() {
           <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-6')}>
             {t('pages.techStack.meta.title')}
           </h2>
-          <p className={styles.combineStyles([styles.text.body('large'), 'text-muted-foreground max-w-2xl mx-auto'])}>
+          <p
+            className={styles.combineStyles([
+              styles.text.body('large'),
+              'text-muted-foreground max-w-2xl mx-auto',
+            ])}
+          >
             {t('pages.techStack.meta.subtitle')}
           </p>
         </div>

@@ -6,7 +6,7 @@ import { Link } from '@/navigation'
 import Footer from '@/components/layout/Footer'
 
 export default function NotFoundPage() {
-  const t = useTranslations('NotFoundPage')
+  const t = useTranslations('layout.notFound')
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-background to-secondary/20">
       <div className="flex-grow flex items-center justify-center px-4">
@@ -35,7 +35,9 @@ export default function NotFoundPage() {
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary/10"
                 >
-                  <Link href="/contact">{t('contactSupport')}</Link>
+                  <a href="mailto:seokjiin1073@gmail.com">
+                    {t('contactSupport')}
+                  </a>
                 </Button>
               </div>
             </div>

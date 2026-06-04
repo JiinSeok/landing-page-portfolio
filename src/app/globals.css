@@ -178,13 +178,17 @@
 .callout-shape {
   position: relative;
   border-radius: 1rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .callout-shape:hover {
   transform: translateX(-5px);
-  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 10px 15px -6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 15px 30px -5px rgba(0, 0, 0, 0.15),
+    0 10px 15px -6px rgba(0, 0, 0, 0.1);
 }
 
 .callout-shape::before {

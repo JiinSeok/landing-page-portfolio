@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node ./server.js",
+    "start": "next start",
     "tailwindcss": "tailwindcss",
     "prepare": "husky install",
     "lint": "eslint . --fix && stylelint '**/*.css' --fix",
@@ -24,50 +24,26 @@
       "prettier --write"
     ]
   },
-  "eslintConfig": {
-    "extends": "./lint/.eslintrc.json"
-  },
   "stylelint": {
     "extends": "./lint/.stylelintrc.json"
   },
   "prettier": "./lint/.prettierrc.json",
   "dependencies": {
-    "@radix-ui/react-progress": "^1.1.8",
-    "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
-    "@radix-ui/react-tabs": "^1.1.13",
-    "@tanstack/react-query": "^5.100.14",
-    "@vercel/speed-insights": "^2.0.0",
-    "axios": "^1.16.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "esbuild": "^0.28.0",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",
-    "next-themes": "^0.4.6",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-hook-form": "^7.76.1",
-    "react-markdown": "^10.1.0",
-    "react-modal": "^3.16.3",
-    "remark-gfm": "^4.0.1",
-    "sharp": "^0.34.5",
     "sonner": "^2.0.7",
-    "styled-jsx": "^5.1.7",
-    "tailwind-merge": "^3.6.0",
-    "zod": "^4.4.3"
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
     "@tailwindcss/postcss": "^4.3.0",
-    "@types/babel__core": "^7.20.5",
-    "@types/json-schema": "^7.0.15",
-    "@types/mdast": "^4.0.4",
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "@types/react-modal": "^3.16.3",
     "@typescript-eslint/eslint-plugin": "^8.60.0",
     "@typescript-eslint/parser": "^8.60.0",
     "autoprefixer": "^10.5.0",
