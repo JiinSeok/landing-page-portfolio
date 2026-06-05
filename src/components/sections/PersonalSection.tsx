@@ -100,7 +100,7 @@ function BeforeAfterStack({
   media: { before: BeforeAfterSide; after: BeforeAfterSide }
 }) {
   return (
-    <div className="flex flex-col w-full gap-4 mt-4 md:mt-0">
+    <div className="flex flex-col w-full gap-4">
       <BeforeAfterSideView side={media.before} />
       <BeforeAfterSideView side={media.after} />
     </div>
@@ -233,6 +233,30 @@ export default function PersonalSection() {
             const { career } = item
             const logo = COMPANY_LOGOS[career.company]
             const isCurrent = career.period.includes('현재')
+            const cardMedia = career.contributions.flatMap((entry, i) => {
+              if (typeof entry === 'string') return []
+              const techMatch = entry.title?.match(TITLE_TECH_PATTERN)
+              const name = (techMatch?.[1] ?? entry.title ?? '').split(' — ')[0]
+              const number = String(i + 1).padStart(2, '0')
+              const blocks = []
+              if (entry.phoneDemo) {
+                blocks.push({
+                  key: `${number}-phone`,
+                  number,
+                  name,
+                  phoneDemo: entry.phoneDemo,
+                })
+              }
+              if (entry.beforeAfter) {
+                blocks.push({
+                  key: `${number}-ba`,
+                  number,
+                  name,
+                  beforeAfter: entry.beforeAfter,
+                })
+              }
+              return blocks
+            })
 
             return (
               <div
@@ -341,62 +365,36 @@ export default function PersonalSection() {
                                 ))}
                               </div>
                             )}
-                            <div
-                              className={
-                                group.beforeAfter || group.phoneDemo
-                                  ? 'md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,240px)] md:gap-6 md:items-start'
-                                  : ''
-                              }
-                            >
-                              <ul className="space-y-2">
-                                {group.items.map((item) => {
-                                  const splitIndex = item.indexOf(' — ')
-                                  const label =
-                                    splitIndex > 0
-                                      ? item.slice(0, splitIndex)
-                                      : null
-                                  const detail =
-                                    splitIndex > 0
-                                      ? item.slice(splitIndex + 3)
-                                      : item
-                                  return (
-                                    <li
-                                      key={item}
-                                      className="flex items-start gap-2"
-                                    >
-                                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                      <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
-                                        {label && (
-                                          <span className="font-medium text-foreground">
-                                            {label}
-                                          </span>
-                                        )}
-                                        {label && ' — '}
-                                        {renderInlineLinks(detail)}
-                                      </span>
-                                    </li>
-                                  )
-                                })}
-                              </ul>
-                              {group.beforeAfter && (
-                                <BeforeAfterStack media={group.beforeAfter} />
-                              )}
-                              {group.phoneDemo && (
-                                <figure className="w-full max-w-[190px] mx-auto mt-4 md:mt-0">
-                                  <DeviceFrame
-                                    kind="phone"
-                                    screen={{
-                                      videoUrl: group.phoneDemo.videoUrl,
-                                      alt: group.phoneDemo.alt,
-                                    }}
-                                    title={group.phoneDemo.caption}
-                                  />
-                                  <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
-                                    {group.phoneDemo.caption}
-                                  </figcaption>
-                                </figure>
-                              )}
-                            </div>
+                            <ul className="space-y-2">
+                              {group.items.map((item) => {
+                                const splitIndex = item.indexOf(' — ')
+                                const label =
+                                  splitIndex > 0
+                                    ? item.slice(0, splitIndex)
+                                    : null
+                                const detail =
+                                  splitIndex > 0
+                                    ? item.slice(splitIndex + 3)
+                                    : item
+                                return (
+                                  <li
+                                    key={item}
+                                    className="flex items-start gap-2"
+                                  >
+                                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                    <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
+                                      {label && (
+                                        <span className="font-medium text-foreground">
+                                          {label}
+                                        </span>
+                                      )}
+                                      {label && ' — '}
+                                      {renderInlineLinks(detail)}
+                                    </span>
+                                  </li>
+                                )
+                              })}
+                            </ul>
                             {group.imageUrl && (
                               <figure className="relative w-full mt-4 overflow-hidden rounded-md aspect-video">
                                 <a
@@ -421,6 +419,39 @@ export default function PersonalSection() {
                         )
                       })}
                     </div>
+
+                    {cardMedia.length > 0 && (
+                      <div className="grid gap-4 mt-6 pt-5 border-t border-border sm:grid-cols-2 md:grid-cols-3">
+                        {cardMedia.map((block) => (
+                          <div key={block.key}>
+                            <p className="mb-2 text-xs font-semibold text-muted-foreground">
+                              <span className="mr-1.5 tracking-widest tabular-nums text-muted-foreground/50">
+                                {block.number}
+                              </span>
+                              {block.name}
+                            </p>
+                            {block.phoneDemo && (
+                              <figure className="w-full max-w-[170px] mx-auto">
+                                <DeviceFrame
+                                  kind="phone"
+                                  screen={{
+                                    videoUrl: block.phoneDemo.videoUrl,
+                                    alt: block.phoneDemo.alt,
+                                  }}
+                                  title={block.phoneDemo.caption}
+                                />
+                                <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
+                                  {block.phoneDemo.caption}
+                                </figcaption>
+                              </figure>
+                            )}
+                            {block.beforeAfter && (
+                              <BeforeAfterStack media={block.beforeAfter} />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
