@@ -93,7 +93,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className="w-full sticky top-0 bg-zinc-900 text-zinc-300 z-40"
+      className="w-full sticky top-0 bg-background/95 text-muted-foreground border-b border-border backdrop-blur-sm z-40"
       style={
         { '--navbar-height': '64px' } as React.CSSProperties & {
           '--navbar-height': string
@@ -104,14 +104,14 @@ export default function Navigation() {
         <div className="flex items-center gap-4 relative" ref={contactRef}>
           <Link
             href="/"
-            className="w-fit text-lg md:text-xl font-bold text-white whitespace-nowrap"
+            className="w-fit text-lg md:text-xl font-bold text-foreground whitespace-nowrap"
           >
-            석지인<span className="text-zinc-500 font-normal mx-1.5">·</span>
-            <span className="text-zinc-400 font-normal">개발자</span>
+            석지인<span className="text-muted-foreground/70 font-normal mx-1.5">·</span>
+            <span className="text-muted-foreground font-normal">개발자</span>
           </Link>
           <button
             onClick={copyAndShow}
-            className="hidden sm:flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors border border-zinc-700 rounded-full px-2.5 py-1"
+            className="hidden sm:flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors border border-border rounded-full px-2.5 py-1"
           >
             {copied ? (
               <CheckIcon className="w-3 h-3" />
@@ -122,8 +122,8 @@ export default function Navigation() {
           </button>
 
           {contactOpen && (
-            <div className="absolute top-full left-0 mt-3 w-72 bg-zinc-800 border border-zinc-700 rounded-xl shadow-lg p-4 animate-in slide-in-from-top-2 duration-150 z-50">
-              <p className="flex items-center gap-1.5 text-xs text-emerald-400 mb-3">
+            <div className="absolute top-full left-0 mt-3 w-72 bg-popover border border-border rounded-xl shadow-lg p-4 animate-in slide-in-from-top-2 duration-150 z-50">
+              <p className="flex items-center gap-1.5 text-xs text-emerald-600 mb-3">
                 <CheckIcon className="w-3.5 h-3.5" />
                 클립보드에 복사되었습니다
               </p>
@@ -133,10 +133,10 @@ export default function Navigation() {
                     key={item.label}
                     className="flex items-center gap-2 text-sm"
                   >
-                    <span className="text-zinc-500 w-14 shrink-0 text-xs font-medium">
+                    <span className="text-muted-foreground w-14 shrink-0 text-xs font-medium">
                       {item.label}
                     </span>
-                    <span className="text-zinc-300 truncate">{item.value}</span>
+                    <span className="text-foreground truncate">{item.value}</span>
                   </li>
                 ))}
               </ul>
@@ -149,19 +149,19 @@ export default function Navigation() {
             href={ROUTER.Resume.path}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-zinc-200 hover:text-white transition-colors"
+            className="text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
           >
             이력서
           </a>
 
-          <span className="h-4 w-px bg-zinc-700" aria-hidden />
+          <span className="h-4 w-px bg-border" aria-hidden />
 
           <ul className="flex items-center gap-6">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => scrollTo(item.id)}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.label}
                 </button>
@@ -169,7 +169,7 @@ export default function Navigation() {
             ))}
           </ul>
 
-          <span className="h-4 w-px bg-zinc-700" aria-hidden />
+          <span className="h-4 w-px bg-border" aria-hidden />
 
           <ul className="flex items-center gap-5">
             {EXTERNAL_LINKS.map((link) => (
@@ -178,7 +178,7 @@ export default function Navigation() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
                 </a>
@@ -205,7 +205,7 @@ export default function Navigation() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-zinc-300"
+            className="h-6 w-6 text-muted-foreground"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -233,7 +233,7 @@ export default function Navigation() {
       {isMenuOpen && (
         <div
           id="mobile-menu"
-          className="sm:hidden border-t border-zinc-800 bg-zinc-900"
+          className="sm:hidden border-t border-border bg-background"
           role="menu"
         >
           <ul className="flex flex-col py-2 px-4">
@@ -242,7 +242,7 @@ export default function Navigation() {
                 href={ROUTER.Resume.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 block"
+                className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 이력서
@@ -255,7 +255,7 @@ export default function Navigation() {
                     scrollTo(item.id)
                     setIsMenuOpen(false)
                   }}
-                  className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 block"
+                  className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                 >
                   {item.label}
                 </button>
@@ -267,7 +267,7 @@ export default function Navigation() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 block"
+                  className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
@@ -280,7 +280,7 @@ export default function Navigation() {
                   copyAndShow()
                   setIsMenuOpen(false)
                 }}
-                className="w-full text-left text-base font-medium text-zinc-300 hover:text-white transition-colors py-3 flex items-center gap-2"
+                className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2"
               >
                 {copied ? (
                   <CheckIcon className="w-4 h-4" />

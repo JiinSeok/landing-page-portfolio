@@ -47,7 +47,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
   return (
     <>
-      <nav aria-label="연표 목차" className="relative mb-10 pt-24 pb-20 md:mb-12">
+      <nav aria-label="연표 목차" className="dark relative mb-10 pt-24 pb-20 md:mb-12 bg-background rounded-2xl px-6 md:px-8">
         <div ref={fullRef} className="relative h-0.5 bg-border">
           <span className="absolute left-0 top-4 text-[10px] text-muted-foreground/60">
             현재
@@ -64,7 +64,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             />
           ))}
 
-          <span className="absolute top-1/2 left-0 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full shadow-[0_0_0_4px_rgba(0,0,0,0.12)]" />
+          <span className="absolute top-1/2 left-0 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-4 ring-foreground/20" />
 
           {items.map((item) => {
             const left = `${pos(item.date)}%`
@@ -144,7 +144,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
       </nav>
 
       <div
-        className={`group sticky top-[64px] z-30 -mx-2 px-2 py-2 bg-background/95 backdrop-blur-sm rounded-b-lg transition-opacity duration-200 ${
+        className={`dark group sticky top-[64px] z-30 px-4 py-2 bg-background/95 backdrop-blur-sm rounded-lg transition-opacity duration-200 ${
           compact ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -169,7 +169,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               </a>
             ))}
           <span
-            className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full shadow-[0_0_0_3px_rgba(0,0,0,0.15)] transition-[left] duration-300"
+            className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-[3px] ring-foreground/25 transition-[left] duration-300"
             style={{ left: `${pos(activeDate)}%` }}
           />
         </div>
