@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+
 import {
   NAVBAR_HEIGHT,
   PIN_ENTER_Y,
@@ -8,7 +9,14 @@ import {
   RAIL_OFFSET_LG,
   RAIL_OFFSET_MD,
 } from '@/lib/constants/layout'
+import { ROUTER } from '@/lib/constants/router'
+import { useCopyContact } from '@/lib/hooks/useCopyContact'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
+import {
+  ContactCopyButton,
+  ContactPopover,
+} from '@/components/layout/ContactCopyButton'
+import { Link } from '@/navigation'
 
 interface TimelineTocProps {
   items: TocItem[]
@@ -31,6 +39,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const [activeDate, setActiveDate] = useState(nowKey)
   const [pinned, setPinned] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const { copied, open, copy, containerRef } = useCopyContact()
 
   useEffect(() => {
     const onScroll = () => {
@@ -81,6 +90,20 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
       >
         <div
           aria-hidden
+          className="hidden absolute inset-y-0 left-0 dark bg-background md:block lg:hidden"
+          style={{
+            width: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_MD}px)`,
+          }}
+        />
+        <div
+          aria-hidden
+          className="hidden absolute inset-y-0 left-0 dark bg-background lg:block"
+          style={{
+            width: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_LG}px)`,
+          }}
+        />
+        <div
+          aria-hidden
           className="hidden absolute inset-y-0 right-0 bg-background border-b border-border md:block lg:hidden"
           style={{
             left: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_MD}px)`,
@@ -94,7 +117,31 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           }}
         />
         <div className="relative max-w-6xl mx-auto px-6 flex gap-4 md:px-8 md:gap-6">
-          <div className="hidden md:flex md:w-24 lg:w-28 shrink-0" />
+          <div
+            ref={containerRef}
+            className={`relative hidden md:flex md:w-24 lg:w-28 shrink-0 dark flex-col justify-center gap-1 transition-[opacity,visibility] duration-300 ${
+              pinned ? 'visible opacity-100' : 'invisible opacity-0'
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Link
+                href="/"
+                className="text-sm font-bold text-foreground whitespace-nowrap"
+              >
+                석지인
+              </Link>
+              <ContactCopyButton copied={copied} onClick={copy} />
+            </div>
+            <a
+              href={ROUTER.Resume.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              이력서 ↗
+            </a>
+            <ContactPopover open={open} className="left-0" />
+          </div>
           <div className="hidden md:block shrink-0 w-6" />
           <div className="flex-1 min-w-0 py-5 max-md:bg-background max-md:border-b max-md:border-border">
             <div className="relative hidden h-5 overflow-x-visible overflow-y-clip md:block">

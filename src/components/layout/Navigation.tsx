@@ -1,9 +1,16 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
+import { CheckIcon, CopyIcon, MailIcon } from 'lucide-react'
+
 import { NAVBAR_HEIGHT } from '@/lib/constants/layout'
-import { Link } from '@/navigation'
-import { CopyIcon, CheckIcon } from 'lucide-react'
+import { ROUTER } from '@/lib/constants/router'
+import { useCopyContact } from '@/lib/hooks/useCopyContact'
+import {
+  ContactCopyButton,
+  ContactPopover,
+} from '@/components/layout/ContactCopyButton'
+import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons'
 import {
   ButtonContainer,
   FloatingButtonGroup,
@@ -11,7 +18,7 @@ import {
   TocMenu,
   ShareMenu,
 } from '@/components/FloatingButtonGroup'
-import { ROUTER } from '@/lib/constants/router'
+import { Link } from '@/navigation'
 
 const NAV_ITEMS = [
   { id: 'career', label: '커리어' },
@@ -20,26 +27,23 @@ const NAV_ITEMS = [
 ]
 
 const EXTERNAL_LINKS = [
-  { label: 'GitHub', href: ROUTER.GitHub.path },
-  { label: 'LinkedIn', href: ROUTER.LinkedIn.path },
-  { label: 'Email', href: ROUTER.Email.path },
-]
-
-const CONTACT_INFO = [
-  {
-    label: 'Email',
-    value: 'seokjiin1073@gmail.com',
-    href: 'mailto:seokjiin1073@gmail.com',
-  },
   {
     label: 'GitHub',
-    value: 'github.com/JiinSeok',
-    href: 'https://github.com/JiinSeok',
+    ariaLabel: 'GitHub 프로필',
+    href: ROUTER.GitHub.path,
+    Icon: GithubIcon,
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/jiin-seok',
-    href: 'https://linkedin.com/in/jiin-seok',
+    ariaLabel: 'LinkedIn 프로필',
+    href: ROUTER.LinkedIn.path,
+    Icon: LinkedinIcon,
+  },
+  {
+    label: 'Email',
+    ariaLabel: '이메일 보내기',
+    href: ROUTER.Email.path,
+    Icon: MailIcon,
   },
 ]
 
@@ -52,46 +56,7 @@ function scrollTo(id: string) {
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [contactOpen, setContactOpen] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const contactRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (
-        contactRef.current &&
-        !contactRef.current.contains(e.target as Node)
-      ) {
-        setContactOpen(false)
-      }
-    }
-    if (contactOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [contactOpen])
-
-  const copyAndShow = async () => {
-    const text = `석지인 (Jiin Seok)\nEmail: seokjiin1073@gmail.com\nGitHub: github.com/JiinSeok\nLinkedIn: linkedin.com/in/jiin-seok`
-    try {
-      await navigator.clipboard.writeText(text)
-    } catch {
-      const ta = document.createElement('textarea')
-      ta.value = text
-      ta.style.position = 'fixed'
-      ta.style.opacity = '0'
-      document.body.appendChild(ta)
-      ta.select()
-      document.execCommand('copy')
-      document.body.removeChild(ta)
-    }
-    setCopied(true)
-    setContactOpen(true)
-    setTimeout(() => {
-      setContactOpen(false)
-      setCopied(false)
-    }, 3000)
-  }
+  const { copied, open, copy, containerRef } = useCopyContact()
 
   return (
     <nav
@@ -103,47 +68,19 @@ export default function Navigation() {
       }
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-14 flex justify-between items-center">
-        <div className="flex items-center gap-4 relative" ref={contactRef}>
+        <div className="flex items-center gap-4 relative" ref={containerRef}>
           <Link
             href="/"
             className="w-fit text-lg font-bold text-foreground whitespace-nowrap"
           >
             석지인
           </Link>
-          <button
-            onClick={copyAndShow}
-            aria-label="연락처 복사"
-            title="연락처 복사"
-            className="hidden sm:flex items-center p-1.5 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            {copied ? (
-              <CheckIcon className="w-4 h-4" />
-            ) : (
-              <CopyIcon className="w-4 h-4" />
-            )}
-          </button>
-
-          {contactOpen && (
-            <div className="absolute top-full left-0 mt-3 w-72 bg-popover border border-border rounded-xl shadow-lg p-4 animate-in slide-in-from-top-2 duration-150 z-50">
-              <p className="flex items-center gap-1.5 text-xs text-emerald-600 mb-3">
-                <CheckIcon className="w-3.5 h-3.5" />
-                클립보드에 복사되었습니다
-              </p>
-              <ul className="space-y-2">
-                {CONTACT_INFO.map((item) => (
-                  <li
-                    key={item.label}
-                    className="flex items-center gap-2 text-sm"
-                  >
-                    <span className="text-muted-foreground w-14 shrink-0 text-xs font-medium">
-                      {item.label}
-                    </span>
-                    <span className="text-foreground truncate">{item.value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <ContactCopyButton
+            copied={copied}
+            onClick={copy}
+            className="hidden sm:flex"
+          />
+          <ContactPopover open={open} className="left-0" />
         </div>
 
         <div className="hidden sm:flex items-center gap-6">
@@ -151,6 +88,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <button
+                  type="button"
                   onClick={() => scrollTo(item.id)}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
@@ -158,15 +96,20 @@ export default function Navigation() {
                 </button>
               </li>
             ))}
+          </ul>
+
+          <ul className="flex items-center gap-1">
             {EXTERNAL_LINKS.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={link.ariaLabel}
+                  title={link.ariaLabel}
+                  className="flex items-center p-1.5 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  {link.label}
+                  <link.Icon className="w-4 h-4" />
                 </a>
               </li>
             ))}
@@ -193,6 +136,7 @@ export default function Navigation() {
         </div>
 
         <button
+          type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-2 sm:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           aria-label="메뉴 열기/닫기"
@@ -247,6 +191,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <li key={item.id} role="menuitem">
                 <button
+                  type="button"
                   onClick={() => {
                     scrollTo(item.id)
                     setIsMenuOpen(false)
@@ -272,8 +217,9 @@ export default function Navigation() {
             ))}
             <li role="menuitem">
               <button
+                type="button"
                 onClick={() => {
-                  copyAndShow()
+                  copy()
                   setIsMenuOpen(false)
                 }}
                 className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2"
