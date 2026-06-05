@@ -116,29 +116,6 @@ export default function PersonalSection() {
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-6xl pl-4 md:pl-0">
           <TimelineToc items={tocItems} nowKey={nowKey} />
-          <div className="flex gap-4 md:gap-6 mb-8 md:mb-10">
-            <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end items-end">
-              <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
-                <span className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background" />
-                생성형 AI 주요 출시
-              </span>
-            </div>
-            <div className="w-6 shrink-0" />
-            <div className="flex-1 flex flex-wrap gap-x-5 gap-y-1.5">
-              <span className="flex items-center gap-2 text-xs font-semibold text-primary tracking-wide">
-                <span className="w-3 h-3 rounded-full bg-primary" />
-                경력
-              </span>
-              <span className="flex items-center gap-2 text-xs font-semibold text-primary/70 tracking-wide">
-                <span className="w-3 h-3 rounded-full bg-primary/50" />
-                프로젝트 · 교육 · 자격
-              </span>
-              <span className="flex md:hidden items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
-                <span className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background" />
-                생성형 AI 주요 출시
-              </span>
-            </div>
-          </div>
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
             const date = entryDate(item)
