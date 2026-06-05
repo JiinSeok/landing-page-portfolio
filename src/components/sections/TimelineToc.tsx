@@ -158,22 +158,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               />
             ))}
 
-            {items
-              .filter((i) => i.tier === 'minor')
-              .map((item) => (
-                <a
-                  key={`minor-${item.anchor}`}
-                  href={`#${item.anchor}`}
-                  aria-label={item.label}
-                  style={{ left: `${pos(item.date)}%` }}
-                  className="group absolute top-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full"
-                >
-                  <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 px-1.5 py-0.5 bg-background border border-border text-[10px] text-muted-foreground whitespace-nowrap rounded group-hover:block group-focus-visible:block">
-                    {item.label}
-                  </span>
-                </a>
-              ))}
-
             {minorAi.map((item) => (
               <a
                 key={item.anchor}
