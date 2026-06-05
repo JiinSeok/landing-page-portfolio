@@ -110,10 +110,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                 </a>
               )
             })}
-
-            <span className="absolute bottom-0 left-0 text-[10px] tracking-wide text-muted-foreground">
-              TODAY
-            </span>
           </div>
 
           <div className="relative h-0.5 bg-border">
