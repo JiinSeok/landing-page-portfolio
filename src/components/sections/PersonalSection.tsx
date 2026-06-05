@@ -1,10 +1,12 @@
 'use client'
 
 import { useTimelineData } from '@/lib/hooks/useTimelineData'
+import { useTranslations } from '@/lib/providers/TextContext'
 import { type ContributionGroup } from '@/lib/utils/timeline'
 import { entryDate } from '@/lib/utils/timeline'
 import { ProjectEntry } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
+import styles from '@/lib/utils/styles'
 
 const TITLE_TECH_PATTERN = /^(.*?)\s*\(([^)]+)\)$/
 
@@ -46,6 +48,7 @@ function renderInlineLinks(text: string) {
 }
 
 export default function PersonalSection() {
+  const t = useTranslations()
   const { timeline } = useTimelineData()
 
   const firstProjectIndex = timeline.findIndex((item) => item.kind === 'project')
@@ -57,7 +60,23 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:py-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
+          <h2 className={styles.text.heading(2)}>
+            {t('pages.career.meta.title')}
+          </h2>
+        </div>
+
         <div className="max-w-6xl mx-auto pl-4 md:pl-0">
+          <div className="hidden md:flex gap-4 md:gap-6 pb-8">
+            <div className="dark flex md:w-24 lg:w-28 shrink-0 justify-end">
+              <h2 className="text-right font-semibold text-foreground leading-snug">
+                {t('pages.career.meta.title')}
+              </h2>
+            </div>
+            <div className="shrink-0 w-6" />
+            <div className="flex-1" />
+          </div>
+
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
             const date = entryDate(item)
