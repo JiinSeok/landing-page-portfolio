@@ -90,7 +90,7 @@ export default function PersonalSection() {
                   key={item.anchor}
                   id={item.anchor}
                   data-toc-date={date}
-                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                  className="flex gap-4 md:gap-6 scroll-mt-28"
                 >
                   <div className="hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
                     <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
@@ -122,7 +122,7 @@ export default function PersonalSection() {
                   key={item.anchor}
                   id={item.anchor}
                   data-toc-date={date}
-                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                  className="flex gap-4 md:gap-6 scroll-mt-28"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
@@ -157,7 +157,7 @@ export default function PersonalSection() {
                   key={item.anchor}
                   id={item.anchor}
                   data-toc-date={date}
-                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                  className="flex gap-4 md:gap-6 scroll-mt-28"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
@@ -188,7 +188,7 @@ export default function PersonalSection() {
                 key={item.anchor}
                 id={item.anchor}
                 data-toc-date={date}
-                className="flex gap-4 md:gap-6 scroll-mt-24"
+                className="flex gap-4 md:gap-6 scroll-mt-28"
               >
                 <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
