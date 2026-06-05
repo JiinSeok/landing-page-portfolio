@@ -78,50 +78,46 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-6xl mx-auto px-6 py-5 md:px-8">
           <div
             className={
               pinned
-                ? 'max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-40 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
-                : 'max-h-40 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
+                ? 'relative h-9 max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-9 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
+                : 'relative h-9 max-h-9 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
             }
           >
-            <div className="pt-3 relative">
-              <div className="relative h-5">
-                {careerItems.map((item) => {
-                  const p = pos(item.date)
-                  return (
-                    <a
-                      key={item.anchor}
-                      href={`#${item.anchor}`}
-                      aria-label={
-                        item.sublabel
-                          ? `${item.label} — ${item.sublabel}`
-                          : item.label
-                      }
-                      style={{ left: `${p}%` }}
-                      className={`group absolute bottom-0 ${edgeAlign(p)}`}
-                    >
-                      <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
-                        {item.label}
-                      </span>
-                      <span
-                        className={`block w-px h-2 mt-0.5 bg-border ${
-                          p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
-                        }`}
-                      />
-                    </a>
-                  )
-                })}
+            {careerItems.map((item) => {
+              const p = pos(item.date)
+              return (
+                <a
+                  key={item.anchor}
+                  href={`#${item.anchor}`}
+                  aria-label={
+                    item.sublabel
+                      ? `${item.label} — ${item.sublabel}`
+                      : item.label
+                  }
+                  style={{ left: `${p}%` }}
+                  className={`group absolute bottom-0 ${edgeAlign(p)}`}
+                >
+                  <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
+                    {item.label}
+                  </span>
+                  <span
+                    className={`block w-px h-2 mt-0.5 bg-border ${
+                      p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
+                    }`}
+                  />
+                </a>
+              )
+            })}
 
-                <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground/60 translate-y-full pt-0.5">
-                  현재
-                </span>
-              </div>
-            </div>
+            <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground/60">
+              현재
+            </span>
           </div>
 
-          <div className="relative h-0.5 bg-border my-0">
+          <div className="relative h-0.5 bg-border">
             {pinned && (
               <span
                 className="absolute inset-y-0 left-0 bg-primary rounded-full transition-[width] duration-300"
@@ -132,34 +128,27 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             {careerSegs.map((seg) => (
               <span
                 key={`seg-${seg.anchor}`}
-                className="absolute -top-px left-0 h-[3px] bg-primary/40 rounded-full"
+                className="absolute inset-y-0 left-0 bg-primary/40 rounded-full"
                 style={{ width: `${pos(seg.date)}%` }}
               />
             ))}
+          </div>
 
-            {pinned && (
-              <span
-                className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-[3px] ring-foreground/25 transition-[left] duration-300"
-                style={{ left: `${pos(activeDate)}%` }}
-              />
-            )}
-
+          <div className="relative h-10">
             {minorAi.map((item) => (
               <a
                 key={item.anchor}
                 href={`#${item.anchor}`}
                 aria-label={`${item.date} ${item.label}`}
                 style={{ left: `${pos(item.date)}%` }}
-                className="group absolute -top-[5px] w-px h-2 bg-border"
+                className="group absolute top-0 w-px h-2 bg-border"
               >
                 <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 px-1.5 py-0.5 bg-background border border-border text-[10px] text-muted-foreground whitespace-nowrap rounded group-hover:block group-focus-visible:block">
                   {item.date} {item.label}
                 </span>
               </a>
             ))}
-          </div>
 
-          <div className="relative h-11 mt-1">
             {majorAi.map((item) => {
               const p = pos(item.date)
               return (
