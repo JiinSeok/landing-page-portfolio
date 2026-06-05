@@ -76,8 +76,6 @@ export default function PersonalSection() {
               {t('pages.career.meta.title')}
             </h2>
           </div>
-          <div className="hidden md:block h-14" />
-
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
             const date = entryDate(item)
