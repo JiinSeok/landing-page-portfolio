@@ -13,16 +13,16 @@ export default function HomePage() {
     <div className="flex flex-col items-center overflow-x-clip">
       <div
         aria-hidden
-        className="hidden md:block fixed inset-y-0 left-0 -z-10 dark bg-background lg:hidden"
+        className="hidden md:block lg:hidden fixed inset-y-0 left-0 -z-10 dark bg-background"
         style={{
-          width: 'calc((100% - min(72rem, 100%)) / 2 + 164px)',
+          width: 'calc((100% - min(72rem, 100%)) / 2 + 132px)',
         }}
       />
       <div
         aria-hidden
         className="hidden lg:block fixed inset-y-0 left-0 -z-10 dark bg-background"
         style={{
-          width: 'calc((100% - min(72rem, 100%)) / 2 + 196px)',
+          width: 'calc((100% - min(72rem, 100%)) / 2 + 148px)',
         }}
       />
       <main className="w-full">
