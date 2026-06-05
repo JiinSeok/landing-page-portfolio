@@ -46,7 +46,7 @@ export const galleryItems: GalleryItem[] = [
     description:
       '코드잇 스프린트에서 albaform 등을 만들며 얻은 폼 구현 배움을 채용 과제를 하며 패턴으로 다듬었고, 그 결과를 라이브러리로 발전시켰습니다. Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
     url: 'https://www.npmjs.com/package/@jiin.seok/formkit-react',
-    imageUrl: '/images/projects/formkit-react.png',
+    imageUrl: '/images/projects/formkit-react.webp',
     alt: 'formkit-react 폼 라이브러리 예제 화면',
     device: 'laptop',
     videoUrl: '/videos/projects/formkit-react.webm',
@@ -78,7 +78,7 @@ export function LoginForm() {
     description:
       '검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
     url: 'https://albaform.usejiin.link',
-    imageUrl: '/images/projects/albaform.png',
+    imageUrl: '/images/projects/albaform.webp',
     alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
     notionUrl: 'https://jiin-seok.notion.site/albaform',
     device: 'phone',
@@ -106,7 +106,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
       'Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다.',
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
-    imageUrl: '/images/projects/tappytype-ipad.png',
+    imageUrl: '/images/projects/tappytype-ipad.webp',
     alt: 'TappyType iOS 앱 소개 카드',
     device: 'tablet',
     featured: { sublabel: 'iOS · 진행 중' },
@@ -127,7 +127,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
       '경력·프로젝트·교육을 생성형 AI 연표와 나란히 보여주는 타임라인형 디자인이고, 마우스를 따라다니는 포차코 커서 컴패니언이 숨어 있습니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일했습니다.',
     url: 'https://github.com/JiinSeok/landing-page-portfolio',
     linkLabel: '코드 저장소 보기',
-    imageUrl: '/images/projects/portfolio.png',
+    imageUrl: '/images/projects/portfolio.webp',
     alt: '포트폴리오 사이트 첫 화면',
     device: 'laptop',
     videoUrl: '/videos/projects/portfolio.webm',
@@ -139,7 +139,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     lead: '지원 회사의 JSP 레거시를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다.',
     description:
       'tw- prefix 컨벤션 문서, 예측 가능/불가능을 구분하는 중앙 에러 처리, 50개 임계 조건부 가상화(7,000개에서도 부드러운 스크롤), 평가자가 데이터 크기와 네트워크 지연을 직접 바꿔 검증하는 테스트 제어 패널까지 담았습니다. 코드는 비공개이며 요청 주시면 공유드립니다.',
-    imageUrl: '/images/projects/bodycodi.png',
+    imageUrl: '/images/projects/bodycodi.webp',
     alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
     device: 'laptop',
     videoUrl: '/videos/projects/bodycodi.webm',
@@ -189,7 +189,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       "검색 엔진을 '정보 이용자에게 정보 요구 충족이라는 가치를 주는 제품'으로 정의하고, 40여 개 SEO 기법을 웹 표준·속도·신뢰성으로 묶어 정리한 라이트닝 토크입니다. 크롤링 예산과 서버 비용, 접근성 같은 검색엔진 개발자의 고민에서 거꾸로 출발하면 각 순위 기준의 이유가 보이고, 같은 원리가 LLM 시대의 GEO(Bing 인덱싱, 인용하기 쉬운 구조)로 이어진다는 내용입니다.",
     url: 'https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1',
     linkLabel: '발표 자료 보기',
-    imageUrl: '/images/projects/seo-talk.png',
+    imageUrl: '/images/projects/seo-talk.webp',
     alt: 'SEO 라이트닝 토크 발표 자료 표지',
     embedUrl:
       'https://embed.figma.com/deck/jdocRc3a37rnNsTRm1crbD/?embed-host=share',
@@ -202,7 +202,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       "도스트11 데브 미팅에서 '알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크입니다. 서버 응답도 서비스직의 응대라는 관점으로, 고객이 부정적으로 반응하는 응답 3가지(손해 입히기, 맥락 무시, 아마추어의 응대)와 도서관 사서의 참고 봉사(무엇을 찾는지 함께 정의하고 단계별로 안내)를 대비했습니다. 좋은 에러 메시지는 그 자체로 DX이자 마케팅이라는 것이 핵심입니다.",
     url: 'https://www.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/%EC%84%9C%EB%B9%84%EC%8A%A4%EC%A7%81%EC%9C%BC%EB%A1%9C%EC%84%9C%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9E%90--%EB%B3%B5%EC%82%AC-?node-id=1-101&t=oEqxpmYisTFTWX0r-1',
     linkLabel: '발표 자료 보기',
-    imageUrl: '/images/projects/cx-talk.png',
+    imageUrl: '/images/projects/cx-talk.webp',
     alt: "'서비스직으로서의 개발자' 라이트닝 토크 발표 자료 표지",
     embedUrl:
       'https://embed.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/?embed-host=share',
@@ -216,7 +216,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       '월간 마감·스냅샷, 상태 머신과 잠금, 멱등성, 민감정보 경계 같은 설계 결정과 직접 구현한 정산 UI·가격 스냅샷을 인사이트, 예시 코드, 개념도로 정리했습니다. 회사 내부 정보는 일반화했습니다.',
     url: '/settlement-design',
     linkLabel: '케이스 스터디 보기',
-    imageUrl: '/images/projects/settlement-design.png',
+    imageUrl: '/images/projects/settlement-design.webp',
     alt: '정산 기능 설계 케이스 스터디 페이지',
     device: 'laptop',
     videoUrl: '/videos/projects/settlement-design.webm',
@@ -231,7 +231,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       "도구는 Gradio지만 일의 본질은 같았습니다. 사용자의 작업 흐름을 화면 구조로 번역하는 것. 도구 이름 기준 영문 탭을 실제 작업 순서인 1.마스크 → 2.에셋 → 3.합성으로 재구성하고, '원본+마스크+에셋=합성 결과' 썸네일 타임라인을 신설해 산출물이 다음 단계 어디에 쓰이는지 화면이 안내합니다. UI 용어 한국어화와 방송용 5GB 업로드 대응까지 함께 했습니다.",
     beforeAfter: {
       before: {
-        imageUrl: '/images/projects/aicg-legacy.png',
+        imageUrl: '/images/projects/aicg-legacy.webp',
         caption: '영문 도구 탭 — 작업 순서가 안 보임',
         alt: '개선 전 — SAM3 영문 도구 탭 화면',
       },
@@ -253,7 +253,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
     linkLabel: '사이트 보기',
     beforeAfter: {
       before: {
-        imageUrl: '/images/projects/most267-static.png',
+        imageUrl: '/images/projects/most267-static.webp',
         caption: '정적 HTML — 콘텐츠는 유튜브 카드 한 장',
         alt: '개선 전 — 손으로 수정하던 정적 HTML 첫 화면',
       },
@@ -290,7 +290,7 @@ export function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
         if (entry.isIntersecting) video.play().catch(() => {})
         else video.pause()
       },
-      { rootMargin: '120px' },
+      { rootMargin: '240px' },
     )
     observer.observe(video)
     return () => observer.disconnect()
@@ -300,11 +300,12 @@ export function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
     <video
       ref={videoRef}
       src={src}
+      poster={src.replace('.webm', '.webp')}
       aria-label={label}
       muted
       loop
       playsInline
-      preload="auto"
+      preload="none"
       className="absolute inset-0 w-full h-full object-cover"
     />
   )
@@ -363,7 +364,13 @@ const APPLE_BEZELS = {
   },
 }
 
-export function BeforeAfterSideView({ side }: { side: BeforeAfterSide }) {
+export function BeforeAfterSideView({
+  side,
+  priority = false,
+}: {
+  side: BeforeAfterSide
+  priority?: boolean
+}) {
   return (
     <figure className="w-full min-w-0">
       <a
@@ -382,6 +389,7 @@ export function BeforeAfterSideView({ side }: { side: BeforeAfterSide }) {
               alt={side.alt}
               fill
               sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+              priority={priority}
               className="object-cover object-top"
             />
           )}
@@ -396,12 +404,14 @@ export function BeforeAfterSideView({ side }: { side: BeforeAfterSide }) {
 
 export function BeforeAfterStack({
   media,
+  priority = false,
 }: {
   media: { before: BeforeAfterSide; after: BeforeAfterSide }
+  priority?: boolean
 }) {
   return (
     <div className="flex flex-col w-full gap-4 sm:flex-row">
-      <BeforeAfterSideView side={media.before} />
+      <BeforeAfterSideView side={media.before} priority={priority} />
       <BeforeAfterSideView side={media.after} />
     </div>
   )
@@ -509,6 +519,7 @@ export function ProjectEntry({
 }) {
   const t = useTranslations('pages.projects')
   const [showCode, setShowCode] = useState(false)
+  const [showEmbed, setShowEmbed] = useState(false)
 
   return (
     <article
@@ -594,13 +605,33 @@ export function ProjectEntry({
 
       {item.embedUrl && (
         <figure className="relative md:w-80 lg:w-96 shrink-0 self-start w-full overflow-hidden rounded-md aspect-video bg-muted">
-          <iframe
-            src={item.embedUrl}
-            title={item.title}
-            loading="lazy"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full border-0"
-          />
+          {showEmbed || !item.imageUrl ? (
+            <iframe
+              src={item.embedUrl}
+              title={item.title}
+              loading="lazy"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setShowEmbed(true)}
+              aria-label={`${item.title} 발표 자료 불러오기`}
+              className="absolute inset-0 cursor-pointer"
+            >
+              <Image
+                src={item.imageUrl}
+                alt={item.alt ?? item.title}
+                fill
+                sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+                className="object-cover"
+              />
+              <span className="absolute bottom-2 right-2 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full shadow-sm">
+                ▶ 발표 자료 열기
+              </span>
+            </button>
+          )}
         </figure>
       )}
 
@@ -617,7 +648,7 @@ export function ProjectEntry({
           }
         >
           {item.beforeAfter ? (
-            <BeforeAfterStack media={item.beforeAfter} />
+            <BeforeAfterStack media={item.beforeAfter} priority={priority} />
           ) : (showCode || (!item.device && !item.imageUrl)) &&
             item.codeSnippet ? (
             <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto [scrollbar-width:thin] [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
