@@ -71,9 +71,11 @@ export default function PersonalSection() {
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
                   <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-                    <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
-                      <span className="tabular-nums">{item.sort}</span>
-                      <span>{item.label}</span>
+                    <span className="flex flex-col items-end text-xs text-right leading-snug">
+                      <span className="tabular-nums text-muted-foreground">
+                        {item.sort}
+                      </span>
+                      <span className="text-foreground/85">{item.label}</span>
                     </span>
                   </div>
                   <div className="shrink-0 w-6" />

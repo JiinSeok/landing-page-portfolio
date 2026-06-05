@@ -35,7 +35,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     description:
-      'Next API 프록시와 NextAuth 세션으로 민감 정보 노출을 막았습니다. 기업 랜딩 페이지는 비개발자가 Notion으로 콘텐츠를 관리하게 만들었습니다.',
+      'Next API 프록시와 NextAuth 세션으로 민감 정보 노출을 막았습니다. 비개발자가 Notion으로 관리하는 랜딩 페이지를 만들었습니다.',
   },
   {
     name: 'HTML5 / CSS3',
@@ -110,7 +110,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     description:
-      '리니어 히스토리 컨벤션을 Git Hook으로 지키게 했습니다. 도스트11에서 Overcommit 기반 pre-push 훅을 직접 고치며 PR 중심으로 일합니다.',
+      '리니어 히스토리 컨벤션을 Git Hook으로 지키게 했습니다. 도스트11에서 Overcommit pre-push 훅을 고치며 PR 중심으로 일합니다.',
   },
   {
     name: 'GitHub',
@@ -237,14 +237,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg',
     description:
-      '도스트11에서 풀스택으로 일하며 영수증·거래명세서 Presenter, 카테고리 캐싱, VAT·가격 스냅샷 백필을 구현했습니다. RSpec 테스트도 작성합니다.',
+      '도스트11에서 풀스택으로 일하며 영수증·거래명세서 Presenter, 카테고리 캐싱, 가격 스냅샷 백필을 RSpec 테스트와 함께 구현했습니다.',
   },
   {
     name: 'Python',
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     description:
-      'AWS S3 프로덕션 데이터로 버그를 재현하는 데 사용했습니다. CI Selenium 테스트가 profile 공유로 깨지던 문제를 분리해 해결했습니다.',
+      'AWS S3 프로덕션 데이터로 버그를 재현했습니다. CI Selenium 테스트의 profile 공유 문제를 분리해 해결했습니다.',
   },
   {
     name: 'Google Analytics',
