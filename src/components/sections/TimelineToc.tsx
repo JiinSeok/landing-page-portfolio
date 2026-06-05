@@ -20,7 +20,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const careerSegs = items.filter((i) => i.tier === 'career' && i.ongoing)
   const majorAi = items.filter((i) => i.tier === 'ai' && i.major)
   const minorAi = items.filter((i) => i.tier === 'ai' && !i.major)
-  const featuredItems = items.filter((i) => i.tier === 'featured')
   const careerItems = items.filter((i) => i.tier === 'career')
 
   const [activeDate, setActiveDate] = useState(nowKey)
@@ -88,30 +87,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             }
           >
             <div className="pt-4 relative">
-              <div className="relative h-6">
-                {featuredItems.map((item) => {
-                  const p = pos(item.date)
-                  return (
-                    <a
-                      key={item.anchor}
-                      href={`#${item.anchor}`}
-                      aria-label={`${item.label} — ${item.sublabel}`}
-                      style={{ left: `${p}%` }}
-                      className={`absolute bottom-0 ${edgeAlign(p)}`}
-                    >
-                      <span className="block text-[11px] font-semibold text-foreground/80 whitespace-nowrap">
-                        {item.sublabel}
-                      </span>
-                      <span
-                        className={`block w-px h-2 mt-0.5 bg-muted-foreground/50 ${
-                          p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
-                        }`}
-                      />
-                    </a>
-                  )
-                })}
-              </div>
-
               <div className="relative h-5">
                 {careerItems.map((item) => {
                   const p = pos(item.date)

@@ -514,6 +514,11 @@ export function ProjectEntry({
     >
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap gap-1.5 mb-2">
+          {item.featured && (
+            <span className="px-2.5 py-0.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+              추천
+            </span>
+          )}
           {item.tags.map((tag) => (
             <span
               key={tag}

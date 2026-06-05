@@ -27,6 +27,7 @@ export type CareerEntry = {
 export type CareerExtra = {
   tag: string
   label: string
+  tocLabel?: string
   period: string
   sort: string
 }
@@ -169,9 +170,8 @@ export function buildTocItems(
       }
       if (entry.kind === 'project') {
         return {
-          tier: entry.project.featured ? 'featured' : 'minor',
+          tier: 'minor',
           label: entry.project.title,
-          sublabel: entry.project.featured?.sublabel,
           date,
           ongoing: (entry.project.period ?? '').includes('현재'),
           anchor: entry.anchor,
@@ -179,8 +179,9 @@ export function buildTocItems(
       }
       if (entry.kind === 'extra') {
         return {
-          tier: 'minor',
-          label: entry.extra.label,
+          tier: entry.extra.tocLabel ? 'career' : 'minor',
+          label: entry.extra.tocLabel ?? entry.extra.label,
+          sublabel: entry.extra.tocLabel ? entry.extra.label : undefined,
           date,
           ongoing: false,
           anchor: entry.anchor,

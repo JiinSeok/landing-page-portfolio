@@ -90,8 +90,7 @@ describe('buildTocItems', () => {
 
     expect(byLabel('도스트11')?.tier).toBe('career')
     expect(byLabel('도스트11')?.ongoing).toBe(true)
-    expect(byLabel('TappyType')?.tier).toBe('featured')
-    expect(byLabel('TappyType')?.sublabel).toBe('iOS · 진행 중')
+    expect(byLabel('TappyType')?.tier).toBe('minor')
     expect(byLabel('albaform')?.tier).toBe('minor')
     expect(byLabel('코드잇')?.tier).toBe('minor')
     expect(byLabel('KBS한국어능력시험')).toBeUndefined()
