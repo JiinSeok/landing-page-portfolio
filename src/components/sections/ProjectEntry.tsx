@@ -534,11 +534,15 @@ export function ProjectEntry({
         </div>
 
         {item.lead && (
-          <p className="mb-1.5 max-w-[65ch] text-sm font-medium text-foreground">
+          <p
+            className={`mb-1.5 text-sm font-medium text-foreground ${item.beforeAfter ? '' : 'max-w-[65ch]'}`}
+          >
             {item.lead}
           </p>
         )}
-        <p className="mb-4 max-w-[65ch] text-sm text-muted-foreground">
+        <p
+          className={`mb-4 text-sm text-muted-foreground ${item.beforeAfter ? '' : 'max-w-[65ch]'}`}
+        >
           {item.description}
         </p>
 
