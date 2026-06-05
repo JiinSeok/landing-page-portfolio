@@ -35,6 +35,7 @@ export type CareerExtra = {
 export type AiMilestone = {
   sort: string
   label: string
+  tocLabel?: string
   major?: boolean
 }
 
@@ -46,7 +47,7 @@ export type TimelineProject = {
 
 export type TimelineEntry<P extends TimelineProject = TimelineProject> = (
   | { kind: 'career'; sort: string; career: CareerEntry }
-  | { kind: 'milestone'; sort: string; label: string; major?: boolean }
+  | { kind: 'milestone'; sort: string; label: string; tocLabel?: string; major?: boolean }
   | { kind: 'extra'; sort: string; extra: CareerExtra }
   | { kind: 'project'; sort: string; project: P }
 ) & { anchor: string }
@@ -69,11 +70,11 @@ export const LLM_MILESTONES: AiMilestone[] = [
   { sort: '2026.05', label: '3사 플래그십 동시 교체' },
   { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시' },
   { sort: '2025.08', label: 'GPT-5·나노 바나나 출시' },
-  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시', major: true },
+  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시', tocLabel: 'Claude Code 정식 출시', major: true },
   { sort: '2025.02', label: 'Claude Code 공개·에이전틱 코딩' },
   { sort: '2024.06', label: 'Claude 3.5·AI 코딩 실용화' },
-  { sort: '2023.03', label: 'GPT-4 출시·Cursor 등장', major: true },
-  { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화', major: true },
+  { sort: '2023.03', label: 'GPT-4 출시·Cursor 등장', tocLabel: 'Cursor 출시', major: true },
+  { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화', tocLabel: 'GPT 출시', major: true },
   { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
 ]
 
@@ -189,7 +190,7 @@ export function buildTocItems(
       }
       return {
         tier: 'ai',
-        label: entry.label,
+        label: entry.tocLabel ?? entry.label,
         date,
         ongoing: false,
         anchor: entry.anchor,
