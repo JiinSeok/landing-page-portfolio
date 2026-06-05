@@ -93,7 +93,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className="w-full sticky top-0 bg-background/95 text-muted-foreground border-b border-border backdrop-blur-sm z-40"
+      className="site-header w-full sticky top-0 bg-background/95 text-muted-foreground border-b border-border backdrop-blur-sm z-40 transition-transform duration-300"
       style={
         { '--navbar-height': '56px' } as React.CSSProperties & {
           '--navbar-height': string

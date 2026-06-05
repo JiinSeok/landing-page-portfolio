@@ -39,6 +39,11 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   }, [])
 
   useEffect(() => {
+    document.documentElement.classList.toggle('toc-pinned', pinned)
+    return () => document.documentElement.classList.remove('toc-pinned')
+  }, [pinned])
+
+  useEffect(() => {
     const els = Array.from(
       document.querySelectorAll<HTMLElement>('[data-toc-date]'),
     )
@@ -70,13 +75,15 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
       <nav
         aria-label="연표 목차"
-        className="dark sticky top-[56px] z-30 mx-[calc(50%-50vw)] bg-background/95 backdrop-blur-sm mb-10 md:mb-12"
+        className={`dark sticky z-30 mx-[calc(50%-50vw)] bg-background/95 backdrop-blur-sm mb-10 transition-[top] duration-300 md:mb-12 ${
+          pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
+        }`}
       >
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <div
             className={
               pinned
-                ? 'max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300'
+                ? 'max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-40 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
                 : 'max-h-40 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
             }
           >

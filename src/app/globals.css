@@ -132,6 +132,13 @@
   }
 }
 
+/* TOC pinned: slide header out on desktop so the timeline band takes its place */
+@media (min-width: 48rem) {
+  .toc-pinned .site-header {
+    transform: translateY(-100%);
+  }
+}
+
 /* Phone mockup styling for demo showcase - iPhone 16 design */
 .phone-mockup {
   position: relative;
