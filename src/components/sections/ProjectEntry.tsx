@@ -199,7 +199,7 @@ new QueryClient({
     url: 'https://staging.doppket.com/proposals/mudo-run',
     linkLabel: '프로토타입 보기',
     imageUrl: '/images/projects/photobooth.png',
-    alt: '포토부스 이벤트 제안 랜딩 페이지 화면',
+    alt: '포토부스 데모 — 무한도전 RUN 프레임으로 4컷 촬영 후 합성',
     device: 'phone',
     videoUrl: '/videos/projects/photobooth.webm',
   },
@@ -299,7 +299,15 @@ function DeviceFrame({
         className="absolute overflow-hidden bg-muted"
         style={{ inset: bezel.screenInset }}
       >
-        <ScreenMedia screen={screen} title={title} sizes={bezel.sizes} />
+        <a
+          href={screen.videoUrl ?? screen.imageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${screen.alt ?? title} 크게 보기`}
+          className="absolute inset-0 cursor-zoom-in"
+        >
+          <ScreenMedia screen={screen} title={title} sizes={bezel.sizes} />
+        </a>
       </div>
       <Image
         src={bezel.src}

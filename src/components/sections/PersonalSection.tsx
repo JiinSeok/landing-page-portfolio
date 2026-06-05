@@ -145,8 +145,9 @@ export default function PersonalSection() {
               return (
                 <div key={`m-${item.sort}`} className="flex gap-4 md:gap-6">
                   <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end">
-                    <span className="text-xs text-muted-foreground text-right leading-snug">
-                      {item.sort} · {item.label}
+                    <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
+                      <span className="tabular-nums">{item.sort}</span>
+                      <span>{item.label}</span>
                     </span>
                   </div>
                   <div className="flex flex-col items-center shrink-0 w-6">
@@ -154,8 +155,9 @@ export default function PersonalSection() {
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
-                    <span className="text-xs text-muted-foreground">
-                      {item.sort} · {item.label}
+                    <span className="flex flex-col text-xs text-muted-foreground leading-snug">
+                      <span className="tabular-nums">{item.sort}</span>
+                      <span>{item.label}</span>
                     </span>
                   </div>
                   <div
@@ -325,41 +327,36 @@ export default function PersonalSection() {
                                 ))}
                               </div>
                             )}
-                            <div className="flex flex-col gap-4 md:flex-row md:gap-6">
-                              <ul className="flex-1 min-w-0 space-y-2">
-                                {group.items.map((item) => (
-                                  <li
-                                    key={item}
-                                    className="flex items-start gap-2"
-                                  >
-                                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                    <span className={styles.text.body('small')}>
-                                      {item}
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
-                              {group.imageUrl && (
-                                <figure className="relative w-full md:w-72 lg:w-80 shrink-0 self-start overflow-hidden bg-muted rounded-md aspect-video">
-                                  <a
-                                    href={group.imageUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`${group.alt ?? groupName} 크게 보기`}
-                                    className="absolute inset-0 cursor-zoom-in"
-                                  >
-                                    <Image
-                                      src={group.imageUrl}
-                                      alt={group.alt ?? groupName ?? ''}
-                                      fill
-                                      sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 100vw"
-                                      priority={index === 0}
-                                      className="object-cover"
-                                    />
-                                  </a>
-                                </figure>
-                              )}
-                            </div>
+                            <ul className="space-y-2">
+                              {group.items.map((item) => (
+                                <li key={item} className="flex items-start gap-2">
+                                  <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                  <span className={styles.text.body('small')}>
+                                    {item}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                            {group.imageUrl && (
+                              <figure className="relative w-full mt-4 overflow-hidden bg-muted rounded-md aspect-video">
+                                <a
+                                  href={group.imageUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`${group.alt ?? groupName} 크게 보기`}
+                                  className="absolute inset-0 cursor-zoom-in"
+                                >
+                                  <Image
+                                    src={group.imageUrl}
+                                    alt={group.alt ?? groupName ?? ''}
+                                    fill
+                                    sizes="(min-width: 1280px) 880px, (min-width: 768px) calc(100vw - 360px), 100vw"
+                                    priority={index === 0}
+                                    className="object-cover"
+                                  />
+                                </a>
+                              </figure>
+                            )}
                           </div>
                         )
                       })}
