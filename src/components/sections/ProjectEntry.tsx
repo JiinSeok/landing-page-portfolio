@@ -339,12 +339,12 @@ function DeviceMockup({ item }: { item: GalleryItem }) {
             key={screen.videoUrl ?? screen.imageUrl}
             className="flex-1 max-w-[190px]"
           >
-            <DeviceFrame kind="phone" screen={screen} title={item.title} />
             {screen.caption && (
-              <p className="mt-2 text-center text-xs text-muted-foreground">
+              <p className="mb-2 text-center text-xs text-muted-foreground">
                 {screen.caption}
               </p>
             )}
+            <DeviceFrame kind="phone" screen={screen} title={item.title} />
           </div>
         ))}
       </div>
