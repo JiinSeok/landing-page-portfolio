@@ -5,12 +5,14 @@ import {
   axisPosition,
   buildTimeline,
   buildTocItems,
+  entryDate,
   LLM_MILESTONES,
   monthIndex,
   timelineAnchorId,
   timelineSortKey,
   type CareerEntry,
   type CareerExtra,
+  type TimelineEntry,
   type TimelineProject,
 } from '@/lib/utils/timeline'
 
@@ -72,6 +74,18 @@ describe('timelineSortKey', () => {
   })
 })
 
+describe('entryDate', () => {
+  it('period가 없는 프로젝트는 빈 문자열을 반환한다', () => {
+    const entry: TimelineEntry = {
+      kind: 'project',
+      sort: '2024.01',
+      anchor: timelineAnchorId('project', 'NoPeriod'),
+      project: { title: 'NoPeriod' },
+    }
+    expect(entryDate(entry)).toBe('')
+  })
+})
+
 describe('buildTimeline', () => {
   it('첫 항목은 진행 중 경력(도스트11)이고 anchor가 부여된다', () => {
     const timeline = buildTimeline(careers, extras, projects)
@@ -103,5 +117,50 @@ describe('buildTocItems', () => {
     const majors = toc.filter((i) => i.tier === 'ai' && i.major)
     expect(majors.map((m) => m.date).sort()).toEqual(['2022.11', '2023.03', '2025.05'])
     expect(LLM_MILESTONES.filter((m) => m.major)).toHaveLength(3)
+  })
+
+  it('nowKey 이후(미래) 항목은 제외한다', () => {
+    const timeline = buildTimeline(careers, extras, projects)
+    const toc = buildTocItems(timeline, '2025.12')
+    const byLabel = (l: string) => toc.find((i) => i.label.includes(l))
+
+    expect(byLabel('TappyType')).toBeUndefined()
+    expect(byLabel('도스트11')).toBeDefined()
+    expect(toc.every((i) => monthIndex(i.date) <= monthIndex('2025.12'))).toBe(true)
+  })
+
+  it('tocLabel 오버라이드: career·extra·milestone', () => {
+    const labeledCareers: CareerEntry[] = [
+      {
+        company: '도스트11 주식회사',
+        tocLabel: '도스트11',
+        period: '2025.09 ~ 현재',
+        role: '풀스택',
+        contributions: [],
+      },
+    ]
+    const labeledExtras: CareerExtra[] = [
+      {
+        tag: '교육',
+        label: '코드잇 스프린트 부트캠프',
+        tocLabel: '코드잇',
+        period: '2024.04 ~ 2024.10',
+        sort: '2024.04',
+      },
+    ]
+    const timeline = buildTimeline(labeledCareers, labeledExtras, [])
+    const toc = buildTocItems(timeline, '2026.06')
+
+    const career = toc.find((i) => i.label === '도스트11')
+    expect(career?.tier).toBe('career')
+    expect(career?.sublabel).toBe('도스트11 주식회사')
+
+    const extra = toc.find((i) => i.label === '코드잇')
+    expect(extra?.tier).toBe('career')
+    expect(extra?.sublabel).toBe('코드잇 스프린트 부트캠프')
+
+    const milestone = toc.find((i) => i.label === 'Claude Code 출시')
+    expect(milestone?.tier).toBe('ai')
+    expect(milestone?.major).toBe(true)
   })
 })
