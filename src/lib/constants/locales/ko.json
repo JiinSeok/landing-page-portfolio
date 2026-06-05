@@ -55,7 +55,7 @@
                   "imageUrl": "/images/projects/aicg-before.png",
                   "width": "auto",
                   "height": 690,
-                  "caption": "도구 이름 기준 영문 탭 — 작업 순서가 안 보임",
+                  "caption": "영문 도구, 작업 순서가 안 보임",
                   "alt": "개선 전 — SAM3 영문 도구 탭 화면"
                 },
                 "after": {

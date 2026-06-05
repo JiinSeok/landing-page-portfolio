@@ -154,12 +154,24 @@ new QueryClient({
     period: '2026.06',
     tags: ['오픈소스', 'AI 워크플로'],
     description:
-      '생성형 AI(Claude Code)에 개인 코드 스타일과 작업 규칙을 규칙으로 주입해 일관되게 협업하는 설정입니다. 민감정보를 제외한 공개판입니다.',
+      '코드 리뷰에서 반복 지적되던 컨벤션을 AI가 작성 시점부터 지키게 만든 설정입니다. React 30개·Python 13개 규칙을 스킬로 정리해 Claude Code에 주입했고, 어떤 프로젝트에서든 첫 커밋부터 같은 스타일이 나옵니다. 민감정보를 제외한 공개판입니다.',
     url: 'https://github.com/JiinSeok/dotfiles-claude-public',
-    imageUrl: '/images/projects/dotfiles.png',
-    alt: 'dotfiles-claude-public GitHub 저장소 화면',
-    device: 'laptop',
-    videoUrl: '/videos/projects/dotfiles.webm',
+    codeSnippet: `# skills/seokjiin-react-style/rules — 30개 중 발췌
+
+## component-variant-dict
+변형 스타일은 딕셔너리로 관리한다 — 삼항 중첩 금지
+
+const variantStyles = {
+  primary: 'bg-brand-500 text-white hover:bg-brand-600',
+  outline: 'border-2 border-brand-500 text-brand-500',
+}
+
+## format-comments
+주석은 "what"이 아니라 "why" — 새 주석엔 jiin: 접두사
+
+// jiin: Notion 임시 URL이 1시간 후 만료되어
+// 빌드 시점에 다운로드가 필요
+const imageUrl = await downloadNotionImage(block.image.url)`,
   },
   {
     title: 'SEO 라이트닝 토크',
@@ -471,9 +483,9 @@ export function ProjectEntry({
         </figure>
       )}
 
-      {!item.embedUrl && (item.device || item.imageUrl) && (
+      {!item.embedUrl && (item.device || item.imageUrl || item.codeSnippet) && (
         <figure className="md:w-80 lg:w-96 shrink-0 self-start w-full">
-          {showCode && item.codeSnippet ? (
+          {(showCode || (!item.device && !item.imageUrl)) && item.codeSnippet ? (
             <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
               <code>{item.codeSnippet}</code>
             </pre>
