@@ -76,10 +76,7 @@ export default function PersonalSection() {
                       <span>{item.label}</span>
                     </span>
                   </div>
-                  <div className="flex flex-col items-center shrink-0 w-6">
-                    <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background shrink-0 mt-1" />
-                    {!isLast && <div className="flex-1 w-px bg-border" />}
-                  </div>
+                  <div className="shrink-0 w-6" />
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
                     <span className="flex flex-col text-xs text-muted-foreground leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
@@ -103,13 +100,7 @@ export default function PersonalSection() {
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                  <div className="flex flex-col items-center shrink-0 w-6">
-                    <div
-                      className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
-                    />
-                    <div className="w-3 h-3 rounded-full bg-primary/50 shrink-0" />
-                    {!isLast && <div className="flex-1 w-px bg-border" />}
-                  </div>
+                  <div className="shrink-0 w-6" />
                   <div
                     className={`flex-1 min-w-0 ${isLast ? '' : 'pb-8 md:pb-10'}`}
                   >
@@ -138,13 +129,7 @@ export default function PersonalSection() {
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                  <div className="flex flex-col items-center shrink-0 w-6">
-                    <div
-                      className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
-                    />
-                    <div className="w-3 h-3 rounded-full bg-primary/50 shrink-0" />
-                    {!isLast && <div className="flex-1 w-px bg-border" />}
-                  </div>
+                  <div className="shrink-0 w-6" />
                   <div
                     className={`flex-1 min-w-0 ${
                       isLast
@@ -175,13 +160,7 @@ export default function PersonalSection() {
                 className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
               >
                 <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                <div className="flex flex-col items-center shrink-0 w-6">
-                  <div
-                    className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
-                  />
-                  <div className="w-3 h-3 rounded-full bg-primary shrink-0" />
-                  {!isLast && <div className="flex-1 w-px bg-border" />}
-                </div>
+                <div className="shrink-0 w-6" />
 
                 <div
                   className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
