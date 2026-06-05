@@ -109,19 +109,19 @@ function BeforeAfterSideView({
         aria-label={`${side.alt} 크게 보기`}
         className="block cursor-zoom-in"
       >
-        {side.videoUrl ? (
-          <div className="relative aspect-video overflow-hidden rounded-md">
+        <div className="relative aspect-video overflow-hidden rounded-md">
+          {side.videoUrl ? (
             <AutoPlayVideo src={side.videoUrl} label={side.alt} />
-          </div>
-        ) : (
-          <Image
-            src={side.imageUrl as string}
-            alt={side.alt}
-            width={side.width ?? 1600}
-            height={side.height ?? 1000}
-            className="w-full h-auto rounded-md"
-          />
-        )}
+          ) : (
+            <Image
+              src={side.imageUrl as string}
+              alt={side.alt}
+              fill
+              sizes="(min-width: 1280px) 440px, (min-width: 768px) 45vw, 50vw"
+              className="object-cover object-top"
+            />
+          )}
+        </div>
       </a>
     </figure>
   )
