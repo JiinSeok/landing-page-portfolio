@@ -63,7 +63,7 @@ export type TocItem = {
   major?: boolean
 }
 
-export const AXIS_START = '2021.08'
+export const AXIS_START = '2020.09'
 
 export const LLM_MILESTONES: AiMilestone[] = [
   { sort: '2026.05', label: '3사 플래그십 동시 교체' },

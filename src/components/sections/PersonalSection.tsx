@@ -168,7 +168,13 @@ export default function PersonalSection() {
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div
-                    className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
+                    className={`flex-1 min-w-0 ${
+                      isLast
+                        ? ''
+                        : item.project.beforeAfter
+                          ? 'pb-16 md:pb-20'
+                          : 'pb-10 md:pb-12'
+                    }`}
                   >
                     <ProjectEntry
                       item={item.project}
@@ -307,7 +313,7 @@ export default function PersonalSection() {
                                     className="flex items-start gap-2"
                                   >
                                     <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                    <span className="text-sm leading-relaxed text-muted-foreground">
+                                    <span className="text-sm text-muted-foreground">
                                       {label && (
                                         <span className="font-medium text-foreground">
                                           {label}
