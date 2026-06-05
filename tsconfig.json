@@ -26,6 +26,7 @@
   "include": [
     "next-env.d.ts",
     "src/**/*",
+    "scripts/**/*",
     "postcss.config.js",
     "next-auth.d.ts",
     ".next/types/**/*.ts",
