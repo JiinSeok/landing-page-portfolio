@@ -49,7 +49,6 @@ export default function RootLayout({ children }: LayoutProps) {
       `,
           }}
         />
-        <title>석지인 · 개발자</title>
       </head>
       <body
         className={cn(

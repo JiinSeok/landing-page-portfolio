@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 import { useTranslations } from '@/lib/providers/TextContext'
@@ -186,11 +187,12 @@ new QueryClient({
     title: '정산 기능 설계',
     period: '2026.04',
     tags: ['설계'],
-    description: '정산 기능을 설계한 과정과 결과를 정리한 자료입니다.',
-    url: 'https://mellow-pika-ec5224.netlify.app',
-    linkLabel: '자료 보기',
+    description:
+      '외산 결제 엔진 위에 한국형 월간 정산을 설계하고 팀에 핸드오프한 기록입니다. 월간 마감·스냅샷, 상태 머신과 잠금, 멱등성, 민감정보 경계 같은 설계 결정과 직접 구현한 정산 UI·가격 스냅샷을 인사이트, 예시 코드, 개념도로 정리했습니다. 회사 내부 정보는 일반화했습니다.',
+    url: '/settlement-design',
+    linkLabel: '케이스 스터디 보기',
     imageUrl: '/images/projects/settlement-design.png',
-    alt: '정산 백엔드 설계 문서 화면',
+    alt: '정산 기능 설계 케이스 스터디 페이지',
     device: 'laptop',
     videoUrl: '/videos/projects/settlement-design.webm',
   },
@@ -208,7 +210,7 @@ new QueryClient({
   },
 ]
 
-function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
+export function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -243,10 +245,12 @@ function ScreenMedia({
   screen,
   title,
   sizes,
+  priority = false,
 }: {
   screen: GalleryScreen
   title: string
   sizes: string
+  priority?: boolean
 }) {
   if (screen.videoUrl) {
     return <AutoPlayVideo src={screen.videoUrl} label={screen.alt ?? title} />
@@ -258,6 +262,7 @@ function ScreenMedia({
         alt={screen.alt ?? title}
         fill
         sizes={sizes}
+        priority={priority}
         className="object-cover"
       />
     )
@@ -290,10 +295,12 @@ function DeviceFrame({
   kind,
   screen,
   title,
+  priority = false,
 }: {
   kind: DeviceKind
   screen: GalleryScreen
   title: string
+  priority?: boolean
 }) {
   const bezel = APPLE_BEZELS[kind]
   return (
@@ -309,7 +316,12 @@ function DeviceFrame({
           aria-label={`${screen.alt ?? title} 크게 보기`}
           className="absolute inset-0 cursor-zoom-in"
         >
-          <ScreenMedia screen={screen} title={title} sizes={bezel.sizes} />
+          <ScreenMedia
+            screen={screen}
+            title={title}
+            sizes={bezel.sizes}
+            priority={priority}
+          />
         </a>
       </div>
       <Image
@@ -317,13 +329,20 @@ function DeviceFrame({
         alt=""
         fill
         sizes={bezel.sizes}
+        priority={priority}
         className="pointer-events-none select-none"
       />
     </div>
   )
 }
 
-function DeviceMockup({ item }: { item: GalleryItem }) {
+function DeviceMockup({
+  item,
+  priority = false,
+}: {
+  item: GalleryItem
+  priority?: boolean
+}) {
   const fallbackScreen: GalleryScreen = {
     videoUrl: item.videoUrl,
     imageUrl: item.imageUrl,
@@ -344,7 +363,12 @@ function DeviceMockup({ item }: { item: GalleryItem }) {
                 {screen.caption}
               </p>
             )}
-            <DeviceFrame kind="phone" screen={screen} title={item.title} />
+            <DeviceFrame
+              kind="phone"
+              screen={screen}
+              title={item.title}
+              priority={priority}
+            />
           </div>
         ))}
       </div>
@@ -355,6 +379,7 @@ function DeviceMockup({ item }: { item: GalleryItem }) {
       kind={item.device ?? 'laptop'}
       screen={screens[0]}
       title={item.title}
+      priority={priority}
     />
   )
 }
@@ -407,13 +432,20 @@ export function ProjectEntry({
               {showCode ? t('view-image') : t('view-code')}
             </Button>
           )}
-          {item.url && (
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <Button variant="default" size="sm">
-                {item.linkLabel ?? t('view-project')}
-              </Button>
-            </a>
-          )}
+          {item.url &&
+            (item.url.startsWith('/') ? (
+              <Link href={item.url}>
+                <Button variant="default" size="sm">
+                  {item.linkLabel ?? t('view-project')}
+                </Button>
+              </Link>
+            ) : (
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <Button variant="default" size="sm">
+                  {item.linkLabel ?? t('view-project')}
+                </Button>
+              </a>
+            ))}
           {item.notionUrl && (
             <a href={item.notionUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm">
@@ -443,7 +475,7 @@ export function ProjectEntry({
               <code>{item.codeSnippet}</code>
             </pre>
           ) : item.device ? (
-            <DeviceMockup item={item} />
+            <DeviceMockup item={item} priority={priority} />
           ) : (
             <div className="relative aspect-video overflow-hidden rounded-md bg-muted">
               <a

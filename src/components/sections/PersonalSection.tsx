@@ -6,13 +6,24 @@ import {
   galleryItems,
   GalleryItem,
   ProjectEntry,
+  AutoPlayVideo,
 } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
+
+type BeforeAfterSide = {
+  imageUrl?: string
+  videoUrl?: string
+  width?: number
+  height?: number
+  caption: string
+  alt: string
+}
 
 type ContributionGroup = {
   title?: string
   imageUrl?: string
   alt?: string
+  beforeAfter?: { before: BeforeAfterSide; after: BeforeAfterSide }
   items: string[]
 }
 
@@ -77,6 +88,60 @@ const LLM_MILESTONES = [
   { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화' },
   { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
 ]
+
+function BeforeAfterSideView({
+  side,
+  label,
+}: {
+  side: BeforeAfterSide
+  label: string
+}) {
+  return (
+    <figure className="flex-1 min-w-0">
+      <figcaption className="mb-1.5 text-xs text-muted-foreground">
+        <span className="font-semibold text-foreground">{label}</span> ·{' '}
+        {side.caption}
+      </figcaption>
+      <a
+        href={side.videoUrl ?? side.imageUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${side.alt} 크게 보기`}
+        className="block cursor-zoom-in"
+      >
+        {side.videoUrl ? (
+          <div className="relative aspect-video overflow-hidden rounded-md">
+            <AutoPlayVideo src={side.videoUrl} label={side.alt} />
+          </div>
+        ) : (
+          <Image
+            src={side.imageUrl as string}
+            alt={side.alt}
+            width={side.width ?? 1600}
+            height={side.height ?? 1000}
+            className="w-full h-auto rounded-md"
+          />
+        )}
+      </a>
+    </figure>
+  )
+}
+
+function BeforeAfterRow({
+  media,
+}: {
+  media: { before: BeforeAfterSide; after: BeforeAfterSide }
+}) {
+  return (
+    <div className="flex items-center w-full gap-2 mt-4 md:gap-3">
+      <BeforeAfterSideView side={media.before} label="개선 전" />
+      <span className="shrink-0 text-muted-foreground text-xl" aria-hidden>
+        →
+      </span>
+      <BeforeAfterSideView side={media.after} label="개선 후" />
+    </div>
+  )
+}
 
 export default function PersonalSection() {
   const t = useTranslations()
@@ -337,6 +402,9 @@ export default function PersonalSection() {
                                 </li>
                               ))}
                             </ul>
+                            {group.beforeAfter && (
+                              <BeforeAfterRow media={group.beforeAfter} />
+                            )}
                             {group.imageUrl && (
                               <figure className="relative w-full mt-4 overflow-hidden rounded-md aspect-video">
                                 <a
