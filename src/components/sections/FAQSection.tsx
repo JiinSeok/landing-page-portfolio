@@ -23,31 +23,14 @@ export default function FAQSection() {
     >
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-12 md:hidden">
-          <h2
-            className={styles.combineStyles([styles.text.heading(2), 'mb-6'])}
-          >
-            {t('title')}
-          </h2>
-          <p
-            className={styles.combineStyles([
-              styles.text.body('large'),
-              'text-muted-foreground max-w-3xl mx-auto',
-            ])}
-          >
-            {t('subtitle')}
-          </p>
+          <h2 className={styles.text.heading(2)}>{t('title')}</h2>
         </div>
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <div className="self-start sticky top-28 flex flex-col items-end text-right">
-              <h2 className="font-semibold text-foreground leading-snug">
-                {t('title')}
-              </h2>
-              <p className="mt-1 text-sm text-muted-foreground leading-snug">
-                {t('subtitle')}
-              </p>
-            </div>
+            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug">
+              {t('title')}
+            </h2>
           </div>
           <div className="hidden md:block shrink-0 w-6" />
 
