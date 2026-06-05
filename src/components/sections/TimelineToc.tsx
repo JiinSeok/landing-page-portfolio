@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
@@ -22,18 +22,16 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const careerItems = items.filter((i) => i.tier === 'career')
 
   const [activeDate, setActiveDate] = useState(nowKey)
-  const sentinelRef = useRef<HTMLDivElement>(null)
   const [pinned, setPinned] = useState(false)
 
   useEffect(() => {
-    const el = sentinelRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => setPinned(!entry.isIntersecting),
-      { rootMargin: '-57px 0px 0px 0px' },
-    )
-    io.observe(el)
-    return () => io.disconnect()
+    const onScroll = () => {
+      const y = window.scrollY
+      setPinned((prev) => (prev ? y > 40 : y > 140))
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -69,7 +67,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
   return (
     <>
-      <div ref={sentinelRef} className="h-px" />
 
       <nav
         aria-label="연표 목차"
