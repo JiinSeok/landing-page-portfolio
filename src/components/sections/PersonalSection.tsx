@@ -262,7 +262,17 @@ export default function PersonalSection() {
                       </span>
                     </p>
 
-                    <div className={isCurrent ? 'space-y-6' : 'space-y-4'}>
+                    <div
+                      className={
+                        career.contributions.some(
+                          (entry) => typeof entry !== 'string',
+                        )
+                          ? isCurrent
+                            ? 'space-y-6'
+                            : 'space-y-4'
+                          : 'space-y-2'
+                      }
+                    >
                       {career.contributions.map((entry, i) => {
                         const group: ContributionGroup =
                           typeof entry === 'string' ? { items: [entry] } : entry
