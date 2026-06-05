@@ -42,7 +42,7 @@ export const galleryItems: GalleryItem[] = [
     tags: ['프로젝트', '오픈소스'],
     lead: '직접 만들어 npm에 배포한 React 폼 라이브러리입니다.',
     description:
-      'Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
+      '코드잇 스프린트에서 albaform 등을 만들며 얻은 폼 구현 배움을 채용 과제를 하며 패턴으로 다듬었고, 그 결과를 라이브러리로 발전시켰습니다. Compound Component 패턴으로 조합 가능한 API를 만들고, Zod 검증과 접근성(ARIA), TypeScript 타입을 한 패키지로 정리했습니다. Vite로 빌드하고 GitHub Actions로 검증한 뒤 배포했습니다.',
     url: 'https://www.npmjs.com/package/@jiin.seok/formkit-react',
     imageUrl: '/images/projects/formkit-react.png',
     alt: 'formkit-react 폼 라이브러리 예제 화면',

@@ -52,7 +52,7 @@
               "title": "방송용 CG 합성 도구 — Gradio UI/UX 재설계 (Python)",
               "beforeAfter": {
                 "before": {
-                  "imageUrl": "/images/projects/aicg-before.png",
+                  "imageUrl": "/images/projects/aicg-legacy.png",
                   "width": "auto",
                   "height": 690,
                   "caption": "영문 도구, 작업 순서가 안 보임",
