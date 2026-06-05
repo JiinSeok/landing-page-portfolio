@@ -338,7 +338,7 @@ export default function PersonalSection() {
                               ))}
                             </ul>
                             {group.imageUrl && (
-                              <figure className="relative w-full mt-4 overflow-hidden bg-muted rounded-md aspect-video">
+                              <figure className="relative w-full mt-4 overflow-hidden rounded-md aspect-video">
                                 <a
                                   href={group.imageUrl}
                                   target="_blank"
