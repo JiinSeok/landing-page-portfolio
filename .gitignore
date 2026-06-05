@@ -76,3 +76,4 @@ exports/
 .superpowers/
 
 .playwright-mcp/
+.claude/scheduled_tasks.lock
