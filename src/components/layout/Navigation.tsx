@@ -95,12 +95,12 @@ export default function Navigation() {
     <nav
       className="w-full sticky top-0 bg-background/95 text-muted-foreground border-b border-border backdrop-blur-sm z-40"
       style={
-        { '--navbar-height': '64px' } as React.CSSProperties & {
+        { '--navbar-height': '56px' } as React.CSSProperties & {
           '--navbar-height': string
         }
       }
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-16 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-14 flex justify-between items-center">
         <div className="flex items-center gap-4 relative" ref={contactRef}>
           <Link
             href="/"

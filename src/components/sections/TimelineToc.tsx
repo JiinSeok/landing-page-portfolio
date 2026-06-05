@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { AXIS_START, axisPosition, type TocItem } from '@/lib/utils/timeline'
+import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
   items: TocItem[]
@@ -21,7 +21,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
     if (!el) return
     const io = new IntersectionObserver(
       ([entry]) => setCompact(!entry.isIntersecting),
-      { rootMargin: '-64px 0px 0px 0px' },
+      { rootMargin: '-56px 0px 0px 0px' },
     )
     io.observe(el)
     return () => io.disconnect()
@@ -39,7 +39,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           setActiveDate(hit.target.dataset.tocDate)
         }
       },
-      { rootMargin: '-64px 0px -75% 0px' },
+      { rootMargin: '-56px 0px -75% 0px' },
     )
     els.forEach((node) => io.observe(node))
     return () => io.disconnect()
@@ -51,9 +51,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         <div ref={fullRef} className="relative h-0.5 bg-border">
           <span className="absolute left-0 top-4 text-[10px] text-muted-foreground/60">
             현재
-          </span>
-          <span className="absolute right-0 top-4 text-[10px] text-muted-foreground/60">
-            {AXIS_START.slice(0, 4)}
           </span>
 
           {careerSegs.map((seg) => (
@@ -144,7 +141,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
       </nav>
 
       <div
-        className={`dark group sticky top-[64px] z-30 px-4 py-2 bg-background/95 backdrop-blur-sm rounded-lg transition-opacity duration-200 ${
+        className={`dark group sticky top-[56px] z-30 px-4 py-2 bg-background/95 backdrop-blur-sm rounded-lg transition-opacity duration-200 ${
           compact ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
