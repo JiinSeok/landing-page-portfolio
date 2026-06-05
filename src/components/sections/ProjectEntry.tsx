@@ -610,9 +610,7 @@ export function ProjectEntry({
           className={
             item.beforeAfter
               ? 'w-full'
-              : item.featured
-                ? 'md:w-96 lg:w-[26rem] shrink-0 self-start w-full'
-                : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
+              : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
           }
         >
           {item.beforeAfter ? (
