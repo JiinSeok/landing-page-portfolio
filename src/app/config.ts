@@ -1,5 +1,5 @@
 export const metaData = {
-  baseUrl: 'https://www.usejiin.link/',
+  baseUrl: 'https://usejiin.link/',
   title: '석지인 Jiin Seok',
   name: '석지인',
   ogImage: '/profile.jpg',
