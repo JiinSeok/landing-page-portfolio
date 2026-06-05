@@ -57,7 +57,7 @@ export default function PersonalSection() {
     <section
       id="career"
       aria-label="타임라인"
-      className="w-full pt-6 pb-16 md:py-20 overflow-x-clip"
+      className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">

@@ -14,7 +14,7 @@ import {
 import { ROUTER } from '@/lib/constants/router'
 
 const NAV_ITEMS = [
-  { id: 'career', label: '경력' },
+  { id: 'career', label: '커리어' },
   { id: 'tech-stack', label: '기술 스택' },
   { id: 'faq', label: 'FAQ' },
 ]
@@ -106,21 +106,21 @@ export default function Navigation() {
         <div className="flex items-center gap-4 relative" ref={contactRef}>
           <Link
             href="/"
-            className="w-fit text-lg md:text-xl font-bold text-foreground whitespace-nowrap"
+            className="w-fit text-lg font-bold text-foreground whitespace-nowrap"
           >
-            석지인<span className="text-muted-foreground/70 font-normal mx-1.5">·</span>
-            <span className="text-muted-foreground font-normal">개발자</span>
+            석지인
           </Link>
           <button
             onClick={copyAndShow}
-            className="hidden sm:flex items-center gap-1 text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            aria-label="연락처 복사"
+            title="연락처 복사"
+            className="hidden sm:flex items-center p-1.5 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             {copied ? (
-              <CheckIcon className="w-3 h-3" />
+              <CheckIcon className="w-4 h-4" />
             ) : (
-              <CopyIcon className="w-3 h-3" />
+              <CopyIcon className="w-4 h-4" />
             )}
-            <span>{copied ? 'Copied!' : 'Copy Info'}</span>
           </button>
 
           {contactOpen && (
@@ -147,17 +147,6 @@ export default function Navigation() {
         </div>
 
         <div className="hidden sm:flex items-center gap-6">
-          <a
-            href={ROUTER.Resume.path}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
-          >
-            이력서
-          </a>
-
-          <span className="h-4 w-px bg-border" aria-hidden />
-
           <ul className="flex items-center gap-6">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
@@ -169,11 +158,6 @@ export default function Navigation() {
                 </button>
               </li>
             ))}
-          </ul>
-
-          <span className="h-4 w-px bg-border" aria-hidden />
-
-          <ul className="flex items-center gap-5">
             {EXTERNAL_LINKS.map((link) => (
               <li key={link.label}>
                 <a
@@ -186,16 +170,26 @@ export default function Navigation() {
                 </a>
               </li>
             ))}
-            <li className="nav-floating-buttons">
-              <FloatingButtonGroup className="static flex-row">
-                <ButtonContainer>
-                  <TocButton />
-                </ButtonContainer>
-                <TocMenu />
-                <ShareMenu />
-              </FloatingButtonGroup>
-            </li>
           </ul>
+
+          <a
+            href={ROUTER.Resume.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-1.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors"
+          >
+            이력서
+          </a>
+
+          <div className="nav-floating-buttons">
+            <FloatingButtonGroup className="static flex-row">
+              <ButtonContainer>
+                <TocButton />
+              </ButtonContainer>
+              <TocMenu />
+              <ShareMenu />
+            </FloatingButtonGroup>
+          </div>
         </div>
 
         <button
