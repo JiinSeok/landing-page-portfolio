@@ -119,7 +119,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               return (
                 <a key={item.anchor} href={`#${item.anchor}`} style={{ left }} className="group absolute">
                   <span className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full" />
-                  <span className="absolute top-3.5 -translate-x-1/2 text-xs font-semibold whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
+                  <span className="absolute top-3.5 -translate-x-1/2 text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
                     {item.label}
                   </span>
                 </a>
@@ -163,7 +163,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                 style={{ left: `${pos(item.date)}%` }}
                 className="absolute top-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-primary rounded-full"
               >
-                <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 text-[10px] font-semibold whitespace-nowrap md:group-hover:block md:group-focus-visible:block">
+                <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 text-[10px] font-semibold text-foreground whitespace-nowrap md:group-hover:block md:group-focus-visible:block">
                   {item.label}
                 </span>
               </a>
