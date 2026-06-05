@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import { Button } from '@/components/ui/Button/Button'
+import type { BeforeAfterSide } from '@/lib/utils/timeline'
 
 export type DeviceKind = 'phone' | 'tablet' | 'laptop'
 
@@ -32,6 +33,7 @@ export interface GalleryItem {
   device?: DeviceKind
   videoUrl?: string
   screens?: GalleryScreen[]
+  beforeAfter?: { before: BeforeAfterSide; after: BeforeAfterSide }
   featured?: { sublabel: string }
 }
 
@@ -220,6 +222,61 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
     device: 'laptop',
     videoUrl: '/videos/projects/settlement-design.webm',
   },
+  {
+    title: '방송용 CG 합성 도구 — Gradio UI/UX 재설계',
+    period: '2026.05',
+    tags: ['업무', 'UI/UX'],
+    lead: '도스트11에서 ML 연구원들과 한 저장소를 쓰며 재설계한 방송용 CG 합성 도구입니다.',
+    description:
+      "영문 도구 탭을 실제 작업 순서대로 1.마스크 → 2.에셋 → 3.합성 3단계로 재구성하고, '원본+마스크+에셋=합성 결과' 썸네일 타임라인을 신설해 산출물이 다음 단계 어디에 쓰이는지 화면이 안내합니다. UI 용어 한국어화와 방송용 5GB 업로드 대응까지 함께 했습니다.",
+    beforeAfter: {
+      before: {
+        imageUrl: '/images/projects/aicg-legacy.png',
+        caption: '영문 도구 탭 — 작업 순서가 안 보임',
+        alt: '개선 전 — SAM3 영문 도구 탭 화면',
+      },
+      after: {
+        videoUrl: '/videos/projects/aicg-tool.webm',
+        caption: "'원본+마스크+에셋=합성 결과' 썸네일 타임라인, 왼쪽 작업·오른쪽 결과",
+        alt: '개선 후 — 썸네일 타임라인 헤더와 좌우 분할이 적용된 최종 화면',
+      },
+    },
+  },
+  {
+    title: 'most267.co.kr — 기업 사이트 재구축',
+    period: '2026.04 ~ 현재',
+    tags: ['업무'],
+    lead: '손으로 수정하던 정적 HTML 기업 사이트를 Next.js로 전면 재구축했습니다.',
+    description:
+      'Notion DB 5종을 연동해 비개발자가 콘텐츠를 직접 관리하고, 1시간마다 만료되는 Notion 파일을 빌드 시 내려받아 WebP/WebM으로 자동 변환하는 에셋 파이프라인을 만들었습니다. CLS 제거와 히어로 프리로드로 로딩도 최적화했습니다.',
+    url: 'https://most267.co.kr',
+    linkLabel: '사이트 보기',
+    beforeAfter: {
+      before: {
+        imageUrl: '/images/projects/most267-static.png',
+        caption: '정적 HTML — 콘텐츠는 유튜브 카드 한 장',
+        alt: '개선 전 — 손으로 수정하던 정적 HTML 첫 화면',
+      },
+      after: {
+        videoUrl: '/videos/projects/most267-after.webm',
+        caption: 'Notion에 올린 영상이 WebM으로 최적화되어 자동재생',
+        alt: '개선 후 — Next.js 재구축, Notion 연동 WebM 히어로 영상',
+      },
+    },
+  },
+  {
+    title: '이벤트 협업 제안 · 포토부스 프로토타입',
+    period: '2026.05',
+    tags: ['업무', '프로토타입'],
+    lead: '마케팅 회의에서 당일 직접 제안해 3일 만에 완성한 포토부스 프로토타입입니다.',
+    description:
+      '제안일 포함 3일 만에 동작하는 데모로 완성해 정식 부가기능으로 채택됐고, 지금은 특정 이벤트 의존을 분리하는 일반화 작업을 진행 중입니다.',
+    url: 'https://staging.doppket.com/proposals/mudo-run',
+    linkLabel: '프로토타입 보기',
+    device: 'phone',
+    videoUrl: '/videos/projects/photobooth.webm',
+    alt: '포토부스 데모 — 무한도전 RUN 프레임으로 4컷 촬영 후 합성',
+  },
 ]
 
 export function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
@@ -301,6 +358,50 @@ const APPLE_BEZELS = {
     screenInset: '12.86% 12.35%',
     sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
   },
+}
+
+export function BeforeAfterSideView({ side }: { side: BeforeAfterSide }) {
+  return (
+    <figure className="w-full min-w-0">
+      <a
+        href={side.videoUrl ?? side.imageUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${side.alt} 크게 보기`}
+        className="block cursor-zoom-in"
+      >
+        <div className="relative aspect-[16/10] overflow-hidden rounded-md">
+          {side.videoUrl ? (
+            <AutoPlayVideo src={side.videoUrl} label={side.alt} />
+          ) : (
+            <Image
+              src={side.imageUrl as string}
+              alt={side.alt}
+              fill
+              sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+              className="object-cover object-top"
+            />
+          )}
+        </div>
+      </a>
+      <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
+        {side.caption}
+      </figcaption>
+    </figure>
+  )
+}
+
+export function BeforeAfterStack({
+  media,
+}: {
+  media: { before: BeforeAfterSide; after: BeforeAfterSide }
+}) {
+  return (
+    <div className="flex flex-col w-full gap-4">
+      <BeforeAfterSideView side={media.before} />
+      <BeforeAfterSideView side={media.after} />
+    </div>
+  )
 }
 
 export function DeviceFrame({
@@ -487,10 +588,17 @@ export function ProjectEntry({
         </figure>
       )}
 
-      {!item.embedUrl && (item.device || item.imageUrl || item.codeSnippet) && (
+      {!item.embedUrl &&
+        (item.beforeAfter ||
+          item.device ||
+          item.imageUrl ||
+          item.codeSnippet) && (
         <figure className="md:w-80 lg:w-96 shrink-0 self-start w-full">
-          {(showCode || (!item.device && !item.imageUrl)) && item.codeSnippet ? (
-            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
+          {item.beforeAfter ? (
+            <BeforeAfterStack media={item.beforeAfter} />
+          ) : (showCode || (!item.device && !item.imageUrl)) &&
+            item.codeSnippet ? (
+            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto [scrollbar-width:thin] [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
               <code>{item.codeSnippet}</code>
             </pre>
           ) : item.device ? (

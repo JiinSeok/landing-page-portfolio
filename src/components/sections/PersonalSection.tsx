@@ -6,7 +6,6 @@ import {
   buildTimeline,
   buildTocItems,
   entryDate,
-  type BeforeAfterSide,
   type CareerEntry,
   type CareerExtra,
   type ContributionGroup,
@@ -15,8 +14,6 @@ import TimelineToc from '@/components/sections/TimelineToc'
 import {
   galleryItems,
   ProjectEntry,
-  AutoPlayVideo,
-  DeviceFrame,
 } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
@@ -38,41 +35,6 @@ const COMPANY_LOGOS: Record<string, string> = {
   연합뉴스: '/images/logos/yonhapnews.png',
 }
 
-function BeforeAfterSideView({
-  side,
-}: {
-  side: BeforeAfterSide
-}) {
-  return (
-    <figure className="w-full min-w-0">
-      <a
-        href={side.videoUrl ?? side.imageUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${side.alt} 크게 보기`}
-        className="block cursor-zoom-in"
-      >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-md">
-          {side.videoUrl ? (
-            <AutoPlayVideo src={side.videoUrl} label={side.alt} />
-          ) : (
-            <Image
-              src={side.imageUrl as string}
-              alt={side.alt}
-              fill
-              sizes="(min-width: 1280px) 440px, (min-width: 768px) 45vw, 50vw"
-              className="object-cover object-top"
-            />
-          )}
-        </div>
-      </a>
-      <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
-        {side.caption}
-      </figcaption>
-    </figure>
-  )
-}
-
 const INLINE_LINK_PATTERN = /(\[[^\]]+\]\([^)]+\))/g
 const INLINE_LINK_PARSE = /^\[([^\]]+)\]\(([^)]+)\)$/
 
@@ -92,19 +54,6 @@ function renderInlineLinks(text: string) {
       </a>
     )
   })
-}
-
-function BeforeAfterStack({
-  media,
-}: {
-  media: { before: BeforeAfterSide; after: BeforeAfterSide }
-}) {
-  return (
-    <div className="flex flex-col w-full gap-4">
-      <BeforeAfterSideView side={media.before} />
-      <BeforeAfterSideView side={media.after} />
-    </div>
-  )
 }
 
 export default function PersonalSection() {
@@ -233,30 +182,6 @@ export default function PersonalSection() {
             const { career } = item
             const logo = COMPANY_LOGOS[career.company]
             const isCurrent = career.period.includes('현재')
-            const cardMedia = career.contributions.flatMap((entry, i) => {
-              if (typeof entry === 'string') return []
-              const techMatch = entry.title?.match(TITLE_TECH_PATTERN)
-              const name = (techMatch?.[1] ?? entry.title ?? '').split(' — ')[0]
-              const number = String(i + 1).padStart(2, '0')
-              const blocks = []
-              if (entry.phoneDemo) {
-                blocks.push({
-                  key: `${number}-phone`,
-                  number,
-                  name,
-                  phoneDemo: entry.phoneDemo,
-                })
-              }
-              if (entry.beforeAfter) {
-                blocks.push({
-                  key: `${number}-ba`,
-                  number,
-                  name,
-                  beforeAfter: entry.beforeAfter,
-                })
-              }
-              return blocks
-            })
 
             return (
               <div
@@ -420,38 +345,6 @@ export default function PersonalSection() {
                       })}
                     </div>
 
-                    {cardMedia.length > 0 && (
-                      <div className="grid gap-4 mt-6 pt-5 border-t border-border sm:grid-cols-2 md:grid-cols-3">
-                        {cardMedia.map((block) => (
-                          <div key={block.key}>
-                            <p className="mb-2 text-xs font-semibold text-muted-foreground">
-                              <span className="mr-1.5 tracking-widest tabular-nums text-muted-foreground/50">
-                                {block.number}
-                              </span>
-                              {block.name}
-                            </p>
-                            {block.phoneDemo && (
-                              <figure className="w-full max-w-[170px] mx-auto">
-                                <DeviceFrame
-                                  kind="phone"
-                                  screen={{
-                                    videoUrl: block.phoneDemo.videoUrl,
-                                    alt: block.phoneDemo.alt,
-                                  }}
-                                  title={block.phoneDemo.caption}
-                                />
-                                <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
-                                  {block.phoneDemo.caption}
-                                </figcaption>
-                              </figure>
-                            )}
-                            {block.beforeAfter && (
-                              <BeforeAfterStack media={block.beforeAfter} />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>

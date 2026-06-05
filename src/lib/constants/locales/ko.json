@@ -41,61 +41,24 @@
           "contributions": [
             {
               "title": "도프켓 — 디지털 에셋 이커머스 풀스택 (Rails·React·Docker·MySQL)",
-              "phoneDemo": {
-                "videoUrl": "/videos/projects/photobooth.webm",
-                "caption": "포토부스 데모 — 4컷 촬영 흐름",
-                "alt": "포토부스 데모 — 무한도전 RUN 프레임으로 4컷 촬영 후 합성"
-              },
               "items": [
-                "한국 시장 로컬라이제이션 — 전 페이지 한국어 전환, 브랜딩·폰트 교체",
-                "B2B·운영 — 첫 B2B 고객사 온보딩, CRM 유저 테이블 개발, Grafana 운영 지표·대시보드 관리",
-                "이벤트 협업 제안 — 마케팅 회의에서 당일 직접 제안해 3일 만에 [포토부스 프로토타입](https://staging.doppket.com/proposals/mudo-run)을 완성, 정식 부가기능으로 채택되어 일반화 작업 진행 중",
-                "신규 기능 — 상품 대시보드, GUI CMS 블로그(Tiptap·S3), 카테고리 에디터",
-                "결제·셀러 경험 — 결제 UX 개선, 셀러 프로필 리디자인",
-                "개발 경험·테스트 — 타입체크 비동기화·SSR 빌드 토글로 로컬 피드백 시간 단축, PR Checks에 SSR 스모크 테스트·Selenium Chrome profile 분리"
+                "한국 시장 로컬라이제이션 — 전 페이지 한국어 전환과 브랜딩 교체, 상품 대시보드·CMS 블로그·결제 UX 등 신규 화면 개발",
+                "B2B·운영 — 첫 B2B 고객사 온보딩, CRM 유저 테이블, Grafana 운영 지표 관리",
+                "이벤트 협업 제안 — 회의에서 당일 직접 제안해 3일 만에 [포토부스 프로토타입](https://staging.doppket.com/proposals/mudo-run)을 완성, 정식 부가기능으로 채택"
               ]
             },
             {
               "title": "방송용 CG 합성 도구 — Gradio UI/UX 재설계 (Python)",
-              "beforeAfter": {
-                "before": {
-                  "imageUrl": "/images/projects/aicg-legacy.png",
-                  "width": "auto",
-                  "height": 690,
-                  "caption": "영문 도구, 작업 순서가 안 보임",
-                  "alt": "개선 전 — SAM3 영문 도구 탭 화면"
-                },
-                "after": {
-                  "videoUrl": "/videos/projects/aicg-tool.webm",
-                  "caption": "'원본+마스크+에셋=합성 결과' 썸네일 타임라인 신설, 왼쪽 작업·오른쪽 결과 분할",
-                  "alt": "개선 후 — 썸네일 타임라인 헤더, 왼쪽 작업·오른쪽 결과 분할 레이아웃이 적용된 최종 화면"
-                }
-              },
               "items": [
-                "워크플로우 재구성 — ML 연구원과 한 저장소에서 협업, 도구 중심 탭(에셋·트래킹·합성)을 3단계 탭으로 바꾸고 '원본+마스크+에셋=합성 결과' 썸네일 타임라인 신설, 같은 탭 기준 스크롤 절반 이하",
-                "용어 한국어화 — 표시 라벨·내부 키 분리(locale-independent slot key) 후 UI 용어 통일, 백엔드의 사용자 노출 에러 메시지까지 직접 번역, 개발팀·CG팀 크로스체크표 제작",
-                "방송 환경 대응 — 대용량(5GB) 영상 업로드·타임아웃 조정, 파일 탐색기 체크박스 race·폰트 로드 실패 등 워크플로우를 막던 버그 해결"
+                "워크플로우 재구성 — ML 연구원과 한 저장소에서 협업, 영문 도구 탭을 작업 순서대로 3단계 탭으로 바꾸고 '원본+마스크+에셋=합성 결과' 썸네일 타임라인 신설",
+                "현장 대응 — UI 용어 한국어화와 CG팀 크로스체크표, 방송용 5GB 업로드와 워크플로우 차단 버그 해결"
               ]
             },
             {
               "title": "most267.co.kr — 기업 랜딩 페이지 (Next.js·GitHub Actions)",
-              "beforeAfter": {
-                "before": {
-                  "imageUrl": "/images/projects/most267-static.png",
-                  "caption": "정적 HTML — 손으로 직접 수정, 콘텐츠는 유튜브 카드 한 장",
-                  "alt": "개선 전 — 손으로 수정하던 정적 HTML 첫 화면"
-                },
-                "after": {
-                  "videoUrl": "/videos/projects/most267-after.webm",
-                  "caption": "Notion에 어떤 영상을 올려도 WebM으로 최적화되어 배포, 히어로 영상 자동재생",
-                  "alt": "개선 후 — Next.js로 재구축된 첫 화면, Notion 연동 WebM 최적화 히어로 영상"
-                }
-              },
               "items": [
-                "전면 재구축 — 손으로 수정하던 정적 HTML을 Next.js·Tailwind로, GitHub Pages 정적 배포 CI/CD와 SEO(sitemap·robots) 구축",
-                "Notion CMS — DB 5종(팀·작품·보도·영상·설정) 연동으로 비개발자가 콘텐츠 직접 관리, select 순서·R&R 컬럼 등 Notion 스키마를 정렬·본부별 탭 UI에 매핑",
-                "에셋 파이프라인 — 1시간마다 만료되는 Notion 파일 URL을 빌드 시 내려받아 sharp·ffmpeg로 WebP/WebM 변환, Notion 장애 시 캐시로 빌드 지속",
-                "로딩 최적화 — img를 next/image로 전환하고 치수 추출·고정으로 CLS 제거, 히어로 프리로드·영상 WebM 트랜스코딩"
+                "전면 재구축 — 손으로 수정하던 정적 HTML을 Next.js로, Notion DB 5종을 연동해 비개발자가 콘텐츠를 직접 관리",
+                "에셋 파이프라인 — 1시간마다 만료되는 Notion 파일을 빌드 시 내려받아 WebP/WebM 자동 변환, CLS 제거·히어로 프리로드로 로딩 최적화"
               ]
             }
           ]

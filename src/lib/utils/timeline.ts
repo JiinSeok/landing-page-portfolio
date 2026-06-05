@@ -11,8 +11,6 @@ export type ContributionGroup = {
   title?: string
   imageUrl?: string
   alt?: string
-  beforeAfter?: { before: BeforeAfterSide; after: BeforeAfterSide }
-  phoneDemo?: { videoUrl: string; caption: string; alt: string }
   items: string[]
 }
 
