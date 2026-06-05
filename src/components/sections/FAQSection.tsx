@@ -21,14 +21,14 @@ export default function FAQSection() {
         styles.layout.section('lg'),
       ])}
     >
-      <div className="px-6 md:px-8 lg:px-12">
+      <div className="px-6 md:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12 md:hidden">
           <h2 className={styles.text.heading(2)}>{t('title')}</h2>
         </div>
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug">
+            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug break-keep">
               {t('title')}
             </h2>
           </div>

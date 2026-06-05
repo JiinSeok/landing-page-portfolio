@@ -71,10 +71,10 @@ export const LLM_MILESTONES: AiMilestone[] = [
   { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시' },
   { sort: '2025.08', label: 'GPT-5·나노 바나나 출시' },
   { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시', tocLabel: 'Claude Code 출시', major: true },
-  { sort: '2025.02', label: 'Claude Code 공개·에이전틱 코딩' },
-  { sort: '2024.06', label: 'Claude 3.5·AI 코딩 실용화' },
-  { sort: '2023.03', label: 'GPT-4 출시·Cursor 등장', tocLabel: 'Cursor 출시', major: true },
-  { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화', tocLabel: 'GPT 출시', major: true },
+  { sort: '2025.02', label: 'Claude Code 공개\n에이전틱 코딩' },
+  { sort: '2024.06', label: 'Claude 3.5 출시\nAI 코딩 실용화' },
+  { sort: '2023.03', label: 'GPT-4 출시\nCursor 등장', tocLabel: 'Cursor 출시', major: true },
+  { sort: '2022.11', label: 'ChatGPT 출시\nLLM 대중화', tocLabel: 'GPT 출시', major: true },
   { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
 ]
 

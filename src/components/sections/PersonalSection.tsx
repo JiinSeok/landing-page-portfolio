@@ -59,7 +59,7 @@ export default function PersonalSection() {
       aria-label="타임라인"
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
-      <div className="px-6 md:px-8 lg:px-12">
+      <div className="px-6 md:px-8">
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
           <p className="mb-10 text-sm text-muted-foreground leading-relaxed">
             {t('pages.career.meta.greeting')}
@@ -72,7 +72,7 @@ export default function PersonalSection() {
 
         <div className="max-w-6xl mx-auto relative">
           <div className="hidden md:block absolute inset-y-0 left-0 w-24 lg:w-28 pointer-events-none">
-            <h2 className="dark sticky top-0 pt-28 bg-background text-right font-semibold text-foreground leading-snug">
+            <h2 className="dark sticky top-0 pt-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
               {t('pages.career.meta.title')}
             </h2>
           </div>
@@ -95,14 +95,16 @@ export default function PersonalSection() {
                       <span className="tabular-nums text-muted-foreground">
                         {item.sort}
                       </span>
-                      <span className="text-foreground/85">{item.label}</span>
+                      <span className="text-foreground/85 whitespace-pre-line">
+                        {item.label}
+                      </span>
                     </span>
                   </div>
                   <div className="hidden md:block shrink-0 w-6" />
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
                     <span className="flex flex-col text-xs text-muted-foreground leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
-                      <span>{item.label}</span>
+                      <span className="whitespace-pre-line">{item.label}</span>
                     </span>
                   </div>
                   <div
