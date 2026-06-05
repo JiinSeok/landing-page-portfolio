@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from '@/lib/providers/TextContext'
-import styles from '@/lib/utils/styles'
 import {
   AXIS_START,
   buildTimeline,
@@ -327,14 +326,34 @@ export default function PersonalSection() {
                               </div>
                             )}
                             <ul className="space-y-2">
-                              {group.items.map((item) => (
-                                <li key={item} className="flex items-start gap-2">
-                                  <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                  <span className={styles.text.body('small')}>
-                                    {item}
-                                  </span>
-                                </li>
-                              ))}
+                              {group.items.map((item) => {
+                                const splitIndex = item.indexOf(' — ')
+                                const label =
+                                  splitIndex > 0
+                                    ? item.slice(0, splitIndex)
+                                    : null
+                                const detail =
+                                  splitIndex > 0
+                                    ? item.slice(splitIndex + 3)
+                                    : item
+                                return (
+                                  <li
+                                    key={item}
+                                    className="flex items-start gap-2"
+                                  >
+                                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                    <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
+                                      {label && (
+                                        <span className="font-medium text-foreground">
+                                          {label}
+                                        </span>
+                                      )}
+                                      {label && ' — '}
+                                      {detail}
+                                    </span>
+                                  </li>
+                                )
+                              })}
                             </ul>
                             {group.beforeAfter && (
                               <BeforeAfterRow media={group.beforeAfter} />
