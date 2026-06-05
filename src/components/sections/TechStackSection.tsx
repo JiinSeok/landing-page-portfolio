@@ -69,7 +69,7 @@ export default function TechStackSection() {
           </h2>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto px-4 md:pl-36 md:pr-0 lg:pl-40">
           <TabComponent
             tabs={categoryTabs}
             activeTab={activeCategory}
