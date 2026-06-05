@@ -12,6 +12,7 @@ export interface GalleryScreen {
   videoUrl?: string
   imageUrl?: string
   alt?: string
+  caption?: string
 }
 
 export interface GalleryItem {
@@ -78,10 +79,12 @@ export function LoginForm() {
       {
         videoUrl: '/videos/projects/albaform-applicant.webm',
         alt: 'albaform 지원자 여정 — 비로그인 차단 후 지원자 로그인, 마이페이지 화면',
+        caption: '지원자로 로그인 → 마이페이지',
       },
       {
         videoUrl: '/videos/projects/albaform-owner.webm',
         alt: 'albaform 사장님 여정 — 내 알바폼의 비공개·모집 종료 상태별 화면',
+        caption: '사장님으로 로그인 → 알바폼 상태 관리',
       },
     ],
     codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
@@ -92,7 +95,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
     period: '2026.05 ~ 현재',
     tags: ['프로젝트', 'iOS'],
     description:
-      '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다. (React Native가 아닌 네이티브 Swift입니다.)',
+      '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다. Swift·SwiftUI·PencilKit으로 직접 만들었고, 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 지금은 출시 준비 단계이며, 직접 브랜딩해 인스타그램으로 사전 마케팅을 하고 있습니다.',
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
     imageUrl: '/images/projects/tappytype-card.png',
@@ -337,6 +340,11 @@ function DeviceMockup({ item }: { item: GalleryItem }) {
             className="flex-1 max-w-[190px]"
           >
             <DeviceFrame kind="phone" screen={screen} title={item.title} />
+            {screen.caption && (
+              <p className="mt-2 text-center text-xs text-muted-foreground">
+                {screen.caption}
+              </p>
+            )}
           </div>
         ))}
       </div>
