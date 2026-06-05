@@ -3,7 +3,11 @@
 import React, { useState } from 'react'
 import { CheckIcon, CopyIcon, MailIcon } from 'lucide-react'
 
-import { NAVBAR_HEIGHT } from '@/lib/constants/layout'
+import {
+  NAVBAR_HEIGHT,
+  RAIL_OFFSET_LG,
+  RAIL_OFFSET_MD,
+} from '@/lib/constants/layout'
 import { ROUTER } from '@/lib/constants/router'
 import { useCopyContact } from '@/lib/hooks/useCopyContact'
 import {
@@ -18,7 +22,7 @@ import {
   TocMenu,
   ShareMenu,
 } from '@/components/FloatingButtonGroup'
-import { Link } from '@/navigation'
+import { Link, usePathname } from '@/navigation'
 
 const NAV_ITEMS = [
   { id: 'career', label: '커리어' },
@@ -32,18 +36,21 @@ const EXTERNAL_LINKS = [
     ariaLabel: 'GitHub 프로필',
     href: ROUTER.GitHub.path,
     Icon: GithubIcon,
+    iconClass: 'w-3.5 h-3.5',
   },
   {
     label: 'LinkedIn',
     ariaLabel: 'LinkedIn 프로필',
     href: ROUTER.LinkedIn.path,
     Icon: LinkedinIcon,
+    iconClass: 'w-[18px] h-[18px]',
   },
   {
     label: 'Email',
     ariaLabel: '이메일 보내기',
     href: ROUTER.Email.path,
     Icon: MailIcon,
+    iconClass: 'w-5 h-5',
   },
 ]
 
@@ -57,184 +64,262 @@ function scrollTo(id: string) {
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { copied, open, copy, containerRef } = useCopyContact()
+  const {
+    copied: railCopied,
+    open: railOpen,
+    copy: railCopy,
+    containerRef: railRef,
+  } = useCopyContact()
+  const onHome = usePathname() === '/'
 
   return (
-    <nav
-      className="site-header w-full sticky top-0 bg-background text-muted-foreground border-b border-border z-40 transition-transform duration-300"
-      style={
-        { '--navbar-height': `${NAVBAR_HEIGHT}px` } as React.CSSProperties & {
-          '--navbar-height': string
-        }
-      }
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-14 flex justify-between items-center">
-        <div className="flex items-center gap-4 relative" ref={containerRef}>
-          <Link
-            href="/"
-            className="w-fit text-lg font-bold text-foreground whitespace-nowrap"
-          >
-            석지인
-          </Link>
-          <ContactCopyButton
-            copied={copied}
-            onClick={copy}
-            className="hidden sm:flex"
+    <>
+      {onHome && (
+        <div className="hidden md:block fixed inset-x-0 top-0 z-50 pointer-events-none">
+          <div
+            aria-hidden
+            className="absolute inset-y-0 left-0 dark bg-background lg:hidden"
+            style={{
+              width: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_MD}px)`,
+            }}
           />
-          <ContactPopover open={open} className="left-0" />
-        </div>
-
-        <div className="hidden sm:flex items-center gap-6">
-          <ul className="flex items-center gap-6">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => scrollTo(item.id)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          <div
+            aria-hidden
+            className="hidden absolute inset-y-0 left-0 dark bg-background lg:block"
+            style={{
+              width: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_LG}px)`,
+            }}
+          />
+          <div className="relative max-w-6xl mx-auto px-8 flex">
+            <div
+              ref={railRef}
+              className="dark relative flex flex-col items-end gap-1 w-24 lg:w-28 shrink-0 py-3 pointer-events-auto"
+            >
+              <div className="flex items-center gap-1">
+                <Link
+                  href="/"
+                  className="text-sm font-bold text-foreground whitespace-nowrap"
                 >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="flex items-center gap-1">
-            {EXTERNAL_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.ariaLabel}
-                  title={link.ariaLabel}
-                  className="flex items-center p-1.5 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  <link.Icon className="w-4 h-4" />
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href={ROUTER.Resume.path}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3.5 py-1.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors"
-          >
-            이력서
-          </a>
-
-          <div className="nav-floating-buttons">
-            <FloatingButtonGroup className="static flex-row">
-              <ButtonContainer>
-                <TocButton />
-              </ButtonContainer>
-              <TocMenu />
-              <ShareMenu />
-            </FloatingButtonGroup>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 sm:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          aria-label="메뉴 열기/닫기"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 text-muted-foreground"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {isMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="sm:hidden border-t border-border bg-background"
-          role="menu"
-        >
-          <ul className="flex flex-col py-2 px-4">
-            <li role="menuitem">
+                  석지인
+                </Link>
+                <ContactCopyButton copied={railCopied} onClick={railCopy} />
+              </div>
               <a
                 href={ROUTER.Resume.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
-                onClick={() => setIsMenuOpen(false)}
+                className="w-fit text-xs text-muted-foreground hover:text-foreground transition-colors"
               >
-                이력서
+                이력서 ↗
               </a>
-            </li>
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id} role="menuitem">
-                <button
-                  type="button"
-                  onClick={() => {
-                    scrollTo(item.id)
-                    setIsMenuOpen(false)
-                  }}
-                  className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-            {EXTERNAL_LINKS.map((link) => (
-              <li key={link.label} role="menuitem">
+              <ul className="flex items-center gap-0.5 -mr-1">
+                {EXTERNAL_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.ariaLabel}
+                      title={link.ariaLabel}
+                      className="flex items-center justify-center w-6 h-6 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    >
+                      <link.Icon className="w-3.5 h-3.5" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <ContactPopover open={railOpen} className="left-0" />
+            </div>
+          </div>
+        </div>
+      )}
+      <nav
+        className={`site-header w-full sticky top-0 bg-background text-muted-foreground border-b border-border z-40 transition-transform duration-300 ${onHome ? 'md:border-b-0' : ''}`}
+        style={
+          { '--navbar-height': `${NAVBAR_HEIGHT}px` } as React.CSSProperties & {
+            '--navbar-height': string
+          }
+        }
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-14 flex justify-between items-center">
+          <div
+            className={`flex items-center gap-4 relative ${onHome ? 'md:invisible' : ''}`}
+            ref={containerRef}
+          >
+            <Link
+              href="/"
+              className="w-fit text-lg font-bold text-foreground whitespace-nowrap"
+            >
+              석지인
+            </Link>
+            <ContactCopyButton
+              copied={copied}
+              onClick={copy}
+              className="hidden sm:flex"
+            />
+            <ContactPopover open={open} className="left-0" />
+          </div>
+
+          <div className="hidden sm:flex items-center gap-6">
+            <ul className="flex items-center gap-6">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => scrollTo(item.id)}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <span
+              aria-hidden
+              className={`h-4 w-px bg-border ${onHome ? 'md:hidden' : ''}`}
+            />
+
+            <ul
+              className={`flex items-center gap-1 ${onHome ? 'md:hidden' : ''}`}
+            >
+              {EXTERNAL_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.ariaLabel}
+                    title={link.ariaLabel}
+                    className="flex items-center justify-center w-7 h-7 text-muted-foreground/70 rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    <link.Icon className={link.iconClass} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={ROUTER.Resume.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-3.5 py-1.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors ${onHome ? 'md:hidden' : ''}`}
+            >
+              이력서
+            </a>
+
+            <div className="nav-floating-buttons">
+              <FloatingButtonGroup className="static flex-row">
+                <ButtonContainer>
+                  <TocButton />
+                </ButtonContainer>
+                <TocMenu />
+                <ShareMenu />
+              </FloatingButtonGroup>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 sm:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            aria-label="메뉴 열기/닫기"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-muted-foreground"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {isMenuOpen && (
+          <div
+            id="mobile-menu"
+            className="sm:hidden border-t border-border bg-background"
+            role="menu"
+          >
+            <ul className="flex flex-col py-2 px-4">
+              <li role="menuitem">
                 <a
-                  href={link.href}
+                  href={ROUTER.Resume.path}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.label}
+                  이력서
                 </a>
               </li>
-            ))}
-            <li role="menuitem">
-              <button
-                type="button"
-                onClick={() => {
-                  copy()
-                  setIsMenuOpen(false)
-                }}
-                className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2"
-              >
-                {copied ? (
-                  <CheckIcon className="w-4 h-4" />
-                ) : (
-                  <CopyIcon className="w-4 h-4" />
-                )}
-                {copied ? '복사됨!' : 'Copy Info'}
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+              {NAV_ITEMS.map((item) => (
+                <li key={item.id} role="menuitem">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      scrollTo(item.id)
+                      setIsMenuOpen(false)
+                    }}
+                    className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+              {EXTERNAL_LINKS.map((link) => (
+                <li key={link.label} role="menuitem">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li role="menuitem">
+                <button
+                  type="button"
+                  onClick={() => {
+                    copy()
+                    setIsMenuOpen(false)
+                  }}
+                  className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 flex items-center gap-2"
+                >
+                  {copied ? (
+                    <CheckIcon className="w-4 h-4" />
+                  ) : (
+                    <CopyIcon className="w-4 h-4" />
+                  )}
+                  {copied ? '복사됨!' : 'Copy Info'}
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
   )
 }

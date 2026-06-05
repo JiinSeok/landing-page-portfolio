@@ -58,9 +58,15 @@ function ContactPopover({
             <span className="w-14 shrink-0 text-muted-foreground text-xs font-medium">
               {item.label}
             </span>
-            <span className="text-popover-foreground truncate">
+            <a
+              href={item.href}
+              {...(item.href.startsWith('http')
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+              className="text-popover-foreground truncate hover:underline"
+            >
               {item.value}
-            </span>
+            </a>
           </li>
         ))}
       </ul>
