@@ -157,6 +157,31 @@ new QueryClient({
 })`,
   },
   {
+    title: 'Nexca 콘솔 — 프론트엔드 리팩토링',
+    period: '2025.04 ~ 2025.05',
+    tags: ['업무'],
+    lead: '체인시프트에서 SaaS 사용량 관리 콘솔의 프론트엔드 구조를 정리했습니다.',
+    description:
+      '백엔드에 전달만 하는 Next.js API route 15개를 catch-all 프록시 1개로 대체하고, react-hook-form 기반 공통 Form 컴포넌트(compound 패턴)와 HTTP status 기준 에러 핸들러 1종으로 화면마다 다르던 폼·에러 처리를 통일했습니다. 코드는 비공개이며 요청 주시면 공유드립니다.',
+    codeSnippet: `// Before — 엔드포인트마다 전달만 하는 route 파일 15개
+// app/api/apps/route.ts, app/api/accounts/route.ts, ...
+
+// After — catch-all 프록시 1개로 대체
+// app/api/proxy/[...path]/route.ts
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { path: string[] } },
+) {
+  const url = new URL(params.path.join('/'), process.env.NEXCA_API_URL)
+  request.nextUrl.searchParams.forEach((v, k) => url.searchParams.append(k, v))
+
+  const response = await fetch(url, {
+    headers: forwardAuthHeader(request), // 인증 헤더만 선별 전달
+  })
+  return NextResponse.json(await response.json(), { status: response.status })
+}`,
+  },
+  {
     title: 'Claude Code 설정 (dotfiles)',
     period: '2026.06',
     tags: ['오픈소스', 'AI 워크플로'],
@@ -189,8 +214,8 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       "검색 엔진을 '정보 이용자에게 정보 요구 충족이라는 가치를 주는 제품'으로 정의하고, 40여 개 SEO 기법을 웹 표준·속도·신뢰성으로 묶어 정리한 라이트닝 토크입니다. 크롤링 예산과 서버 비용, 접근성 같은 검색엔진 개발자의 고민에서 거꾸로 출발하면 각 순위 기준의 이유가 보이고, 같은 원리가 LLM 시대의 GEO(Bing 인덱싱, 인용하기 쉬운 구조)로 이어진다는 내용입니다.",
     url: 'https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1',
     linkLabel: '발표 자료 보기',
-    imageUrl: '/images/projects/seo-talk.webp',
-    alt: 'SEO 라이트닝 토크 발표 자료 표지',
+    imageUrl: '/images/projects/seo-talk-pillars.webp',
+    alt: '40여 개 SEO 기법을 웹 표준·속도·신뢰성 세 갈래로 묶은 슬라이드',
     embedUrl:
       'https://embed.figma.com/deck/jdocRc3a37rnNsTRm1crbD/?embed-host=share',
   },
@@ -202,8 +227,8 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       "도스트11 데브 미팅에서 '알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크입니다. 서버 응답도 서비스직의 응대라는 관점으로, 고객이 부정적으로 반응하는 응답 3가지(손해 입히기, 맥락 무시, 아마추어의 응대)와 도서관 사서의 참고 봉사(무엇을 찾는지 함께 정의하고 단계별로 안내)를 대비했습니다. 좋은 에러 메시지는 그 자체로 DX이자 마케팅이라는 것이 핵심입니다.",
     url: 'https://www.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/%EC%84%9C%EB%B9%84%EC%8A%A4%EC%A7%81%EC%9C%BC%EB%A1%9C%EC%84%9C%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9E%90--%EB%B3%B5%EC%82%AC-?node-id=1-101&t=oEqxpmYisTFTWX0r-1',
     linkLabel: '발표 자료 보기',
-    imageUrl: '/images/projects/cx-talk.webp',
-    alt: "'서비스직으로서의 개발자' 라이트닝 토크 발표 자료 표지",
+    imageUrl: '/images/projects/cx-talk-user-service.webp',
+    alt: "'서비스가 먼저 경험을 주고, 나는 그에 대해 반응한다' — USER와 SERVICE의 관계를 표현한 슬라이드",
     embedUrl:
       'https://embed.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/?embed-host=share',
   },
@@ -380,7 +405,7 @@ export function BeforeAfterSideView({
         aria-label={`${side.alt} 크게 보기`}
         className="block cursor-zoom-in"
       >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-md">
+        <div className="relative aspect-16/10 overflow-hidden rounded-md">
           {side.videoUrl ? (
             <AutoPlayVideo src={side.videoUrl} label={side.alt} />
           ) : (
@@ -482,7 +507,7 @@ function DeviceMockup({
         {screens.map((screen) => (
           <div
             key={screen.videoUrl ?? screen.imageUrl}
-            className="flex-1 max-w-[190px]"
+            className="flex-1 max-w-47.5"
           >
             {screen.caption && (
               <p className="mb-2 text-center text-xs text-muted-foreground">
@@ -627,9 +652,6 @@ export function ProjectEntry({
                 sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
                 className="object-cover"
               />
-              <span className="absolute bottom-2 right-2 px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full shadow-sm">
-                ▶ 발표 자료 열기
-              </span>
             </button>
           )}
         </figure>
@@ -651,7 +673,7 @@ export function ProjectEntry({
             <BeforeAfterStack media={item.beforeAfter} priority={priority} />
           ) : (showCode || (!item.device && !item.imageUrl)) &&
             item.codeSnippet ? (
-            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto [scrollbar-width:thin] [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
+            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto scrollbar-thin [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
               <code>{item.codeSnippet}</code>
             </pre>
           ) : item.device ? (
