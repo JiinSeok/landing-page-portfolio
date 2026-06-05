@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: '석지인 · 개발자',
     description:
       '석지인은 사용자 중심의 개발과 디자인으로 매끄러운 디지털 경험을 만드는 개발자입니다.',
-    url: 'https://usejiin.link',
+    url: 'https://www.usejiin.link',
     siteName: 'Jiin Seok',
     locale: 'ko_KR',
     type: 'website',

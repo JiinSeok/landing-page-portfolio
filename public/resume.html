@@ -360,12 +360,12 @@
       @media print {
         @page {
           size: A4;
-          margin: 12mm 13mm;
+          margin: 10mm 12mm;
         }
         html,
         body {
           background: #fff;
-          font-size: 11.2px;
+          font-size: 10.8px;
           line-height: 1.5;
           -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
@@ -387,7 +387,7 @@
         section.blk {
           break-inside: auto;
           display: block;
-          padding: 12px 0;
+          padding: 10px 0;
         }
         .blk > h2 {
           break-after: avoid;
@@ -406,10 +406,12 @@
         }
         .skill,
         .proj,
-        .item,
         .kv,
         ul.dots li {
           break-inside: avoid;
+        }
+        .item h4 {
+          break-after: avoid;
         }
         section.blk:last-of-type {
           break-inside: avoid;
@@ -473,7 +475,7 @@
   </head>
   <body>
     <div class="topbar">
-      <a class="home" href="/">← <b>석지인</b> 포트폴리오</a>
+      <a class="home" href="https://www.usejiin.link">← <b>석지인</b> 포트폴리오</a>
       <span class="spacer"></span>
       <button class="btn" onclick="window.print()">🖨 PDF로 저장 / 인쇄</button>
     </div>
@@ -497,7 +499,7 @@
             <div>
               <a href="https://github.com/JiinSeok">github.com/JiinSeok</a>
             </div>
-            <div><a href="https://usejiin.link">usejiin.link</a></div>
+            <div><a href="https://www.usejiin.link">usejiin.link</a></div>
           </div>
         </div>
 
@@ -515,7 +517,7 @@
             <div class="site-callout">
               <a href="https://www.usejiin.link" target="_blank" rel="noopener">
                 <img
-                  src="/images/projects/portfolio.png"
+                  src="images/projects/portfolio.png"
                   alt="포트폴리오 사이트 첫 화면 — 생성형 AI 연표와 나란히 보는 타임라인"
                 />
               </a>
@@ -570,8 +572,7 @@
               <div class="t">앱·서버 경계 설계 — 모바일·하이브리드 감각</div>
               <div class="d">
                 모델을 바꿔도 앱 코드를 고치지 않도록 앱과 서버를 REST 계약과
-                프로토콜로 분리했습니다. (네이티브 iOS 앱 기준이며, RN
-                브릿지/WebView 직접 구현 경험은 아닙니다.)
+                프로토콜로 분리했습니다.
               </div>
               <div class="ev">TappyType (네이티브 iOS)</div>
             </div>
@@ -784,7 +785,7 @@
                 <a href="https://github.com/JiinSeok/landing-page-portfolio"
                   >github.com/JiinSeok/landing-page-portfolio</a
                 >
-                · <a href="https://usejiin.link">usejiin.link</a>
+                · <a href="https://www.usejiin.link">usejiin.link</a>
               </div>
               <div class="stack">
                 Next.js App Router · React · TypeScript · Tailwind ·

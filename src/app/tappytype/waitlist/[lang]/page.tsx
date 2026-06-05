@@ -45,7 +45,7 @@ export async function generateMetadata({
     openGraph: {
       title: meta.title as string,
       description: meta.description as string,
-      url: `https://usejiin.link/tappytype/waitlist/${lang}`,
+      url: `https://www.usejiin.link/tappytype/waitlist/${lang}`,
       locale: lang === 'ko' ? 'ko_KR' : 'en_US',
       type: 'website',
     },

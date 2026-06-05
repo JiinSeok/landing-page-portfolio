@@ -94,7 +94,7 @@ export default function PersonalSection() {
           <div className="flex gap-4 md:gap-6 mb-8 md:mb-10">
             <div className="hidden md:flex md:w-56 lg:w-72 shrink-0 justify-end items-end">
               <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background" />
+                <span className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background" />
                 생성형 AI 주요 출시
               </span>
             </div>
@@ -105,11 +105,11 @@ export default function PersonalSection() {
                 경력
               </span>
               <span className="flex items-center gap-2 text-xs font-semibold text-primary/70 tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full bg-primary/50" />
+                <span className="w-3 h-3 rounded-full bg-primary/50" />
                 프로젝트 · 교육 · 자격
               </span>
               <span className="flex md:hidden items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background" />
+                <span className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background" />
                 생성형 AI 주요 출시
               </span>
             </div>
@@ -126,7 +126,7 @@ export default function PersonalSection() {
                     </span>
                   </div>
                   <div className="flex flex-col items-center shrink-0 w-6">
-                    <div className="w-2.5 h-2.5 rounded-full border-2 border-muted-foreground/40 bg-background shrink-0 mt-1" />
+                    <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background shrink-0 mt-1" />
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
@@ -150,7 +150,7 @@ export default function PersonalSection() {
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
                     />
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0" />
+                    <div className="w-3 h-3 rounded-full bg-primary/50 shrink-0" />
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div
@@ -180,7 +180,7 @@ export default function PersonalSection() {
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
                     />
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary/50 shrink-0" />
+                    <div className="w-3 h-3 rounded-full bg-primary/50 shrink-0" />
                     {!isLast && <div className="flex-1 w-px bg-border" />}
                   </div>
                   <div

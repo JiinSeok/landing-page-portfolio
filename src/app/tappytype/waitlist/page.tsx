@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'TappyType 사전 신청',
     description:
       '애플펜슬로 쓴 손글씨를 나만의 한글 폰트로. TappyType 출시 소식을 가장 먼저 받아보세요.',
-    url: 'https://usejiin.link/tappytype/waitlist',
+    url: 'https://www.usejiin.link/tappytype/waitlist',
     locale: 'ko_KR',
     type: 'website',
   },
