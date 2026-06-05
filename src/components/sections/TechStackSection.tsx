@@ -63,24 +63,33 @@ export default function TechStackSection() {
   return (
     <section id="tech-stack" className="w-full py-10 md:py-12">
       <div className="px-6 md:px-8 lg:px-12">
-        <div className="max-w-3xl mx-auto text-center mb-8">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
           <h2 className={styles.text.heading(2)}>
             {t('pages.techStack.meta.title')}
           </h2>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 md:pl-36 md:pr-0 lg:pl-40">
-          <TabComponent
-            tabs={categoryTabs}
-            activeTab={activeCategory}
-            setActiveTab={setActiveCategory}
-            className="w-full"
-            contentClassName="md:min-h-[21rem]"
-            tabContainerClassName="justify-center flex-wrap"
-            tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
-            activeTabClassName="bg-primary text-white"
-            inactiveTabClassName="bg-secondary/50 hover:bg-secondary/80"
-          />
+        <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
+          <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
+            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug">
+              {t('pages.techStack.meta.title')}
+            </h2>
+          </div>
+          <div className="hidden md:block shrink-0 w-6" />
+
+          <div className="flex-1 min-w-0">
+            <TabComponent
+              tabs={categoryTabs}
+              activeTab={activeCategory}
+              setActiveTab={setActiveCategory}
+              className="w-full"
+              contentClassName="md:min-h-[20rem]"
+              tabContainerClassName="justify-center flex-wrap"
+              tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              activeTabClassName="bg-primary text-white"
+              inactiveTabClassName="bg-secondary/50 hover:bg-secondary/80"
+            />
+          </div>
         </div>
       </div>
     </section>
