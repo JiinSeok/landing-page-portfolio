@@ -78,7 +78,7 @@ export default function PersonalSection() {
       className="w-full py-16 md:py-20 bg-secondary/10"
     >
       <div className="px-6 md:px-8 lg:px-12">
-        <div className="max-w-6xl pl-4 md:pl-0">
+        <div className="max-w-6xl mx-auto pl-4 md:pl-0">
           <TimelineToc items={tocItems} nowKey={nowKey} />
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
@@ -92,7 +92,7 @@ export default function PersonalSection() {
                   data-toc-date={date}
                   className="flex gap-4 md:gap-6 scroll-mt-24"
                 >
-                  <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end">
+                  <div className="hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
                     <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
                       <span>{item.label}</span>
@@ -124,7 +124,7 @@ export default function PersonalSection() {
                   data-toc-date={date}
                   className="flex gap-4 md:gap-6 scroll-mt-24"
                 >
-                  <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
+                  <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
@@ -159,7 +159,7 @@ export default function PersonalSection() {
                   data-toc-date={date}
                   className="flex gap-4 md:gap-6 scroll-mt-24"
                 >
-                  <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
+                  <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
@@ -190,7 +190,7 @@ export default function PersonalSection() {
                 data-toc-date={date}
                 className="flex gap-4 md:gap-6 scroll-mt-24"
               >
-                <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
+                <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
                   <div
                     className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
