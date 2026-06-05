@@ -69,7 +69,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         <div className="max-w-6xl mx-auto px-6 flex gap-4 md:px-8 md:gap-6">
           <div className="hidden md:flex md:w-24 lg:w-28 shrink-0" />
           <div className="hidden md:block shrink-0 w-6" />
-          <div className="flex-1 min-w-0 bg-background border-b border-border py-5">
+          <div className="flex-1 min-w-0 bg-background border-b border-border py-5 md:-ml-9 md:pl-9">
             <div className="relative hidden h-5 overflow-x-visible overflow-y-clip md:block">
               {careerItems.map((item) => {
                 const p = pos(item.date)
