@@ -86,7 +86,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                 : 'max-h-40 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
             }
           >
-            <div className="pt-4 relative">
+            <div className="pt-3 relative">
               <div className="relative h-5">
                 {careerItems.map((item) => {
                   const p = pos(item.date)
@@ -106,7 +106,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                         {item.label}
                       </span>
                       <span
-                        className={`block w-px h-2 mt-0.5 bg-muted-foreground/50 ${
+                        className={`block w-px h-2 mt-0.5 bg-border ${
                           p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
                         }`}
                       />
@@ -137,26 +137,12 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               />
             ))}
 
-            <span className="absolute top-1/2 left-0 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full" />
-
             {pinned && (
               <span
                 className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-[3px] ring-foreground/25 transition-[left] duration-300"
                 style={{ left: `${pos(activeDate)}%` }}
               />
             )}
-
-            {careerItems.map((item) => (
-              <a
-                key={`dot-${item.anchor}`}
-                href={`#${item.anchor}`}
-                aria-label={
-                  item.sublabel ? `${item.label} — ${item.sublabel}` : item.label
-                }
-                style={{ left: `${pos(item.date)}%` }}
-                className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full"
-              />
-            ))}
 
             {minorAi.map((item) => (
               <a

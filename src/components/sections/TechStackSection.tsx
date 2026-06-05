@@ -64,17 +64,9 @@ export default function TechStackSection() {
     <section id="tech-stack" className="w-full py-10 md:py-12 bg-secondary/10">
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-8">
-          <h2 className={styles.combineStyles(styles.text.heading(2), 'mb-3')}>
+          <h2 className={styles.text.heading(2)}>
             {t('pages.techStack.meta.title')}
           </h2>
-          <p
-            className={styles.combineStyles([
-              styles.text.body('large'),
-              'text-muted-foreground max-w-2xl mx-auto',
-            ])}
-          >
-            {t('pages.techStack.meta.subtitle')}
-          </p>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
@@ -83,6 +75,7 @@ export default function TechStackSection() {
             activeTab={activeCategory}
             setActiveTab={setActiveCategory}
             className="w-full"
+            contentClassName="md:min-h-[21rem]"
             tabContainerClassName="justify-center flex-wrap"
             tabClassName="px-4 py-2 rounded-md text-sm font-medium transition-colors"
             activeTabClassName="bg-primary text-white"

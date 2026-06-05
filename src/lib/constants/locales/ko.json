@@ -34,7 +34,7 @@
       "careers": [
         {
           "company": "도스트11",
-          "tocLabel": "풀스택 시작",
+          "tocLabel": "풀스택 개발",
           "description": "MBC AI 전략자회사 · 디지털 에셋 마켓 도프켓 운영",
           "url": "https://www.dost11.com",
           "period": "2025.09 ~ 현재",
@@ -60,7 +60,7 @@
         },
         {
           "company": "핏투게더",
-          "tocLabel": "SW 테스트 자격 취득",
+          "tocLabel": "SQA 자격 취득",
           "description": "축구 데이터 올인원 '오코치' · FIFA Preferred Provider(FPP)",
           "url": "https://www.fitogether.com",
           "period": "2023.08 ~ 2024.02",
@@ -86,7 +86,7 @@
         },
         {
           "company": "연합뉴스",
-          "tocLabel": "문헌정보학과 졸업",
+          "tocLabel": "사내 자료실 근무",
           "description": "대한민국 대표 통신사",
           "url": "https://www.yna.co.kr",
           "period": "2021.08 ~ 2022.03",
@@ -101,7 +101,7 @@
         {
           "tag": "교육",
           "label": "코드잇 스프린트 프론트엔드 트랙 7기",
-          "tocLabel": "프론트엔드 시작",
+          "tocLabel": "프론트엔드 개발",
           "period": "2024.04 ~ 2024.10",
           "sort": "2024.04"
         },
@@ -146,8 +146,7 @@
     },
     "techStack": {
       "meta": {
-        "title": "기술 스택",
-        "subtitle": "사용하는 주요 기술과 도구"
+        "title": "기술 스택"
       }
     },
     "projects": {

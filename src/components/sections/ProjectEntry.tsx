@@ -384,7 +384,7 @@ export function BeforeAfterSideView({ side }: { side: BeforeAfterSide }) {
           )}
         </div>
       </a>
-      <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
+      <figcaption className="mt-1.5 text-xs text-muted-foreground">
         {side.caption}
       </figcaption>
     </figure>
@@ -510,7 +510,11 @@ export function ProjectEntry({
   return (
     <article
       aria-label={item.title}
-      className={`flex-1 flex flex-col gap-4 min-w-0 ${item.beforeAfter ? 'md:gap-5' : 'md:flex-row md:gap-8'}`}
+      className={`flex-1 flex flex-col gap-4 min-w-0 ${item.beforeAfter ? 'md:gap-5' : 'md:flex-row md:gap-8'} ${
+        item.featured
+          ? 'p-5 md:p-6 bg-background border border-border rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.04),0_16px_40px_-20px_rgba(0,0,0,0.15)]'
+          : ''
+      }`}
     >
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap gap-1.5 mb-2">
@@ -606,7 +610,9 @@ export function ProjectEntry({
           className={
             item.beforeAfter
               ? 'w-full'
-              : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
+              : item.featured
+                ? 'md:w-96 lg:w-[26rem] shrink-0 self-start w-full'
+                : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
           }
         >
           {item.beforeAfter ? (
