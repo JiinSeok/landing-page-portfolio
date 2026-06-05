@@ -59,11 +59,9 @@
                   "alt": "개선 전 — SAM3 영문 도구 탭 화면"
                 },
                 "after": {
-                  "imageUrl": "/images/projects/aicg-after.png",
-                  "width": 1938,
-                  "height": 1770,
-                  "caption": "워크플로우 3단계 탭 — 화면이 순서를 안내",
-                  "alt": "개선 후 — 1.마스크 → 2.에셋 → 3.합성 워크플로우 탭 화면"
+                  "videoUrl": "/videos/projects/aicg-tool.webm",
+                  "caption": "'원본+마스크+에셋=합성 결과' 썸네일 타임라인 신설, 왼쪽 작업·오른쪽 결과 분할",
+                  "alt": "개선 후 — 썸네일 타임라인 헤더, 왼쪽 작업·오른쪽 결과 분할 레이아웃이 적용된 최종 화면"
                 }
               },
               "items": [

@@ -109,7 +109,7 @@ function BeforeAfterSideView({
         aria-label={`${side.alt} 크게 보기`}
         className="block cursor-zoom-in"
       >
-        <div className="relative aspect-video overflow-hidden rounded-md">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-md">
           {side.videoUrl ? (
             <AutoPlayVideo src={side.videoUrl} label={side.alt} />
           ) : (
