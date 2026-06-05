@@ -307,7 +307,7 @@ export default function PersonalSection() {
                                     className="flex items-start gap-2"
                                   >
                                     <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                    <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
+                                    <span className="text-sm leading-relaxed text-muted-foreground">
                                       {label && (
                                         <span className="font-medium text-foreground">
                                           {label}
