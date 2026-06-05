@@ -159,9 +159,9 @@ new QueryClient({
     title: 'Claude Code 설정 (dotfiles)',
     period: '2026.06',
     tags: ['오픈소스', 'AI 워크플로'],
-    lead: '코드 리뷰에서 반복 지적되던 컨벤션을 AI가 작성 시점부터 지키게 만든 설정입니다.',
+    lead: '실제 개발에 쓰는 Claude Code 설정에서 민감정보를 제외한 공개판입니다.',
     description:
-      'React 30개·Python 13개 규칙을 스킬로 정리해 Claude Code에 주입했고, 어떤 프로젝트에서든 첫 커밋부터 같은 스타일이 나옵니다. 민감정보를 제외한 공개판입니다.',
+      'React 30개·Python 13개 스타일 규칙을 스킬로 정리하고, .tsx·.py 수정 전에 해당 규칙을 먼저 읽도록 CLAUDE.md로 강제했습니다. 규칙은 formkit-react, albaform 등 실제 프로젝트에서 굳어진 패턴을 옮긴 것이라 코드와 가이드가 서로를 검증합니다. 설정 디렉터리 자체를 git 저장소로 두고 launchd가 1시간마다 pull 후 변경분을 자동 커밋·push해, 어느 기기에서든 같은 규칙으로 작업합니다.',
     url: 'https://github.com/JiinSeok/dotfiles-claude-public',
     codeSnippet: `# skills/seokjiin-react-style/rules — 30개 중 발췌
 
@@ -198,7 +198,7 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
     period: '2025.11',
     tags: ['발표'],
     description:
-      "도스트11 데브 미팅에서 '알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크입니다. 서버 응답도 서비스직의 응대라는 관점으로, 고객이 부정적으로 반응하는 응답 3가지(손해 입히기, 맥락 무시, 아마추어의 응대)와 도서관 사서의 레퍼런스 인터뷰(무엇을 찾는지 함께 정의하고 단계별로 안내)를 대비했습니다. 좋은 에러 메시지는 그 자체로 DX이자 마케팅이라는 것이 핵심입니다.",
+      "도스트11 데브 미팅에서 '알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크입니다. 서버 응답도 서비스직의 응대라는 관점으로, 고객이 부정적으로 반응하는 응답 3가지(손해 입히기, 맥락 무시, 아마추어의 응대)와 도서관 사서의 참고 봉사(무엇을 찾는지 함께 정의하고 단계별로 안내)를 대비했습니다. 좋은 에러 메시지는 그 자체로 DX이자 마케팅이라는 것이 핵심입니다.",
     url: 'https://www.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/%EC%84%9C%EB%B9%84%EC%8A%A4%EC%A7%81%EC%9C%BC%EB%A1%9C%EC%84%9C%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9E%90--%EB%B3%B5%EC%82%AC-?node-id=1-101&t=oEqxpmYisTFTWX0r-1',
     linkLabel: '발표 자료 보기',
     imageUrl: '/images/projects/cx-talk.png',
@@ -219,19 +219,6 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
     alt: '정산 기능 설계 케이스 스터디 페이지',
     device: 'laptop',
     videoUrl: '/videos/projects/settlement-design.webm',
-  },
-  {
-    title: '이벤트 협업 제안 · 포토부스 프로토타입',
-    period: '2026.05',
-    tags: ['프로토타입'],
-    description:
-      '마케팅 아이디어 회의에서 당일 포토부스 이벤트 협업을 직접 제안하고, 제안일 포함 3일 만에 동작하는 프로토타입으로 완성했습니다. 이 기능은 정식 부가기능으로 채택되어 지금은 특정 이벤트 의존을 분리하는 일반화 작업을 진행 중입니다.',
-    url: 'https://staging.doppket.com/proposals/mudo-run',
-    linkLabel: '프로토타입 보기',
-    imageUrl: '/images/projects/photobooth.png',
-    alt: '포토부스 데모 — 무한도전 RUN 프레임으로 4컷 촬영 후 합성',
-    device: 'phone',
-    videoUrl: '/videos/projects/photobooth.webm',
   },
 ]
 
@@ -316,7 +303,7 @@ const APPLE_BEZELS = {
   },
 }
 
-function DeviceFrame({
+export function DeviceFrame({
   kind,
   screen,
   title,

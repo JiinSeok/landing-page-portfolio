@@ -41,11 +41,17 @@
           "contributions": [
             {
               "title": "도프켓 — 디지털 에셋 이커머스 풀스택 (Rails·React·Docker·MySQL)",
+              "phoneDemo": {
+                "videoUrl": "/videos/projects/photobooth.webm",
+                "caption": "포토부스 데모 — 4컷 촬영 흐름",
+                "alt": "포토부스 데모 — 무한도전 RUN 프레임으로 4컷 촬영 후 합성"
+              },
               "items": [
                 "한국 시장 로컬라이제이션 — 전 페이지 한국어 전환, 브랜딩·폰트 교체",
-                "신규 기능 — 상품 대시보드, GUI CMS 블로그(Tiptap·S3), 카테고리 에디터",
-                "결제·셀러 경험 — 결제 UX 개선, 셀러 프로필 리디자인, 포토부스 기능·랜딩 페이지 0→1 제작 후 범용 기능으로 리팩토링",
                 "B2B·운영 — 첫 B2B 고객사 온보딩, CRM 유저 테이블 개발, Grafana 운영 지표·대시보드 관리",
+                "이벤트 협업 제안 — 마케팅 회의에서 당일 직접 제안해 3일 만에 [포토부스 프로토타입](https://staging.doppket.com/proposals/mudo-run)을 완성, 정식 부가기능으로 채택되어 일반화 작업 진행 중",
+                "신규 기능 — 상품 대시보드, GUI CMS 블로그(Tiptap·S3), 카테고리 에디터",
+                "결제·셀러 경험 — 결제 UX 개선, 셀러 프로필 리디자인",
                 "개발 경험·테스트 — 타입체크 비동기화·SSR 빌드 토글로 로컬 피드백 시간 단축, PR Checks에 SSR 스모크 테스트·Selenium Chrome profile 분리"
               ]
             },

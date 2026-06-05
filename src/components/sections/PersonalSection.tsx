@@ -16,6 +16,7 @@ import {
   galleryItems,
   ProjectEntry,
   AutoPlayVideo,
+  DeviceFrame,
 } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
@@ -43,7 +44,7 @@ function BeforeAfterSideView({
   side: BeforeAfterSide
 }) {
   return (
-    <figure className="flex flex-col flex-1 justify-between min-w-0">
+    <figure className="w-full min-w-0">
       <a
         href={side.videoUrl ?? side.imageUrl}
         target="_blank"
@@ -72,20 +73,35 @@ function BeforeAfterSideView({
   )
 }
 
-function BeforeAfterRow({
+const INLINE_LINK_PATTERN = /(\[[^\]]+\]\([^)]+\))/g
+const INLINE_LINK_PARSE = /^\[([^\]]+)\]\(([^)]+)\)$/
+
+function renderInlineLinks(text: string) {
+  return text.split(INLINE_LINK_PATTERN).map((part, idx) => {
+    const match = part.match(INLINE_LINK_PARSE)
+    if (!match) return part
+    return (
+      <a
+        key={`${match[2]}-${idx}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-2 decoration-muted-foreground/50 transition-colors hover:text-primary"
+      >
+        {match[1]}
+      </a>
+    )
+  })
+}
+
+function BeforeAfterStack({
   media,
 }: {
   media: { before: BeforeAfterSide; after: BeforeAfterSide }
 }) {
   return (
-    <div className="flex items-stretch w-full gap-2 mt-4 md:gap-3">
+    <div className="flex flex-col w-full gap-4 mt-4 md:mt-0">
       <BeforeAfterSideView side={media.before} />
-      <span
-        className="self-center shrink-0 text-muted-foreground text-xl"
-        aria-hidden
-      >
-        →
-      </span>
       <BeforeAfterSideView side={media.after} />
     </div>
   )
@@ -325,39 +341,62 @@ export default function PersonalSection() {
                                 ))}
                               </div>
                             )}
-                            <ul className="space-y-2">
-                              {group.items.map((item) => {
-                                const splitIndex = item.indexOf(' — ')
-                                const label =
-                                  splitIndex > 0
-                                    ? item.slice(0, splitIndex)
-                                    : null
-                                const detail =
-                                  splitIndex > 0
-                                    ? item.slice(splitIndex + 3)
-                                    : item
-                                return (
-                                  <li
-                                    key={item}
-                                    className="flex items-start gap-2"
-                                  >
-                                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                    <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
-                                      {label && (
-                                        <span className="font-medium text-foreground">
-                                          {label}
-                                        </span>
-                                      )}
-                                      {label && ' — '}
-                                      {detail}
-                                    </span>
-                                  </li>
-                                )
-                              })}
-                            </ul>
-                            {group.beforeAfter && (
-                              <BeforeAfterRow media={group.beforeAfter} />
-                            )}
+                            <div
+                              className={
+                                group.beforeAfter || group.phoneDemo
+                                  ? 'md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,240px)] md:gap-6 md:items-start'
+                                  : ''
+                              }
+                            >
+                              <ul className="space-y-2">
+                                {group.items.map((item) => {
+                                  const splitIndex = item.indexOf(' — ')
+                                  const label =
+                                    splitIndex > 0
+                                      ? item.slice(0, splitIndex)
+                                      : null
+                                  const detail =
+                                    splitIndex > 0
+                                      ? item.slice(splitIndex + 3)
+                                      : item
+                                  return (
+                                    <li
+                                      key={item}
+                                      className="flex items-start gap-2"
+                                    >
+                                      <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                      <span className="max-w-[65ch] text-sm leading-relaxed text-muted-foreground">
+                                        {label && (
+                                          <span className="font-medium text-foreground">
+                                            {label}
+                                          </span>
+                                        )}
+                                        {label && ' — '}
+                                        {renderInlineLinks(detail)}
+                                      </span>
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                              {group.beforeAfter && (
+                                <BeforeAfterStack media={group.beforeAfter} />
+                              )}
+                              {group.phoneDemo && (
+                                <figure className="w-full max-w-[190px] mx-auto mt-4 md:mt-0">
+                                  <DeviceFrame
+                                    kind="phone"
+                                    screen={{
+                                      videoUrl: group.phoneDemo.videoUrl,
+                                      alt: group.phoneDemo.alt,
+                                    }}
+                                    title={group.phoneDemo.caption}
+                                  />
+                                  <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
+                                    {group.phoneDemo.caption}
+                                  </figcaption>
+                                </figure>
+                              )}
+                            </div>
                             {group.imageUrl && (
                               <figure className="relative w-full mt-4 overflow-hidden rounded-md aspect-video">
                                 <a
