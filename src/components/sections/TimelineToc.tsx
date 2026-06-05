@@ -137,7 +137,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               />
             ))}
 
-            <span className="absolute top-1/2 left-0 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-4 ring-foreground/20" />
+            <span className="absolute top-1/2 left-0 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full" />
 
             {pinned && (
               <span
@@ -154,7 +154,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   item.sublabel ? `${item.label} — ${item.sublabel}` : item.label
                 }
                 style={{ left: `${pos(item.date)}%` }}
-                className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-primary rounded-full"
+                className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full"
               />
             ))}
 
@@ -166,7 +166,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   href={`#${item.anchor}`}
                   aria-label={item.label}
                   style={{ left: `${pos(item.date)}%` }}
-                  className="group absolute top-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-muted-foreground/50 rounded-full"
+                  className="group absolute top-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full"
                 >
                   <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 px-1.5 py-0.5 bg-background border border-border text-[10px] text-muted-foreground whitespace-nowrap rounded group-hover:block group-focus-visible:block">
                     {item.label}
