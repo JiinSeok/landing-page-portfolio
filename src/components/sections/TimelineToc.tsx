@@ -76,7 +76,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
       <nav
         ref={navRef}
         aria-label="연표 목차"
-        className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] max-md:bg-background mb-6 transition-[top] duration-300 md:mb-4 ${
+        className={`sticky z-30 -mt-px max-md:bg-background mb-6 transition-[top] duration-300 md:mb-4 ${
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
@@ -96,14 +96,14 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         />
         <div
           aria-hidden
-          className="hidden absolute inset-y-0 right-0 bg-background border-b border-border md:block lg:hidden"
+          className="hidden absolute inset-y-0 right-0 bg-background md:block lg:hidden"
           style={{
             left: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_MD}px)`,
           }}
         />
         <div
           aria-hidden
-          className="hidden absolute inset-y-0 right-0 bg-background border-b border-border lg:block"
+          className="hidden absolute inset-y-0 right-0 bg-background lg:block"
           style={{
             left: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_LG}px)`,
           }}
@@ -111,8 +111,8 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         <div className="relative max-w-6xl mx-auto px-6 flex gap-4 md:px-8 md:gap-6">
           <div className="hidden md:flex md:w-24 lg:w-28 shrink-0" />
           <div className="hidden md:block shrink-0 w-6" />
-          <div className="flex-1 min-w-0 py-5 max-md:bg-background max-md:border-b max-md:border-border">
-            <div className="relative hidden h-5 overflow-x-visible overflow-y-clip md:block">
+          <div className="flex-1 min-w-0 py-5 max-md:bg-background">
+            <div className="relative hidden h-5 overflow-x-visible overflow-y-clip lg:block">
               {careerItems.map((item) => {
                 const p = pos(item.date)
                 return (
@@ -152,7 +152,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               ))}
             </div>
 
-            <div className="relative hidden h-6 md:block">
+            <div className="relative hidden h-6 lg:block">
               {majorAi.map((item) => {
                 const p = pos(item.date)
                 return (
