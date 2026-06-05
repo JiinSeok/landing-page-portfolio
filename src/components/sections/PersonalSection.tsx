@@ -12,7 +12,6 @@ import {
 } from '@/lib/utils/timeline'
 import {
   galleryItems,
-  GalleryItem,
   ProjectEntry,
   AutoPlayVideo,
 } from '@/components/sections/ProjectEntry'
@@ -43,10 +42,6 @@ function BeforeAfterSideView({
 }) {
   return (
     <figure className="flex flex-col flex-1 justify-between min-w-0">
-      <figcaption className="mb-1.5 text-xs text-muted-foreground">
-
-        {side.caption}
-      </figcaption>
       <a
         href={side.videoUrl ?? side.imageUrl}
         target="_blank"
@@ -68,6 +63,9 @@ function BeforeAfterSideView({
           )}
         </div>
       </a>
+      <figcaption className="mt-1.5 text-xs text-muted-foreground text-center">
+        {side.caption}
+      </figcaption>
     </figure>
   )
 }
@@ -223,7 +221,7 @@ export default function PersonalSection() {
                     className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
                   >
                     <ProjectEntry
-                      item={item.project as GalleryItem}
+                      item={item.project}
                       priority={index === firstProjectIndex}
                     />
                   </div>
