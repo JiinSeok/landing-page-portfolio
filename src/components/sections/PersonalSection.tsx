@@ -83,6 +83,8 @@ export default function PersonalSection() {
     ...LLM_MILESTONES.map((m) => ({ kind: 'milestone' as const, ...m })),
   ].sort((a, b) => b.sort.localeCompare(a.sort))
 
+  const firstProjectIndex = timeline.findIndex((item) => item.kind === 'project')
+
   return (
     <section
       id="career"
@@ -186,7 +188,10 @@ export default function PersonalSection() {
                   <div
                     className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
                   >
-                    <ProjectEntry item={item.project} />
+                    <ProjectEntry
+                      item={item.project}
+                      priority={index === firstProjectIndex}
+                    />
                   </div>
                 </div>
               )
@@ -223,8 +228,7 @@ export default function PersonalSection() {
                           alt={career.company}
                           width={28}
                           height={28}
-                          className="object-contain"
-                          style={{ width: 'auto', height: 'auto' }}
+                          className="w-7 h-7 object-contain"
                         />
                       </span>
                     )}

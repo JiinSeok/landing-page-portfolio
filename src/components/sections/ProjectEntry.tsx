@@ -177,7 +177,13 @@ new QueryClient({
   },
 ]
 
-export function ProjectEntry({ item }: { item: GalleryItem }) {
+export function ProjectEntry({
+  item,
+  priority = false,
+}: {
+  item: GalleryItem
+  priority?: boolean
+}) {
   const t = useTranslations('pages.projects')
   const [showCode, setShowCode] = useState(false)
 
@@ -266,6 +272,8 @@ export function ProjectEntry({ item }: { item: GalleryItem }) {
                 src={item.imageUrl}
                 alt={item.alt ?? item.title}
                 fill
+                sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+                priority={priority}
                 className="object-cover"
               />
             </a>
