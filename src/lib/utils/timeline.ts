@@ -96,6 +96,7 @@ export function monthIndex(key: string): number {
 
 export function axisPosition(dateKey: string, nowKey: string): number {
   const total = monthIndex(nowKey) - monthIndex(AXIS_START)
+  if (total === 0) return 0
   const offset = monthIndex(nowKey) - monthIndex(dateKey)
   return Math.min(100, Math.max(0, (offset / total) * 100))
 }
@@ -127,10 +128,10 @@ export function buildTimeline<P extends TimelineProject>(
       extra,
     })),
     ...projects
-      .filter((p) => p.period)
+      .filter((p): p is P & { period: string } => Boolean(p.period))
       .map((project) => ({
         kind: 'project' as const,
-        sort: timelineSortKey('project', project.period as string),
+        sort: timelineSortKey('project', project.period),
         anchor: timelineAnchorId('project', project.title),
         project,
       })),
@@ -144,7 +145,7 @@ export function buildTimeline<P extends TimelineProject>(
 
 export function entryDate(entry: TimelineEntry): string {
   if (entry.kind === 'career') return startMonth(entry.career.period)
-  if (entry.kind === 'project') return startMonth(entry.project.period as string)
+  if (entry.kind === 'project') return startMonth(entry.project.period ?? '')
   if (entry.kind === 'extra') return entry.extra.sort
   return entry.sort
 }
@@ -171,7 +172,7 @@ export function buildTocItems(
           label: entry.project.title,
           sublabel: entry.project.featured?.sublabel,
           date,
-          ongoing: (entry.project.period as string).includes('현재'),
+          ongoing: (entry.project.period ?? '').includes('현재'),
           anchor: entry.anchor,
         }
       }
