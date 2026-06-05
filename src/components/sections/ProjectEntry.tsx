@@ -405,7 +405,7 @@ export function BeforeAfterSideView({
         aria-label={`${side.alt} 크게 보기`}
         className="block cursor-zoom-in"
       >
-        <div className="relative aspect-[16/10] overflow-hidden rounded-md">
+        <div className="relative aspect-16/10 overflow-hidden rounded-md">
           {side.videoUrl ? (
             <AutoPlayVideo src={side.videoUrl} label={side.alt} />
           ) : (
@@ -507,7 +507,7 @@ function DeviceMockup({
         {screens.map((screen) => (
           <div
             key={screen.videoUrl ?? screen.imageUrl}
-            className="flex-1 max-w-[190px]"
+            className="flex-1 max-w-47.5"
           >
             {screen.caption && (
               <p className="mb-2 text-center text-xs text-muted-foreground">
@@ -673,7 +673,7 @@ export function ProjectEntry({
             <BeforeAfterStack media={item.beforeAfter} priority={priority} />
           ) : (showCode || (!item.device && !item.imageUrl)) &&
             item.codeSnippet ? (
-            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto [scrollbar-width:thin] [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
+            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto scrollbar-thin [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
               <code>{item.codeSnippet}</code>
             </pre>
           ) : item.device ? (
