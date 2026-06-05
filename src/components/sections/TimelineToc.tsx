@@ -71,7 +71,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
       <nav
         aria-label="연표 목차"
-        className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] bg-background border-b border-border mb-6 transition-[top] duration-300 md:mb-12 ${
+        className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] bg-background border-b border-border mb-6 transition-[top] duration-300 md:mb-4 ${
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
