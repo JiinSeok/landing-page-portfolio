@@ -14,7 +14,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
     description:
-      '런타임 에러를 줄이고 API 통신을 안정적으로 다루기 위해 사용했습니다. 도스트11에서 Rails와 React를 함께 쓰는 프로젝트의 프론트엔드 타입을 잡는 데 쓰고 있습니다.',
+      '런타임 에러를 줄이고 API 통신을 안정적으로 다루는 데 씁니다. 도스트11에서 Rails·React 프로젝트의 프론트엔드 타입을 잡고 있습니다.',
   },
   {
     name: 'JavaScript (ES6+)',
@@ -28,14 +28,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     description:
-      '도스트11에서 react-on-rails 기반으로 도프켓 카테고리 에디터, 배너 캐러셀, 블로그 CMS, 정산 설정 UI를 개발했습니다. 하이드레이션과 커스텀 훅을 실무에서 다룹니다.',
+      '도스트11에서 react-on-rails로 카테고리 에디터, 배너 캐러셀, 블로그 CMS, 정산 UI를 개발했습니다. 하이드레이션과 커스텀 훅을 다룹니다.',
   },
   {
     name: 'Next.js',
     category: '프론트엔드',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     description:
-      'Next API 프록시와 NextAuth 세션으로 민감 정보가 브라우저에 노출되지 않게 했습니다. 도스트11 기업 랜딩 페이지는 GitHub Actions와 함께 만들어 비개발자가 Notion으로 콘텐츠를 관리합니다.',
+      'Next API 프록시와 NextAuth 세션으로 민감 정보 노출을 막았습니다. 기업 랜딩 페이지는 비개발자가 Notion으로 콘텐츠를 관리하게 만들었습니다.',
   },
   {
     name: 'HTML5 / CSS3',
@@ -110,7 +110,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     description:
-      '리니어 히스토리 컨벤션을 Git Hook으로 지키도록 했습니다. 도스트11에서는 Overcommit 기반 pre-push 훅(SSR 빌드 검증·RSpec 선별 실행)을 직접 고치며 PR 중심으로 일합니다.',
+      '리니어 히스토리 컨벤션을 Git Hook으로 지키게 했습니다. 도스트11에서 Overcommit 기반 pre-push 훅을 직접 고치며 PR 중심으로 일합니다.',
   },
   {
     name: 'GitHub',
@@ -124,7 +124,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg',
     description:
-      '코드 품질과 스타일을 통일하기 위해 설정했습니다. 관리하기 쉽도록 설정 파일은 config 디렉터리에 모으고 ignore 파일은 따로 두지 않았습니다.',
+      '코드 품질과 스타일을 통일하기 위해 설정했습니다. 설정 파일은 config 디렉터리에 모아 관리합니다.',
   },
   {
     name: 'Husky',
@@ -157,14 +157,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: '/aws-logo.svg',
     description:
-      '유지 비용을 낮추기 위해 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에는 Certificate Manager와 CloudFront를 사용했습니다.',
+      '유지 비용을 낮추려 Amplify로 배포하고 팀에 IAM 계정을 발급했습니다. HTTPS 배포에 Certificate Manager·CloudFront를 썼습니다.',
   },
   {
     name: 'Docker',
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
     description:
-      '도스트11 devcontainer 환경에서 캐시를 named volume으로 분리해 빌드 오류를 없앴습니다. 로컬 DB·서버 구동과 CI/CD 스크립트 수정에도 활용합니다.',
+      '도스트11 devcontainer 캐시를 named volume으로 분리해 빌드 오류를 없앴습니다. 로컬 DB·서버 구동과 CI/CD 수정에 활용합니다.',
   },
   {
     name: 'MongoDB / Mongoose',
@@ -230,21 +230,21 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swagger.svg',
     description:
-      'API 명세를 주고받으며 협업하는 데 사용했습니다. 인증이 필요한 요청으로 응답을 직접 받아 보고, DTO에 맞는 타입을 만들거나 에러 처리 UI를 설계했습니다.',
+      'API 명세로 협업하며, 인증 요청의 응답을 직접 확인해 DTO 타입과 에러 처리 UI를 설계했습니다.',
   },
   {
     name: 'Ruby on Rails',
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg',
     description:
-      '도스트11에서 풀스택으로 일하며 영수증·거래명세서 Presenter와 메일러를 수정하고, 카테고리 데이터 캐싱(Rails.cache)과 VAT·가격 스냅샷 백필을 구현했습니다. RSpec 테스트를 함께 작성합니다.',
+      '도스트11에서 풀스택으로 일하며 영수증·거래명세서 Presenter, 카테고리 캐싱, VAT·가격 스냅샷 백필을 구현했습니다. RSpec 테스트도 작성합니다.',
   },
   {
     name: 'Python',
     category: '기타',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
     description:
-      'AWS S3의 프로덕션 데이터를 가져와 버그를 재현하고 파악할 때 사용했습니다. 반복적인 UI 테스트를 자동화하기 위해 Selenium과 Pyautogui를 학습했습니다. 도스트11에서는 CI의 Selenium 테스트가 Chrome profile을 공유해 깨지던 문제를 profile 분리로 안정화했습니다.',
+      'AWS S3 프로덕션 데이터로 버그를 재현하는 데 사용했습니다. CI Selenium 테스트가 profile 공유로 깨지던 문제를 분리해 해결했습니다.',
   },
   {
     name: 'Google Analytics',
