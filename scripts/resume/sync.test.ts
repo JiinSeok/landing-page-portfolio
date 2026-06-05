@@ -3,7 +3,18 @@ import path from 'node:path'
 
 import { describe, expect, it } from 'vitest'
 
+import {
+  careers,
+  extraMonths,
+  metrics,
+  RESUME_AS_OF,
+  talks,
+} from '@/lib/constants/facts'
+
 import { buildResumeHtml, ROOT } from './render'
+
+const read = (relative: string) =>
+  readFileSync(path.join(ROOT, relative), 'utf8')
 
 describe('재생성 diff', () => {
   it('커밋된 resume.html은 템플릿+facts 재생성 결과와 일치한다', async () => {
@@ -15,5 +26,60 @@ describe('재생성 diff', () => {
       await buildResumeHtml(),
       'public/resume.html이 facts·template과 어긋남 — pnpm resume 실행 후 커밋할 것',
     ).toBe(committed)
+  })
+})
+
+describe('사이트 대조', () => {
+  const koJson = read('src/lib/constants/locales/ko.json')
+  const projectEntry = read('src/components/sections/ProjectEntry.tsx')
+
+  it('ko.json의 경력 기간이 facts와 일치한다', () => {
+    for (const career of Object.values(careers)) {
+      expect(koJson).toContain(`${career.start} ~ ${career.end ?? '현재'}`)
+    }
+  })
+
+  it('ko.json의 핵심 수치가 facts와 일치한다', () => {
+    expect(koJson).toContain(`응답률 ${metrics.responseRate}`)
+    expect(koJson).toContain(`(${metrics.formReduction})`)
+    expect(koJson).toContain(`${metrics.photoboothDays} 만에`)
+    expect(koJson).toContain(metrics.errorMsgFiles)
+    expect(koJson).toContain(metrics.apiRouteReplace)
+    expect(koJson).toContain(`${metrics.jiraProjects} 프로덕트별`)
+    expect(koJson).toContain(metrics.fpp)
+  })
+
+  it('ProjectEntry의 발표·패키지 정보가 facts와 일치한다', () => {
+    expect(projectEntry).toContain(talks.seo.url)
+    expect(projectEntry).toContain(talks.cx.url)
+    expect(projectEntry).toContain(`'${talks.seo.when}'`)
+    expect(projectEntry).toContain(`'${talks.cx.when}'`)
+  })
+})
+
+describe('기간 패턴 스캔', () => {
+  const knownMonths = new Set([
+    ...Object.values(careers).flatMap((c) =>
+      c.end ? [c.start, c.end] : [c.start],
+    ),
+    talks.seo.when,
+    talks.cx.when,
+    RESUME_AS_OF,
+    ...extraMonths,
+  ])
+
+  const targets = [
+    'public/resume.html',
+    'src/lib/constants/locales/ko.json',
+    'src/components/sections/ProjectEntry.tsx',
+  ]
+
+  it.each(targets)('%s 의 모든 연월이 facts에 등록돼 있다', (target) => {
+    const found = read(target).match(/20\d{2}\.\d{2}/g) ?? []
+    const unknown = [...new Set(found)].filter((ym) => !knownMonths.has(ym))
+    expect(
+      unknown,
+      `facts에 없는 연월 발견 — 드리프트이거나 extraMonths 누락: ${unknown.join(', ')}`,
+    ).toEqual([])
   })
 })

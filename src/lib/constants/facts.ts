@@ -52,6 +52,7 @@ export const projects = {
 }
 
 export const extraMonths = [
+  '2015.03',
   '2020.09',
   '2021.07',
   '2022.04',
