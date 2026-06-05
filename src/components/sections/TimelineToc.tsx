@@ -19,7 +19,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
   const careerSegs = items.filter((i) => i.tier === 'career' && i.ongoing)
   const majorAi = items.filter((i) => i.tier === 'ai' && i.major)
-  const minorAi = items.filter((i) => i.tier === 'ai' && !i.major)
   const careerItems = items.filter((i) => i.tier === 'career')
 
   const [activeDate, setActiveDate] = useState(nowKey)
@@ -82,8 +81,8 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           <div
             className={
               pinned
-                ? 'relative h-9 max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-9 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
-                : 'relative h-9 max-h-9 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
+                ? 'relative h-6 max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-6 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
+                : 'relative h-6 max-h-6 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
             }
           >
             {careerItems.map((item) => {
@@ -112,8 +111,8 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               )
             })}
 
-            <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground">
-              현재
+            <span className="absolute bottom-0 left-0 text-[10px] tracking-wide text-muted-foreground">
+              TODAY
             </span>
           </div>
 
@@ -134,21 +133,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             ))}
           </div>
 
-          <div className="relative h-10">
-            {minorAi.map((item) => (
-              <a
-                key={item.anchor}
-                href={`#${item.anchor}`}
-                aria-label={`${item.date} ${item.label}`}
-                style={{ left: `${pos(item.date)}%` }}
-                className="group absolute top-0 w-px h-2 bg-border"
-              >
-                <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 px-1.5 py-0.5 bg-background border border-border text-[10px] text-muted-foreground whitespace-nowrap rounded group-hover:block group-focus-visible:block">
-                  {item.date} {item.label}
-                </span>
-              </a>
-            ))}
-
+          <div className="relative h-6">
             {majorAi.map((item) => {
               const p = pos(item.date)
               return (
@@ -162,7 +147,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   ].join(' ')}
                 >
                   <span
-                    className={`block w-px h-3 bg-muted-foreground ${
+                    className={`block w-px h-2 bg-border ${
                       p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
                     }`}
                   />
