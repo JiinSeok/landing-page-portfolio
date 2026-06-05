@@ -143,7 +143,6 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
     device: 'laptop',
     videoUrl: '/videos/projects/bodycodi.webm',
-    featured: { sublabel: '레거시 공존 설계' },
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
 // tailwind.config.js
 export default {
@@ -226,9 +225,10 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
     title: '방송용 CG 합성 도구 — Gradio UI/UX 재설계',
     period: '2026.05',
     tags: ['업무', 'UI/UX'],
-    lead: '도스트11에서 ML 연구원들과 한 저장소를 쓰며 재설계한 방송용 CG 합성 도구입니다.',
+    featured: { sublabel: 'ML 연구원 협업' },
+    lead: 'ML 연구원들과 한 저장소를 쓰며 방송용 CG 합성 도구의 프론트엔드를 재설계했습니다.',
     description:
-      "영문 도구 탭을 실제 작업 순서대로 1.마스크 → 2.에셋 → 3.합성 3단계로 재구성하고, '원본+마스크+에셋=합성 결과' 썸네일 타임라인을 신설해 산출물이 다음 단계 어디에 쓰이는지 화면이 안내합니다. UI 용어 한국어화와 방송용 5GB 업로드 대응까지 함께 했습니다.",
+      "도구는 Gradio지만 일의 본질은 같았습니다. 사용자의 작업 흐름을 화면 구조로 번역하는 것. 도구 이름 기준 영문 탭을 실제 작업 순서인 1.마스크 → 2.에셋 → 3.합성으로 재구성하고, '원본+마스크+에셋=합성 결과' 썸네일 타임라인을 신설해 산출물이 다음 단계 어디에 쓰이는지 화면이 안내합니다. UI 용어 한국어화와 방송용 5GB 업로드 대응까지 함께 했습니다.",
     beforeAfter: {
       before: {
         imageUrl: '/images/projects/aicg-legacy.png',

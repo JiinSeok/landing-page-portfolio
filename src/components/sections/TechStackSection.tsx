@@ -61,7 +61,7 @@ export default function TechStackSection() {
   }))
 
   return (
-    <section id="tech-stack" className="w-full py-10 md:py-12 bg-secondary/10">
+    <section id="tech-stack" className="w-full py-10 md:py-12">
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-8">
           <h2 className={styles.text.heading(2)}>

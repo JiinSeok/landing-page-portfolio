@@ -17,7 +17,7 @@ export default function FAQSection() {
     <section
       id="faq"
       className={styles.combineStyles([
-        'w-full bg-background',
+        'w-full',
         styles.layout.section('lg'),
       ])}
     >

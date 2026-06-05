@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/Button/Button'
 import { useTranslations } from '@/lib/providers/TextContext'
 import { Link } from '@/navigation'
-import Footer from '@/components/layout/Footer'
 
 export default function NotFoundPage() {
   const t = useTranslations('layout.notFound')
@@ -45,7 +44,6 @@ export default function NotFoundPage() {
           <p className="text-muted-foreground">{t('contactMessage')}</p>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

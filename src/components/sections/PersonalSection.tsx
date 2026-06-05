@@ -54,7 +54,7 @@ export default function PersonalSection() {
     <section
       id="career"
       aria-label="타임라인"
-      className="w-full py-16 md:py-20 bg-secondary/10 overflow-x-clip"
+      className="w-full py-16 md:py-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-6xl mx-auto pl-4 md:pl-0">
@@ -70,7 +70,7 @@ export default function PersonalSection() {
                   data-toc-date={date}
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
-                  <div className="hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
+                  <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
                     <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
                       <span>{item.label}</span>
