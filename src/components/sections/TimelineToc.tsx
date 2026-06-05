@@ -76,7 +76,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 py-5 md:px-8">
-          <div className="relative hidden h-6 overflow-x-visible overflow-y-clip md:block">
+          <div className="relative hidden h-5 overflow-x-visible overflow-y-clip md:block">
             {careerItems.map((item) => {
               const p = pos(item.date)
               return (
@@ -94,11 +94,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
                     {item.label}
                   </span>
-                  <span
-                    className={`block w-px h-2 mt-0.5 bg-border ${
-                      p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
-                    }`}
-                  />
                 </a>
               )
             })}
@@ -134,11 +129,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                     item === activeMobileMajor ? 'block' : 'hidden md:block',
                   ].join(' ')}
                 >
-                  <span
-                    className={`block w-px h-2 bg-border ${
-                      p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
-                    }`}
-                  />
                   <span className="block text-[10px] text-muted-foreground leading-tight whitespace-nowrap">
                     {item.label.split('·').map((part, i) => (
                       <span key={i} className="block">
