@@ -8,6 +8,12 @@ interface TimelineTocProps {
   nowKey: string
 }
 
+function edgeAlign(p: number): string {
+  if (p < 4) return 'translate-x-0 text-left'
+  if (p > 96) return '-translate-x-full text-right'
+  return '-translate-x-1/2 text-center'
+}
+
 export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const pos = (date: string) => axisPosition(date, nowKey)
 
@@ -71,41 +77,55 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             className={
               pinned
                 ? 'max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300'
-                : 'max-h-40 opacity-100 overflow-hidden transition-[max-height,opacity] duration-300'
+                : 'max-h-40 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
             }
           >
             <div className="pt-4 relative">
               <div className="relative h-6">
-                {featuredItems.map((item) => (
-                  <a
-                    key={item.anchor}
-                    href={`#${item.anchor}`}
-                    aria-label={`${item.label} — ${item.sublabel}`}
-                    style={{ left: `${pos(item.date)}%` }}
-                    className="absolute bottom-0 -translate-x-1/2 text-center"
-                  >
-                    <span className="block text-[11px] font-semibold text-foreground/80 whitespace-nowrap">
-                      {item.sublabel}
-                    </span>
-                    <span className="block w-px h-2 mx-auto mt-0.5 bg-muted-foreground/50" />
-                  </a>
-                ))}
+                {featuredItems.map((item) => {
+                  const p = pos(item.date)
+                  return (
+                    <a
+                      key={item.anchor}
+                      href={`#${item.anchor}`}
+                      aria-label={`${item.label} — ${item.sublabel}`}
+                      style={{ left: `${p}%` }}
+                      className={`absolute bottom-0 ${edgeAlign(p)}`}
+                    >
+                      <span className="block text-[11px] font-semibold text-foreground/80 whitespace-nowrap">
+                        {item.sublabel}
+                      </span>
+                      <span
+                        className={`block w-px h-2 mt-0.5 bg-muted-foreground/50 ${
+                          p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
+                        }`}
+                      />
+                    </a>
+                  )
+                })}
               </div>
 
               <div className="relative h-5">
-                {careerItems.map((item) => (
-                  <a
-                    key={item.anchor}
-                    href={`#${item.anchor}`}
-                    style={{ left: `${pos(item.date)}%` }}
-                    className="group absolute bottom-0 -translate-x-1/2 text-center"
-                  >
-                    <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
-                      {item.label}
-                    </span>
-                    <span className="block w-px h-2 mx-auto mt-0.5 bg-muted-foreground/50" />
-                  </a>
-                ))}
+                {careerItems.map((item) => {
+                  const p = pos(item.date)
+                  return (
+                    <a
+                      key={item.anchor}
+                      href={`#${item.anchor}`}
+                      style={{ left: `${p}%` }}
+                      className={`group absolute bottom-0 ${edgeAlign(p)}`}
+                    >
+                      <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
+                        {item.label}
+                      </span>
+                      <span
+                        className={`block w-px h-2 mt-0.5 bg-muted-foreground/50 ${
+                          p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
+                        }`}
+                      />
+                    </a>
+                  )
+                })}
 
                 <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground/60 translate-y-full pt-0.5">
                   현재
