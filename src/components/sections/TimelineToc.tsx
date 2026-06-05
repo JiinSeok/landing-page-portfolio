@@ -200,26 +200,34 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             ))}
           </div>
 
-          <div className="relative pb-3">
-            {majorAi.map((item) => (
-              <span
-                key={item.anchor}
-                style={{ left: `${pos(item.date)}%` }}
-                className={[
-                  'absolute top-0',
-                  item === activeMobileMajor ? 'block' : 'hidden md:block',
-                ].join(' ')}
-              >
-                <span className="block w-px h-3 bg-muted-foreground mx-auto" />
-                <span className="-translate-x-1/2 text-[10px] text-muted-foreground text-center leading-tight whitespace-nowrap block">
-                  {item.label.split('·').map((part, i) => (
-                    <span key={i} className="block">
-                      {part}
-                    </span>
-                  ))}
+          <div className="relative h-11 mt-1">
+            {majorAi.map((item) => {
+              const p = pos(item.date)
+              return (
+                <span
+                  key={item.anchor}
+                  style={{ left: `${p}%` }}
+                  className={[
+                    'absolute top-0',
+                    edgeAlign(p),
+                    item === activeMobileMajor ? 'block' : 'hidden md:block',
+                  ].join(' ')}
+                >
+                  <span
+                    className={`block w-px h-3 bg-muted-foreground ${
+                      p < 4 ? 'ml-0' : p > 96 ? 'ml-auto mr-0' : 'mx-auto'
+                    }`}
+                  />
+                  <span className="block text-[10px] text-muted-foreground leading-tight whitespace-nowrap">
+                    {item.label.split('·').map((part, i) => (
+                      <span key={i} className="block">
+                        {part}
+                      </span>
+                    ))}
+                  </span>
                 </span>
-              </span>
-            ))}
+              )
+            })}
           </div>
         </div>
       </nav>
