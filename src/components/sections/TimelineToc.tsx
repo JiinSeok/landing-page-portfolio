@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   NAVBAR_HEIGHT,
   PIN_ENTER_Y,
@@ -30,11 +30,17 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
   const [activeDate, setActiveDate] = useState(nowKey)
   const [pinned, setPinned] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
-      setPinned((prev) => (prev ? y > PIN_EXIT_Y : y > PIN_ENTER_Y))
+      const sectionBottom =
+        navRef.current?.parentElement?.getBoundingClientRect().bottom ??
+        Infinity
+      setPinned((prev) =>
+        sectionBottom <= 0 ? false : prev ? y > PIN_EXIT_Y : y > PIN_ENTER_Y,
+      )
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -67,6 +73,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   return (
     <>
       <nav
+        ref={navRef}
         aria-label="연표 목차"
         className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] max-md:bg-background mb-6 transition-[top] duration-300 md:mb-4 ${
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'

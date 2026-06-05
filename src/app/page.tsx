@@ -28,12 +28,12 @@ export default function HomePage() {
       />
       <main className="w-full">
         <h1 className="sr-only">석지인 — 개발자 포트폴리오</h1>
-        <TimelineToc items={tocItems} nowKey={nowKey} />
         <div className="w-full">
+          <TimelineToc items={tocItems} nowKey={nowKey} />
           <PersonalSection />
-          <TechStackSection />
-          <PortfolioFAQSection />
         </div>
+        <TechStackSection />
+        <PortfolioFAQSection />
       </main>
     </div>
   )
