@@ -1,20 +1,9 @@
 'use client'
 
-import { useTranslations } from '@/lib/providers/TextContext'
-import {
-  AXIS_START,
-  buildTimeline,
-  buildTocItems,
-  entryDate,
-  type CareerEntry,
-  type CareerExtra,
-  type ContributionGroup,
-} from '@/lib/utils/timeline'
-import TimelineToc from '@/components/sections/TimelineToc'
-import {
-  galleryItems,
-  ProjectEntry,
-} from '@/components/sections/ProjectEntry'
+import { useTimelineData } from '@/lib/hooks/useTimelineData'
+import { type ContributionGroup } from '@/lib/utils/timeline'
+import { entryDate } from '@/lib/utils/timeline'
+import { ProjectEntry } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
 const TITLE_TECH_PATTERN = /^(.*?)\s*\(([^)]+)\)$/
@@ -57,17 +46,7 @@ function renderInlineLinks(text: string) {
 }
 
 export default function PersonalSection() {
-  const t = useTranslations()
-
-  const careers = t('pages.career.careers') as unknown as CareerEntry[]
-  const extras = t('pages.career.extras') as unknown as CareerExtra[]
-
-  const timeline = buildTimeline(careers, extras, galleryItems)
-
-  const nowKey = timeline
-    .map(entryDate)
-    .reduce((max, d) => (d > max ? d : max), AXIS_START)
-  const tocItems = buildTocItems(timeline, nowKey)
+  const { timeline } = useTimelineData()
 
   const firstProjectIndex = timeline.findIndex((item) => item.kind === 'project')
 
@@ -79,7 +58,6 @@ export default function PersonalSection() {
     >
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-6xl mx-auto pl-4 md:pl-0">
-          <TimelineToc items={tocItems} nowKey={nowKey} />
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
             const date = entryDate(item)

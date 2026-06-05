@@ -70,11 +70,11 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
   return (
     <>
-      <div ref={sentinelRef} className="-mt-16 h-px -mb-px md:-mt-20" />
+      <div ref={sentinelRef} className="h-px" />
 
       <nav
         aria-label="연표 목차"
-        className={`dark sticky z-30 mx-[calc(50%-50vw)] bg-background/95 backdrop-blur-sm mb-10 transition-[top] duration-300 md:mb-12 ${
+        className={`sticky z-30 mx-[calc(50%-50vw)] bg-background/95 backdrop-blur-sm border-b border-border mb-10 transition-[top] duration-300 md:mb-12 ${
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
@@ -112,7 +112,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               )
             })}
 
-            <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground/60">
+            <span className="absolute bottom-0 left-0 text-[10px] text-muted-foreground">
               현재
             </span>
           </div>
