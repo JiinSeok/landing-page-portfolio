@@ -93,7 +93,7 @@ export default function PersonalSection() {
                       <span className="tabular-nums text-muted-foreground">
                         {item.sort}
                       </span>
-                      <span className="text-foreground/85 whitespace-pre-line">
+                      <span className="text-foreground/85 whitespace-pre-line break-keep">
                         {item.label}
                       </span>
                     </span>
@@ -102,7 +102,9 @@ export default function PersonalSection() {
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
                     <span className="flex flex-col text-xs text-muted-foreground leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
-                      <span className="whitespace-pre-line">{item.label}</span>
+                      <span className="whitespace-pre-line break-keep">
+                        {item.label}
+                      </span>
                     </span>
                   </div>
                   <div
