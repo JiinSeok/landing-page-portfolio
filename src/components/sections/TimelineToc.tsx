@@ -48,7 +48,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   return (
     <>
       <nav aria-label="연표 목차" className="dark relative -mt-16 mx-[calc(50%-50vw)] mb-10 bg-background md:-mt-20 md:mb-12">
-        <div className="max-w-6xl mx-auto px-6 pt-20 pb-12 md:px-8">
+        <div className="max-w-6xl mx-auto px-6 pt-24 pb-12 md:px-8">
           <div ref={fullRef} className="relative h-0.5 bg-border">
           <span className="absolute left-0 top-4 text-[10px] text-muted-foreground/60">
             현재
