@@ -66,14 +66,14 @@ export default function PersonalSection() {
           </h2>
         </div>
 
-        <div className="max-w-6xl mx-auto pl-4 md:pl-0">
+        <div className="max-w-6xl mx-auto">
           <div className="hidden md:flex gap-4 md:gap-6 pb-8">
             <div className="dark flex md:w-24 lg:w-28 shrink-0 justify-end">
               <h2 className="text-right font-semibold text-foreground leading-snug">
                 {t('pages.career.meta.title')}
               </h2>
             </div>
-            <div className="shrink-0 w-6" />
+            <div className="hidden md:block shrink-0 w-6" />
             <div className="flex-1" />
           </div>
 
@@ -97,7 +97,7 @@ export default function PersonalSection() {
                       <span className="text-foreground/85">{item.label}</span>
                     </span>
                   </div>
-                  <div className="shrink-0 w-6" />
+                  <div className="hidden md:block shrink-0 w-6" />
                   <div className={`flex-1 ${isLast ? '' : 'pb-6'} md:hidden`}>
                     <span className="flex flex-col text-xs text-muted-foreground leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
@@ -121,7 +121,7 @@ export default function PersonalSection() {
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                  <div className="shrink-0 w-6" />
+                  <div className="hidden md:block shrink-0 w-6" />
                   <div
                     className={`flex-1 min-w-0 ${isLast ? '' : 'pb-8 md:pb-10'}`}
                   >
@@ -150,7 +150,7 @@ export default function PersonalSection() {
                   className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
                 >
                   <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                  <div className="shrink-0 w-6" />
+                  <div className="hidden md:block shrink-0 w-6" />
                   <div
                     className={`flex-1 min-w-0 ${
                       isLast
@@ -181,7 +181,7 @@ export default function PersonalSection() {
                 className="flex gap-4 md:gap-6 scroll-mt-28 md:scroll-mt-52"
               >
                 <div className="hidden md:block md:w-24 lg:w-28 shrink-0" />
-                <div className="shrink-0 w-6" />
+                <div className="hidden md:block shrink-0 w-6" />
 
                 <div
                   className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
