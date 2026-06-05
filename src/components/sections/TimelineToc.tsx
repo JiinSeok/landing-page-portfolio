@@ -112,6 +112,11 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                     <a
                       key={item.anchor}
                       href={`#${item.anchor}`}
+                      aria-label={
+                        item.sublabel
+                          ? `${item.label} — ${item.sublabel}`
+                          : item.label
+                      }
                       style={{ left: `${p}%` }}
                       className={`group absolute bottom-0 ${edgeAlign(p)}`}
                     >
@@ -163,7 +168,9 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
               <a
                 key={`dot-${item.anchor}`}
                 href={`#${item.anchor}`}
-                aria-label={item.label}
+                aria-label={
+                  item.sublabel ? `${item.label} — ${item.sublabel}` : item.label
+                }
                 style={{ left: `${pos(item.date)}%` }}
                 className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-primary rounded-full"
               />

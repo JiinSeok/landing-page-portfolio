@@ -34,6 +34,7 @@
       "careers": [
         {
           "company": "도스트11",
+          "tocLabel": "풀스택 시작",
           "description": "MBC AI 전략자회사 · 디지털 에셋 마켓 도프켓 운영",
           "url": "https://www.dost11.com",
           "period": "2025.09 ~ 현재",
@@ -46,6 +47,7 @@
         },
         {
           "company": "체인시프트",
+          "tocLabel": "프로덕션 개발",
           "description": "AI 검색 최적화 SaaS",
           "url": "https://www.chainshift.co",
           "period": "2025.04 ~ 2025.06",
@@ -58,6 +60,7 @@
         },
         {
           "company": "핏투게더",
+          "tocLabel": "SW 테스트 자격 취득",
           "description": "축구 데이터 올인원 '오코치' · FIFA Preferred Provider(FPP)",
           "url": "https://www.fitogether.com",
           "period": "2023.08 ~ 2024.02",
@@ -70,6 +73,7 @@
         },
         {
           "company": "물류대장",
+          "tocLabel": "스타트업 입사",
           "description": "중대형 제품 배송·설치 매칭 물류 SaaS(OMS/WMS)",
           "url": "https://www.ftf.co.kr",
           "period": "2022.06 ~ 2023.08",
@@ -82,6 +86,7 @@
         },
         {
           "company": "연합뉴스",
+          "tocLabel": "문헌정보학과 졸업",
           "description": "대한민국 대표 통신사",
           "url": "https://www.yna.co.kr",
           "period": "2021.08 ~ 2022.03",

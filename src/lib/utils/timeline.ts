@@ -16,6 +16,7 @@ export type ContributionGroup = {
 
 export type CareerEntry = {
   company: string
+  tocLabel?: string
   description?: string
   url?: string
   period: string
@@ -159,7 +160,8 @@ export function buildTocItems(
       if (entry.kind === 'career') {
         return {
           tier: 'career',
-          label: entry.career.company,
+          label: entry.career.tocLabel ?? entry.career.company,
+          sublabel: entry.career.company,
           date,
           ongoing: entry.career.period.includes('현재'),
           anchor: entry.anchor,
