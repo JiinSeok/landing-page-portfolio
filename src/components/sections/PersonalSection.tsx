@@ -11,6 +11,8 @@ import Image from 'next/image'
 
 type ContributionGroup = {
   title?: string
+  imageUrl?: string
+  alt?: string
   items: string[]
 }
 
@@ -35,6 +37,16 @@ type TimelineItem =
   | { kind: 'milestone'; sort: string; label: string }
   | { kind: 'extra'; sort: string; extra: CareerExtra }
   | { kind: 'project'; sort: string; project: GalleryItem }
+
+const TITLE_TECH_PATTERN = /^(.*?)\s*\(([^)]+)\)$/
+
+const FEATURED_CAREER_CARD_STYLES = `
+  p-5 md:p-6
+  bg-background
+  border border-border
+  rounded-xl
+  shadow-[0_1px_3px_rgba(0,0,0,0.04),0_16px_40px_-20px_rgba(0,0,0,0.15)]
+`
 
 const COMPANY_LOGOS: Record<string, string> = {
   도스트11: '/images/logos/dost11.png',
@@ -199,6 +211,7 @@ export default function PersonalSection() {
 
             const { career } = item
             const logo = COMPANY_LOGOS[career.company]
+            const isCurrent = career.period.includes('현재')
 
             return (
               <div key={career.company} className="flex gap-4 md:gap-6">
@@ -214,74 +227,132 @@ export default function PersonalSection() {
                 <div
                   className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
                 >
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    <span className="px-2.5 py-0.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                      경력
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1.5">
-                    {logo && (
-                      <span className="shrink-0 w-7 h-7 relative rounded overflow-hidden bg-white inline-flex items-center justify-center">
-                        <Image
-                          src={logo}
-                          alt={career.company}
-                          width={28}
-                          height={28}
-                          className="w-7 h-7 object-contain"
-                        />
+                  <div className={isCurrent ? FEATURED_CAREER_CARD_STYLES : ''}>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      <span className="px-2.5 py-0.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                        경력
                       </span>
-                    )}
-                    <h3 className="font-semibold text-lg">
-                      {career.url ? (
-                        <a
-                          href={career.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-primary transition-colors"
-                        >
-                          {career.company}
-                        </a>
-                      ) : (
-                        career.company
+                      {isCurrent && (
+                        <span className="flex items-center gap-1.5 px-2.5 py-0.5 border border-primary/25 text-primary text-xs font-semibold rounded-full">
+                          <span className="relative flex w-1.5 h-1.5">
+                            <span className="absolute inline-flex w-full h-full bg-primary/50 rounded-full animate-ping" />
+                            <span className="relative inline-flex w-1.5 h-1.5 bg-primary rounded-full" />
+                          </span>
+                          재직 중
+                        </span>
                       )}
-                    </h3>
-                    <span className="text-sm text-muted-foreground whitespace-nowrap">
-                      {career.period}
-                    </span>
-                  </div>
+                    </div>
 
-                  <p className="mb-3 text-sm text-muted-foreground">
-                    {career.description && <>{career.description} · </>}
-                    <span className="font-medium text-primary">
-                      {career.role}
-                    </span>
-                  </p>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1.5">
+                      {logo && (
+                        <span className="shrink-0 w-7 h-7 relative rounded overflow-hidden bg-white inline-flex items-center justify-center">
+                          <Image
+                            src={logo}
+                            alt={career.company}
+                            width={28}
+                            height={28}
+                            className="w-7 h-7 object-contain"
+                          />
+                        </span>
+                      )}
+                      <h3 className="font-semibold text-lg">
+                        {career.url ? (
+                          <a
+                            href={career.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary transition-colors"
+                          >
+                            {career.company}
+                          </a>
+                        ) : (
+                          career.company
+                        )}
+                      </h3>
+                      <span className="text-sm text-muted-foreground whitespace-nowrap">
+                        {career.period}
+                      </span>
+                    </div>
 
-                  <div className="space-y-4">
-                    {career.contributions.map((entry, i) => {
-                      const group: ContributionGroup =
-                        typeof entry === 'string' ? { items: [entry] } : entry
-                      return (
-                        <div key={group.title ?? i}>
-                          {group.title && (
-                            <h4 className="mb-1.5 text-sm font-semibold">
-                              {group.title}
-                            </h4>
-                          )}
-                          <ul className="space-y-2">
-                            {group.items.map((item) => (
-                              <li key={item} className="flex items-start gap-2">
-                                <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
-                                <span className={styles.text.body('small')}>
-                                  {item}
+                    <p className="mb-3 text-sm text-muted-foreground">
+                      {career.description && <>{career.description} · </>}
+                      <span className="font-medium text-primary">
+                        {career.role}
+                      </span>
+                    </p>
+
+                    <div className={isCurrent ? 'space-y-6' : 'space-y-4'}>
+                      {career.contributions.map((entry, i) => {
+                        const group: ContributionGroup =
+                          typeof entry === 'string' ? { items: [entry] } : entry
+                        const techMatch = group.title?.match(TITLE_TECH_PATTERN)
+                        const groupName = techMatch?.[1] ?? group.title
+                        const techStack = techMatch?.[2].split('·') ?? []
+                        return (
+                          <div
+                            key={group.title ?? i}
+                            className={
+                              group.title
+                                ? 'pl-4 border-l-2 border-border'
+                                : ''
+                            }
+                          >
+                            {group.title && (
+                              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-2">
+                                <span className="text-xs font-semibold tracking-widest tabular-nums text-muted-foreground/50">
+                                  {String(i + 1).padStart(2, '0')}
                                 </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )
-                    })}
+                                <h4 className="text-sm font-semibold">
+                                  {groupName}
+                                </h4>
+                                {techStack.map((tech) => (
+                                  <span
+                                    key={tech}
+                                    className="px-1.5 py-0.5 bg-secondary text-muted-foreground text-[11px] font-medium rounded"
+                                  >
+                                    {tech}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                            <div className="flex flex-col gap-4 md:flex-row md:gap-6">
+                              <ul className="flex-1 min-w-0 space-y-2">
+                                {group.items.map((item) => (
+                                  <li
+                                    key={item}
+                                    className="flex items-start gap-2"
+                                  >
+                                    <span className="shrink-0 w-1 h-1 rounded-full bg-primary/40 mt-2" />
+                                    <span className={styles.text.body('small')}>
+                                      {item}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                              {group.imageUrl && (
+                                <figure className="relative w-full md:w-72 lg:w-80 shrink-0 self-start overflow-hidden bg-muted rounded-md aspect-video">
+                                  <a
+                                    href={group.imageUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`${group.alt ?? groupName} 크게 보기`}
+                                    className="absolute inset-0 cursor-zoom-in"
+                                  >
+                                    <Image
+                                      src={group.imageUrl}
+                                      alt={group.alt ?? groupName ?? ''}
+                                      fill
+                                      sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 100vw"
+                                      className="object-cover"
+                                    />
+                                  </a>
+                                </figure>
+                              )}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -50,8 +50,10 @@
             },
             {
               "title": "방송용 CG 합성 도구 — Gradio UI/UX 재설계 (Python)",
+              "imageUrl": "/images/projects/aicg-gradio-redesign.png",
+              "alt": "방송용 CG 합성 도구 Gradio UI 개선 전후 비교 — 도구 중심 탭에서 워크플로우 3단계 탭으로",
               "items": [
-                "ML 연구원과 한 저장소에서 협업, 도구 중심 탭(에셋·트래킹·합성)을 워크플로우 3단계 탭으로 재구성하고 '원본+마스크+에셋=합성 결과' 썸네일 타임라인 헤더 신설",
+                "ML 연구원과 한 저장소에서 협업, 도구 중심 탭(에셋·트래킹·합성)을 워크플로우 3단계 탭으로 재구성하고 '원본+마스크+에셋=합성 결과' 썸네일 타임라인 헤더 신설, 같은 탭 기준 스크롤 분량 절반 이하로 단축",
                 "표시 라벨과 내부 키 분리(locale-independent slot key) 후 UI 용어 통일·한국어화, 백엔드 코드의 사용자 노출 에러 메시지까지 직접 번역, 개발팀·CG팀 용어 통일 크로스체크표 제작",
                 "방송용 대용량(5GB) 영상 업로드·타임아웃 조정, 파일 탐색기 체크박스 미표시 race·폰트 로드 실패 등 워크플로우를 막던 버그 해결"
               ]
@@ -59,8 +61,10 @@
             {
               "title": "most267.co.kr — 기업 랜딩 페이지 (Next.js·GitHub Actions)",
               "items": [
-                "비개발자가 Notion으로 콘텐츠를 관리하도록 재설계, CI/CD·SEO 구축",
-                "1시간마다 만료되는 Notion 파일 URL을 배포 시 다운로드해 WebP/WebM으로 변환"
+                "손으로 직접 수정하던 정적 HTML 사이트를 Next.js·Tailwind로 전면 재구축, GitHub Pages 정적 배포 CI/CD·SEO(sitemap·robots) 구축",
+                "Notion DB 5종(팀·작품·보도·영상·설정) 연동으로 비개발자가 콘텐츠 직접 관리, select 속성 순서·R&R 컬럼 등 Notion 스키마를 카테고리 정렬·본부별 탭 UI에 그대로 매핑",
+                "1시간마다 만료되는 Notion 파일 URL을 빌드 시 내려받아 sharp·ffmpeg로 WebP/WebM 변환, Notion 장애 시 캐시로 빌드를 이어가는 에셋 파이프라인 제작",
+                "img 태그를 next/image로 전환하고 이미지 치수를 추출·고정해 CLS 제거, 히어로 이미지 프리로드·영상 WebM 트랜스코딩으로 로딩 최적화"
               ]
             }
           ]

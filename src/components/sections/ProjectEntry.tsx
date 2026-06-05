@@ -1,10 +1,18 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import { Button } from '@/components/ui/Button/Button'
+
+export type DeviceKind = 'phone' | 'laptop'
+
+export interface GalleryScreen {
+  videoUrl?: string
+  imageUrl?: string
+  alt?: string
+}
 
 export interface GalleryItem {
   title: string
@@ -18,6 +26,9 @@ export interface GalleryItem {
   codeSnippet?: string
   notionUrl?: string
   embedUrl?: string
+  device?: DeviceKind
+  videoUrl?: string
+  screens?: GalleryScreen[]
 }
 
 export const galleryItems: GalleryItem[] = [
@@ -30,6 +41,8 @@ export const galleryItems: GalleryItem[] = [
     url: 'https://www.npmjs.com/package/@jiin.seok/formkit-react',
     imageUrl: '/images/projects/formkit-react.png',
     alt: 'formkit-react 폼 라이브러리 예제 화면',
+    device: 'laptop',
+    videoUrl: '/videos/projects/formkit-react.webm',
     codeSnippet: `import FormKit from '@jiin.seok/formkit-react'
 import { z } from 'zod'
 
@@ -60,6 +73,17 @@ export function LoginForm() {
     imageUrl: '/images/projects/albaform.png',
     alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
     notionUrl: 'https://jiin-seok.notion.site/albaform',
+    device: 'phone',
+    screens: [
+      {
+        videoUrl: '/videos/projects/albaform.webm',
+        alt: 'albaform 공고 목록 무한 스크롤 화면',
+      },
+      {
+        videoUrl: '/videos/projects/albaform-landing.webm',
+        alt: 'albaform 랜딩 페이지 스크롤 화면',
+      },
+    ],
     codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
 export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
@@ -91,6 +115,8 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     linkLabel: '코드 저장소 보기',
     imageUrl: '/images/projects/portfolio.png',
     alt: '포트폴리오 사이트 첫 화면',
+    device: 'laptop',
+    videoUrl: '/videos/projects/portfolio.webm',
   },
   {
     title: 'bodycodi',
@@ -100,6 +126,8 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
       '지원 회사의 서비스(2016년부터 운영된 JSP 레거시)를 직접 조사해 공존 제약을 추정·정의하고, 점진적 통합을 전제로 설계한 채용 과제입니다. tw- prefix 컨벤션 문서, 예측 가능/불가능을 구분하는 중앙 에러 처리, 50개 임계 조건부 가상화(7,000개에서도 부드러운 스크롤), 평가자가 데이터 크기와 네트워크 지연을 직접 바꿔 검증하는 테스트 제어 패널까지 담았습니다. 코드는 비공개이며 요청 주시면 공유드립니다.',
     imageUrl: '/images/projects/bodycodi.png',
     alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
+    device: 'laptop',
+    videoUrl: '/videos/projects/bodycodi.webm',
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
 // tailwind.config.js
 export default {
@@ -122,6 +150,8 @@ new QueryClient({
     url: 'https://github.com/JiinSeok/dotfiles-claude-public',
     imageUrl: '/images/projects/dotfiles.png',
     alt: 'dotfiles-claude-public GitHub 저장소 화면',
+    device: 'laptop',
+    videoUrl: '/videos/projects/dotfiles.webm',
   },
   {
     title: 'SEO 라이트닝 토크',
@@ -141,10 +171,12 @@ new QueryClient({
     tags: ['발표'],
     description:
       "도스트11 데브 미팅에서 '서비스직으로서의 개발자: 알잘딱깔센 개발을 위한 CX 101'을 주제로 발표한 라이트닝 토크 자료입니다.",
-    url: 'https://www.figma.com/deck/mLvVokRYLlCTnEB3VGn1On/',
+    url: 'https://www.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/%EC%84%9C%EB%B9%84%EC%8A%A4%EC%A7%81%EC%9C%BC%EB%A1%9C%EC%84%9C%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9E%90--%EB%B3%B5%EC%82%AC-?node-id=1-101&t=oEqxpmYisTFTWX0r-1',
     linkLabel: '발표 자료 보기',
+    imageUrl: '/images/projects/cx-talk.png',
+    alt: "'서비스직으로서의 개발자' 라이트닝 토크 발표 자료 표지",
     embedUrl:
-      'https://embed.figma.com/deck/mLvVokRYLlCTnEB3VGn1On/?embed-host=share',
+      'https://embed.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/?embed-host=share',
   },
   {
     title: '정산 기능 설계',
@@ -155,15 +187,8 @@ new QueryClient({
     linkLabel: '자료 보기',
     imageUrl: '/images/projects/settlement-design.png',
     alt: '정산 백엔드 설계 문서 화면',
-  },
-  {
-    title: '방송용 CG 합성 도구 — Gradio UI/UX 재설계',
-    period: '2026.05',
-    tags: ['업무', 'UI/UX'],
-    description:
-      '도스트11에서 ML 연구원들과 한 저장소를 쓰며 개선한 방송용 CG 합성 도구입니다. 도구 이름 기준 영문 탭(에셋·트래킹·합성)을 실제 작업 순서인 워크플로우 3단계 탭(1.마스크 → 2.에셋 → 3.합성)으로 재구성하고, 상단에 "원본+마스크+에셋=합성 결과" 썸네일 타임라인을 신설해 산출물이 다음 단계 어디에 쓰이는지 화면이 직접 안내하게 했습니다. 표시 라벨과 내부 키를 분리한 뒤 용어를 한국어로 통일했고, 같은 탭 기준 스크롤 분량이 절반 이하로 줄었습니다.',
-    imageUrl: '/images/projects/aicg-gradio-redesign.png',
-    alt: '방송용 CG 합성 도구 Gradio UI 개선 전후 비교 — 도구 중심 탭에서 워크플로우 3단계 탭으로',
+    device: 'laptop',
+    videoUrl: '/videos/projects/settlement-design.webm',
   },
   {
     title: '이벤트 협업 제안 · 포토부스 프로토타입',
@@ -174,8 +199,128 @@ new QueryClient({
     linkLabel: '프로토타입 보기',
     imageUrl: '/images/projects/photobooth.png',
     alt: '포토부스 이벤트 제안 랜딩 페이지 화면',
+    device: 'phone',
+    videoUrl: '/videos/projects/photobooth.webm',
   },
 ]
+
+function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {})
+        else video.pause()
+      },
+      { rootMargin: '120px' },
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      aria-label={label}
+      muted
+      loop
+      playsInline
+      preload="auto"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  )
+}
+
+function ScreenMedia({ screen, title }: { screen: GalleryScreen; title: string }) {
+  if (screen.videoUrl) {
+    return <AutoPlayVideo src={screen.videoUrl} label={screen.alt ?? title} />
+  }
+  if (screen.imageUrl) {
+    return (
+      <Image
+        src={screen.imageUrl}
+        alt={screen.alt ?? title}
+        fill
+        sizes="(min-width: 768px) 200px, 50vw"
+        className="object-cover"
+      />
+    )
+  }
+  return null
+}
+
+const APPLE_BEZELS = {
+  phone: {
+    src: '/images/device/iphone-17-black.png',
+    aspectRatio: '1350 / 2760',
+    screenInset: '2.54% 5.33%',
+    sizes: '(min-width: 768px) 190px, 45vw',
+  },
+  laptop: {
+    src: '/images/device/macbook-air-m5-silver.png',
+    aspectRatio: '3400 / 2240',
+    screenInset: '12.86% 12.35%',
+    sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
+  },
+}
+
+function DeviceFrame({
+  kind,
+  screen,
+  title,
+}: {
+  kind: DeviceKind
+  screen: GalleryScreen
+  title: string
+}) {
+  const bezel = APPLE_BEZELS[kind]
+  return (
+    <div className="relative w-full" style={{ aspectRatio: bezel.aspectRatio }}>
+      <div
+        className="absolute overflow-hidden bg-muted"
+        style={{ inset: bezel.screenInset }}
+      >
+        <ScreenMedia screen={screen} title={title} />
+      </div>
+      <Image
+        src={bezel.src}
+        alt=""
+        fill
+        sizes={bezel.sizes}
+        className="pointer-events-none select-none"
+      />
+    </div>
+  )
+}
+
+function DeviceMockup({ item }: { item: GalleryItem }) {
+  const fallbackScreen: GalleryScreen = {
+    videoUrl: item.videoUrl,
+    imageUrl: item.imageUrl,
+    alt: item.alt,
+  }
+  const screens = item.screens ?? [fallbackScreen]
+
+  if (item.device === 'phone') {
+    return (
+      <div className="flex justify-center gap-3">
+        {screens.map((screen) => (
+          <div
+            key={screen.videoUrl ?? screen.imageUrl}
+            className="flex-1 max-w-[190px]"
+          >
+            <DeviceFrame kind="phone" screen={screen} title={item.title} />
+          </div>
+        ))}
+      </div>
+    )
+  }
+  return <DeviceFrame kind="laptop" screen={screens[0]} title={item.title} />
+}
 
 export function ProjectEntry({
   item,
@@ -254,29 +399,33 @@ export function ProjectEntry({
         </figure>
       )}
 
-      {!item.embedUrl && item.imageUrl && (
-        <figure className="relative md:w-80 lg:w-96 shrink-0 self-start w-full overflow-hidden rounded-md aspect-video bg-muted">
+      {!item.embedUrl && (item.device || item.imageUrl) && (
+        <figure className="md:w-80 lg:w-96 shrink-0 self-start w-full">
           {showCode && item.codeSnippet ? (
-            <pre className="p-4 h-full bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
+            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto">
               <code>{item.codeSnippet}</code>
             </pre>
+          ) : item.device ? (
+            <DeviceMockup item={item} />
           ) : (
-            <a
-              href={item.imageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${item.alt ?? item.title} 크게 보기`}
-              className="absolute inset-0 cursor-zoom-in"
-            >
-              <Image
-                src={item.imageUrl}
-                alt={item.alt ?? item.title}
-                fill
-                sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
-                priority={priority}
-                className="object-cover"
-              />
-            </a>
+            <div className="relative aspect-video overflow-hidden rounded-md bg-muted">
+              <a
+                href={item.imageUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${item.alt ?? item.title} 크게 보기`}
+                className="absolute inset-0 cursor-zoom-in"
+              >
+                <Image
+                  src={item.imageUrl as string}
+                  alt={item.alt ?? item.title}
+                  fill
+                  sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+                  priority={priority}
+                  className="object-cover"
+                />
+              </a>
+            </div>
           )}
         </figure>
       )}
