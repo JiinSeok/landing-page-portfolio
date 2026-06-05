@@ -58,14 +58,6 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
     return () => io.disconnect()
   }, [])
 
-  const activeMobileMajor = (() => {
-    const passed = majorAi.filter((m) => m.date <= activeDate)
-    if (passed.length > 0) {
-      return passed.reduce((min, m) => (m.date < min.date ? m : min), passed[0])
-    }
-    return majorAi.reduce((latest, m) => (m.date > latest.date ? m : latest), majorAi[0])
-  })()
-
   return (
     <>
 
@@ -116,18 +108,14 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             ))}
           </div>
 
-          <div className="relative h-6">
+          <div className="relative hidden h-6 md:block">
             {majorAi.map((item) => {
               const p = pos(item.date)
               return (
                 <span
                   key={item.anchor}
                   style={{ left: `${p}%` }}
-                  className={[
-                    'absolute top-0',
-                    edgeAlign(p),
-                    item === activeMobileMajor ? 'block' : 'hidden md:block',
-                  ].join(' ')}
+                  className={`absolute top-0 ${edgeAlign(p)}`}
                 >
                   <span className="block text-[10px] text-muted-foreground leading-tight whitespace-nowrap">
                     {item.label.split('·').map((part, i) => (
