@@ -70,18 +70,12 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
       <nav
         aria-label="연표 목차"
-        className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] bg-background border-b border-border mb-10 transition-[top] duration-300 md:mb-12 ${
+        className={`sticky z-30 -mt-px mx-[calc(50%-50vw)] bg-background border-b border-border mb-6 transition-[top] duration-300 md:mb-12 ${
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 py-5 md:px-8">
-          <div
-            className={
-              pinned
-                ? 'relative h-6 max-h-0 opacity-0 overflow-hidden transition-[max-height,opacity] duration-300 md:max-h-6 md:opacity-100 md:overflow-x-visible md:overflow-y-clip'
-                : 'relative h-6 max-h-6 opacity-100 overflow-x-visible overflow-y-clip transition-[max-height,opacity] duration-300'
-            }
-          >
+          <div className="relative hidden h-6 overflow-x-visible overflow-y-clip md:block">
             {careerItems.map((item) => {
               const p = pos(item.date)
               return (
