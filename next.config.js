@@ -13,6 +13,10 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  // TappyType 정적 랜딩(public/tappytype/) — /tappytype 클린 URL 제공
+  async rewrites() {
+    return [{ source: '/tappytype', destination: '/tappytype/index.html' }]
+  },
 }
 
 module.exports = nextConfig

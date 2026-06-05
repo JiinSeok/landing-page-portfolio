@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TappyType — 내 손글씨가 진짜 폰트가 돼요</title>
+<meta name="description" content="아이패드와 애플펜슬로 만드는 나만의 한글 손글씨 폰트. 몇 글자만 쓰면 AI가 나머지를 내 글씨체로 채우고, 진짜 .ttf 폰트로 내보내요.">
+<meta property="og:title" content="TappyType — 내 손글씨가 진짜 폰트가 돼요">
+<meta property="og:description" content="애플펜슬로 몇 글자만 쓰면, AI가 나머지 한글을 내 글씨체로 채워요. 진짜 폰트(.ttf)로 내보내서 어디서든 쓰세요.">
+<meta property="og:image" content="https://usejiin.link/tappytype/assets/og-image.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usejiin.link/tappytype">
+<link rel="canonical" href="https://usejiin.link/tappytype">
+<link rel="icon" type="image/png" href="/tappytype/assets/favicon.png">
+<link rel="apple-touch-icon" href="/tappytype/assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* TypeTapTheme.swift 팔레트와 1:1 동기화 */
+  --ivory:#FFF7F3; --cream:#F6EFE6; --blush:#FFE4EA; --rose:#F6C5CE;
+  --rose-deep:#F2A8B8; --lavender:#C5B4DC; --lavender-tint:#E8DDF4;
+  --coral:#FFB3AA; --cocoa:#6B4F43; --cocoa-soft:#8D6E63; --cocoa-muted:#7A5E52;
+  --soft-gray:#E6E2DD; --warm-white:#FFFDFB; --rose-ink:#C75A72; --lavender-ink:#6E579F;
+  --serif:'Playfair Display',serif;
+  --body:'Gowun Dodum',sans-serif;
+  --pen:'Nanum Pen Script',cursive;
+  --shadow-card:0 2px 24px rgba(107,79,67,.09);
+  --shadow-pop:0 12px 40px rgba(107,79,67,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);color:var(--cocoa);background:var(--ivory);
+  line-height:1.7;overflow-x:hidden;
+  /* 연습장 괘선 — 아주 옅게 */
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 47px,rgba(107,79,67,.045) 47px,rgba(107,79,67,.045) 48px);
+}
+::selection{background:var(--blush);color:var(--rose-ink)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--rose-ink)}
+
+/* ───────── nav ───────── */
+nav{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:.6rem;
+  padding:.7rem clamp(1rem,4vw,2.5rem);
+  background:rgba(255,247,243,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(230,226,221,.6);
+}
+nav img{width:34px;height:34px}
+nav .wordmark{font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:.01em;color:var(--cocoa);text-decoration:none}
+nav .spacer{flex:1}
+nav a.plain{color:var(--cocoa-muted);text-decoration:none;font-size:.88rem;padding:.3rem .6rem;border-radius:.6rem}
+nav a.plain:hover{background:var(--cream)}
+.lang-toggle{
+  font-family:var(--body);font-size:.82rem;color:var(--cocoa);cursor:pointer;
+  background:var(--warm-white);border:1px solid var(--soft-gray);border-radius:999px;
+  padding:.32rem .85rem;transition:.2s;
+}
+.lang-toggle:hover{border-color:var(--rose);background:var(--blush)}
+
+/* ───────── hero ───────── */
+.hero{
+  position:relative;max-width:1120px;margin:0 auto;
+  padding:clamp(3rem,8vh,5.5rem) clamp(1.2rem,4vw,2.5rem) clamp(3rem,7vh,5rem);
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--lavender-ink);
+  background:var(--lavender-tint);border-radius:999px;padding:.35rem 1rem;margin-bottom:1.3rem;
+}
+.hero h1{
+  font-size:clamp(2.5rem,5.4vw,3.9rem);line-height:1.28;font-weight:400;letter-spacing:-.015em;
+}
+.hero h1 .pen-accent{
+  font-family:var(--pen);font-size:1.18em;color:var(--rose-ink);position:relative;white-space:nowrap;
+}
+.hero h1 .pen-accent svg{
+  position:absolute;left:0;bottom:-.08em;width:100%;height:.34em;overflow:visible;
+}
+.hero h1 .pen-accent svg path{
+  fill:none;stroke:var(--rose);stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:340;stroke-dashoffset:340;animation:scribble 1s .9s ease-out forwards;
+}
+@keyframes scribble{to{stroke-dashoffset:0}}
+.hero p.sub{margin:1.4rem 0 2rem;font-size:1.06rem;color:var(--cocoa-muted);max-width:30rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;cursor:pointer;
+  font-family:var(--body);font-size:.98rem;border-radius:1.1rem;padding:.85rem 1.5rem;transition:.25s;
+}
+.btn-primary{
+  color:#fff;background:linear-gradient(135deg,var(--rose-deep),var(--rose-ink));
+  box-shadow:0 6px 20px rgba(199,90,114,.28);border:none;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(199,90,114,.36)}
+.btn-ghost{color:var(--cocoa);background:var(--warm-white);border:1.5px solid var(--soft-gray)}
+.btn-ghost:hover{border-color:var(--rose);background:var(--blush)}
+.coming{font-size:.8rem;color:var(--cocoa-muted);margin-top:.6rem}
+
+/* 히어로 비주얼 — 앱 emBox 셀 오마주 */
+.hero-visual{position:relative;justify-self:center;width:min(100%,420px)}
+.write-cell{
+  position:relative;background:var(--warm-white);border-radius:1.6rem;
+  box-shadow:var(--shadow-pop);aspect-ratio:1;overflow:hidden;
+  border:1px solid rgba(230,226,221,.8);
+}
+.write-cell .guide-h,.write-cell .guide-v{position:absolute;background:transparent}
+.write-cell .guide-h{left:6%;right:6%;top:50%;border-top:1.5px dashed var(--soft-gray)}
+.write-cell .guide-v{top:6%;bottom:6%;left:50%;border-left:1.5px dashed var(--soft-gray)}
+.write-cell .baseline{position:absolute;left:6%;right:6%;bottom:18%;border-top:1.5px solid var(--rose)}
+.write-cell .watermark{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--body);font-size:15rem;color:var(--cream);user-select:none;
+}
+.write-cell svg.ga{position:absolute;inset:10%;width:80%;height:80%}
+.write-cell svg.ga path{
+  fill:none;stroke:var(--cocoa);stroke-width:13;stroke-linecap:round;stroke-linejoin:round;
+}
+.ga .s1{stroke-dasharray:260;stroke-dashoffset:260;animation:write .7s .5s ease-out forwards}
+.ga .s2{stroke-dasharray:200;stroke-dashoffset:200;animation:write .5s 1.25s ease-out forwards}
+.ga .s3{stroke-dasharray:80;stroke-dashoffset:80;animation:write .3s 1.85s ease-out forwards}
+@keyframes write{to{stroke-dashoffset:0}}
+.hero-mascot{
+  position:absolute;width:42%;right:-7%;bottom:-9%;z-index:2;
+  filter:drop-shadow(0 8px 18px rgba(107,79,67,.18));
+  animation:bob 3.4s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+.sparkle{position:absolute;font-size:1.5rem;animation:twinkle 2.6s ease-in-out infinite;user-select:none}
+.sp1{top:-4%;left:-5%;color:var(--rose-deep)}
+.sp2{top:12%;right:-8%;color:var(--lavender);animation-delay:.9s}
+.sp3{bottom:24%;left:-9%;color:var(--coral);animation-delay:1.7s;font-size:1.1rem}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.85) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(18deg)}}
+
+/* ───────── 공통 섹션 ───────── */
+section{max-width:1120px;margin:0 auto;padding:clamp(3rem,8vh,5.5rem) clamp(1.2rem,4vw,2.5rem)}
+.sec-label{
+  font-family:var(--pen);font-size:1.5rem;color:var(--rose-ink);display:block;margin-bottom:.4rem;
+}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:400;line-height:1.4;letter-spacing:-.01em}
+.sec-sub{color:var(--cocoa-muted);margin-top:.7rem;max-width:36rem}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ───────── 딸깍 인터랙티브 ───────── */
+.ddalkkak-board{
+  margin-top:2.5rem;background:var(--warm-white);border:1px solid var(--soft-gray);
+  border-radius:1.8rem;padding:clamp(1.4rem,3.5vw,2.6rem);box-shadow:var(--shadow-card);
+  position:relative;overflow:hidden;
+}
+.glyph-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:.55rem;
+}
+.gcell{
+  aspect-ratio:1;border:1.5px dashed var(--soft-gray);border-radius:.9rem;
+  display:grid;place-items:center;font-family:var(--pen);font-size:2rem;
+  color:transparent;background:transparent;transition:.3s;position:relative;
+}
+.gcell.hand{border-style:solid;border-color:var(--rose);background:var(--blush);color:var(--rose-ink)}
+.gcell.ai{border-style:solid;border-color:var(--lavender);background:var(--lavender-tint);color:var(--lavender-ink);animation:pop .45s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+.board-foot{
+  display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem;margin-top:1.6rem;
+}
+.legend{display:flex;gap:1rem;font-size:.85rem;color:var(--cocoa-muted)}
+.legend i{display:inline-block;width:.72rem;height:.72rem;border-radius:50%;margin-right:.35rem;vertical-align:-1px}
+.legend .dot-hand{background:var(--rose-deep)}
+.legend .dot-ai{background:var(--lavender)}
+.btn-ddalkkak{
+  font-size:1.05rem;padding:.9rem 1.8rem;border-radius:1.2rem;border:none;cursor:pointer;
+  color:#fff;font-family:var(--body);
+  background:linear-gradient(135deg,var(--lavender),var(--lavender-ink));
+  box-shadow:0 6px 20px rgba(110,87,159,.3);transition:.25s;
+}
+.btn-ddalkkak:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(110,87,159,.4)}
+.btn-ddalkkak:disabled{opacity:.45;cursor:default;transform:none}
+.btn-reset{background:none;border:none;color:var(--cocoa-muted);font-family:var(--body);font-size:.85rem;cursor:pointer;text-decoration:underline dotted}
+.ddalkkak-done{
+  display:none;align-items:center;gap:.8rem;margin-left:auto;
+}
+.ddalkkak-done.show{display:flex;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+.ddalkkak-done img{width:64px}
+.ddalkkak-done span{font-family:var(--pen);font-size:1.35rem;color:var(--lavender-ink)}
+
+/* ───────── 3단계 ───────── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem}
+.step{
+  background:var(--warm-white);border:1px solid var(--soft-gray);border-radius:1.6rem;
+  padding:1.8rem 1.6rem;box-shadow:var(--shadow-card);position:relative;transition:.3s;
+}
+.step:hover{transform:translateY(-5px);box-shadow:var(--shadow-pop)}
+.step:nth-child(2){background:linear-gradient(160deg,var(--warm-white),var(--lavender-tint))}
+.step .num{
+  font-family:var(--pen);font-size:3.2rem;line-height:1;color:var(--rose);display:block;margin-bottom:.6rem;
+}
+.step:nth-child(2) .num{color:var(--lavender)}
+.step h3{font-size:1.12rem;font-weight:400;margin-bottom:.5rem}
+.step p{font-size:.92rem;color:var(--cocoa-muted)}
+
+/* ───────── 타입 테스터 ───────── */
+.tester{
+  margin-top:2.5rem;background:var(--warm-white);border:1px solid var(--soft-gray);
+  border-radius:1.8rem;padding:clamp(1.4rem,3.5vw,2.4rem);box-shadow:var(--shadow-card);
+}
+.tester input{
+  width:100%;font-family:var(--body);font-size:1rem;color:var(--cocoa);
+  background:var(--ivory);border:1.5px solid var(--soft-gray);border-radius:1rem;
+  padding:.9rem 1.2rem;outline:none;transition:.2s;
+}
+.tester input:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(246,197,206,.25)}
+.tester-preview{
+  font-family:var(--pen);font-size:clamp(2.4rem,6vw,4rem);line-height:1.45;color:var(--cocoa);
+  min-height:5.4rem;padding:1.4rem .4rem .4rem;word-break:keep-all;overflow-wrap:anywhere;
+  border-bottom:1.5px solid var(--rose);
+}
+.tester .note{font-size:.82rem;color:var(--cocoa-muted);margin-top:.9rem}
+
+/* ───────── 스크린샷 ───────── */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);margin-top:3rem;align-items:start}
+.shot{position:relative}
+.shot img{border-radius:1.2rem;box-shadow:var(--shadow-pop);border:1px solid rgba(230,226,221,.8)}
+.shot:nth-child(1){transform:rotate(-1.6deg)}
+.shot:nth-child(2){transform:rotate(1.8deg) translateY(1.6rem)}
+.shot .tape{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:110px;height:30px;border-radius:3px;opacity:.85;z-index:2;
+}
+.shot:nth-child(1) .tape{background:var(--rose);opacity:.55}
+.shot:nth-child(2) .tape{background:var(--lavender);opacity:.45;transform:translateX(-50%) rotate(2.5deg)}
+.shot figcaption{
+  font-family:var(--pen);font-size:1.3rem;color:var(--cocoa-muted);text-align:center;margin-top:1rem;
+}
+
+/* ───────── 비디오 ───────── */
+.video-wrap{
+  margin-top:2.5rem;position:relative;aspect-ratio:16/9;border-radius:1.8rem;overflow:hidden;
+  box-shadow:var(--shadow-pop);border:1px solid var(--soft-gray);background:var(--cream);
+}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ───────── 프라이버시 ───────── */
+.privacy-band{
+  background:linear-gradient(165deg,var(--cream),var(--blush) 130%);
+  border-radius:2.2rem;padding:clamp(2rem,5vw,3.5rem);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;
+}
+.privacy-band img{width:clamp(110px,16vw,170px)}
+.privacy-band ul{list-style:none;margin-top:1.2rem;display:grid;gap:.7rem}
+.privacy-band li{padding-left:1.7rem;position:relative;color:var(--cocoa-muted);font-size:.97rem}
+.privacy-band li::before{content:'✦';position:absolute;left:.2rem;color:var(--rose-ink);font-size:.8rem}
+.privacy-band a{font-size:.9rem}
+
+/* ───────── footer ───────── */
+footer{
+  border-top:1px solid var(--soft-gray);margin-top:2rem;
+  padding:2.5rem clamp(1.2rem,4vw,2.5rem) 3rem;text-align:center;color:var(--cocoa-muted);font-size:.88rem;
+}
+footer .fbrand{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--cocoa);margin-bottom:.5rem}
+footer .links{display:flex;justify-content:center;gap:1.4rem;margin:.8rem 0 1rem;flex-wrap:wrap}
+footer a{color:var(--cocoa-muted)}
+footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);margin-top:1.2rem}
+
+/* ───────── 모션 축소 / 반응형 ───────── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .ga path{stroke-dashoffset:0!important}
+  .pen-accent svg path{stroke-dashoffset:0!important}
+}
+@media (max-width:840px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:2.5rem}
+  .hero p.sub{margin-inline:auto}
+  .cta-row{justify-content:center}
+  .hero-visual{width:min(82vw,360px);margin-top:1rem}
+  .steps{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr}
+  .shot:nth-child(2){transform:rotate(1.8deg)}
+  .privacy-band{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .privacy-band li{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="/tappytype/assets/favicon.png" alt="" width="34" height="34">
+  <a class="wordmark" href="#">TappyType</a>
+  <div class="spacer"></div>
+  <a class="plain" href="https://www.instagram.com/tappytype/" target="_blank" rel="noopener" aria-label="Instagram @tappytype">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:-3px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a class="plain" href="https://jiinseok.github.io/typetap-legal/privacy/" data-i18n="nav_privacy">개인정보 처리방침</a>
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+</nav>
+
+<header class="hero">
+  <div>
+    <span class="badge">✦ <span data-i18n="badge">iPad 전용 · Apple Pencil</span></span>
+    <h1 data-i18n-html="h1">내 손글씨가<br><span class="pen-accent">진짜 폰트<svg viewBox="0 0 340 24" aria-hidden="true"><path d="M4 16 Q 60 6 120 13 T 230 12 T 336 10"/></svg></span>가 돼요</h1>
+    <p class="sub" data-i18n="hero_sub">애플펜슬로 몇 글자만 쓰면, AI가 나머지 한글을 내 글씨체로 채워요. 진짜 폰트 파일(.ttf)로 내보내서 굿노트·프로크리에이트·키노트 어디서든 쓰세요.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" id="waitlistBtn" href="https://usejiin.link/tappytype/waitlist/ko" target="_blank" rel="noopener">✍️ <span data-i18n="cta_waitlist">출시 알림 신청하기</span></a>
+      <a class="btn btn-ghost" href="#video">▶ <span data-i18n="cta_video">55초 데모 보기</span></a>
+    </div>
+    <p class="coming">🍎 <span data-i18n="coming">App Store 출시 준비 중이에요</span> · <a href="https://www.instagram.com/tappytype/" target="_blank" rel="noopener" data-i18n="coming_ig">인스타에서 소식 받기 @tappytype</a></p>
+  </div>
+
+  <div class="hero-visual">
+    <span class="sparkle sp1">✦</span>
+    <span class="sparkle sp2">✧</span>
+    <span class="sparkle sp3">✦</span>
+    <div class="write-cell" role="img" aria-label="'가'를 쓰는 연습 셀 애니메이션">
+      <span class="watermark">가</span>
+      <span class="guide-h"></span><span class="guide-v"></span><span class="baseline"></span>
+      <svg class="ga" viewBox="0 0 200 200" aria-hidden="true">
+        <path class="s1" d="M38 52 Q 75 46 104 51 Q 98 95 78 128 Q 67 146 50 158"/>
+        <path class="s2" d="M148 30 Q 152 100 149 172"/>
+        <path class="s3" d="M150 96 Q 168 94 186 97"/>
+      </svg>
+    </div>
+    <img class="hero-mascot" src="/tappytype/assets/mascot-waving.png" alt="펜을 든 호랑이 마스코트 글범이" width="488" height="500">
+  </div>
+</header>
+
+<section id="ddalkkak" class="reveal">
+  <span class="sec-label" data-i18n="dd_label">딸깍 ✨</span>
+  <h2 data-i18n="dd_title">몇 글자만 쓰면, 나머지는 딸깍</h2>
+  <p class="sec-sub" data-i18n="dd_sub">한글은 11,172자나 돼요. 태피타입의 AI는 내가 쓴 글자에서 글씨체를 배워, 안 쓴 글자를 같은 느낌으로 그려줘요. 아래 버튼으로 미리 구경해 보세요.</p>
+
+  <div class="ddalkkak-board">
+    <div class="glyph-grid" id="glyphGrid" aria-live="polite"></div>
+    <div class="board-foot">
+      <button class="btn-ddalkkak" id="btnFill">✨ <span data-i18n="dd_btn">AI 딸깍</span></button>
+      <button class="btn-reset" id="btnReset" data-i18n="dd_reset" hidden>다시 보기</button>
+      <div class="legend">
+        <span><i class="dot-hand"></i><span data-i18n="dd_leg_hand">내가 쓴 글자</span></span>
+        <span><i class="dot-ai"></i><span data-i18n="dd_leg_ai">AI가 채운 글자</span></span>
+      </div>
+      <div class="ddalkkak-done" id="ddalkkakDone">
+        <img src="/tappytype/assets/mascot-done.png" alt="">
+        <span data-i18n="dd_done">글범이가 다 채웠어요!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="reveal">
+  <span class="sec-label" data-i18n="how_label">이렇게 만들어요</span>
+  <h2 data-i18n="how_title">쓰고, 딸깍하고, 내보내면 끝</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="num">1</span>
+      <h3 data-i18n="step1_t">가이드 따라 쓰기</h3>
+      <p data-i18n="step1_p">베이스라인과 따라쓰기 가이드가 도와줘요. 쓰는 즉시 라이브 미리보기에서 내 글씨로 문장이 완성돼요.</p>
+    </div>
+    <div class="step">
+      <span class="num">2</span>
+      <h3 data-i18n="step2_t">AI 딸깍</h3>
+      <p data-i18n="step2_p">기본 글자를 다 쓰면, 딸깍 한 번으로 나머지 한글 2,000여 자가 전부 내 글씨체로 채워져요.</p>
+    </div>
+    <div class="step">
+      <span class="num">3</span>
+      <h3 data-i18n="step3_t">.ttf로 내보내기</h3>
+      <p data-i18n="step3_p">진짜 폰트 파일이에요. 굿노트, 프로크리에이트, 키노트, 워드 — 폰트를 쓰는 곳이라면 어디든.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tester" class="reveal">
+  <span class="sec-label" data-i18n="tt_label">라이브 미리보기</span>
+  <h2 data-i18n="tt_title">쓰는 즉시, 문장이 내 글씨가 돼요</h2>
+  <div class="tester">
+    <div class="tester-preview" id="testerPreview" aria-live="polite">강물 바다 봄날 하늘</div>
+    <input id="testerInput" type="text" maxlength="40" value="강물 바다 봄날 하늘" data-i18n-attr="aria-label:tt_input_label" aria-label="미리보기 문장 입력">
+    <p class="note" data-i18n="tt_note">※ 이 데모는 맛보기 손글씨 폰트예요 — 앱에서는 진짜 '내' 글씨로 보여요.</p>
+  </div>
+</section>
+
+<section id="shots" class="reveal">
+  <span class="sec-label" data-i18n="sh_label">앱 구경하기</span>
+  <h2 data-i18n="sh_title">따뜻한 연습장 위에서 만들어요</h2>
+  <div class="shots">
+    <figure class="shot">
+      <span class="tape"></span>
+      <img src="/tappytype/assets/shot-onboarding.png" alt="태피타입 온보딩 화면 — 글범이가 인사하는 웰컴 화면" loading="lazy" width="750" height="1000">
+      <figcaption data-i18n="sh_cap1">글범이가 처음부터 함께해요</figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="tape"></span>
+      <img src="/tappytype/assets/shot-main.png" alt="태피타입 메인 편집 화면 — 글자 셀에 '가'를 쓰는 모습과 라이브 미리보기" loading="lazy" width="750" height="1000">
+      <figcaption data-i18n="sh_cap2">쓰는 대로 차오르는 라이브 미리보기</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="video" class="reveal">
+  <span class="sec-label" data-i18n="vd_label">55초면 충분해요</span>
+  <h2 data-i18n="vd_title">손글씨가 폰트가 되는 순간</h2>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/fZ17qKEMe54" title="TappyType demo video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<section id="privacy" class="reveal">
+  <div class="privacy-band">
+    <img src="/tappytype/assets/brand-logo.png" alt="" width="600" height="600">
+    <div>
+      <span class="sec-label" data-i18n="pv_label">내 데이터는 내 기기에</span>
+      <h2 data-i18n="pv_title">계정도, 광고도, 추적도 없어요</h2>
+      <ul>
+        <li data-i18n="pv_li1">쓰기, 미리보기, 폰트 만들기까지 전부 아이패드 안에서 끝나요.</li>
+        <li data-i18n="pv_li2">AI 딸깍을 쓸 때만 손글씨 이미지가 서버로 전송되고, 처리 직후 바로 삭제돼요 — 저장하지 않아요.</li>
+        <li data-i18n="pv_li3">만든 폰트(.ttf)는 온전히 내 것이에요.</li>
+      </ul>
+      <p style="margin-top:1.1rem"><a href="https://jiinseok.github.io/typetap-legal/privacy/" data-i18n="pv_link">개인정보 처리방침 전문 보기 →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">TappyType</div>
+  <div data-i18n="ft_tag">아이패드 전용 · 애플펜슬 한글 손글씨 폰트 메이커</div>
+  <div class="links">
+    <a id="waitlistFootLink" href="https://usejiin.link/tappytype/waitlist/ko" target="_blank" rel="noopener" data-i18n="ft_waitlist">출시 알림 신청</a>
+    <a href="https://jiinseok.github.io/typetap-legal/privacy/" data-i18n="nav_privacy">개인정보 처리방침</a>
+    <a href="https://www.instagram.com/tappytype/" target="_blank" rel="noopener">Instagram @tappytype</a>
+    <a href="mailto:seokjiin1073@gmail.com" data-i18n="ft_contact">문의하기</a>
+  </div>
+  <div>© 2026 석지인 (Jiin Seok)</div>
+  <div class="pen-sign" data-i18n="ft_sign">오늘, 몇 글자만 써보세요 ✍️</div>
+</footer>
+
+<script>
+/* ───────── i18n ───────── */
+const I18N = {
+  ko: {
+    nav_privacy:'개인정보 처리방침',
+    badge:'iPad 전용 · Apple Pencil',
+    h1:`내 손글씨가<br><span class="pen-accent">진짜 폰트<svg viewBox="0 0 340 24" aria-hidden="true"><path d="M4 16 Q 60 6 120 13 T 230 12 T 336 10"/></svg></span>가 돼요`,
+    hero_sub:'애플펜슬로 몇 글자만 쓰면, AI가 나머지 한글을 내 글씨체로 채워요. 진짜 폰트 파일(.ttf)로 내보내서 굿노트·프로크리에이트·키노트 어디서든 쓰세요.',
+    cta_waitlist:'출시 알림 신청하기', ft_waitlist:'출시 알림 신청',
+    cta_video:'55초 데모 보기', cta_how:'어떻게 만들어요?', coming:'App Store 출시 준비 중이에요', coming_ig:'인스타에서 소식 받기 @tappytype',
+    dd_label:'딸깍 ✨', dd_title:'몇 글자만 쓰면, 나머지는 딸깍',
+    dd_sub:'한글은 11,172자나 돼요. 태피타입의 AI는 내가 쓴 글자에서 글씨체를 배워, 안 쓴 글자를 같은 느낌으로 그려줘요. 아래 버튼으로 미리 구경해 보세요.',
+    dd_btn:'AI 딸깍', dd_reset:'다시 보기', dd_leg_hand:'내가 쓴 글자', dd_leg_ai:'AI가 채운 글자', dd_done:'글범이가 다 채웠어요!',
+    how_label:'이렇게 만들어요', how_title:'쓰고, 딸깍하고, 내보내면 끝',
+    step1_t:'가이드 따라 쓰기', step1_p:'베이스라인과 따라쓰기 가이드가 도와줘요. 쓰는 즉시 라이브 미리보기에서 내 글씨로 문장이 완성돼요.',
+    step2_t:'AI 딸깍', step2_p:'기본 글자를 다 쓰면, 딸깍 한 번으로 나머지 한글 2,000여 자가 전부 내 글씨체로 채워져요.',
+    step3_t:'.ttf로 내보내기', step3_p:'진짜 폰트 파일이에요. 굿노트, 프로크리에이트, 키노트, 워드 — 폰트를 쓰는 곳이라면 어디든.',
+    tt_label:'라이브 미리보기', tt_title:'쓰는 즉시, 문장이 내 글씨가 돼요',
+    tt_note:"※ 이 데모는 맛보기 손글씨 폰트예요 — 앱에서는 진짜 '내' 글씨로 보여요.", tt_input_label:'미리보기 문장 입력',
+    sh_label:'앱 구경하기', sh_title:'따뜻한 연습장 위에서 만들어요',
+    sh_cap1:'글범이가 처음부터 함께해요', sh_cap2:'쓰는 대로 차오르는 라이브 미리보기',
+    vd_label:'55초면 충분해요', vd_title:'손글씨가 폰트가 되는 순간',
+    pv_label:'내 데이터는 내 기기에', pv_title:'계정도, 광고도, 추적도 없어요',
+    pv_li1:'쓰기, 미리보기, 폰트 만들기까지 전부 아이패드 안에서 끝나요.',
+    pv_li2:'AI 딸깍을 쓸 때만 손글씨 이미지가 서버로 전송되고, 처리 직후 바로 삭제돼요 — 저장하지 않아요.',
+    pv_li3:'만든 폰트(.ttf)는 온전히 내 것이에요.',
+    pv_link:'개인정보 처리방침 전문 보기 →',
+    ft_tag:'아이패드 전용 · 애플펜슬 한글 손글씨 폰트 메이커', ft_contact:'문의하기',
+    ft_sign:'오늘, 몇 글자만 써보세요 ✍️',
+    tester_default:'강물 바다 봄날 하늘',
+  },
+  en: {
+    nav_privacy:'Privacy Policy',
+    badge:'iPad only · Apple Pencil',
+    h1:`Your handwriting,<br><span class="pen-accent">a real font<svg viewBox="0 0 340 24" aria-hidden="true"><path d="M4 16 Q 60 6 120 13 T 230 12 T 336 10"/></svg></span>`,
+    hero_sub:'Write a few characters with Apple Pencil and AI fills in the rest of Hangul in your style. Export a real .ttf font and use it in GoodNotes, Procreate, Keynote — anywhere.',
+    cta_waitlist:'Join the waitlist', ft_waitlist:'Join the waitlist',
+    cta_video:'Watch 55s demo', cta_how:'How it works', coming:'Coming soon to the App Store', coming_ig:'Follow along @tappytype',
+    dd_label:'AI Generate ✨', dd_title:'Write a few, AI fills the rest',
+    dd_sub:"Korean has 11,172 syllables. TappyType's AI learns your style from the characters you write and draws the rest to match. Try the button below.",
+    dd_btn:'AI Generate', dd_reset:'Replay', dd_leg_hand:'Written by me', dd_leg_ai:'Filled by AI', dd_done:'Tappy filled them all!',
+    how_label:'How it works', how_title:'Write, tap, export — done',
+    step1_t:'Write along the guides', step1_p:'Baselines and tracing hints help you. The live preview instantly renders sentences in your handwriting.',
+    step2_t:'AI Generate', step2_p:'Finish the basic set, then one tap fills in 2,000+ remaining Hangul characters in your style.',
+    step3_t:'Export as .ttf', step3_p:'A real font file — use it anywhere fonts work: GoodNotes, Procreate, Keynote, Word.',
+    tt_label:'Live preview', tt_title:'Sentences become your handwriting, instantly',
+    tt_note:'※ This demo uses a sample handwriting font — in the app, it’s truly yours.', tt_input_label:'Type a preview sentence',
+    sh_label:'Inside the app', sh_title:'Made on warm practice paper',
+    sh_cap1:'Tappy welcomes you from the start', sh_cap2:'A live preview that fills as you write',
+    vd_label:'55 seconds is enough', vd_title:'The moment handwriting becomes a font',
+    pv_label:'Your data stays yours', pv_title:'No accounts, no ads, no tracking',
+    pv_li1:'Writing, preview, and font building all happen on your iPad.',
+    pv_li2:'Only when you use AI Generate, handwriting images are sent to our server — processed and immediately discarded, never stored.',
+    pv_li3:'Your fonts (.ttf) are entirely yours.',
+    pv_link:'Read the full privacy policy →',
+    ft_tag:'iPad-only Korean handwriting font maker for Apple Pencil', ft_contact:'Contact',
+    ft_sign:'Write a few characters today ✍️',
+    tester_default:'The quick brown fox 봄날',
+  }
+};
+let lang = localStorage.getItem('tt-lang') || (navigator.language.startsWith('ko') ? 'ko' : 'en');
+const langBtn = document.getElementById('langToggle');
+function applyLang() {
+  const d = I18N[lang];
+  document.documentElement.lang = lang;
+  langBtn.textContent = lang === 'ko' ? 'EN' : '한';
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (d[k]) el.textContent = d[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k = el.dataset.i18nHtml; if (d[k]) el.innerHTML = d[k]; });
+  document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+    const [attr, k] = el.dataset.i18nAttr.split(':');
+    if (d[k]) el.setAttribute(attr, d[k]);
+  });
+  // waitlist 링크는 언어별 경로로
+  ['waitlistBtn', 'waitlistFootLink'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = 'https://usejiin.link/tappytype/waitlist/' + lang;
+  });
+}
+langBtn.addEventListener('click', () => { lang = lang === 'ko' ? 'en' : 'ko'; localStorage.setItem('tt-lang', lang); applyLang(); });
+applyLang();
+
+/* ───────── 딸깍 그리드 ───────── */
+const CHARS = '가각간갈감갑값강개객거건걸검겁게겨격견결경계고곡곤골곰곱곳공'.split('');
+const HAND_IDX = new Set([0, 4, 9, 14, 19, 24]); // 미리 '써둔' 글자
+const grid = document.getElementById('glyphGrid');
+const btnFill = document.getElementById('btnFill');
+const btnReset = document.getElementById('btnReset');
+const doneBox = document.getElementById('ddalkkakDone');
+function buildGrid() {
+  grid.innerHTML = '';
+  CHARS.forEach((ch, i) => {
+    const c = document.createElement('div');
+    c.className = 'gcell' + (HAND_IDX.has(i) ? ' hand' : '');
+    c.textContent = ch;
+    grid.appendChild(c);
+  });
+  btnFill.disabled = false;
+  btnReset.hidden = true;
+  doneBox.classList.remove('show');
+}
+btnFill.addEventListener('click', () => {
+  btnFill.disabled = true;
+  let delay = 0;
+  [...grid.children].forEach((c, i) => {
+    if (HAND_IDX.has(i)) return;
+    delay += 70;
+    setTimeout(() => {
+      c.classList.add('ai');
+      if (i === CHARS.length - 1) { doneBox.classList.add('show'); btnReset.hidden = false; }
+    }, delay);
+  });
+});
+btnReset.addEventListener('click', buildGrid);
+buildGrid();
+
+/* ───────── 타입 테스터 ───────── */
+const tIn = document.getElementById('testerInput');
+const tOut = document.getElementById('testerPreview');
+tIn.addEventListener('input', () => { tOut.textContent = tIn.value || ' '; });
+
+/* ───────── 스크롤 리빌 ───────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
