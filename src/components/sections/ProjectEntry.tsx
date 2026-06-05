@@ -124,7 +124,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     tags: ['프로젝트'],
     lead: '지금 보고 계신 이 사이트입니다.',
     description:
-      '경력·프로젝트·교육을 생성형 AI 연표와 나란히 보여주는 타임라인형 디자인이고, 마우스를 따라다니는 포차코 커서 컴패니언이 숨어 있습니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일했습니다.',
+      '경력·프로젝트·교육을 생성형 AI 연표와 나란히 보여주는 타임라인형 디자인이고, 마우스를 따라다니는 포차코 커서 컴패니언이 숨어 있습니다. Next.js App Router와 TypeScript로 만들었고, 공통 컴포넌트와 자동화(ESLint·Prettier·Husky)로 코드 스타일을 통일했습니다. 이력서(HTML·PDF)도 이 저장소에서 함께 관리합니다. 날짜·수치 같은 사실을 단일 팩트 저장소에 두고 명령 한 번으로 두 문서를 재생성하며, 사이트와 이력서가 어긋나면 테스트가 실패합니다.',
     url: 'https://github.com/JiinSeok/landing-page-portfolio',
     linkLabel: '코드 저장소 보기',
     imageUrl: '/images/projects/portfolio.webp',
@@ -262,7 +262,8 @@ const imageUrl = await downloadNotionImage(block.image.url)`,
       },
       after: {
         videoUrl: '/videos/projects/aicg-tool.webm',
-        caption: "'원본+마스크+에셋=합성 결과' 썸네일 타임라인, 왼쪽 작업·오른쪽 결과",
+        caption:
+          "'원본+마스크+에셋=합성 결과' 썸네일 타임라인, 왼쪽 작업·오른쪽 결과",
         alt: '개선 후 — 썸네일 타임라인 헤더와 좌우 분할이 적용된 최종 화면',
       },
     },
@@ -662,44 +663,44 @@ export function ProjectEntry({
           item.device ||
           item.imageUrl ||
           item.codeSnippet) && (
-        <figure
-          className={
-            item.beforeAfter
-              ? 'w-full'
-              : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
-          }
-        >
-          {item.beforeAfter ? (
-            <BeforeAfterStack media={item.beforeAfter} priority={priority} />
-          ) : (showCode || (!item.device && !item.imageUrl)) &&
-            item.codeSnippet ? (
-            <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto scrollbar-thin [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
-              <code>{item.codeSnippet}</code>
-            </pre>
-          ) : item.device ? (
-            <DeviceMockup item={item} priority={priority} />
-          ) : (
-            <div className="relative aspect-video overflow-hidden rounded-md bg-muted">
-              <a
-                href={item.imageUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${item.alt ?? item.title} 크게 보기`}
-                className="absolute inset-0 cursor-zoom-in"
-              >
-                <Image
-                  src={item.imageUrl as string}
-                  alt={item.alt ?? item.title}
-                  fill
-                  sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
-                  priority={priority}
-                  className="object-cover"
-                />
-              </a>
-            </div>
-          )}
-        </figure>
-      )}
+          <figure
+            className={
+              item.beforeAfter
+                ? 'w-full'
+                : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
+            }
+          >
+            {item.beforeAfter ? (
+              <BeforeAfterStack media={item.beforeAfter} priority={priority} />
+            ) : (showCode || (!item.device && !item.imageUrl)) &&
+              item.codeSnippet ? (
+              <pre className="p-4 aspect-video bg-gray-900 text-gray-100 text-xs rounded-md overflow-auto scrollbar-thin [scrollbar-color:#4b556399_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600/60 [&::-webkit-scrollbar-corner]:bg-transparent">
+                <code>{item.codeSnippet}</code>
+              </pre>
+            ) : item.device ? (
+              <DeviceMockup item={item} priority={priority} />
+            ) : (
+              <div className="relative aspect-video overflow-hidden rounded-md bg-muted">
+                <a
+                  href={item.imageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${item.alt ?? item.title} 크게 보기`}
+                  className="absolute inset-0 cursor-zoom-in"
+                >
+                  <Image
+                    src={item.imageUrl as string}
+                    alt={item.alt ?? item.title}
+                    fill
+                    sizes="(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw"
+                    priority={priority}
+                    className="object-cover"
+                  />
+                </a>
+              </div>
+            )}
+          </figure>
+        )}
     </article>
   )
 }
