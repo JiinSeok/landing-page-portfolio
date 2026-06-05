@@ -88,7 +88,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                       : item.label
                   }
                   style={{ left: `${p}%` }}
-                  className={`group absolute bottom-0 ${edgeAlign(p)}`}
+                  className={`group absolute bottom-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${edgeAlign(p)}`}
                 >
                   <span className="block text-xs font-semibold text-foreground whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
                     {item.label}

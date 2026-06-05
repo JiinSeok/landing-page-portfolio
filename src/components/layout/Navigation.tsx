@@ -43,9 +43,10 @@ const CONTACT_INFO = [
 ]
 
 function scrollTo(id: string) {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   document
     .getElementById(id)
-    ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    ?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
 }
 
 export default function Navigation() {
@@ -111,7 +112,7 @@ export default function Navigation() {
           </Link>
           <button
             onClick={copyAndShow}
-            className="hidden sm:flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors border border-border rounded-full px-2.5 py-1"
+            className="hidden sm:flex items-center gap-1 text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             {copied ? (
               <CheckIcon className="w-3 h-3" />
@@ -161,7 +162,7 @@ export default function Navigation() {
               <li key={item.id}>
                 <button
                   onClick={() => scrollTo(item.id)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   {item.label}
                 </button>
@@ -198,7 +199,7 @@ export default function Navigation() {
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 focus:outline-none sm:hidden"
+          className="p-2 sm:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           aria-label="메뉴 열기/닫기"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
