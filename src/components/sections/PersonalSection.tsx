@@ -3,6 +3,14 @@
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import {
+  buildTimeline,
+  entryDate,
+  type BeforeAfterSide,
+  type CareerEntry,
+  type CareerExtra,
+  type ContributionGroup,
+} from '@/lib/utils/timeline'
+import {
   galleryItems,
   GalleryItem,
   ProjectEntry,
@@ -10,56 +18,7 @@ import {
 } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 
-type BeforeAfterSide = {
-  imageUrl?: string
-  videoUrl?: string
-  width?: number
-  height?: number
-  caption: string
-  alt: string
-}
-
-type ContributionGroup = {
-  title?: string
-  imageUrl?: string
-  alt?: string
-  beforeAfter?: { before: BeforeAfterSide; after: BeforeAfterSide }
-  items: string[]
-}
-
-type CareerEntry = {
-  company: string
-  description?: string
-  url?: string
-  period: string
-  role: string
-  contributions: (string | ContributionGroup)[]
-}
-
-type CareerExtra = {
-  tag: string
-  label: string
-  period: string
-  sort: string
-}
-
-type TimelineItem =
-  | { kind: 'career'; sort: string; career: CareerEntry }
-  | { kind: 'milestone'; sort: string; label: string }
-  | { kind: 'extra'; sort: string; extra: CareerExtra }
-  | { kind: 'project'; sort: string; project: GalleryItem }
-
 const TITLE_TECH_PATTERN = /^(.*?)\s*\(([^)]+)\)$/
-
-const ONGOING_RANK: Record<'career' | 'project', string> = {
-  career: '9999.9',
-  project: '9999.0',
-}
-
-function timelineSortKey(kind: 'career' | 'project', period: string): string {
-  const start = period.slice(0, 7)
-  return period.includes('현재') ? `${ONGOING_RANK[kind]} ${start}` : start
-}
 
 const FEATURED_CAREER_CARD_STYLES = `
   p-5 md:p-6
@@ -76,18 +35,6 @@ const COMPANY_LOGOS: Record<string, string> = {
   물류대장: '/images/logos/ftf.svg',
   연합뉴스: '/images/logos/yonhapnews.png',
 }
-
-const LLM_MILESTONES = [
-  { sort: '2026.05', label: '3사 플래그십 동시 교체' },
-  { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시' },
-  { sort: '2025.08', label: 'GPT-5·나노 바나나 출시' },
-  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시' },
-  { sort: '2025.02', label: 'Claude Code 공개·에이전틱 코딩' },
-  { sort: '2024.06', label: 'Claude 3.5·AI 코딩 실용화' },
-  { sort: '2023.03', label: 'GPT-4 출시·Cursor 등장' },
-  { sort: '2022.11', label: 'ChatGPT 출시·LLM 대중화' },
-  { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
-]
 
 function BeforeAfterSideView({
   side,
@@ -150,26 +97,7 @@ export default function PersonalSection() {
   const careers = t('pages.career.careers') as unknown as CareerEntry[]
   const extras = t('pages.career.extras') as unknown as CareerExtra[]
 
-  const timeline: TimelineItem[] = [
-    ...careers.map((career) => ({
-      kind: 'career' as const,
-      sort: timelineSortKey('career', career.period),
-      career,
-    })),
-    ...extras.map((extra) => ({
-      kind: 'extra' as const,
-      sort: extra.sort,
-      extra,
-    })),
-    ...galleryItems
-      .filter((g) => g.period)
-      .map((g) => ({
-        kind: 'project' as const,
-        sort: timelineSortKey('project', g.period as string),
-        project: g,
-      })),
-    ...LLM_MILESTONES.map((m) => ({ kind: 'milestone' as const, ...m })),
-  ].sort((a, b) => b.sort.localeCompare(a.sort))
+  const timeline = buildTimeline(careers, extras, galleryItems)
 
   const firstProjectIndex = timeline.findIndex((item) => item.kind === 'project')
 
@@ -206,10 +134,16 @@ export default function PersonalSection() {
           </div>
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
+            const date = entryDate(item)
 
             if (item.kind === 'milestone') {
               return (
-                <div key={`m-${item.sort}`} className="flex gap-4 md:gap-6">
+                <div
+                  key={item.anchor}
+                  id={item.anchor}
+                  data-toc-date={date}
+                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                >
                   <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end">
                     <span className="flex flex-col items-end text-xs text-muted-foreground text-right leading-snug">
                       <span className="tabular-nums">{item.sort}</span>
@@ -236,7 +170,12 @@ export default function PersonalSection() {
             if (item.kind === 'extra') {
               const { extra } = item
               return (
-                <div key={extra.label} className="flex gap-4 md:gap-6">
+                <div
+                  key={item.anchor}
+                  id={item.anchor}
+                  data-toc-date={date}
+                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                >
                   <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
@@ -266,7 +205,12 @@ export default function PersonalSection() {
 
             if (item.kind === 'project') {
               return (
-                <div key={item.project.title} className="flex gap-4 md:gap-6">
+                <div
+                  key={item.anchor}
+                  id={item.anchor}
+                  data-toc-date={date}
+                  className="flex gap-4 md:gap-6 scroll-mt-24"
+                >
                   <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
@@ -279,7 +223,7 @@ export default function PersonalSection() {
                     className={`flex-1 min-w-0 ${isLast ? '' : 'pb-10 md:pb-12'}`}
                   >
                     <ProjectEntry
-                      item={item.project}
+                      item={item.project as GalleryItem}
                       priority={index === firstProjectIndex}
                     />
                   </div>
@@ -292,7 +236,12 @@ export default function PersonalSection() {
             const isCurrent = career.period.includes('현재')
 
             return (
-              <div key={career.company} className="flex gap-4 md:gap-6">
+              <div
+                key={item.anchor}
+                id={item.anchor}
+                data-toc-date={date}
+                className="flex gap-4 md:gap-6 scroll-mt-24"
+              >
                 <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
                   <div
