@@ -1,6 +1,6 @@
 'use client'
 
-import { axisPosition, type TocItem } from '@/lib/utils/timeline'
+import { AXIS_START, axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
   items: TocItem[]
@@ -18,7 +18,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           현재
         </span>
         <span className="absolute right-0 top-4 text-[10px] text-muted-foreground/60">
-          2021
+          {AXIS_START.slice(0, 4)}
         </span>
 
         {careerSegs.map((seg) => (
@@ -38,8 +38,8 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
             return item.major ? (
               <span key={item.anchor} style={{ left }} className="absolute">
                 <span className="absolute -top-[78px] -translate-x-1/2 text-[10px] text-muted-foreground text-center leading-tight whitespace-nowrap">
-                  {item.label.split('·').map((part) => (
-                    <span key={part} className="block">
+                  {item.label.split('·').map((part, i) => (
+                    <span key={i} className="block">
                       {part}
                     </span>
                   ))}
@@ -82,9 +82,9 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
 
           if (item.tier === 'career') {
             return (
-              <a key={item.anchor} href={`#${item.anchor}`} style={{ left }} className="absolute">
+              <a key={item.anchor} href={`#${item.anchor}`} style={{ left }} className="group absolute">
                 <span className="absolute top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full" />
-                <span className="absolute top-3.5 -translate-x-1/2 text-xs font-semibold whitespace-nowrap hover:text-primary">
+                <span className="absolute top-3.5 -translate-x-1/2 text-xs font-semibold whitespace-nowrap group-hover:text-primary group-focus-visible:text-primary">
                   {item.label}
                 </span>
               </a>
