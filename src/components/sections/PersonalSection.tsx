@@ -40,6 +40,16 @@ type TimelineItem =
 
 const TITLE_TECH_PATTERN = /^(.*?)\s*\(([^)]+)\)$/
 
+const ONGOING_RANK: Record<'career' | 'project', string> = {
+  career: '9999.9',
+  project: '9999.0',
+}
+
+function timelineSortKey(kind: 'career' | 'project', period: string): string {
+  const start = period.slice(0, 7)
+  return period.includes('현재') ? `${ONGOING_RANK[kind]} ${start}` : start
+}
+
 const FEATURED_CAREER_CARD_STYLES = `
   p-5 md:p-6
   bg-background
@@ -77,7 +87,7 @@ export default function PersonalSection() {
   const timeline: TimelineItem[] = [
     ...careers.map((career) => ({
       kind: 'career' as const,
-      sort: career.period.slice(0, 7),
+      sort: timelineSortKey('career', career.period),
       career,
     })),
     ...extras.map((extra) => ({
@@ -89,7 +99,7 @@ export default function PersonalSection() {
       .filter((g) => g.period)
       .map((g) => ({
         kind: 'project' as const,
-        sort: (g.period as string).slice(0, 7),
+        sort: timelineSortKey('project', g.period as string),
         project: g,
       })),
     ...LLM_MILESTONES.map((m) => ({ kind: 'milestone' as const, ...m })),
@@ -104,9 +114,9 @@ export default function PersonalSection() {
       className="w-full py-16 md:py-20 bg-secondary/10"
     >
       <div className="px-6 md:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto pl-4 md:pl-0">
+        <div className="max-w-6xl pl-4 md:pl-0">
           <div className="flex gap-4 md:gap-6 mb-8 md:mb-10">
-            <div className="hidden md:flex md:w-56 lg:w-72 shrink-0 justify-end items-end">
+            <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end items-end">
               <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
                 <span className="w-3 h-3 rounded-full border-2 border-muted-foreground/40 bg-background" />
                 생성형 AI 주요 출시
@@ -134,8 +144,8 @@ export default function PersonalSection() {
             if (item.kind === 'milestone') {
               return (
                 <div key={`m-${item.sort}`} className="flex gap-4 md:gap-6">
-                  <div className="hidden md:flex md:w-56 lg:w-72 shrink-0 justify-end">
-                    <span className="text-xs text-muted-foreground text-right leading-snug lg:whitespace-nowrap">
+                  <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end">
+                    <span className="text-xs text-muted-foreground text-right leading-snug">
                       {item.sort} · {item.label}
                     </span>
                   </div>
@@ -159,7 +169,7 @@ export default function PersonalSection() {
               const { extra } = item
               return (
                 <div key={extra.label} className="flex gap-4 md:gap-6">
-                  <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
+                  <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
@@ -189,7 +199,7 @@ export default function PersonalSection() {
             if (item.kind === 'project') {
               return (
                 <div key={item.project.title} className="flex gap-4 md:gap-6">
-                  <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
+                  <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                   <div className="flex flex-col items-center shrink-0 w-6">
                     <div
                       className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
@@ -215,7 +225,7 @@ export default function PersonalSection() {
 
             return (
               <div key={career.company} className="flex gap-4 md:gap-6">
-                <div className="hidden md:block md:w-56 lg:w-72 shrink-0" />
+                <div className="hidden md:block md:w-40 lg:w-44 shrink-0" />
                 <div className="flex flex-col items-center shrink-0 w-6">
                   <div
                     className={`w-px h-[34px] shrink-0 ${index === 0 ? '' : 'bg-border'}`}
@@ -343,6 +353,7 @@ export default function PersonalSection() {
                                       alt={group.alt ?? groupName ?? ''}
                                       fill
                                       sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 100vw"
+                                      priority={index === 0}
                                       className="object-cover"
                                     />
                                   </a>

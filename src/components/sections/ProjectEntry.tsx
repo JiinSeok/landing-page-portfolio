@@ -76,12 +76,12 @@ export function LoginForm() {
     device: 'phone',
     screens: [
       {
-        videoUrl: '/videos/projects/albaform.webm',
-        alt: 'albaform 공고 목록 무한 스크롤 화면',
+        videoUrl: '/videos/projects/albaform-applicant.webm',
+        alt: 'albaform 지원자 여정 — 비로그인 차단 후 지원자 로그인, 마이페이지 화면',
       },
       {
-        videoUrl: '/videos/projects/albaform-landing.webm',
-        alt: 'albaform 랜딩 페이지 스크롤 화면',
+        videoUrl: '/videos/projects/albaform-owner.webm',
+        alt: 'albaform 사장님 여정 — 내 알바폼의 비공개·모집 종료 상태별 화면',
       },
     ],
     codeSnippet: `// 로그인 상태에 따라 렌더링 시점을 나눠 비인가 접근 차단
