@@ -97,9 +97,11 @@ function BeforeAfterSideView({
   label: string
 }) {
   return (
-    <figure className="flex-1 min-w-0">
+    <figure className="flex flex-col flex-1 justify-between min-w-0">
       <figcaption className="mb-1.5 text-xs text-muted-foreground">
-        <span className="font-semibold text-foreground">{label}</span> ·{' '}
+        <span className="block mb-0.5 font-semibold text-foreground">
+          {label}
+        </span>
         {side.caption}
       </figcaption>
       <a
@@ -133,9 +135,12 @@ function BeforeAfterRow({
   media: { before: BeforeAfterSide; after: BeforeAfterSide }
 }) {
   return (
-    <div className="flex items-center w-full gap-2 mt-4 md:gap-3">
+    <div className="flex items-stretch w-full gap-2 mt-4 md:gap-3">
       <BeforeAfterSideView side={media.before} label="개선 전" />
-      <span className="shrink-0 text-muted-foreground text-xl" aria-hidden>
+      <span
+        className="self-center shrink-0 text-muted-foreground text-xl"
+        aria-hidden
+      >
         →
       </span>
       <BeforeAfterSideView side={media.after} label="개선 후" />

@@ -53,7 +53,7 @@
               "beforeAfter": {
                 "before": {
                   "imageUrl": "/images/projects/aicg-before.png",
-                  "width": 831,
+                  "width": "auto",
                   "height": 690,
                   "caption": "도구 이름 기준 영문 탭 — 작업 순서가 안 보임",
                   "alt": "개선 전 — SAM3 영문 도구 탭 화면"
@@ -72,6 +72,18 @@
             },
             {
               "title": "most267.co.kr — 기업 랜딩 페이지 (Next.js·GitHub Actions)",
+              "beforeAfter": {
+                "before": {
+                  "imageUrl": "/images/projects/most267-static.png",
+                  "caption": "정적 HTML — 손으로 직접 수정, 콘텐츠는 유튜브 카드 한 장",
+                  "alt": "개선 전 — 손으로 수정하던 정적 HTML 첫 화면"
+                },
+                "after": {
+                  "videoUrl": "/videos/projects/most267-after.webm",
+                  "caption": "Notion에 어떤 영상을 올려도 WebM으로 최적화되어 배포, 히어로 영상 자동재생",
+                  "alt": "개선 후 — Next.js로 재구축된 첫 화면, Notion 연동 WebM 최적화 히어로 영상"
+                }
+              },
               "items": [
                 "손으로 직접 수정하던 정적 HTML 사이트를 Next.js·Tailwind로 전면 재구축, GitHub Pages 정적 배포 CI/CD·SEO(sitemap·robots) 구축",
                 "Notion DB 5종(팀·작품·보도·영상·설정) 연동으로 비개발자가 콘텐츠 직접 관리, select 속성 순서·R&R 컬럼 등 Notion 스키마를 카테고리 정렬·본부별 탭 UI에 그대로 매핑",
