@@ -11,30 +11,26 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center overflow-x-clip">
+      <div
+        aria-hidden
+        className="hidden md:block fixed inset-y-0 left-0 -z-10 dark bg-background lg:hidden"
+        style={{
+          width: 'calc((100% - min(72rem, 100%)) / 2 + 164px)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="hidden lg:block fixed inset-y-0 left-0 -z-10 dark bg-background"
+        style={{
+          width: 'calc((100% - min(72rem, 100%)) / 2 + 196px)',
+        }}
+      />
       <main className="w-full">
         <TimelineToc items={tocItems} nowKey={nowKey} />
-        <div className="relative w-full bg-background">
-          <div
-            aria-hidden
-            className="hidden md:block absolute inset-y-0 left-0 dark bg-background"
-            style={{
-              width:
-                'calc((100% - min(72rem, 100%)) / 2 + 164px)',
-            }}
-          />
-          <div
-            aria-hidden
-            className="hidden lg:block absolute inset-y-0 left-0 dark bg-background"
-            style={{
-              width:
-                'calc((100% - min(72rem, 100%)) / 2 + 196px)',
-            }}
-          />
-          <div className="relative">
-            <PersonalSection />
-            <TechStackSection />
-            <PortfolioFAQSection />
-          </div>
+        <div className="w-full">
+          <PersonalSection />
+          <TechStackSection />
+          <PortfolioFAQSection />
         </div>
       </main>
     </div>
