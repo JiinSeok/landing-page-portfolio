@@ -55,7 +55,7 @@ describe('axisPosition', () => {
   })
 
   it('중간 값은 월 비율, 범위 밖은 클램프', () => {
-    expect(axisPosition('2022.11', '2026.06')).toBeCloseTo((43 / 58) * 100, 1)
+    expect(axisPosition('2022.11', '2026.06')).toBeCloseTo((43 / 69) * 100, 1)
     expect(axisPosition('2015.03', '2026.06')).toBe(100)
     expect(axisPosition('2027.01', '2026.06')).toBe(0)
   })
@@ -93,7 +93,7 @@ describe('buildTocItems', () => {
     expect(byLabel('TappyType')?.tier).toBe('minor')
     expect(byLabel('albaform')?.tier).toBe('minor')
     expect(byLabel('코드잇')?.tier).toBe('minor')
-    expect(byLabel('KBS한국어능력시험')).toBeUndefined()
+    expect(byLabel('KBS한국어능력시험')?.tier).toBe('minor')
     expect(byLabel('연세대학교')).toBeUndefined()
   })
 
