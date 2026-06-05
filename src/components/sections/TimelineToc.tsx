@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
@@ -13,6 +13,19 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const careerSegs = items.filter((i) => i.tier === 'career' && i.ongoing)
 
   const [activeDate, setActiveDate] = useState(nowKey)
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const [pinned, setPinned] = useState(false)
+
+  useEffect(() => {
+    const el = sentinelRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => setPinned(!entry.isIntersecting),
+      { rootMargin: '-57px 0px 0px 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   useEffect(() => {
     const els = Array.from(
@@ -137,13 +150,17 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         </div>
       </nav>
 
+      <div ref={sentinelRef} className="h-px -mb-px" />
+
       <div className="dark group sticky top-[56px] z-30 mx-[calc(50%-50vw)] mb-16 py-2 bg-background/95 backdrop-blur-sm md:mb-20">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <div className="relative h-1 bg-border rounded-full">
-            <span
-              className="absolute inset-y-0 left-0 bg-primary rounded-full transition-[width] duration-300"
-              style={{ width: `${pos(activeDate)}%` }}
-            />
+            {pinned && (
+              <span
+                className="absolute inset-y-0 left-0 bg-primary rounded-full transition-[width] duration-300"
+                style={{ width: `${pos(activeDate)}%` }}
+              />
+            )}
             {items
               .filter((i) => i.tier === 'career')
               .map((item) => (
@@ -159,10 +176,12 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   </span>
                 </a>
               ))}
-            <span
-              className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-[3px] ring-foreground/25 transition-[left] duration-300"
-              style={{ left: `${pos(activeDate)}%` }}
-            />
+            {pinned && (
+              <span
+                className="absolute top-1/2 w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 bg-primary rounded-full ring-[3px] ring-foreground/25 transition-[left] duration-300"
+                style={{ left: `${pos(activeDate)}%` }}
+              />
+            )}
           </div>
           <div className="hidden h-0 md:group-hover:block md:group-hover:h-5" />
         </div>
