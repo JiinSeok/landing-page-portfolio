@@ -52,7 +52,7 @@ export type TimelineEntry<P extends TimelineProject = TimelineProject> = (
   | { kind: 'project'; sort: string; project: P }
 ) & { anchor: string }
 
-export type TocTier = 'ai' | 'featured' | 'career' | 'minor'
+export type TocTier = 'ai' | 'career' | 'minor'
 
 export type TocItem = {
   tier: TocTier

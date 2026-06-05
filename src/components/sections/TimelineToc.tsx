@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { NAVBAR_HEIGHT, PIN_ENTER_Y, PIN_EXIT_Y } from '@/lib/constants/layout'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
@@ -27,7 +28,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
-      setPinned((prev) => (prev ? y > 40 : y > 140))
+      setPinned((prev) => (prev ? y > PIN_EXIT_Y : y > PIN_ENTER_Y))
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -51,7 +52,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           setActiveDate(hit.target.dataset.tocDate)
         }
       },
-      { rootMargin: '-56px 0px -75% 0px' },
+      { rootMargin: `-${NAVBAR_HEIGHT}px 0px -75% 0px` },
     )
     els.forEach((node) => io.observe(node))
     return () => io.disconnect()

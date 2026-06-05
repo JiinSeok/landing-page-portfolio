@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
+import { NAVBAR_HEIGHT } from '@/lib/constants/layout'
 import { Link } from '@/navigation'
 import { CopyIcon, CheckIcon } from 'lucide-react'
 import {
@@ -96,7 +97,7 @@ export default function Navigation() {
     <nav
       className="site-header w-full sticky top-0 bg-background text-muted-foreground border-b border-border z-40 transition-transform duration-300"
       style={
-        { '--navbar-height': '56px' } as React.CSSProperties & {
+        { '--navbar-height': `${NAVBAR_HEIGHT}px` } as React.CSSProperties & {
           '--navbar-height': string
         }
       }
