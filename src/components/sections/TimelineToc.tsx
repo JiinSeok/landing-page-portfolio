@@ -1,7 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { NAVBAR_HEIGHT, PIN_ENTER_Y, PIN_EXIT_Y } from '@/lib/constants/layout'
+import {
+  NAVBAR_HEIGHT,
+  PIN_ENTER_Y,
+  PIN_EXIT_Y,
+  RAIL_OFFSET_LG,
+  RAIL_OFFSET_MD,
+} from '@/lib/constants/layout'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
@@ -66,10 +72,24 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           pinned ? 'top-[56px] md:top-0' : 'top-[56px]'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 flex gap-4 md:px-8 md:gap-6">
+        <div
+          aria-hidden
+          className="hidden absolute inset-y-0 right-0 bg-background border-b border-border md:block lg:hidden"
+          style={{
+            left: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_MD}px)`,
+          }}
+        />
+        <div
+          aria-hidden
+          className="hidden absolute inset-y-0 right-0 bg-background border-b border-border lg:block"
+          style={{
+            left: `calc((100% - min(72rem, 100%)) / 2 + ${RAIL_OFFSET_LG}px)`,
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto px-6 flex gap-4 md:px-8 md:gap-6">
           <div className="hidden md:flex md:w-24 lg:w-28 shrink-0" />
           <div className="hidden md:block shrink-0 w-6" />
-          <div className="flex-1 min-w-0 bg-background border-b border-border py-5 md:-ml-9 md:pl-9">
+          <div className="flex-1 min-w-0 py-5 max-md:bg-background max-md:border-b max-md:border-border">
             <div className="relative hidden h-5 overflow-x-visible overflow-y-clip md:block">
               {careerItems.map((item) => {
                 const p = pos(item.date)
