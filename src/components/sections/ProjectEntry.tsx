@@ -344,18 +344,21 @@ const APPLE_BEZELS = {
     src: '/images/device/iphone-17-black.png',
     aspectRatio: '1350 / 2760',
     screenInset: '2.54% 5.33%',
+    screenRadius: '11.2% / 5.15%',
     sizes: '(min-width: 768px) 190px, 45vw',
   },
   tablet: {
     src: '/images/device/ipad-pro-11-black-landscape.png',
     aspectRatio: '2640 / 1880',
     screenInset: '5.64% 4.17%',
+    screenRadius: '2% / 2.9%',
     sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
   },
   laptop: {
     src: '/images/device/macbook-air-m5-silver.png',
     aspectRatio: '3400 / 2240',
     screenInset: '12.86% 12.35%',
+    screenRadius: undefined,
     sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
   },
 }
@@ -420,7 +423,7 @@ export function DeviceFrame({
     <div className="relative w-full" style={{ aspectRatio: bezel.aspectRatio }}>
       <div
         className="absolute overflow-hidden bg-muted"
-        style={{ inset: bezel.screenInset }}
+        style={{ inset: bezel.screenInset, borderRadius: bezel.screenRadius }}
       >
         <a
           href={screen.videoUrl ?? screen.imageUrl}
