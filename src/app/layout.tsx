@@ -1,11 +1,9 @@
 import '@/app/globals.css'
-import { HomePageSkeleton } from '@/components/HomePage/Skeleton'
 import ClientSideProviders from '@/lib/providers/ClientSideProviders'
 import { TextProvider } from '@/lib/providers/TextContext'
 import { LayoutProps } from '@/lib/types'
 import { cn } from '@/lib/utils/classnames'
 import { Metadata } from 'next'
-import { Suspense } from 'react'
 import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import CursorCompanion from '@/components/ui/CursorCompanion'
@@ -58,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <TextProvider>
           {/* Navigation */}
           <ClientSideProviders />
-          <Suspense fallback={<HomePageSkeleton />}>{children}</Suspense>
+          {children}
           <Footer />
           <ScrollToTop />
           <CursorCompanion />
