@@ -31,6 +31,7 @@ export interface GalleryItem {
   device?: DeviceKind
   videoUrl?: string
   screens?: GalleryScreen[]
+  featured?: { sublabel: string }
 }
 
 export const galleryItems: GalleryItem[] = [
@@ -102,6 +103,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
     imageUrl: '/images/projects/tappytype-card.png',
     alt: 'TappyType iOS 앱 소개 카드',
     device: 'tablet',
+    featured: { sublabel: 'iOS · 진행 중' },
     codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
 protocol HandwritingGenerator {
     func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]
@@ -133,6 +135,7 @@ struct RemoteHandwritingGenerator: HandwritingGenerator { /* ... */ }`,
     alt: 'bodycodi 채용 과제 소개 카드 (JSP 레거시 공존 설계)',
     device: 'laptop',
     videoUrl: '/videos/projects/bodycodi.webm',
+    featured: { sublabel: '레거시 공존 설계' },
     codeSnippet: `// 레거시 JSP의 전역 CSS와 충돌하지 않도록 prefix 전략
 // tailwind.config.js
 export default {
