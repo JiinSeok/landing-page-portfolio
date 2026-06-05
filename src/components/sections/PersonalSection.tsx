@@ -3,13 +3,16 @@
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
 import {
+  AXIS_START,
   buildTimeline,
+  buildTocItems,
   entryDate,
   type BeforeAfterSide,
   type CareerEntry,
   type CareerExtra,
   type ContributionGroup,
 } from '@/lib/utils/timeline'
+import TimelineToc from '@/components/sections/TimelineToc'
 import {
   galleryItems,
   ProjectEntry,
@@ -97,6 +100,11 @@ export default function PersonalSection() {
 
   const timeline = buildTimeline(careers, extras, galleryItems)
 
+  const nowKey = timeline
+    .map(entryDate)
+    .reduce((max, d) => (d > max ? d : max), AXIS_START)
+  const tocItems = buildTocItems(timeline, nowKey)
+
   const firstProjectIndex = timeline.findIndex((item) => item.kind === 'project')
 
   return (
@@ -107,6 +115,7 @@ export default function PersonalSection() {
     >
       <div className="px-6 md:px-8 lg:px-12">
         <div className="max-w-6xl pl-4 md:pl-0">
+          <TimelineToc items={tocItems} nowKey={nowKey} />
           <div className="flex gap-4 md:gap-6 mb-8 md:mb-10">
             <div className="hidden md:flex md:w-40 lg:w-44 shrink-0 justify-end items-end">
               <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground tracking-wide">
