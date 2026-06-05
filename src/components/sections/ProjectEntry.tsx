@@ -397,7 +397,7 @@ export function BeforeAfterStack({
   media: { before: BeforeAfterSide; after: BeforeAfterSide }
 }) {
   return (
-    <div className="flex flex-col w-full gap-4">
+    <div className="flex flex-col w-full gap-4 sm:flex-row">
       <BeforeAfterSideView side={media.before} />
       <BeforeAfterSideView side={media.after} />
     </div>
@@ -510,7 +510,7 @@ export function ProjectEntry({
   return (
     <article
       aria-label={item.title}
-      className="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 min-w-0"
+      className={`flex-1 flex flex-col gap-4 min-w-0 ${item.beforeAfter ? 'md:gap-5' : 'md:flex-row md:gap-8'}`}
     >
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap gap-1.5 mb-2">
@@ -593,7 +593,13 @@ export function ProjectEntry({
           item.device ||
           item.imageUrl ||
           item.codeSnippet) && (
-        <figure className="md:w-80 lg:w-96 shrink-0 self-start w-full">
+        <figure
+          className={
+            item.beforeAfter
+              ? 'w-full'
+              : 'md:w-80 lg:w-96 shrink-0 self-start w-full'
+          }
+        >
           {item.beforeAfter ? (
             <BeforeAfterStack media={item.beforeAfter} />
           ) : (showCode || (!item.device && !item.imageUrl)) &&

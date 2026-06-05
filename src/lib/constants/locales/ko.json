@@ -39,28 +39,9 @@
           "period": "2025.09 ~ 현재",
           "role": "AI개발팀 · 풀스택 개발자 (Rails + React)",
           "contributions": [
-            {
-              "title": "도프켓 — 디지털 에셋 이커머스 풀스택 (Rails·React·Docker·MySQL)",
-              "items": [
-                "한국 시장 로컬라이제이션 — 전 페이지 한국어 전환과 브랜딩 교체, 상품 대시보드·CMS 블로그·결제 UX 등 신규 화면 개발",
-                "B2B·운영 — 첫 B2B 고객사 온보딩, CRM 유저 테이블, Grafana 운영 지표 관리",
-                "이벤트 협업 제안 — 회의에서 당일 직접 제안해 3일 만에 [포토부스 프로토타입](https://staging.doppket.com/proposals/mudo-run)을 완성, 정식 부가기능으로 채택"
-              ]
-            },
-            {
-              "title": "방송용 CG 합성 도구 — Gradio UI/UX 재설계 (Python)",
-              "items": [
-                "워크플로우 재구성 — ML 연구원과 한 저장소에서 협업, 영문 도구 탭을 작업 순서대로 3단계 탭으로 바꾸고 '원본+마스크+에셋=합성 결과' 썸네일 타임라인 신설",
-                "현장 대응 — UI 용어 한국어화와 CG팀 크로스체크표, 방송용 5GB 업로드와 워크플로우 차단 버그 해결"
-              ]
-            },
-            {
-              "title": "most267.co.kr — 기업 랜딩 페이지 (Next.js·GitHub Actions)",
-              "items": [
-                "전면 재구축 — 손으로 수정하던 정적 HTML을 Next.js로, Notion DB 5종을 연동해 비개발자가 콘텐츠를 직접 관리",
-                "에셋 파이프라인 — 1시간마다 만료되는 Notion 파일을 빌드 시 내려받아 WebP/WebM 자동 변환, CLS 제거·히어로 프리로드로 로딩 최적화"
-              ]
-            }
+            "한국 시장 로컬라이제이션 — 전 페이지 한국어 전환과 브랜딩 교체, 상품 대시보드·CMS 블로그·결제 UX 등 신규 화면 개발",
+            "B2B·운영 — 첫 B2B 고객사 온보딩, CRM 유저 테이블, Grafana 운영 지표 관리",
+            "이벤트 협업 제안 — 회의에서 당일 직접 제안해 3일 만에 [포토부스 프로토타입](https://staging.doppket.com/proposals/mudo-run)을 완성, 정식 부가기능으로 채택"
           ]
         },
         {
