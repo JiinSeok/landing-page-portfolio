@@ -16,14 +16,14 @@
     />
     <style>
       :root {
-        --ink: #1f2328;
-        --sub: #57606a;
-        --muted: #8b949e;
-        --line: #e6e8eb;
-        --accent: #24292f;
-        --accent-soft: #f3f4f6;
-        --chip: #eceef0;
-        --chip-ink: #3a4048;
+        --ink: #222222;
+        --sub: #5f5f5f;
+        --muted: #939393;
+        --line: #e8e8e8;
+        --accent: #292929;
+        --accent-soft: #f4f4f4;
+        --chip: #eeeeee;
+        --chip-ink: #3e3e3e;
       }
       * {
         box-sizing: border-box;
@@ -44,7 +44,7 @@
           system-ui,
           sans-serif;
         color: var(--ink);
-        background: #f4f5f7;
+        background: #f5f5f5;
         line-height: 1.62;
         font-size: 15px;
         -webkit-font-smoothing: antialiased;
@@ -314,6 +314,19 @@
         background: var(--chip);
         color: var(--chip-ink);
       }
+      .badge.solid {
+        background: var(--accent);
+        color: #fff;
+      }
+      .live-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-right: 4px;
+        vertical-align: middle;
+      }
       .chips {
         display: flex;
         flex-wrap: wrap;
@@ -354,8 +367,8 @@
         html,
         body {
           background: #fff;
-          font-size: 10.8px;
-          line-height: 1.5;
+          font-size: 10.5px;
+          line-height: 1.45;
           -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
         }
@@ -372,11 +385,12 @@
           max-width: none;
           margin: 0;
           padding: 0;
+          zoom: 0.93;
         }
         section.blk {
           break-inside: auto;
           display: block;
-          padding: 10px 0;
+          padding: 8px 0;
         }
         .blk > h2 {
           break-after: avoid;
@@ -411,18 +425,14 @@
           break-after: avoid;
         }
         .skills-grid {
-          gap: 6px;
+          gap: 5px;
           grid-template-columns: 1fr 1fr;
         }
         .skill {
-          padding: 8px 11px;
-        }
-        html,
-        body {
-          font-size: 10.8px;
+          padding: 7px 10px;
         }
         ul.dots li {
-          margin: 4px 0;
+          margin: 3px 0;
         }
         .item {
           margin: 0 0 10px;
@@ -435,10 +445,18 @@
           padding: 10px 12px;
         }
         .proj {
-          padding: 10px 0;
+          padding: 8px 0;
         }
         .item {
-          margin: 0 0 12px;
+          margin: 0 0 9px;
+        }
+        .live-dot {
+          display: none;
+        }
+        .badge.solid {
+          background: #fff;
+          color: var(--accent);
+          border: 1px solid var(--accent);
         }
         a {
           color: var(--accent);
@@ -543,7 +561,7 @@
                 통합을 전제로 React 화면을 설계했습니다. 스타일 클래스 충돌은
                 tw- prefix 전략과 컨벤션 문서로 정리했습니다.
               </div>
-              <div class="ev">bodycodi-frontend</div>
+              <div class="ev">bodycodi</div>
             </div>
             <div class="skill">
               <div class="t">공통 모듈·디자인 토큰·일관성 설계</div>
@@ -576,7 +594,7 @@
             </div>
             <div class="skill">
               <div class="t">
-                품질을 코드로 보증하는 프론트엔드 — QA 출신 + 테스트
+                품질을 코드로 보증하는 프론트엔드 — SQA 출신 + 테스트
               </div>
               <div class="d">
                 계약 가드 테스트, QA TF·디자인 시스템 구축 경험이 있습니다.
@@ -590,7 +608,8 @@
                 AI가 만든 코드를 직접 작성한 코드로 바꿔 에러 처리를
                 통일했습니다. few-shot 폰트 자동 생성 파이프라인과 ML 포함
                 모노레포를 다뤘고, 개인 코드 스타일·작업 규칙을 Claude Code에
-                규칙으로 주입하는 설정을 공개했습니다.
+                규칙으로 주입하는 설정을 공개했습니다(React 30개·Python 13개
+                규칙, launchd 자동 동기화).
               </div>
               <div class="ev">
                 bodycodi · TappyType · 도스트11 ·
@@ -620,7 +639,7 @@
             </p>
 
             <div class="proj">
-              <h3>formkit-react <span class="badge">npm 배포</span></h3>
+              <h3>formkit-react <span class="badge solid">npm 배포</span></h3>
               <div class="plinks">
                 <a href="https://www.npmjs.com/package/@jiin.seok/formkit-react"
                   >npm @jiin.seok/formkit-react</a
@@ -651,7 +670,7 @@
 
             <div class="proj">
               <h3>
-                bodycodi-frontend
+                bodycodi
                 <span class="badge">JSP 레거시 공존 설계</span>
                 <span class="badge gray">채용 과제</span>
               </h3>
@@ -705,7 +724,7 @@
                 <a href="https://github.com/JiinSeok/albaform"
                   >github.com/JiinSeok/albaform</a
                 >
-                · 팀 내 최다 수준 기여
+                · 5인 팀 내 최다 수준 기여(GitHub Insights 기준 커밋 35%)
               </div>
               <div class="stack">
                 Next.js · TanStack Query · Zustand · TypeScript · AWS Amplify
@@ -795,18 +814,21 @@
           <div class="body">
             <p class="lead">
               개발은 도스트11(풀스택)·체인시프트(프론트엔드)에서 했고,
-              QA(핏투게더·물류대장)와 자료 관리(연합뉴스) 경험은 품질과 일관성,
+              SQA(핏투게더·물류대장)와 자료 관리(연합뉴스) 경험은 품질과 일관성,
               사용자 관점이라는 지금의 강점으로 이어졌습니다.
             </p>
 
             <div class="item">
               <div class="top">
                 <span class="org">(주)도스트11 — 풀스택 개발자 / AI개발팀</span
-                ><span class="when">2025.09 ~ 재직 중 · 10개월</span>
+                ><span class="when"
+                  >2025.09 ~ <span class="live-dot"></span>재직 중 ·
+                  10개월</span
+                >
               </div>
               <div class="desc">
-                디지털 에셋 이커머스를 풀스택으로 개발하며 프론트엔드 개발
-                환경·성능·장애 대응을 맡았습니다.
+                MBC AI 전략자회사입니다. 디지털 에셋 이커머스를 풀스택으로
+                개발하며 프론트엔드 개발 환경·성능·장애 대응을 맡았습니다.
               </div>
               <h4>
                 도프켓 — 디지털 에셋 이커머스 풀스택
@@ -816,11 +838,27 @@
               </h4>
               <ul class="dots">
                 <li>
-                  포토부스 기능 프로토타입과 제안용 랜딩을 0→1로 만든 뒤 범용
-                  기능으로 정리했습니다. 한국 시장 로컬라이제이션(전 페이지
-                  한국어 전환, 브랜딩·폰트 교체), 블로그·어드민(AWS S3, slug,
-                  Tiptap), Grafana 운영 지표·대시보드, 셀러 페이지 커스터마이징
-                  데모.
+                  <b>이벤트 협업 제안</b> — 회의에서 당일 제안한 포토부스
+                  프로토타입을 3일 만에 완성해 정식 부가기능으로 채택됐고, 특정
+                  이벤트 의존을 분리하는 범용화 작업을 진행 중입니다.
+                </li>
+                <li>
+                  <b>한국 시장 신규 화면</b> — 로컬라이제이션(전 페이지 한국어
+                  전환, 브랜딩·폰트 교체)과 상품 대시보드, 블로그·어드민(AWS S3,
+                  slug, Tiptap), 결제 UX, 셀러 페이지 커스터마이징 데모를
+                  개발했습니다.
+                </li>
+                <li>
+                  <b>한국형 월간 정산 설계·핸드오프</b> — 외산 결제 엔진 위에
+                  월간 마감·스냅샷, 멱등성, 민감정보 경계를 설계 문서로 정리해
+                  팀에 넘기고, 정산 UI와 가격 스냅샷을 직접 구현했습니다. (<a
+                    href="https://usejiin.link/settlement-design"
+                    >케이스 스터디</a
+                  >)
+                </li>
+                <li>
+                  <b>B2B·운영</b> — 첫 B2B 고객사 온보딩을 진행하고, CRM 유저
+                  테이블과 Grafana 운영 지표·대시보드를 관리했습니다.
                 </li>
                 <li>
                   <b>개발 속도·테스트 개선</b> — 타입체크 비동기화와 SSR 빌드
@@ -843,8 +881,9 @@
                 </li>
                 <li>
                   표시 라벨과 내부 키를 분리한 뒤 UI 용어를 통일·한국어화하고,
-                  백엔드의 사용자 노출 에러 메시지까지 번역했습니다. 사내 유저
-                  인터뷰를 진행하고 개발팀-CG팀 용어표를 만들었습니다.
+                  백엔드 파일 50여 개에 흩어진 사용자 노출 에러 메시지를 전부
+                  찾아 같은 기준으로 통일했습니다. 사내 유저 인터뷰를 진행하고
+                  개발팀-CG팀 용어표를 만들었습니다.
                 </li>
                 <li>
                   방송용 대용량(5GB) 영상 업로드·타임아웃을 조정하고, 파일
@@ -859,13 +898,13 @@
               <ul class="dots">
                 <li>
                   손으로 직접 수정하던 정적 HTML 사이트를 Next.js로 전면
-                  재구축하고 GitHub Pages 정적 배포 CI/CD와 SEO(sitemap·robots)를
-                  구축했습니다.
+                  재구축하고 GitHub Pages 정적 배포 CI/CD와
+                  SEO(sitemap·robots)를 구축했습니다.
                 </li>
                 <li>
                   Notion DB 5종(팀·작품·보도·영상·설정)을 연동해 비개발자가
-                  콘텐츠를 직접 관리하게 했습니다. select 속성 순서, R&amp;R 컬럼
-                  등 Notion 스키마가 카테고리 정렬·본부별 탭 UI에 그대로
+                  콘텐츠를 직접 관리하게 했습니다. select 속성 순서, R&amp;R
+                  컬럼 등 Notion 스키마가 카테고리 정렬·본부별 탭 UI에 그대로
                   반영됩니다.
                 </li>
                 <li>
@@ -886,12 +925,22 @@
                 ><span class="when">2025.04 ~ 2025.06 · 3개월</span>
               </div>
               <div class="desc">
-                B2B 서비스 데모용 MVP 프론트엔드를 짧은 주기로 개발했습니다.
+                AI 검색 최적화 SaaS의 B2B 데모용 MVP 프론트엔드를 짧은 주기로
+                개발했습니다. (Next.js 15 App Router, TypeScript, Tailwind CSS,
+                TanStack React Query, Zustand, React Hook Form)
               </div>
               <ul class="dots">
                 <li>
-                  스택: Next.js 15 App Router · TypeScript · Tailwind CSS ·
-                  TanStack React Query · Zustand · React Hook Form
+                  <b>대시보드 MVP</b> — D3.js·Recharts로 버블/트리맵 차트를
+                  포함한 대시보드 MVP를 개발했습니다.
+                </li>
+                <li>
+                  <b>리팩토링·공통화</b> — MVP B에서 API route 15개를 삭제하고
+                  React Hook Form을 일괄 적용, 에러 핸들러를 공통화했습니다.
+                </li>
+                <li>
+                  <b>빠른 산출</b> — Next.js + TailwindCSS 랜딩페이지 템플릿을
+                  Claude Code로 7일 내 3페이지 완성했습니다.
                 </li>
               </ul>
             </div>
@@ -899,7 +948,7 @@
             <div class="item">
               <div class="top">
                 <span class="org"
-                  >주식회사핏투게더 — QA 엔지니어 / 소프트웨어개발팀</span
+                  >주식회사핏투게더 — SQA 엔지니어 / 소프트웨어개발팀</span
                 ><span class="when">2023.08 ~ 2024.02 · 7개월</span>
               </div>
               <div class="sub">
@@ -911,13 +960,18 @@
                   QA TF로 스펙과 지원 사양을 합의하고 테스트 벤치를 마련해
                   품질을 높이고 디버깅 리소스를 줄였습니다.
                 </li>
+                <li>
+                  <b>이슈 트래킹·문서화</b> — 5개 프로덕트별 맞춤형 Jira
+                  프로젝트를 제작·운영하고, 방치된 기술 문서를 위키로 정리해
+                  개발자 온보딩에 기여했습니다.
+                </li>
               </ul>
             </div>
 
             <div class="item">
               <div class="top">
                 <span class="org"
-                  >주식회사물류대장 — QA·CX 매니저 / 플랫폼기획팀</span
+                  >주식회사물류대장 — SQA·CX 매니저 / 플랫폼기획팀</span
                 ><span class="when">2022.06 ~ 2023.08 · 1년 3개월</span>
               </div>
               <div class="sub">
@@ -931,6 +985,11 @@
                 <li>
                   <b>유비쿼터스 사전 제작</b> — 전 직군 용어를 통일해 전사
                   커뮤니케이션 비용을 줄이고 온보딩을 개선했습니다.
+                </li>
+                <li>
+                  <b>이슈 트래커 도입·B2B 온보딩</b> — 이슈/버그 트래커를 도입해
+                  개발 진행 상태를 시각화하고, B2B 고객사(CJ대한통운 등) 온보딩
+                  지원과 현장 인터뷰로 이슈를 발굴했습니다.
                 </li>
               </ul>
             </div>
@@ -987,6 +1046,19 @@
             <div class="kv">
               <b>자격증</b> · ISTQB Certified Tester Foundation ·
               소프트웨어테스트전문가(CSTS) Foundation
+            </div>
+            <div class="kv">
+              <b>발표</b> ·
+              <a
+                href="https://www.figma.com/deck/jdocRc3a37rnNsTRm1crbD/SEO-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%ED%95%B4%EB%B4%A4%EB%8B%88?node-id=45-555&t=H46fXS3tDDZMhydQ-1"
+                >SEO 라이트닝 토크</a
+              >(2026.01) — SEO 40여 기법을 웹 표준·속도·신뢰성으로 재구성, LLM
+              시대 GEO로 확장 ·
+              <a
+                href="https://www.figma.com/deck/94YP5c4rzlblr5exuS1ZKR/%EC%84%9C%EB%B9%84%EC%8A%A4%EC%A7%81%EC%9C%BC%EB%A1%9C%EC%84%9C%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9E%90--%EB%B3%B5%EC%82%AC-?node-id=1-101&t=oEqxpmYisTFTWX0r-1"
+                >서비스직으로서의 개발자</a
+              >(2025.11, 도스트11 데브 미팅) — 에러 메시지를 DX·마케팅 자산으로
+              보는 CX 관점
             </div>
             <div class="kv">
               <b>외국어 · 기타</b> · 영어 일상 회화 가능 · KBS한국어능력시험 1급
