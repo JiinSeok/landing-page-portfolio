@@ -80,13 +80,11 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
                   <a
                     key={item.anchor}
                     href={`#${item.anchor}`}
+                    aria-label={`${item.label} — ${item.sublabel}`}
                     style={{ left: `${pos(item.date)}%` }}
                     className="absolute bottom-0 -translate-x-1/2 text-center"
                   >
                     <span className="block text-[11px] font-semibold text-foreground/80 whitespace-nowrap">
-                      {item.label}
-                    </span>
-                    <span className="block text-[9px] text-muted-foreground whitespace-nowrap">
                       {item.sublabel}
                     </span>
                     <span className="block w-px h-2 mx-auto mt-0.5 bg-muted-foreground/50" />
