@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from '@/lib/providers/TextContext'
 import { Button } from '@/components/ui/Button/Button'
 
-export type DeviceKind = 'phone' | 'laptop'
+export type DeviceKind = 'phone' | 'tablet' | 'laptop'
 
 export interface GalleryScreen {
   videoUrl?: string
@@ -97,6 +97,7 @@ export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
     linkLabel: '인스타그램 보기',
     imageUrl: '/images/projects/tappytype-card.png',
     alt: 'TappyType iOS 앱 소개 카드',
+    device: 'tablet',
     codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
 protocol HandwritingGenerator {
     func generate(style: [Glyph], targets: [Character]) async throws -> [Glyph]
@@ -235,7 +236,15 @@ function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
   )
 }
 
-function ScreenMedia({ screen, title }: { screen: GalleryScreen; title: string }) {
+function ScreenMedia({
+  screen,
+  title,
+  sizes,
+}: {
+  screen: GalleryScreen
+  title: string
+  sizes: string
+}) {
   if (screen.videoUrl) {
     return <AutoPlayVideo src={screen.videoUrl} label={screen.alt ?? title} />
   }
@@ -245,7 +254,7 @@ function ScreenMedia({ screen, title }: { screen: GalleryScreen; title: string }
         src={screen.imageUrl}
         alt={screen.alt ?? title}
         fill
-        sizes="(min-width: 768px) 200px, 50vw"
+        sizes={sizes}
         className="object-cover"
       />
     )
@@ -259,6 +268,12 @@ const APPLE_BEZELS = {
     aspectRatio: '1350 / 2760',
     screenInset: '2.54% 5.33%',
     sizes: '(min-width: 768px) 190px, 45vw',
+  },
+  tablet: {
+    src: '/images/device/ipad-pro-11-black-landscape.png',
+    aspectRatio: '2640 / 1880',
+    screenInset: '5.64% 4.17%',
+    sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
   },
   laptop: {
     src: '/images/device/macbook-air-m5-silver.png',
@@ -284,7 +299,7 @@ function DeviceFrame({
         className="absolute overflow-hidden bg-muted"
         style={{ inset: bezel.screenInset }}
       >
-        <ScreenMedia screen={screen} title={title} />
+        <ScreenMedia screen={screen} title={title} sizes={bezel.sizes} />
       </div>
       <Image
         src={bezel.src}
@@ -319,7 +334,13 @@ function DeviceMockup({ item }: { item: GalleryItem }) {
       </div>
     )
   }
-  return <DeviceFrame kind="laptop" screen={screens[0]} title={item.title} />
+  return (
+    <DeviceFrame
+      kind={item.device ?? 'laptop'}
+      screen={screens[0]}
+      title={item.title}
+    />
+  )
 }
 
 export function ProjectEntry({
