@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { axisPosition, type TocItem } from '@/lib/utils/timeline'
 
 interface TimelineTocProps {
@@ -12,20 +12,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const pos = (date: string) => axisPosition(date, nowKey)
   const careerSegs = items.filter((i) => i.tier === 'career' && i.ongoing)
 
-  const fullRef = useRef<HTMLDivElement>(null)
-  const [compact, setCompact] = useState(false)
   const [activeDate, setActiveDate] = useState(nowKey)
-
-  useEffect(() => {
-    const el = fullRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => setCompact(!entry.isIntersecting),
-      { rootMargin: '-56px 0px 0px 0px' },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
 
   useEffect(() => {
     const els = Array.from(
@@ -49,10 +36,10 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
     <>
       <nav
         aria-label="연표 목차"
-        className="dark relative -mt-16 mx-[calc(50%-50vw)] mb-10 bg-background md:-mt-20 md:mb-12"
+        className="dark relative -mt-16 mx-[calc(50%-50vw)] bg-background md:-mt-20"
       >
         <div className="max-w-6xl mx-auto px-6 pt-24 pb-12 md:px-8">
-          <div ref={fullRef} className="relative h-0.5 bg-border">
+          <div className="relative h-0.5 bg-border">
             <span className="absolute left-0 top-4 text-[10px] text-muted-foreground/60">
               현재
             </span>
@@ -150,11 +137,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
         </div>
       </nav>
 
-      <div
-        className={`dark group sticky top-[56px] z-30 mx-[calc(50%-50vw)] py-2 bg-background/95 backdrop-blur-sm transition-opacity duration-200 ${
-          compact ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-      >
+      <div className="dark group sticky top-[56px] z-30 mx-[calc(50%-50vw)] mb-16 py-2 bg-background/95 backdrop-blur-sm md:mb-20">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <div className="relative h-1 bg-border rounded-full">
             <span
