@@ -100,7 +100,7 @@ export default function Navigation() {
         }
       }
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 h-16 flex justify-between items-center">
         <div className="flex items-center gap-4 relative" ref={contactRef}>
           <Link
             href="/"
