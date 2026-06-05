@@ -98,11 +98,11 @@ describe('buildTocItems', () => {
     expect(byLabel('연세대학교')).toBeUndefined()
   })
 
-  it('AI 마일스톤은 major 2건만 상시 라벨', () => {
+  it('AI 마일스톤은 major 3건만 상시 라벨', () => {
     const timeline = buildTimeline(careers, extras, projects)
     const toc = buildTocItems(timeline, '2026.06')
     const majors = toc.filter((i) => i.tier === 'ai' && i.major)
-    expect(majors.map((m) => m.date).sort()).toEqual(['2022.11', '2025.05'])
-    expect(LLM_MILESTONES.filter((m) => m.major)).toHaveLength(2)
+    expect(majors.map((m) => m.date).sort()).toEqual(['2022.11', '2023.03', '2025.05'])
+    expect(LLM_MILESTONES.filter((m) => m.major)).toHaveLength(3)
   })
 })
