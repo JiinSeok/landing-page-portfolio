@@ -12,7 +12,7 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
   const careerSegs = items.filter((i) => i.tier === 'career' && i.ongoing)
 
   return (
-    <nav aria-label="연표 목차" className="relative mb-10 pt-24 pb-28 md:mb-12 md:pb-32">
+    <nav aria-label="연표 목차" className="relative mb-10 pt-24 pb-20 md:mb-12">
       <div className="relative h-0.5 bg-border">
         <span className="absolute left-0 top-4 text-[10px] text-muted-foreground/60">
           현재
@@ -92,11 +92,15 @@ export default function TimelineToc({ items, nowKey }: TimelineTocProps) {
           }
 
           return (
-            <a key={item.anchor} href={`#${item.anchor}`} style={{ left }} className="absolute">
-              <span className="absolute top-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-muted-foreground/50 rounded-full" />
-              <span className="hidden absolute top-3 w-px h-2 bg-border md:block" />
-              <span className="hidden absolute top-6 origin-top-left rotate-45 text-[10px] font-medium text-muted-foreground whitespace-nowrap hover:text-foreground md:block">
-                {item.label.length > 12 ? `${item.label.slice(0, 12)}…` : item.label}
+            <a
+              key={item.anchor}
+              href={`#${item.anchor}`}
+              aria-label={item.label}
+              style={{ left }}
+              className="group absolute top-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-background border-2 border-muted-foreground/50 rounded-full"
+            >
+              <span className="absolute top-3 left-1/2 hidden -translate-x-1/2 px-1.5 py-0.5 bg-background border border-border text-[10px] text-muted-foreground whitespace-nowrap rounded group-hover:block group-focus-visible:block">
+                {item.label}
               </span>
             </a>
           )
