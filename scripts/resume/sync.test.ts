@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 
+import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs'
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -11,6 +12,7 @@ import {
   talks,
 } from '@/lib/constants/facts'
 
+import { careerMonths, durationLabel, totalCareerLabel } from './duration'
 import { buildResumeHtml, ROOT } from './render'
 
 const read = (relative: string) =>
@@ -54,6 +56,38 @@ describe('사이트 대조', () => {
     expect(projectEntry).toContain(talks.cx.url)
     expect(projectEntry).toContain(`'${talks.seo.when}'`)
     expect(projectEntry).toContain(`'${talks.cx.when}'`)
+  })
+})
+
+describe('PDF 동기화', () => {
+  it('커밋된 PDF에 asOf 파생값이 들어 있다', async () => {
+    const data = new Uint8Array(
+      readFileSync(path.join(ROOT, 'public/resume.pdf')),
+    )
+    const doc = await getDocument({ data }).promise
+    const pages = await Promise.all(
+      Array.from({ length: doc.numPages }, (_, i) =>
+        doc
+          .getPage(i + 1)
+          .then((page) => page.getTextContent())
+          .then((content) =>
+            content.items
+              .map((item) => ('str' in item ? item.str : ''))
+              .join(''),
+          ),
+      ),
+    )
+    const text = pages.join('').replace(/\s+/g, '')
+    const derived = [
+      totalCareerLabel(Object.values(careers), RESUME_AS_OF),
+      durationLabel(careerMonths(careers.dost11, RESUME_AS_OF)),
+    ]
+    for (const value of derived) {
+      expect(
+        text,
+        `PDF에 '${value}' 없음 — pnpm resume로 PDF 재생성 후 커밋할 것`,
+      ).toContain(value.replace(/\s+/g, ''))
+    }
   })
 })
 
