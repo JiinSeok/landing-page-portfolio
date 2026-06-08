@@ -17,6 +17,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <style>
+/* TappyType으로 실제 구운 석지인 손글씨 폰트 — 타입 테스터 전용 */
+@font-face{
+  font-family:'TappyTypeSample';
+  src:url("/tappytype/assets/tappytype-sample.woff2") format('woff2');
+  font-display:swap;
+}
 :root{
   /* TypeTapTheme.swift 팔레트와 1:1 동기화 */
   --ivory:#FFF7F3; --cream:#F6EFE6; --blush:#FFE4EA; --rose:#F6C5CE;
@@ -213,7 +219,7 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:400;line-height:1.4;letter-s
 }
 .tester input:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(246,197,206,.25)}
 .tester-preview{
-  font-family:var(--pen);font-size:clamp(2.4rem,6vw,4rem);line-height:1.45;color:var(--cocoa);
+  font-family:'TappyTypeSample',var(--pen);font-size:clamp(2.4rem,6vw,4rem);line-height:1.55;color:var(--cocoa);
   min-height:5.4rem;padding:1.4rem .4rem .4rem;word-break:keep-all;overflow-wrap:anywhere;
   border-bottom:1.5px solid var(--rose);
 }
@@ -376,7 +382,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
   <div class="tester">
     <div class="tester-preview" id="testerPreview" aria-live="polite">강물 바다 봄날 하늘</div>
     <input id="testerInput" type="text" maxlength="40" value="강물 바다 봄날 하늘" data-i18n-attr="aria-label:tt_input_label" aria-label="미리보기 문장 입력">
-    <p class="note" data-i18n="tt_note">※ 이 데모는 맛보기 손글씨 폰트예요 — 앱에서는 진짜 '내' 글씨로 보여요.</p>
+    <p class="note" data-i18n="tt_note">✍️ 이 글씨는 TappyType으로 직접 구운 진짜 손글씨 폰트예요 — 앱에서는 '내' 글씨가 이렇게 돼요.</p>
   </div>
 </section>
 
@@ -454,7 +460,7 @@ const I18N = {
     step2_t:'AI 딸깍', step2_p:'기본 글자를 다 쓰면, 딸깍 한 번으로 나머지 한글 2,000여 자가 전부 내 글씨체로 채워져요.',
     step3_t:'.ttf로 내보내기', step3_p:'진짜 폰트 파일이에요. 굿노트, 프로크리에이트, 키노트, 워드 — 폰트를 쓰는 곳이라면 어디든.',
     tt_label:'라이브 미리보기', tt_title:'쓰는 즉시, 문장이 내 글씨가 돼요',
-    tt_note:"※ 이 데모는 맛보기 손글씨 폰트예요 — 앱에서는 진짜 '내' 글씨로 보여요.", tt_input_label:'미리보기 문장 입력',
+    tt_note:"✍️ 이 글씨는 TappyType으로 직접 구운 진짜 손글씨 폰트예요 — 앱에서는 '내' 글씨가 이렇게 돼요.", tt_input_label:'미리보기 문장 입력',
     sh_label:'앱 구경하기', sh_title:'따뜻한 연습장 위에서 만들어요',
     sh_cap1:'글범이가 처음부터 함께해요', sh_cap2:'쓰는 대로 차오르는 라이브 미리보기',
     vd_label:'55초면 충분해요', vd_title:'손글씨가 폰트가 되는 순간',
@@ -482,7 +488,7 @@ const I18N = {
     step2_t:'AI Generate', step2_p:'Finish the basic set, then one tap fills in 2,000+ remaining Hangul characters in your style.',
     step3_t:'Export as .ttf', step3_p:'A real font file — use it anywhere fonts work: GoodNotes, Procreate, Keynote, Word.',
     tt_label:'Live preview', tt_title:'Sentences become your handwriting, instantly',
-    tt_note:'※ This demo uses a sample handwriting font — in the app, it’s truly yours.', tt_input_label:'Type a preview sentence',
+    tt_note:'✍️ This is a real handwriting font baked with TappyType — in the app, your writing looks like this.', tt_input_label:'Type a preview sentence',
     sh_label:'Inside the app', sh_title:'Made on warm practice paper',
     sh_cap1:'Tappy welcomes you from the start', sh_cap2:'A live preview that fills as you write',
     vd_label:'55 seconds is enough', vd_title:'The moment handwriting becomes a font',
