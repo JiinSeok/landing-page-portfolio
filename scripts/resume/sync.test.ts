@@ -42,7 +42,7 @@ describe('사이트 대조', () => {
   })
 
   it('ko.json의 핵심 수치가 facts와 일치한다', () => {
-    expect(koJson).toContain(`응답률 ${metrics.responseRate}`)
+    expect(koJson).toContain(`제공률 ${metrics.responseRate}`)
     expect(koJson).toContain(`(${metrics.formReduction})`)
     expect(koJson).toContain(`${metrics.photoboothDays} 만에`)
     expect(koJson).toContain(metrics.errorMsgFiles)

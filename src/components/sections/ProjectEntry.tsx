@@ -76,7 +76,7 @@ export function LoginForm() {
     tags: ['프로젝트', '팀'],
     lead: '여러 명이 함께 만든 알바 구인구직 플랫폼입니다.',
     description:
-      '검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막았습니다. 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
+      '검색 노출을 위한 SSR과 인터랙션을 위한 CSR을 나누고, 전역 설정을 분리해 SSR을 지켜 Google Lighthouse SEO 100을 달성했습니다. 사용자 상태 6종에 따라 권한과 렌더링을 분기해 비인가 접근을 막고, 공통 컴포넌트로 화면을 통일하고 낙관적 업데이트로 반응 속도를 높였습니다.',
     url: 'https://albaform.usejiin.link',
     imageUrl: '/images/projects/albaform.webp',
     alt: 'albaform 구인구직 플랫폼 공고 목록 화면',
