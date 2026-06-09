@@ -744,8 +744,25 @@
                 <li>
                   <b>검색 노출과 인터랙션 분리</b>: 검색 노출을 위한 SSR과
                   인터랙션을 위한 CSR을 나누고, 전역 설정을 분리해 SSR을
-                  유지했습니다. 공통 컴포넌트로 화면을 통일하고 낙관적
-                  업데이트를 적용했습니다.
+                  유지해 Google Lighthouse SEO 100을 달성했습니다. 공통
+                  컴포넌트로 화면을 통일하고 낙관적 업데이트를 적용했습니다.
+                </li>
+              </ul>
+            </div>
+
+            <div class="proj">
+              <h3>
+                오픈마인드: 익명 질문 서비스 (ask.fm류)
+                <span class="badge gray">팀 협업</span>
+              </h3>
+              <div class="plinks">코드잇 팀 프로젝트</div>
+              <div class="stack">
+                JavaScript · React · CSS Module · Axios · Storybook
+              </div>
+              <ul class="dots">
+                <li>
+                  무한 스크롤을 IntersectionObserver와 isHydrated 가드로 구현해,
+                  렌더링 시점 의존으로 생기던 중복·누락 API 요청을 없앴습니다.
                 </li>
               </ul>
             </div>
@@ -964,16 +981,18 @@
                 </li>
                 <li>
                   <b>대시보드 MVP</b>: D3.js·Recharts로 버블/트리맵 차트를
-                  포함한 대시보드 MVP를 개발했습니다.
+                  포함한 대시보드를 개발하고, Claude Code로 대시보드 3페이지를
+                  7일 내 완성했습니다.
                 </li>
                 <li>
                   <b>리팩토링·공통화</b>: Nexca 콘솔에서
                   {{metrics.apiRouteReplace}}하고 React Hook Form을 일괄 적용,
-                  에러 핸들러를 공통화했습니다.
+                  에러 핸들러를 공통화했습니다. middleware·NextAuth로 로그인
+                  상태별 접근 제한도 통일했습니다.
                 </li>
                 <li>
-                  <b>빠른 산출</b>: Next.js + TailwindCSS 랜딩페이지 템플릿을
-                  Claude Code로 {{metrics.landingSpeed}} 완성했습니다.
+                  <b>랜딩페이지 템플릿</b>: Next.js·SEO(SSR) 랜딩페이지 템플릿을
+                  개발했습니다(CMS 생략·공통 컴포넌트·사용법 정리).
                 </li>
               </ul>
             </div>
@@ -992,6 +1011,11 @@
                 <li>
                   QA TF로 스펙과 지원 사양을 합의하고 테스트 벤치를 마련해
                   품질을 높이고 디버깅 리소스를 줄였습니다.
+                </li>
+                <li>
+                  자사 HW 모델별 데이터 분석 모듈(가속도/자이로·위경도)과 실시간
+                  대시보드 iPad 앱을 테스트하고, 비디오·데이터
+                  사이언스·웹·모바일·HW 등 10인 이상 개발자와 협업했습니다.
                 </li>
                 <li>
                   <b>이슈 트래킹·문서화</b>: {{metrics.jiraProjects}}
@@ -1021,7 +1045,8 @@
                 </li>
                 <li>
                   <b>이슈 트래커 도입·B2B 온보딩</b>: 이슈/버그 트래커를 도입해
-                  개발 진행 상태를 시각화하고, B2B 고객사(CJ대한통운 등) 온보딩
+                  개발 진행 상태를 시각화하고, B2B 고객사(CJ대한통운 등 3사)
+                  온보딩
                   지원과 현장 인터뷰로 이슈를 발굴했습니다.
                 </li>
               </ul>
@@ -1077,7 +1102,8 @@
               <b>학력</b> · 연세대학교 학사, 문헌정보학 (2015~2021)
             </div>
             <div class="kv">
-              <b>교육</b> · 코드잇 스프린트 프론트엔드 트랙 7기 · 코멘토 'QA
+              <b>교육</b> · 코드잇 스프린트 프론트엔드 트랙 7기(1,248시간 · 팀
+              프로젝트 3개 중 1개 리딩) · 코멘토 'QA
               테스트 자동화 퀀텀 점프하기(Selenium with Python)' 수료 ·
               그로우앤베터 CX 101 수료
             </div>
@@ -1095,7 +1121,8 @@
               자산으로 보는 CX 관점
             </div>
             <div class="kv">
-              <b>외국어 · 기타</b> · 영어 일상 회화 가능 · KBS한국어능력시험 1급
+              <b>외국어 · 기타</b> · 영어 일상 회화(TOEIC 765 · Speaking IM1) ·
+              한국어 유창함(KBS한국어능력시험 1급)
             </div>
           </div>
         </section>
