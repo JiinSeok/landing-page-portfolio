@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: '추천사 · 석지인',
   description:
-    '함께 일한 동료들이 직접 작성한 추천사입니다. 도스트11 개발팀 홍순상, 핏투게더 송찬영.',
+    '함께 일한 동료들이 직접 작성한 추천사입니다. 도스트11 CTO 홍순상, 현 프론트엔드 리드 송찬영.',
   openGraph: {
     title: '추천사 · 석지인',
     description: '함께 일한 동료들이 직접 작성한 추천사입니다.',
@@ -30,23 +30,23 @@ interface Recommendation {
 const recommendations: Recommendation[] = [
   {
     name: '홍순상',
-    relation: '도스트11 개발팀 · 전/현 직장동료',
+    relation: '도스트11 CTO · 전/현 직장동료',
     date: '2026.06',
-    summary: '직접 채용해 약 6개월간 함께 일한 개발팀 리드의 추천 — 공감 능력·적극성',
+    summary: '직접 채용해 약 6개월간 함께 일한 CTO의 추천 · 공감 능력·적극성',
     image: '/images/recommendation/reco-hong-dost11.webp',
     width: 1240,
     height: 1842,
-    alt: '홍순상(도스트11 개발팀)이 작성한 석지인 추천사',
+    alt: '홍순상(도스트11 CTO)이 작성한 석지인 추천사',
   },
   {
     name: '송찬영',
-    relation: '핏투게더 · 전/현 직장동료',
+    relation: '핏투게더 함께 일한 동료 · 현 프론트엔드 리드',
     date: '2025.02',
-    summary: '함께 품질을 다룬 동료의 추천 — 성실함·책임감·커뮤니케이션',
+    summary: '함께 일한 동료(현 프론트엔드 리드)의 추천 · 성실함·책임감·커뮤니케이션',
     image: '/images/recommendation/reco-song-fitogether.webp',
     width: 1238,
     height: 1452,
-    alt: '송찬영(핏투게더)이 작성한 석지인 추천사',
+    alt: '송찬영(핏투게더 동료·현 프론트엔드 리드)이 작성한 석지인 추천사',
   },
 ]
 

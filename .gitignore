@@ -2,6 +2,8 @@
 
 # 개인 지원용 이력서 초안 (회사명 포함, 공개 금지)
 /docs/wanted-*.md
+# 단, 회사명 없는 기본 원티드 이력서는 추적 (기기 간 사용)
+!/docs/wanted-resume.md
 
 # dependencies
 /node_modules
