@@ -4,7 +4,7 @@ import path from 'node:path'
 
 import { buildResumeHtml, ROOT } from './render'
 
-const EXPECTED_PDF_PAGES = 4
+const EXPECTED_PDF_PAGES = 5
 const CHROME_PATH =
   process.env.CHROME_PATH ??
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'

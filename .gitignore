@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# 개인 지원용 이력서 초안 (회사명 포함, 공개 금지)
+/docs/wanted-*.md
+
 # dependencies
 /node_modules
 
