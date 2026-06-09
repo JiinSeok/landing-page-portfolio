@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BaseUrl, lastModified },
     { url: `${BaseUrl}settlement-design`, lastModified },
+    { url: `${BaseUrl}recommendation`, lastModified },
     { url: `${BaseUrl}tappytype/waitlist`, lastModified },
     { url: `${BaseUrl}tappytype/waitlist/ko`, lastModified },
     { url: `${BaseUrl}tappytype/waitlist/en`, lastModified },
