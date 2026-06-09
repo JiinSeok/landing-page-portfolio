@@ -98,6 +98,26 @@ export function LoginForm() {
 export default withAuth(MyPage, { redirectTo: '/sign-in' })`,
   },
   {
+    title: '오픈마인드',
+    period: '2024.06',
+    tags: ['프로젝트', '팀'],
+    lead: '코드잇 팀 프로젝트로 만든 익명 질문·답변 서비스입니다.',
+    description:
+      '무한 스크롤을 IntersectionObserver와 isHydrated 가드로 구현해, 렌더링 시점 의존으로 생기던 중복·누락 API 요청을 없앴습니다. 스크롤 끝에서 observer를 즉시 해제하고, 0개 피드·뒤로가기·URL 변경 같은 엣지 케이스에서도 오류 없이 데이터를 불러옵니다. JavaScript·React·CSS Module·Axios·Storybook으로 만들었습니다.',
+    url: 'https://open-mind-dev.netlify.app',
+    imageUrl: '/images/projects/openmind.webp',
+    alt: '오픈마인드 익명 질문 서비스 랜딩 화면',
+    codeSnippet: `// 스크롤 끝에 닿으면 observer를 즉시 해제해 중복 요청을 막는다
+const observer = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting || !isHydrated) return
+  if (isLastPage) {
+    observer.disconnect()
+    return
+  }
+  loadNextPage()
+})`,
+  },
+  {
     title: 'TappyType',
     period: '2026.05 ~ 현재',
     tags: ['프로젝트', 'iOS'],
