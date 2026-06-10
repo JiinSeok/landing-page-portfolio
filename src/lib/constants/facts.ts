@@ -136,7 +136,7 @@ export const projects = {
     name: 'TappyType',
     start: '2026.05',
     end: null,
-    collaboration: '주도(ML 협업)',
+    collaboration: '단독',
   },
   portfolio: {
     name: '포트폴리오 사이트',
