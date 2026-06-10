@@ -6,8 +6,10 @@ import { describe, expect, it } from 'vitest'
 
 import {
   careers,
+  type CareerFact,
   extraMonths,
   metrics,
+  milestones,
   RESUME_AS_OF,
   talks,
 } from '@/lib/constants/facts'
@@ -41,6 +43,14 @@ describe('사이트 대조', () => {
     }
   })
 
+  it('ko.json의 회사 팀·직무·URL이 facts와 일치한다', () => {
+    for (const career of Object.values(careers) as CareerFact[]) {
+      if (career.team) expect(koJson).toContain(career.team)
+      if (career.title) expect(koJson).toContain(career.title)
+      if (career.url) expect(koJson).toContain(career.url)
+    }
+  })
+
   it('ko.json의 핵심 수치가 facts와 일치한다', () => {
     expect(koJson).toContain(`제공률 ${metrics.responseRate}`)
     expect(koJson).toContain(`(${metrics.formReduction})`)
@@ -56,6 +66,32 @@ describe('사이트 대조', () => {
     expect(projectEntry).toContain(talks.cx.url)
     expect(projectEntry).toContain(`'${talks.seo.when}'`)
     expect(projectEntry).toContain(`'${talks.cx.when}'`)
+  })
+})
+
+describe('원티드 본문 대조', () => {
+  const wanted = read('docs/wanted-resume.md')
+
+  it('wanted-resume.md의 핵심 수치가 facts와 일치한다', () => {
+    expect(wanted).toContain(metrics.buildCold)
+    expect(wanted).toContain(metrics.buildDevStart)
+    expect(wanted).toContain(metrics.buildWatchMemory)
+    expect(wanted).toContain(metrics.settlementTickets)
+    expect(wanted).toContain(metrics.bodycodiUsers)
+    expect(wanted).toContain(metrics.virtualizationThreshold)
+    expect(wanted).toContain(metrics.virtualizationProof)
+    expect(wanted).toContain(metrics.albaformTeam)
+    expect(wanted).toContain(metrics.albaformCommitShare)
+    expect(wanted).toContain(metrics.albaformDuration)
+    expect(wanted).toContain(metrics.responseRate)
+    expect(wanted).toContain(metrics.albaformSeo)
+    expect(wanted).toContain(metrics.fpp)
+  })
+
+  it('wanted-resume.md의 회사 고용형태가 facts와 일치한다', () => {
+    for (const career of Object.values(careers) as CareerFact[]) {
+      if (career.employmentType) expect(wanted).toContain(career.employmentType)
+    }
   })
 })
 
@@ -100,6 +136,7 @@ describe('기간 패턴 스캔', () => {
     talks.cx.when,
     RESUME_AS_OF,
     ...extraMonths,
+    ...milestones.map((m) => m.month),
   ])
 
   const targets = [
