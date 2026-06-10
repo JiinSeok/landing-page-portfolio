@@ -98,14 +98,59 @@ export const talks = {
   },
 }
 
-export const projects = {
-  formkitNpm: '@jiin.seok/formkit-react',
+export interface ProjectFact {
+  name: string
+  start: string
+  end: string | null
+  collaboration: string
+  npm?: string
 }
+
+export const projects = {
+  formkit: {
+    name: 'formkit-react',
+    start: '2025.08',
+    end: '2025.08',
+    collaboration: '단독',
+    npm: '@jiin.seok/formkit-react',
+  },
+  bodycodi: {
+    name: 'bodycodi',
+    start: '2025.09',
+    end: '2025.09',
+    collaboration: '채용 과제',
+  },
+  albaform: {
+    name: 'albaform',
+    start: '2024.08',
+    end: '2025.01',
+    collaboration: '팀',
+  },
+  openmind: {
+    name: '오픈마인드',
+    start: '2024.06',
+    end: '2024.06',
+    collaboration: '팀',
+  },
+  tappytype: {
+    name: 'TappyType',
+    start: '2026.05',
+    end: null,
+    collaboration: '주도(ML 협업)',
+  },
+  portfolio: {
+    name: '포트폴리오 사이트',
+    start: '2025.05',
+    end: null,
+    collaboration: '단독',
+  },
+} satisfies Record<string, ProjectFact>
 
 export interface Milestone {
   month: string
   label: string
   kind: 'education' | 'cert' | 'lang'
+  token?: string
 }
 
 export const milestones: Milestone[] = [
@@ -113,14 +158,36 @@ export const milestones: Milestone[] = [
   { month: '2020.09', label: 'TOEIC 765', kind: 'lang' },
   { month: '2021.03', label: 'KBS한국어능력시험 1급', kind: 'lang' },
   { month: '2021.09', label: '2급 정사서', kind: 'cert' },
-  { month: '2022.04', label: '그로우앤베터 CX 101 수료', kind: 'education' },
+  {
+    month: '2022.04',
+    label: '그로우앤베터 CX 101 수료',
+    kind: 'education',
+    token: '그로우앤베터 CX',
+  },
   { month: '2023.08', label: 'ISTQB CTFL · CSTS Foundation', kind: 'cert' },
-  { month: '2023.10', label: '코멘토 QA 테스트 자동화 수료', kind: 'education' },
-  { month: '2024.04', label: '코드잇 스프린트 프론트엔드 트랙 7기', kind: 'education' },
+  {
+    month: '2023.10',
+    label: '코멘토 QA 테스트 자동화 수료',
+    kind: 'education',
+    token: '코멘토 QA 테스트 자동화',
+  },
+  {
+    month: '2024.04',
+    label: '코드잇 스프린트 프론트엔드 트랙 7기',
+    kind: 'education',
+    token: '코드잇 스프린트',
+  },
   { month: '2024.10', label: '코드잇 스프린트 수료', kind: 'education' },
-  { month: '2025.02', label: '이지스퍼블리싱 Do It! Oracle 교재 베타테스터', kind: 'education' },
+  {
+    month: '2025.02',
+    label: '이지스퍼블리싱 Do It! Oracle 교재 베타테스터',
+    kind: 'education',
+    token: 'Do It! Oracle 교재 베타테스터',
+  },
   { month: '2025.07', label: 'TOEIC Speaking IM1', kind: 'lang' },
 ]
+
+export const langMilestones = milestones.filter((m) => m.kind === 'lang')
 
 export const extraMonths = [
   '2024.06',

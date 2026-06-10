@@ -8,8 +8,11 @@ import {
   careers,
   type CareerFact,
   extraMonths,
+  langMilestones,
   metrics,
   milestones,
+  projects,
+  type ProjectFact,
   RESUME_AS_OF,
   talks,
 } from '@/lib/constants/facts'
@@ -67,6 +70,19 @@ describe('사이트 대조', () => {
     expect(projectEntry).toContain(`'${talks.seo.when}'`)
     expect(projectEntry).toContain(`'${talks.cx.when}'`)
   })
+
+  it('ProjectEntry의 프로젝트 기간·npm이 facts와 일치한다', () => {
+    for (const project of Object.values(projects) as ProjectFact[]) {
+      const period =
+        project.end === null
+          ? `${project.start} ~ 현재`
+          : project.end === project.start
+            ? project.start
+            : `${project.start} ~ ${project.end}`
+      expect(projectEntry).toContain(period)
+      if (project.npm) expect(projectEntry).toContain(project.npm)
+    }
+  })
 })
 
 describe('원티드 본문 대조', () => {
@@ -91,6 +107,20 @@ describe('원티드 본문 대조', () => {
   it('wanted-resume.md의 회사 고용형태가 facts와 일치한다', () => {
     for (const career of Object.values(careers) as CareerFact[]) {
       if (career.employmentType) expect(wanted).toContain(career.employmentType)
+    }
+  })
+
+  it('어학 점수가 PDF·wanted와 일치한다', () => {
+    const template = read('scripts/resume/template.html').replace(/\s+/g, ' ')
+    for (const lang of langMilestones) {
+      expect(template).toContain(lang.label)
+      expect(wanted).toContain(lang.label)
+    }
+  })
+
+  it('식별 토큰이 있는 교육·자격 마일스톤이 wanted에 일관 표기된다', () => {
+    for (const milestone of milestones) {
+      if (milestone.token) expect(wanted).toContain(milestone.token)
     }
   })
 })

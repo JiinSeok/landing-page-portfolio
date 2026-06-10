@@ -54,6 +54,6 @@ export function resumeValues(): Record<string, string> {
     'talks.seo.url': talks.seo.url,
     'talks.cx.when': talks.cx.when,
     'talks.cx.url': talks.cx.url,
-    'projects.formkit.npm': projects.formkitNpm,
+    'projects.formkit.npm': projects.formkit.npm,
   }
 }
