@@ -47,7 +47,7 @@
   - 타입체크 비동기화 + dev SSR 빌드 분리로 콜드 빌드 18.0초 → 8.3초(53% 단축), dev 서버 기동 14.1초 → 10.0초(29% 단축), watch 상시 메모리 118MB → 60MB(49% 절감)
   - 보완책으로 pre-commit 타입체크 · pre-push SSR 빌드 · CI Playwright SSR 스모크 테스트의 단계별 검증 추가
 
-### 방송용 CG AI 합성 도구: Gradio UI/UX 재설계 (Python Gradio)
+### 방송용 CG AI 합성 도구: UI/UX 재설계 (Python Gradio)
 
 > ML 연구원들과 한 저장소에서 협업, 방송용 CG 합성 도구의 사용성·일관성 개선 단독 수행.
 
