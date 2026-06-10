@@ -123,7 +123,7 @@ const observer = new IntersectionObserver(([entry]) => {
     tags: ['프로젝트', 'iOS'],
     lead: '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다.',
     description:
-      'Swift·SwiftUI·PencilKit으로 앱을 만들어 출시 준비까지 단독으로 해냈고, 이후 모델 성능 개선과 클린 빌드는 영입한 ML 담당이 맡고 있습니다. 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했습니다. 브랜딩과 인스타그램 사전 마케팅도 진행 중입니다.',
+      'Swift·SwiftUI·PencilKit으로 앱을 만들어 출시까지 단독으로 진행했습니다. 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했고, 브랜딩과 인스타그램 사전 마케팅도 진행 중입니다.',
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
     imageUrl: '/images/projects/tappytype-ipad.webp',
@@ -333,7 +333,7 @@ export function AutoPlayVideo({ src, label }: { src: string; label?: string }) {
     if (!video) return
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) video.play().catch(() => {})
+        if (entry.isIntersecting) video.play().catch(() => { })
         else video.pause()
       },
       { rootMargin: '240px' },
@@ -570,11 +570,10 @@ export function ProjectEntry({
   return (
     <article
       aria-label={item.title}
-      className={`flex-1 flex flex-col gap-4 min-w-0 ${item.beforeAfter ? 'md:gap-5' : 'md:flex-row md:gap-8'} ${
-        item.featured
+      className={`flex-1 flex flex-col gap-4 min-w-0 ${item.beforeAfter ? 'md:gap-5' : 'md:flex-row md:gap-8'} ${item.featured
           ? 'p-5 md:p-6 bg-background border border-border rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.04),0_16px_40px_-20px_rgba(0,0,0,0.15)]'
           : ''
-      }`}
+        }`}
     >
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap gap-1.5 mb-2">
