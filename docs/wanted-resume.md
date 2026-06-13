@@ -2,14 +2,14 @@
 
 > 원티드 입력란 단위로 구성. 각 `#` 섹션 = 원티드 한 영역, 각 `##`/`###` 블록 = 입력 칸 하나. 그대로 복붙하면 됨.
 >
-> 원티드 입력 가이드 (AI 리뷰 직무 분류 대응. 47986 QA 93% → 46760 FE 61% → 48253 FE 99% 달성)
+> 원티드 입력 가이드 (등급 추이: 47986 QA 93% → 46760 FE 61% → 48253~48266 FE 99~100% "지원해도 좋아요". 최상위 "아주 뛰어난 이력서"는 별도 황금 PDF에서 달성)
 >
 > - 이 가이드 블록은 붙여넣지 말 것. 본문은 첫 구분선(---) 아래부터
 > - 이력서 제목: "고객에게 필요한 가치를 더하는 개발자입니다."
 > - 원티드엔 프로젝트 전용 입력란이 없음 → 모든 프로젝트는 '수상/자격증/기타' 영역에 개별 항목으로 입력
-> - 경력의 직무·직책 필드: 도스트11 `개발`, 체인시프트 `프론트엔드`만 입력. 핏투게더·물류대장·연합뉴스는 반드시 비워 둘 것. ※ 물류대장 직책이 `SQA·CX 매니저`로 남으면 QA가 키워드 1위로 잡힘 — 비워야 함
-> - 자기소개에 QA·CTO·AI 단어는 쓰지 않음. 경력 제목의 QA(핏투게더·물류대장)는 직무 정체성이라 유지하되 직책 필드만 정리
+> - 경력의 직무·직책 필드: 도스트11 `개발`, 체인시프트 `프론트엔드`만 입력. 핏투게더·물류대장·연합뉴스는 비워 둘 것
 > - 문체: 개조식 명사형, 본문 어디에도 em dash(—) 금지
+> - ※ "아주 뛰어난" 교훈(2026.06): 최상위는 QA 제거·jQuery·키워드 미세조정이 아니라 (1)프로젝트 간결화(상세 평탄 3~4불릿) (2)스킬 태그 실무 폭(JSP·Swift·셀레니움 등)에서 나옴. 키워드 추출은 변동성 커서 미세조정으로 쫓지 말 것
 
 ---
 
@@ -151,9 +151,9 @@
 
 # 스킬
 
-> 원티드 스킬 태그(개별 추가). React 정체성을 앞쪽에 배치.
+> 원티드 스킬 태그(개별 추가). FE 핵심을 앞에, 실무 폭(모바일·백엔드·도구)을 뒤에.
 
-React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React Hook Form, TanStack Query, 접근성, SEO, UX, Ruby on Rails, Python, REST, Restful API, OAuth, HTTP, Git, GitHub, GitHub Actions, Vite, Docker, MySQL, AWS, Figma, Notion, Claude
+React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, React Hook Form, TanStack Query, Zustand, 접근성, SEO, Swift, SwiftUI, React Native, Ruby on Rails, Python, FastAPI, REST, JSP, Docker, MySQL, Grafana, Git, GitHub Actions, Vite, 셀레니움, JIRA, Figma, Notion
 
 ---
 
@@ -180,11 +180,9 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React 
 
 2025.09 · 카테고리: 기타 · (React 18, TypeScript, Vite, TanStack Query, Tailwind, react-window)
 
-- 레거시 제약을 조사·정의
-  - 2016년부터의 JSP 레거시(130만 사용자·결제)를 조사해 공존 제약 추정, 점진적 통합 전제로 설계, tw- prefix·컨벤션 문서로 클래스 충돌 예방
-- 운영 안정성·성능
-  - 예측 가능 에러(400·422 로깅)와 불가능 에러(5xx·네트워크 모니터링)를 구분하는 정책, 50개 임계 조건부 가상화(7,000개 데이터 검증)
-  - AI 생성 코드를 직접 작성 코드로 교체해 에러 처리 통일, 데이터 크기·네트워크 지연 시뮬레이션 테스트 패널 제공
+- 2016년부터의 JSP 레거시(130만 사용자·결제)와 공존하도록 점진적 통합 설계, tw- prefix·컨벤션 문서로 클래스 충돌 예방
+- 예측 가능 에러(400·422 로깅)와 불가능 에러(5xx·네트워크 모니터링)를 구분하는 정책, 50개 임계 조건부 가상화(7,000개 검증)
+- 데이터 크기·네트워크 지연 시뮬레이션 테스트 패널 제공
 
 ### [오픈소스] formkit-react: npm 배포
 
@@ -205,8 +203,7 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React 
 
 2025.02 · 카테고리: 기타
 
-- 이지스퍼블리싱 교재 개정판 출간 전, 틀리거나 어려운 부분과 변경안 제안을 정리해 출판사에 전달
-- 학습 내용을 토대로 MVP 개발 시 직접 데이터를 조작해 개발 서버·데이터 없이 프론트엔드 UI 확인 (Docker, PostgreSQL)
+- 이지스퍼블리싱 교재 개정판 출간 전, 틀리거나 어려운 부분과 변경안 제안을 정리해 출판사에 전달 (Docker, PostgreSQL 실습)
 
 ### [부트캠프] KDT 프론트엔드 엔지니어 양성과정 수료
 
@@ -219,14 +216,9 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React 
 
 2024.08 ~ 2025.01 · 카테고리: 기타 · (Next.js, TanStack Query, Zustand, TypeScript)
 
-- 렌더링·권한 경계 설계
-  - 사용자 상태 6종(로그인 여부·사장님/지원자·작성/지원)에 따라 UI·권한 분기, 비인가 영역 ProtectedContent·withAuth HOC 분리·페이지 서버 컴포넌트 전환으로 속도 개선
-- 검색 노출과 인터랙션 분리
-  - 루트 서버 컴포넌트와 클라이언트 전역 설정(ClientSideSetup)을 분리해 SSR을 유지, Google Lighthouse SEO 100 달성
-  - Compound Form에 useFormContext로 react-hook-form 사전 적용해 폼 설계·상태 통일
-  - 공통 컴포넌트로 화면 통일, 낙관적 업데이트 적용
-- 팀 협업 컨벤션
-  - GitHub Discussions 선기록으로 회의 시간 단축, Linear History·커밋-이슈 링크로 히스토리 충돌 감소·추적성 향상
+- 사용자 상태 6종(로그인 여부·사장님/지원자·작성/지원)에 따라 UI·권한 분기, ProtectedContent·withAuth HOC·서버 컴포넌트 전환으로 속도 개선
+- 루트/클라이언트 설정 분리로 SSR 유지해 Lighthouse SEO 100 달성, Compound Form에 useFormContext로 폼 상태 통일
+- GitHub Discussions·Linear History로 회의 시간 단축·히스토리 추적성 향상
 
 ### [팀 프로젝트] 오픈마인드: 익명 질문 서비스 (유사: ask.fm)
 
