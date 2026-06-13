@@ -17,7 +17,7 @@
 
 고객이 기꺼이 값을 지불할, 필요한 가치를 더하는 개발자입니다.
 
-프론트엔드 기반 풀스택(BFF) · 총 경력 3년 6개월·개발 2년 차
+React·Next.js 기반 프론트엔드·풀스택(BFF) 개발자로, 빌드 파이프라인 최적화와 사용자 경험 개선에 강점이 있습니다. 스타트업 환경에서 제품 전 과정에 주도적으로 참여하며, 빌드 시간 53% 단축·LCP 46% 개선 등 정량적 성과를 달성했습니다. (총 경력 3년 6개월·개발 2년 차)
 
 "주어진 업무 범위에 머무르지 않고, 팀과 프로젝트에서 비어 있는 부분을 스스로 찾아 메우는 적극성" (현 직장 기술총괄 추천사)
 
@@ -52,8 +52,8 @@
   - 정책·요구사항을 정의·티켓화 (정산 마일스톤 30건 작성, 설계 본인 · 구현 팀 협업)
   - 정산 페이지·정산 설정 UI·최소 정산금 화면 구현
 - B2B 운영·첫 고객사 온보딩 리드
-  - 첫 B2B 고객사 요구사항 도출로 부가세 계산 현지화
-  - CRM 유저 테이블, Grafana 운영 지표·대시보드 관리
+  - 첫 B2B 고객사 온보딩을 리드하며 요구사항 도출, 부가세 계산을 현지화
+  - CRM 유저 테이블을 설계하고 Grafana로 운영 지표 대시보드를 구축·운영
 - 콜드 빌드 53% 단축(18.0초 → 8.3초): 개발 빌드·검증 파이프라인 재구성으로 생산성 향상
   - 타입체크 비동기화 + 개발 SSR 빌드 분리가 핵심, 개발 서버 기동 29% 단축·watch 상시 메모리 49% 절감
   - 보완책으로 pre-commit 타입체크, pre-push 빌드, CI Playwright 스모크 테스트의 단계별 검증 추가
@@ -153,7 +153,7 @@
 
 > 원티드 스킬 태그(개별 추가). FE 핵심을 앞에, 실무 폭(모바일·백엔드·도구)을 뒤에.
 
-React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, React Hook Form, TanStack Query, Zustand, 접근성, SEO, Swift, SwiftUI, React Native, Ruby on Rails, Python, FastAPI, REST, JSP, Docker, MySQL, Grafana, Git, GitHub Actions, Vite, 셀레니움, JIRA, Figma, Notion
+React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, React Hook Form, TanStack Query, Zustand, 접근성, SEO, Ruby on Rails, Python, REST, Docker, MySQL, Grafana, Git, GitHub Actions, Vite, 셀레니움, JIRA, Figma, Notion
 
 ---
 
