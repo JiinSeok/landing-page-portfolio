@@ -208,13 +208,6 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React 
 - 이지스퍼블리싱 교재 개정판 출간 전, 틀리거나 어려운 부분과 변경안 제안을 정리해 출판사에 전달
 - 학습 내용을 토대로 MVP 개발 시 직접 데이터를 조작해 개발 서버·데이터 없이 프론트엔드 UI 확인 (Docker, PostgreSQL)
 
-### [팀 프로젝트] 오픈마인드: 익명 질문 서비스 (유사: ask.fm)
-
-2024.06 · 카테고리: 기타 · (JavaScript, React, CSS Module, Axios, Storybook)
-
-- 코드잇 팀 프로젝트, 프론트엔드 개발
-- IntersectionObserver와 isHydrated 가드로 무한 스크롤을 구현해 렌더링 시점 의존으로 생기던 중복·누락 API 요청 제거
-
 ### [부트캠프] KDT 프론트엔드 엔지니어 양성과정 수료
 
 2024.10 · 카테고리: 교육
@@ -234,6 +227,13 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Zustand, React 
   - 공통 컴포넌트로 화면 통일, 낙관적 업데이트 적용
 - 팀 협업 컨벤션
   - GitHub Discussions 선기록으로 회의 시간 단축, Linear History·커밋-이슈 링크로 히스토리 충돌 감소·추적성 향상
+
+### [팀 프로젝트] 오픈마인드: 익명 질문 서비스 (유사: ask.fm)
+
+2024.06 · 카테고리: 기타 · (JavaScript, React, CSS Module, Axios, Storybook)
+
+- 코드잇 팀 프로젝트, 프론트엔드 개발
+- IntersectionObserver와 isHydrated 가드로 무한 스크롤을 구현해 렌더링 시점 의존으로 생기던 중복·누락 API 요청 제거
 
 ### 코멘토 테스트 자동화(Selenium with Python) 수료
 
