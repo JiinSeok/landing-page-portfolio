@@ -18,7 +18,7 @@
 > "주어진 업무 범위에 머무르지 않고, 팀과 프로젝트에서 비어 있는 부분을 스스로 찾아 메우는 적극성." (현 직장 기술총괄 추천사)
 
 - 스타트업 MVP 빠른 개발: JavaScript·TypeScript 기반 React·Next.js(App Router)
-- 제품 전 과정 참여: Ruby on Rails로 이커머스를 풀스택 개발, 정산 등 도메인 정책을 설계해 핵심 화면 구현·운영
+- 제품 전 과정 참여: React on Rails(react_on_rails)로 이커머스를 풀스택 개발, 정산 등 도메인 정책을 설계해 핵심 화면 구현·운영
 - 사용자 관점 품질: 이탈 지점을 지켜본 경험을 코드로 옮겨 예측 가능/불가능 에러를 나누어 처리
 - 측정 기반 개선: 시맨틱 HTML/CSS·SEO·접근성에 집중하고, 빌드·검증 파이프라인 개선으로 콜드 빌드 53% 단축
 - 일관성 있는 화면: 공통 컴포넌트 라이브러리 formkit-react를 npm에 배포
@@ -34,7 +34,7 @@
 
 > MBC 자회사. 디지털 에셋 이커머스를 풀스택으로 개발하며 프론트엔드 개발 환경·성능·장애 대응 담당.
 
-### 도프켓: 디지털 에셋 이커머스 풀스택 (Ruby on Rails, React, TypeScript, Tailwind CSS, Docker, MySQL)
+### 도프켓: 디지털 에셋 이커머스 풀스택 (react_on_rails(Rails+React SSR), React, TypeScript, Tailwind CSS, Docker, MySQL)
 
 - 이벤트 협업 기능 제안·구현 주도
   - 세일즈 아이디어 회의에서 포토부스 기능 제안, 시나리오·제안 페이지까지 작성
