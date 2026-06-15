@@ -169,7 +169,7 @@ export const milestones: Milestone[] = [
     month: '2023.10',
     label: '코멘토 QA 테스트 자동화 수료',
     kind: 'education',
-    token: '코멘토 QA 테스트 자동화',
+    token: '코멘토 테스트 자동화',
   },
   {
     month: '2024.04',
@@ -182,7 +182,7 @@ export const milestones: Milestone[] = [
     month: '2025.02',
     label: '이지스퍼블리싱 Do It! Oracle 교재 베타테스터',
     kind: 'education',
-    token: 'Do It! Oracle 교재 베타테스터',
+    token: 'Do It! Oracle',
   },
   { month: '2025.07', label: 'TOEIC Speaking IM1', kind: 'lang' },
 ]

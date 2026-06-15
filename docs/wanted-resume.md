@@ -42,7 +42,7 @@
 - 핵심 성과: 콜드 빌드 53% 단축(18.0→8.3초), 한국형 월간 정산 정책 30건 설계·핵심 화면 구현, 첫 B2B 고객사 온보딩 리드·부가세 계산 현지화, 포토부스 협업 기능 3일 프로토타입화·정식 채택
 - 기술 스택: react_on_rails(Rails+React SSR), React, TypeScript, Tailwind CSS, Playwright, Docker, MySQL
 
-● 개발·검증 파이프라인 재구성: 타입 체크 비동기화·dev SSR 빌드 분리로 dev 서버 기동 29%·watch 메모리 49% 절감, pre-commit·pre-push·CI Playwright SSR 스모크로 단계별 테스트 자동화
+● 개발·검증 파이프라인 재구성: 타입 체크 비동기화·dev SSR 빌드 분리로 콜드 빌드 18.0초 → 8.3초(53% 단축), dev 서버 기동 14.1초 → 10.0초(29% 단축), watch 메모리 118MB → 60MB(49% 절감). pre-commit·pre-push·CI Playwright SSR 스모크로 단계별 테스트 자동화
 ● 한국형 월간 정산 기능 도입: 외산 결제 엔진 위 월별 마감·스냅샷·멱등성·민감정보 경계 정책 30건 정의(설계 본인·구현 팀 협업), 정산 페이지·설정·최소 정산금 화면을 TypeScript 컴포넌트로 구현
 ● 협업·운영: 디자이너·기획·대표 협업으로 포토부스 기능 3일 프로토타입화, 한국 시장 진출 신규 화면(로컬라이제이션·상품 대시보드·결제·셀러 페이지) 컴포넌트 설계로 개편, CRM 유저 테이블·운영 지표 대시보드 관리
 
@@ -176,7 +176,7 @@ React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, React Hook Form
 2024.08 ~ 2025.01 · 카테고리: 기타 · (Next.js, TanStack Query, Zustand, TypeScript)
 
 - 사용자 상태 6종(로그인 여부·사장님/지원자·작성/지원)에 따라 UI·권한 분기, ProtectedContent·withAuth HOC·서버 컴포넌트 전환으로 속도 개선
-- 루트/클라이언트 설정 분리로 SSR 유지해 Lighthouse SEO 100 달성, Compound Form에 useFormContext로 폼 상태 통일
+- 루트/클라이언트 설정 분리로 SSR 유지해 Google Lighthouse SEO 100 달성, Compound Form에 useFormContext로 폼 상태 통일
 - GitHub Discussions·Linear History로 회의 시간 단축·히스토리 추적성 향상
 
 ### [팀 프로젝트] 오픈마인드: 익명 질문 서비스 (유사: ask.fm)
