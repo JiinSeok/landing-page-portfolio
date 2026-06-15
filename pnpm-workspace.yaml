@@ -2,6 +2,8 @@ overrides:
   # next@16.2.6 이 고정 의존하던 postcss@8.4.31 의 XSS(GHSA-qx2v-qp2m-jg93, <8.5.10)
   # 해결을 위해 트리 전체를 패치 버전으로 통일
   postcss: '^8.5.15'
+  # esbuild GHSA: Deno 모듈 RCE(high)·Windows dev server 임의 파일 읽기(low) — <0.28.1
+  esbuild: '>=0.28.1'
 allowBuilds:
   '@tailwindcss/oxide': false
   '@vercel/speed-insights': false
