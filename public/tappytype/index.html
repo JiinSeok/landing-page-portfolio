@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SEO:START — scripts/tappytype/seo.config.ts 에서 값 수정 후 `pnpm tappytype:meta` 실행. 이 블록은 생성되므로 직접 수정 금지 -->
 <title>TappyType — 내 손글씨가 진짜 폰트가 돼요</title>
 <meta name="description" content="아이패드와 애플펜슬로 만드는 나만의 한글 손글씨 폰트. 몇 글자만 쓰면 AI가 나머지를 내 글씨체로 채우고, 진짜 .ttf 폰트로 내보내요.">
 <meta property="og:title" content="TappyType — 내 손글씨가 진짜 폰트가 돼요">
@@ -10,7 +11,48 @@
 <meta property="og:image" content="https://usejiin.link/tappytype/assets/og-image.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://usejiin.link/tappytype">
+<meta property="og:site_name" content="TappyType">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="TappyType — 아이패드 손글씨 폰트 메이커">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TappyType — 내 손글씨가 진짜 폰트가 돼요">
+<meta name="twitter:description" content="애플펜슬로 몇 글자만 쓰면 AI가 나머지 한글을 내 글씨체로 채워요. 진짜 폰트(.ttf)로 내보내서 어디서든 쓰세요.">
+<meta name="twitter:image" content="https://usejiin.link/tappytype/assets/og-image.jpg">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FFF7F3">
 <link rel="canonical" href="https://usejiin.link/tappytype">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://usejiin.link/tappytype/#website",
+      "url": "https://usejiin.link/tappytype",
+      "name": "TappyType",
+      "inLanguage": "ko",
+      "description": "아이패드와 애플펜슬로 만드는 나만의 한글 손글씨 폰트. 몇 글자만 쓰면 AI가 나머지를 내 글씨체로 채우고, 진짜 .ttf 폰트로 내보내요."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "TappyType",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "iPadOS",
+      "url": "https://usejiin.link/tappytype",
+      "image": "https://usejiin.link/tappytype/assets/og-image.jpg",
+      "inLanguage": [
+        "ko",
+        "en"
+      ],
+      "description": "아이패드와 애플펜슬로 몇 글자만 쓰면 AI가 나머지 한글을 내 글씨체로 채우고, 진짜 .ttf 폰트로 내보내는 손글씨 폰트 메이커."
+    }
+  ]
+}
+</script>
+<!-- SEO:END -->
 <link rel="icon" type="image/png" href="/tappytype/assets/favicon.png">
 <link rel="apple-touch-icon" href="/tappytype/assets/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -334,6 +376,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
   <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
 </nav>
 
+<main>
 <header class="hero">
   <div>
     <span class="badge">✦ <span data-i18n="badge">iPad 전용 · Apple Pencil</span></span>
@@ -474,7 +517,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
   <div class="creator-note">
     <span class="doodle">
       <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><path d="M101 13 C 152 11 191 55 189 103 C 187 152 146 190 99 188 C 49 186 11 145 13 99 C 15 54 53 15 101 13"/></svg>
-      <img src="/tappytype/assets/creator-jiin.png" alt="앱을 만든 도트 캐릭터" width="340" height="297">
+      <img src="/tappytype/assets/creator-jiin.png" alt="앱을 만든 도트 캐릭터" width="330" height="460">
     </span>
     <span class="sec-label" data-i18n="mk_label">만든 사람</span>
     <h2 data-i18n="mk_title">아홉 살 때 만난 친구 둘이서 만들어요</h2>
@@ -482,6 +525,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
     <a href="https://usejiin.link" target="_blank" rel="noopener" data-i18n="mk_link">→ 포트폴리오 보기</a>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="fbrand">TappyType</div>
