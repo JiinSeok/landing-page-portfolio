@@ -60,10 +60,20 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
-          <p className="mb-10 text-sm text-muted-foreground leading-relaxed">
+        <div className="max-w-3xl mx-auto mb-10 md:mb-12 flex items-center justify-center gap-4 md:gap-5">
+          <Image
+            src="/images/dev-avatar.webp"
+            alt="노트북을 든 석지인 도트 캐릭터"
+            width={72}
+            height={90}
+            className="shrink-0 w-14 md:w-[68px] h-auto select-none drop-shadow-sm"
+            draggable={false}
+          />
+          <p className="max-w-sm text-left text-sm text-muted-foreground leading-relaxed break-keep">
             {t('pages.career.meta.greeting')}
           </p>
+        </div>
+        <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
           <hr className="w-12 mx-auto mb-8 border-border" />
           <h2 className={styles.text.heading(2)}>
             {t('pages.career.meta.title')}
