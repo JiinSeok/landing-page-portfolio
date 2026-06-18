@@ -25,6 +25,8 @@ export interface GalleryItem {
   description: string
   url?: string
   linkLabel?: string
+  url2?: string
+  linkLabel2?: string
   imageUrl?: string
   alt?: string
   codeSnippet?: string
@@ -126,6 +128,8 @@ const observer = new IntersectionObserver(([entry]) => {
       'Swift·SwiftUI·PencilKit으로 앱을 만들어 출시까지 단독으로 진행했습니다. 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했고, 브랜딩과 인스타그램 사전 마케팅도 진행 중입니다.',
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
+    url2: 'https://tappytype.com',
+    linkLabel2: '사이트 보기',
     imageUrl: '/images/projects/tappytype-ipad.webp',
     alt: 'TappyType iOS 앱 소개 카드',
     device: 'tablet',
@@ -638,6 +642,13 @@ export function ProjectEntry({
                 </Button>
               </a>
             ))}
+          {item.url2 && (
+            <a href={item.url2} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm">
+                {item.linkLabel2 ?? t('view-project')}
+              </Button>
+            </a>
+          )}
           {item.notionUrl && (
             <a href={item.notionUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm">

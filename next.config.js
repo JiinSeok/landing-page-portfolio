@@ -13,9 +13,16 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // TappyType 정적 랜딩(public/tappytype/) — /tappytype 클린 URL 제공
-  async rewrites() {
-    return [{ source: '/tappytype', destination: '/tappytype/index.html' }]
+  // TappyType 랜딩은 tappytype.com으로 이전됨 — 예전 링크(이력서 등) 보호용 영구 리다이렉트
+  async redirects() {
+    return [
+      { source: '/tappytype', destination: 'https://tappytype.com/', permanent: true },
+      {
+        source: '/tappytype/:path*',
+        destination: 'https://tappytype.com/',
+        permanent: true,
+      },
+    ]
   },
 }
 

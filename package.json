@@ -11,7 +11,6 @@
     "lint": "eslint . --fix && stylelint '**/*.css' --fix",
     "test": "vitest run",
     "resume": "tsx scripts/resume/generate.ts",
-    "tappytype:meta": "tsx scripts/tappytype/build-meta.ts",
     "format": "prettier --write .",
     "correct": "pnpm format && pnpm lint",
     "update-dev": "git fetch origin && git rebase origin/dev",
