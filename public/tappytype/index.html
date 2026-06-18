@@ -247,6 +247,18 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:400;line-height:1.4;letter-s
   box-shadow:var(--shadow-pop);border:1px solid var(--soft-gray);background:var(--cream);
 }
 .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* 실제 앱 데모 — 태피가 움직이는 세로 클립 */
+.app-clip-wrap{display:flex;flex-direction:column;align-items:center;margin-top:2.5rem}
+.app-clip{
+  position:relative;width:min(300px,72vw);aspect-ratio:9/16;
+  border-radius:1.8rem;overflow:hidden;background:var(--cream);
+  box-shadow:var(--shadow-pop);border:1px solid var(--soft-gray);
+  transform:rotate(-1.4deg);
+}
+.app-clip video{width:100%;height:100%;object-fit:cover;display:block}
+.app-clip-wrap figcaption{
+  font-family:var(--pen);font-size:1.3rem;color:var(--cocoa-muted);text-align:center;margin-top:1.1rem;
+}
 
 /* ───────── 프라이버시 ───────── */
 .privacy-band{
@@ -259,6 +271,16 @@ h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:400;line-height:1.4;letter-s
 .privacy-band li{padding-left:1.7rem;position:relative;color:var(--cocoa-muted);font-size:.97rem}
 .privacy-band li::before{content:'✦';position:absolute;left:.2rem;color:var(--rose-ink);font-size:.8rem}
 .privacy-band a{font-size:.9rem}
+
+/* ───────── 만든 사람 ───────── */
+.creator-band{
+  background:linear-gradient(165deg,var(--lavender-tint),var(--cream) 130%);
+  border-radius:2.2rem;padding:clamp(2rem,5vw,3.5rem);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;
+}
+.creator-band img{width:clamp(120px,16vw,170px);filter:drop-shadow(0 8px 18px rgba(107,79,67,.16))}
+.creator-band .sec-sub{margin-top:1rem}
+.creator-band a{font-size:.92rem;display:inline-block;margin-top:1.1rem}
 
 /* ───────── footer ───────── */
 footer{
@@ -287,6 +309,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
   .shot:nth-child(2){transform:rotate(1.8deg)}
   .privacy-band{grid-template-columns:1fr;text-align:center;justify-items:center}
   .privacy-band li{text-align:left}
+  .creator-band{grid-template-columns:1fr;text-align:center;justify-items:center}
 }
 </style>
 </head>
@@ -328,7 +351,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
         <path class="s3" d="M150 96 Q 168 94 186 97"/>
       </svg>
     </div>
-    <img class="hero-mascot" src="/tappytype/assets/mascot-waving.png" alt="펜을 든 호랑이 마스코트 글범이" width="488" height="500">
+    <img class="hero-mascot" src="/tappytype/assets/mascot-waving.png" alt="펜을 든 호랑이 마스코트 태피" width="488" height="500">
   </div>
 </header>
 
@@ -348,7 +371,7 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
       </div>
       <div class="ddalkkak-done" id="ddalkkakDone">
         <img src="/tappytype/assets/mascot-done.png" alt="">
-        <span data-i18n="dd_done">글범이가 다 채웠어요!</span>
+        <span data-i18n="dd_done">태피가 다 채웠어요!</span>
       </div>
     </div>
   </div>
@@ -392,8 +415,8 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
   <div class="shots">
     <figure class="shot">
       <span class="tape"></span>
-      <img src="/tappytype/assets/shot-onboarding.png" alt="태피타입 온보딩 화면 — 글범이가 인사하는 웰컴 화면" loading="lazy" width="750" height="1000">
-      <figcaption data-i18n="sh_cap1">글범이가 처음부터 함께해요</figcaption>
+      <img src="/tappytype/assets/shot-onboarding.png" alt="태피타입 온보딩 화면 — 태피가 인사하는 웰컴 화면" loading="lazy" width="750" height="1000">
+      <figcaption data-i18n="sh_cap1">태피가 처음부터 함께해요</figcaption>
     </figure>
     <figure class="shot">
       <span class="tape"></span>
@@ -406,6 +429,16 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
 <section id="video" class="reveal">
   <span class="sec-label" data-i18n="vd_label">55초면 충분해요</span>
   <h2 data-i18n="vd_title">손글씨가 폰트가 되는 순간</h2>
+  <figure class="app-clip-wrap">
+    <div class="app-clip">
+      <video autoplay muted loop playsinline preload="metadata"
+        poster="/tappytype/assets/tappy-demo-poster.jpg"
+        aria-label="태피타입 앱에서 손글씨가 폰트로 채워지는 데모 영상">
+        <source src="/tappytype/assets/tappy-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+    <figcaption data-i18n="vd_clip_cap">앱에서는 진짜 이렇게 움직여요</figcaption>
+  </figure>
   <div class="video-wrap">
     <iframe src="https://www.youtube-nocookie.com/embed/fZ17qKEMe54" title="TappyType demo video"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -418,13 +451,25 @@ footer .pen-sign{font-family:var(--pen);font-size:1.4rem;color:var(--rose-ink);m
     <img src="/tappytype/assets/brand-logo.png" alt="" width="600" height="600">
     <div>
       <span class="sec-label" data-i18n="pv_label">내 데이터는 내 기기에</span>
-      <h2 data-i18n="pv_title">계정도, 광고도, 추적도 없어요</h2>
+      <h2 data-i18n="pv_title">내 손글씨는 내 아이패드 안에서</h2>
       <ul>
         <li data-i18n="pv_li1">쓰기, 미리보기, 폰트 만들기까지 전부 아이패드 안에서 끝나요.</li>
         <li data-i18n="pv_li2">AI 딸깍을 쓸 때만 손글씨 이미지가 서버로 전송되고, 처리 직후 바로 삭제돼요 — 저장하지 않아요.</li>
         <li data-i18n="pv_li3">만든 폰트(.ttf)는 온전히 내 것이에요.</li>
       </ul>
       <p style="margin-top:1.1rem"><a href="https://jiinseok.github.io/typetap-legal/privacy/" data-i18n="pv_link">개인정보 처리방침 전문 보기 →</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="maker" class="reveal">
+  <div class="creator-band">
+    <img src="/tappytype/assets/creator-jiin.png" alt="개발자 석지인 도트 캐릭터" width="340" height="297">
+    <div>
+      <span class="sec-label" data-i18n="mk_label">만든 사람</span>
+      <h2 data-i18n="mk_title">만 아홉 살에 만난 친구 둘이 만들어요</h2>
+      <p class="sec-sub" data-i18n="mk_body">석지인은 믿을 수 있고 이해할 수 있는 경험을 만드는 개발자예요. 앱과 사이트를 만들고, 전보배가 손글씨를 배우는 AI를 아이패드 안에서 돌아가게 해요.</p>
+      <a href="https://usejiin.link" target="_blank" rel="noopener" data-i18n="mk_link">→ 석지인 포트폴리오 보기</a>
     </div>
   </div>
 </section>
@@ -454,7 +499,7 @@ const I18N = {
     cta_video:'55초 데모 보기', cta_how:'어떻게 만들어요?', coming:'App Store 출시 준비 중이에요', coming_ig:'인스타에서 소식 받기 @tappytype',
     dd_label:'딸깍 ✨', dd_title:'몇 글자만 쓰면, 나머지는 딸깍',
     dd_sub:'한글은 11,172자나 돼요. 태피타입의 AI는 내가 쓴 글자에서 글씨체를 배워, 안 쓴 글자를 같은 느낌으로 그려줘요. 아래 버튼으로 미리 구경해 보세요.',
-    dd_btn:'AI 딸깍', dd_reset:'다시 보기', dd_leg_hand:'내가 쓴 글자', dd_leg_ai:'AI가 채운 글자', dd_done:'글범이가 다 채웠어요!',
+    dd_btn:'AI 딸깍', dd_reset:'다시 보기', dd_leg_hand:'내가 쓴 글자', dd_leg_ai:'AI가 채운 글자', dd_done:'태피가 다 채웠어요!',
     how_label:'이렇게 만들어요', how_title:'쓰고, 딸깍하고, 내보내면 끝',
     step1_t:'가이드 따라 쓰기', step1_p:'베이스라인과 따라쓰기 가이드가 도와줘요. 쓰는 즉시 라이브 미리보기에서 내 글씨로 문장이 완성돼요.',
     step2_t:'AI 딸깍', step2_p:'기본 글자를 다 쓰면, 딸깍 한 번으로 나머지 한글 2,000여 자가 전부 내 글씨체로 채워져요.',
@@ -462,9 +507,12 @@ const I18N = {
     tt_label:'라이브 미리보기', tt_title:'쓰는 즉시, 문장이 내 글씨가 돼요',
     tt_note:"✍️ 이 글씨는 TappyType으로 직접 구운 진짜 손글씨 폰트예요 — 앱에서는 '내' 글씨가 이렇게 돼요.", tt_input_label:'미리보기 문장 입력',
     sh_label:'앱 구경하기', sh_title:'따뜻한 연습장 위에서 만들어요',
-    sh_cap1:'글범이가 처음부터 함께해요', sh_cap2:'쓰는 대로 차오르는 라이브 미리보기',
-    vd_label:'55초면 충분해요', vd_title:'손글씨가 폰트가 되는 순간',
-    pv_label:'내 데이터는 내 기기에', pv_title:'계정도, 광고도, 추적도 없어요',
+    sh_cap1:'태피가 처음부터 함께해요', sh_cap2:'쓰는 대로 차오르는 라이브 미리보기',
+    vd_label:'55초면 충분해요', vd_title:'손글씨가 폰트가 되는 순간', vd_clip_cap:'앱에서는 진짜 이렇게 움직여요',
+    mk_label:'만든 사람', mk_title:'만 아홉 살에 만난 친구 둘이 만들어요',
+    mk_body:'석지인은 믿을 수 있고 이해할 수 있는 경험을 만드는 개발자예요. 앱과 사이트를 만들고, 전보배가 손글씨를 배우는 AI를 아이패드 안에서 돌아가게 해요.',
+    mk_link:'→ 석지인 포트폴리오 보기',
+    pv_label:'내 데이터는 내 기기에', pv_title:'내 손글씨는 내 아이패드 안에서',
     pv_li1:'쓰기, 미리보기, 폰트 만들기까지 전부 아이패드 안에서 끝나요.',
     pv_li2:'AI 딸깍을 쓸 때만 손글씨 이미지가 서버로 전송되고, 처리 직후 바로 삭제돼요 — 저장하지 않아요.',
     pv_li3:'만든 폰트(.ttf)는 온전히 내 것이에요.',
@@ -491,8 +539,11 @@ const I18N = {
     tt_note:'✍️ This is a real handwriting font baked with TappyType — in the app, your writing looks like this.', tt_input_label:'Type a preview sentence',
     sh_label:'Inside the app', sh_title:'Made on warm practice paper',
     sh_cap1:'Tappy welcomes you from the start', sh_cap2:'A live preview that fills as you write',
-    vd_label:'55 seconds is enough', vd_title:'The moment handwriting becomes a font',
-    pv_label:'Your data stays yours', pv_title:'No accounts, no ads, no tracking',
+    vd_label:'55 seconds is enough', vd_title:'The moment handwriting becomes a font', vd_clip_cap:'This is how it really moves in the app',
+    mk_label:'The makers', mk_title:'Built by two friends who met at nine',
+    mk_body:'Jiin Seok is a frontend & BFF developer who turns problems into clean, magical solutions. She builds the app and the site, and Bobae Jeon makes the handwriting AI run entirely on your iPad.',
+    mk_link:'→ See Jiin\'s portfolio',
+    pv_label:'Your data stays yours', pv_title:'Your handwriting stays on your iPad',
     pv_li1:'Writing, preview, and font building all happen on your iPad.',
     pv_li2:'Only when you use AI Generate, handwriting images are sent to our server — processed and immediately discarded, never stored.',
     pv_li3:'Your fonts (.ttf) are entirely yours.',
