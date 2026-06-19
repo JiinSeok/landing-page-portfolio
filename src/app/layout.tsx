@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import CursorCompanion from '@/components/ui/CursorCompanion'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: '석지인 · 개발자',
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <CursorCompanion />
         </TextProvider>
       </body>
+      <Analytics />
     </html>
   )
 }
