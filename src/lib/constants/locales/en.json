@@ -178,7 +178,123 @@
     "projects": {
       "view-project": "View project",
       "view-code": "View code",
-      "view-image": "View image"
+      "view-image": "View image",
+      "tags": {
+        "프로젝트": "Project",
+        "오픈소스": "Open source",
+        "팀": "Team",
+        "iOS": "iOS",
+        "채용 과제": "Take-home",
+        "업무": "Work",
+        "AI 워크플로": "AI workflow",
+        "발표": "Talk",
+        "설계": "Design",
+        "UI/UX": "UI/UX",
+        "프로토타입": "Prototype"
+      },
+      "items": {
+        "formkit": {
+          "title": "formkit-react",
+          "lead": "A React form library I built and published to npm.",
+          "description": "I refined the form-building lessons from Codeit Sprint projects like albaform into patterns while doing a hiring assignment, then grew the result into a library. I designed a composable API with the Compound Component pattern and packed Zod validation, accessibility (ARIA), and TypeScript types into a single package. Built with Vite, verified with GitHub Actions, then published.",
+          "alt": "formkit-react form library example screen"
+        },
+        "albaform": {
+          "title": "albaform",
+          "lead": "A part-time job marketplace built by a team.",
+          "description": "I split SSR (for search visibility) from CSR (for interaction) and isolated global config to preserve SSR, reaching Google Lighthouse SEO 100. I branched permissions and rendering across six user states to block unauthorized access, unified screens with shared components, and sped up responsiveness with optimistic updates.",
+          "alt": "albaform job marketplace listing screen",
+          "screens": [
+            { "caption": "Sign in as applicant → My Page", "alt": "albaform applicant journey — blocked while logged out, then applicant sign-in and My Page" },
+            { "caption": "Sign in as owner → manage job-form states", "alt": "albaform owner journey — private and closed states of my job forms" }
+          ]
+        },
+        "openmind": {
+          "title": "OpenMind",
+          "lead": "An anonymous Q&A service built as a Codeit team project.",
+          "description": "I implemented infinite scroll with IntersectionObserver and an isHydrated guard, eliminating the duplicate and missed API requests that came from depending on render timing. The observer disconnects immediately at the end of the list, and data loads without errors even in edge cases like an empty feed, back navigation, and URL changes. Built with JavaScript, React, CSS Modules, Axios, and Storybook.",
+          "alt": "OpenMind anonymous question service landing screen"
+        },
+        "tappytype": {
+          "title": "TappyType",
+          "lead": "An iOS app that turns Apple Pencil handwriting into a Korean font.",
+          "description": "I built the app with Swift, SwiftUI, and PencilKit and took it solo all the way to launch. I separated the app and server behind a REST contract so swapping the model never touches app code, and since launch I've kept shipping updates solo — multi-project (1.1), notebook input, and pen presets (1.5).",
+          "alt": "TappyType iOS app intro card",
+          "linkLabel": "View Instagram",
+          "linkLabel2": "View site",
+          "sublabel": "iOS · ongoing"
+        },
+        "portfolio": {
+          "title": "Portfolio site",
+          "lead": "The very site you're looking at.",
+          "description": "A timeline design that shows career, projects, and education alongside a generative-AI history, with a Pochacco cursor companion that follows your mouse. Built with Next.js App Router and TypeScript, with shared components and automation (ESLint, Prettier, Husky) keeping the code style consistent. The résumé (HTML and PDF) lives in this same repo: facts like dates and metrics sit in a single source of truth, both documents regenerate with one command, and tests fail if the site and résumé drift apart.",
+          "alt": "Portfolio site first screen",
+          "linkLabel": "View repository"
+        },
+        "bodycodi": {
+          "title": "bodycodi",
+          "lead": "A take-home assignment where I investigated the company's JSP legacy first-hand, inferred and defined coexistence constraints, and designed for gradual integration.",
+          "description": "It includes a tw- prefix convention doc, central error handling that distinguishes predictable from unpredictable failures, conditional virtualization above a 50-item threshold (smooth scrolling even at 7,000), and a test control panel that lets the reviewer change data size and network latency to verify. The code is private — happy to share on request.",
+          "alt": "bodycodi take-home assignment intro card (JSP legacy coexistence design)"
+        },
+        "nexca": {
+          "title": "Nexca console — frontend refactor",
+          "lead": "At Chainshift I cleaned up the frontend architecture of a SaaS usage-management console.",
+          "description": "I replaced 15 pass-through Next.js API routes with a single catch-all proxy, and unified the per-screen form and error handling with a react-hook-form-based shared Form component (compound pattern) and one HTTP-status-based error handler. The code is private — happy to share on request."
+        },
+        "dotfiles": {
+          "title": "Claude Code config (dotfiles)",
+          "lead": "The public edition of my real Claude Code setup, with sensitive parts removed.",
+          "description": "I organized 30 React and 13 Python style rules into skills, and used CLAUDE.md to enforce reading the relevant rules before editing any .tsx or .py file. The rules are patterns that solidified in real projects like formkit-react and albaform, so code and guide validate each other. The config directory itself is a git repo, and launchd pulls hourly then auto-commits and pushes changes, so I work with the same rules on any machine.",
+          "linkLabel": "View repository"
+        },
+        "seo-talk": {
+          "title": "SEO lightning talk",
+          "description": "A lightning talk that defines a search engine as 'a product that gives information seekers the value of having their information needs met,' grouping 40-some SEO techniques under web standards, speed, and reliability. Starting backward from a search engine developer's concerns — crawl budget, server cost, accessibility — reveals the reason behind each ranking criterion, and the same principles carry into GEO in the LLM era (Bing indexing, easy-to-cite structure).",
+          "alt": "Slide grouping 40-some SEO techniques into three branches: web standards, speed, reliability",
+          "linkLabel": "View slides"
+        },
+        "cx-talk": {
+          "title": "The developer as service worker — lightning talk",
+          "description": "A lightning talk at a Dost11 dev meeting titled 'CX 101 for thoughtful development.' Through the lens of a server response as a service interaction, it contrasts three responses customers react negatively to (causing harm, ignoring context, amateur handling) with a librarian's reference service (defining together what's being sought and guiding step by step). The core point: a good error message is itself DX and marketing.",
+          "alt": "Slide expressing the USER–SERVICE relationship: 'the service offers an experience first, and I respond to it'",
+          "linkLabel": "View slides"
+        },
+        "settlement": {
+          "title": "Settlement feature design",
+          "lead": "A record of designing Korea-style monthly settlement on top of a foreign payment engine and handing it off to the team.",
+          "description": "I organized design decisions — monthly close and snapshots, a state machine with locking, idempotency, sensitive-data boundaries — and the settlement UI and price snapshots I built myself into insights, example code, and concept diagrams. Internal company details are generalized.",
+          "alt": "Settlement feature design case study page",
+          "linkLabel": "View case study"
+        },
+        "aicg": {
+          "title": "Broadcast CG compositing tool — Gradio UI/UX redesign",
+          "lead": "Sharing one repo with ML researchers, I redesigned the frontend of a broadcast CG compositing tool.",
+          "description": "The tool was Gradio, but the essence was the same: translating the user's workflow into screen structure. I restructured tool-named English tabs into the actual work order — 1. Mask → 2. Asset → 3. Composite — and added an 'original + mask + asset = composite' thumbnail timeline so the screen shows where each output feeds next. I also handled Korean UI terminology and broadcast-grade 5GB uploads.",
+          "sublabel": "with ML researchers",
+          "beforeAfter": {
+            "before": { "caption": "English tool tabs — work order unclear", "alt": "Before — SAM3 English tool-tab screen" },
+            "after": { "caption": "'original + mask + asset = composite' thumbnail timeline; work on the left, results on the right", "alt": "After — final screen with thumbnail timeline header and left/right split" }
+          }
+        },
+        "most267": {
+          "title": "most267.co.kr — corporate site rebuild",
+          "lead": "I rebuilt a hand-edited static HTML corporate site entirely in Next.js.",
+          "description": "I integrated five Notion databases so non-developers manage content directly, and built an asset pipeline that downloads Notion files (which expire hourly) at build time and auto-converts them to WebP/WebM. I also optimized loading by removing CLS and preloading the hero.",
+          "linkLabel": "View site",
+          "beforeAfter": {
+            "before": { "caption": "Static HTML — content was a single YouTube card", "alt": "Before — hand-edited static HTML first screen" },
+            "after": { "caption": "A video uploaded to Notion, optimized to WebM and autoplaying", "alt": "After — Next.js rebuild with a Notion-integrated WebM hero video" }
+          }
+        },
+        "photobooth": {
+          "title": "Event collaboration pitch · photobooth prototype",
+          "lead": "A photobooth prototype I pitched in a marketing meeting and finished in three days.",
+          "description": "I finished a working demo within three days (including the day I pitched it), it was adopted as an official add-on, and I'm now generalizing it to decouple from a specific event.",
+          "linkLabel": "View prototype",
+          "alt": "Photobooth demo — four-cut shots composited with a Muhan Dojeon RUN frame"
+        }
+      }
     }
   },
   "layout": {

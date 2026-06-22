@@ -42,6 +42,7 @@ export type AiMilestone = {
 }
 
 export type TimelineProject = {
+  id?: string
   title: string
   period?: string
   featured?: { sublabel: string }
@@ -142,7 +143,7 @@ export function buildTimeline<P extends TimelineProject>(
       .map((project) => ({
         kind: 'project' as const,
         sort: timelineSortKey('project', project.period),
-        anchor: timelineAnchorId('project', project.title),
+        anchor: timelineAnchorId('project', project.id ?? project.title),
         project,
       })),
     ...LLM_MILESTONES.map(({ labelEn, tocLabelEn, ...m }) => ({

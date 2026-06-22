@@ -18,6 +18,7 @@ export interface GalleryScreen {
 }
 
 export interface GalleryItem {
+  id?: string
   title: string
   period?: string
   tags: string[]
