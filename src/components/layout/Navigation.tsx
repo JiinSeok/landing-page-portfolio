@@ -23,7 +23,7 @@ import {
   ShareMenu,
 } from '@/components/FloatingButtonGroup'
 import { Link, usePathname } from '@/navigation'
-import { useLocale } from '@/lib/providers/TextContext'
+import { useLocale, useTranslations } from '@/lib/providers/TextContext'
 
 // 영어 i18n 골격은 갖췄으나 본문 산문이 아직 한국어 폴백(혼용)이라 토글을 숨겨 둔다.
 // 본문 transcreation·NAV 로케일화 완료 후 true로 바꾸면 토글이 노출된다.
@@ -77,6 +77,7 @@ export default function Navigation() {
   } = useCopyContact()
   const onHome = usePathname() === '/'
   const { locale, setLocale } = useLocale()
+  const t = useTranslations()
 
   return (
     <>
@@ -114,14 +115,14 @@ export default function Navigation() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center min-h-[24px] text-xs text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  이력서 ↗
+                  {t('layout.ui.resume')} ↗
                 </a>
                 <button
                   type="button"
                   onClick={railCopy}
                   className="inline-flex items-center min-h-[24px] text-xs text-muted-foreground whitespace-nowrap hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
-                  {railCopied ? '복사됨 ✓' : '연락처 복사'}
+                  {railCopied ? t('layout.ui.copied') : t('layout.ui.copyContact')}
                 </button>
               </div>
               <ContactPopover open={railOpen} className="left-0" />
@@ -165,7 +166,7 @@ export default function Navigation() {
                     onClick={() => scrollTo(item.id)}
                     className="inline-flex items-center min-h-[24px] text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                   >
-                    {item.label}
+                    {t(`layout.nav.${item.id}`)}
                   </button>
                 </li>
               ))}
@@ -190,7 +191,7 @@ export default function Navigation() {
               rel="noopener noreferrer"
               className={`px-3.5 py-1.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors ${onHome ? 'md:hidden' : ''}`}
             >
-              이력서
+              {t('layout.ui.resume')}
             </a>
 
             <div className="nav-floating-buttons">
@@ -254,7 +255,7 @@ export default function Navigation() {
                   className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  이력서
+                  {t('layout.ui.resume')}
                 </a>
               </li>
               {NAV_ITEMS.map((item) => (
@@ -267,7 +268,7 @@ export default function Navigation() {
                     }}
                     className="w-full text-left text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-3 block"
                   >
-                    {item.label}
+                    {t(`layout.nav.${item.id}`)}
                   </button>
                 </li>
               ))}
@@ -298,7 +299,7 @@ export default function Navigation() {
                   ) : (
                     <CopyIcon className="w-4 h-4" />
                   )}
-                  {copied ? '복사됨!' : 'Copy Info'}
+                  {copied ? t('layout.ui.copiedShort') : t('layout.ui.copyContact')}
                 </button>
               </li>
             </ul>

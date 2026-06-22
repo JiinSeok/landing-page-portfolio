@@ -208,6 +208,21 @@
       "regionLabel": "TappyType promotion",
       "closeLabel": "Close promotion banner",
       "reopenLabel": "Reopen TappyType promotion"
+    },
+    "nav": {
+      "career": "Career",
+      "tech-stack": "Tech Stack",
+      "faq": "FAQ"
+    },
+    "ui": {
+      "experience": "Experience",
+      "current": "Current",
+      "resume": "Resume",
+      "copyContact": "Copy contact",
+      "copied": "Copied ✓",
+      "copiedShort": "Copied!",
+      "copiedClipboard": "Copied to clipboard",
+      "scrollTop": "Scroll to top"
     }
   }
 }

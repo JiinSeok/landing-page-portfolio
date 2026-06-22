@@ -205,6 +205,21 @@
       "regionLabel": "TappyType 홍보",
       "closeLabel": "홍보 배너 닫기",
       "reopenLabel": "TappyType 홍보 다시 보기"
+    },
+    "nav": {
+      "career": "커리어",
+      "tech-stack": "기술 스택",
+      "faq": "FAQ"
+    },
+    "ui": {
+      "experience": "경력",
+      "current": "재직 중",
+      "resume": "이력서",
+      "copyContact": "연락처 복사",
+      "copied": "복사됨 ✓",
+      "copiedShort": "복사됨!",
+      "copiedClipboard": "클립보드에 복사되었습니다",
+      "scrollTop": "맨 위로 가기"
     }
   }
 }

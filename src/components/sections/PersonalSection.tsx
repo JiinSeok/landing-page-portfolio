@@ -204,7 +204,7 @@ export default function PersonalSection() {
                   <div className={isCurrent ? FEATURED_CAREER_CARD_STYLES : ''}>
                     <div className="flex flex-wrap gap-1.5 mb-2">
                       <span className="px-2.5 py-0.5 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                        경력
+                        {t('layout.ui.experience')}
                       </span>
                       {isCurrent && (
                         <span className="flex items-center gap-1.5 px-2.5 py-0.5 border border-primary/25 text-primary text-xs font-semibold rounded-full">
@@ -212,7 +212,7 @@ export default function PersonalSection() {
                             <span className="absolute inline-flex w-full h-full bg-primary/50 rounded-full animate-ping" />
                             <span className="relative inline-flex w-1.5 h-1.5 bg-primary rounded-full" />
                           </span>
-                          재직 중
+                          {t('layout.ui.current')}
                         </span>
                       )}
                     </div>

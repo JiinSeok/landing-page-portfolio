@@ -2,7 +2,10 @@
 
 import { useState, useEffect } from 'react'
 
+import { useTranslations } from '@/lib/providers/TextContext'
+
 export default function ScrollToTop() {
+  const t = useTranslations()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function ScrollToTop() {
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
-      aria-label="맨 위로 가기"
+      aria-label={t('layout.ui.scrollTop')}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

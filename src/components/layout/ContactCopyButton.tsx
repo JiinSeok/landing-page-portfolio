@@ -3,6 +3,7 @@
 import { CheckIcon, CopyIcon } from 'lucide-react'
 
 import { CONTACT_INFO } from '@/lib/constants/contact'
+import { useTranslations } from '@/lib/providers/TextContext'
 
 import type { ButtonHTMLAttributes, HTMLAttributes } from 'react'
 
@@ -15,11 +16,12 @@ function ContactCopyButton({
   className = '',
   ...rest
 }: ContactCopyButtonProps) {
+  const t = useTranslations()
   return (
     <button
       type="button"
-      aria-label="연락처 복사"
-      title="연락처 복사"
+      aria-label={t('layout.ui.copyContact')}
+      title={t('layout.ui.copyContact')}
       className={`flex items-center p-1.5 text-muted-foreground rounded-md hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${className}`}
       {...rest}
     >
@@ -41,6 +43,7 @@ function ContactPopover({
   className = '',
   ...rest
 }: ContactPopoverProps) {
+  const t = useTranslations()
   if (!open) return null
 
   return (
@@ -50,7 +53,7 @@ function ContactPopover({
     >
       <p className="flex items-center gap-1.5 mb-3 text-xs text-emerald-600">
         <CheckIcon className="w-3.5 h-3.5" />
-        클립보드에 복사되었습니다
+        {t('layout.ui.copiedClipboard')}
       </p>
       <ul className="space-y-2">
         {CONTACT_INFO.map((item) => (
