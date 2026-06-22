@@ -25,6 +25,10 @@ import {
 import { Link, usePathname } from '@/navigation'
 import { useLocale } from '@/lib/providers/TextContext'
 
+// 영어 i18n 골격은 갖췄으나 본문 산문이 아직 한국어 폴백(혼용)이라 토글을 숨겨 둔다.
+// 본문 transcreation·NAV 로케일화 완료 후 true로 바꾸면 토글이 노출된다.
+const SHOW_LOCALE_TOGGLE = false
+
 const NAV_ITEMS = [
   { id: 'career', label: '커리어' },
   { id: 'tech-stack', label: '기술 스택' },
@@ -167,16 +171,18 @@ export default function Navigation() {
               ))}
             </ul>
 
-            <button
-              type="button"
-              onClick={() => setLocale(locale === 'ko' ? 'en' : 'ko')}
-              className="inline-flex items-center min-h-[24px] text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              aria-label={
-                locale === 'ko' ? 'Switch to English' : '한국어로 전환'
-              }
-            >
-              {locale === 'ko' ? 'EN' : '한국어'}
-            </button>
+            {SHOW_LOCALE_TOGGLE && (
+              <button
+                type="button"
+                onClick={() => setLocale(locale === 'ko' ? 'en' : 'ko')}
+                className="inline-flex items-center min-h-[24px] text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                aria-label={
+                  locale === 'ko' ? 'Switch to English' : '한국어로 전환'
+                }
+              >
+                {locale === 'ko' ? 'EN' : '한국어'}
+              </button>
+            )}
 
             <a
               href={ROUTER.Resume.path}
