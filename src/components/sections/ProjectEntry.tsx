@@ -131,9 +131,9 @@ const observer = new IntersectionObserver(([entry]) => {
     linkLabel: '인스타그램 보기',
     url2: 'https://tappytype.com',
     linkLabel2: '사이트 보기',
-    imageUrl: '/images/projects/tappytype-ipad.webp',
-    alt: 'TappyType 앱 — 문장을 따라 쓰며 손글씨로 한글 폰트를 만드는 화면',
-    device: 'tablet',
+    imageUrl: '/images/projects/tappytype-web.webp',
+    alt: 'TappyType 소개 사이트(tappytype.com) 첫 화면 — 손글씨가 폰트가 되는 라이브 프리뷰',
+    device: 'laptop',
     featured: { sublabel: 'iOS · 진행 중' },
     codeSnippet: `// 생성 모델을 바꿔도 앱 코드는 고치지 않도록 경계를 분리
 protocol HandwritingGenerator {
@@ -400,11 +400,10 @@ const APPLE_BEZELS = {
     sizes: '(min-width: 768px) 190px, 45vw',
   },
   tablet: {
-    // 앱이 세로 전용(iPad Portrait)이라 가로 베젤을 90° 회전해 세로로 사용 — inset/radius 도 스왑.
-    src: '/images/device/ipad-pro-11-black-portrait.png',
-    aspectRatio: '1880 / 2640',
-    screenInset: '4.17% 5.64%',
-    screenRadius: '2.9% / 2%',
+    src: '/images/device/ipad-pro-11-black-landscape.png',
+    aspectRatio: '2640 / 1880',
+    screenInset: '5.64% 4.17%',
+    screenRadius: '2% / 2.9%',
     sizes: '(min-width: 1024px) 384px, (min-width: 768px) 320px, 100vw',
   },
   laptop: {
@@ -474,21 +473,15 @@ export function DeviceFrame({
   screen,
   title,
   priority = false,
-  compact = false,
 }: {
   kind: DeviceKind
   screen: GalleryScreen
   title: string
   priority?: boolean
-  // 세로 목업이 슬롯을 꽉 채워 과하게 커지지 않도록 너비 제한 + 중앙 정렬(내용 가독성 유지).
-  compact?: boolean
 }) {
   const bezel = APPLE_BEZELS[kind]
   return (
-    <div
-      className={`relative w-full ${compact ? 'max-w-[17.5rem] mx-auto' : ''}`}
-      style={{ aspectRatio: bezel.aspectRatio }}
-    >
+    <div className="relative w-full" style={{ aspectRatio: bezel.aspectRatio }}>
       <div
         className="absolute overflow-hidden bg-muted"
         style={{ inset: bezel.screenInset, borderRadius: bezel.screenRadius }}
@@ -555,20 +548,6 @@ function DeviceMockup({
             />
           </div>
         ))}
-      </div>
-    )
-  }
-  // 세로 iPad 목업은 너비를 제한해 적당한 높이로(내용이 보이게) 슬롯 안 중앙 정렬.
-  if (item.device === 'tablet') {
-    return (
-      <div className="flex justify-center">
-        <DeviceFrame
-          kind="tablet"
-          screen={screens[0]}
-          title={item.title}
-          priority={priority}
-          compact
-        />
       </div>
     )
   }
