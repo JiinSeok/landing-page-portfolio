@@ -25,9 +25,9 @@ import {
 import { Link, usePathname } from '@/navigation'
 import { useLocale, useTranslations } from '@/lib/providers/TextContext'
 
-// 영어 i18n 골격은 갖췄으나 본문 산문이 아직 한국어 폴백(혼용)이라 토글을 숨겨 둔다.
-// 본문 transcreation·NAV 로케일화 완료 후 true로 바꾸면 토글이 노출된다.
-const SHOW_LOCALE_TOGGLE = false
+// 메인 페이지(셸·경력·FAQ·프로젝트·기술스택) 영어화 완료로 토글 공개.
+// 남은 한국어: /recommendation 페이지, SEO 메타데이터, 로고/푸터 이름, 코드 스니펫 주석.
+const SHOW_LOCALE_TOGGLE = true
 
 const NAV_ITEMS = [
   { id: 'career', label: '커리어' },
