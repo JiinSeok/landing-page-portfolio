@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import CursorCompanion from '@/components/ui/CursorCompanion'
+import PromoBanner from '@/components/PromoBanner'
 import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
@@ -48,6 +49,12 @@ export default function RootLayout({ children }: LayoutProps) {
       `,
           }}
         />
+        {/* 페인트 전 실행: 홍보 배너 닫힘 상태를 미리 반영해 FOUC·CLS 방지 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('tappytype-banner-dismissed')==='1'){document.documentElement.setAttribute('data-promo-dismissed','')}}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className={cn(
@@ -55,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps) {
         )}
       >
         <TextProvider>
+          <PromoBanner />
           {/* Navigation */}
           <ClientSideProviders />
           {children}

@@ -104,6 +104,7 @@ export interface ProjectFact {
   end: string | null
   collaboration: string
   npm?: string
+  url?: string
 }
 
 export const projects = {
@@ -137,6 +138,7 @@ export const projects = {
     start: '2026.05',
     end: null,
     collaboration: '단독',
+    url: 'https://tappytype.com',
   },
   portfolio: {
     name: '포트폴리오 사이트',

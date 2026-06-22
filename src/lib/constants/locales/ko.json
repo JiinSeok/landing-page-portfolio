@@ -197,6 +197,14 @@
       "returnHome": "홈으로 돌아가기",
       "contactSupport": "문의하기",
       "contactMessage": "이 오류가 계속되면 연락 주세요."
+    },
+    "promo": {
+      "text": "애플펜슬 AI 폰트메이커, TappyType!",
+      "cta": "둘러보기",
+      "chip": "TappyType",
+      "regionLabel": "TappyType 홍보",
+      "closeLabel": "홍보 배너 닫기",
+      "reopenLabel": "TappyType 홍보 다시 보기"
     }
   }
 }
