@@ -1,12 +1,38 @@
 {
   "_meta": {
-    "status": "WIP skeleton — shell strings translated. Long-form prose (career entries, FAQ answers, project descriptions) intentionally falls back to Korean until native transcreation is done."
+    "status": "Full English transcreation of body content (careers, FAQ, extras, projects) and shell. Dates keep the Korean 현재 marker to preserve timeline parsing. Remaining for a shell pass: NAV tabs and scattered hardcoded UI strings (e.g. 재직 중 badge, AI history timeline, rail links). Toggle is hidden until reviewed."
   },
   "pages": {
     "home": {
       "sections": {
         "faq": {
-          "title": "FAQ"
+          "title": "FAQ",
+          "questions": [
+            {
+              "question": "Why did you move into development?",
+              "answer": "I majored in Library & Information Science and worked on a people database at Yonhap News, then in QA and CX at a logistics startup and at Fitogether. I cut a response form down to a single page, raised the opt-in profile submission rate by 30%, and lowered communication costs with a shared glossary — and that's when I realized what I love is shaping information so it's easy for people to use. But QA and CX were roles where I proposed improvements and handed them off; the more I did it, the more I wanted to build and fix things myself. I'd been coding since 2020, so moving into development felt natural."
+            },
+            {
+              "question": "You're not a CS major — how did you build your fundamentals?",
+              "answer": "Library & Information Science is the study of classifying and structuring information, so my instinct for data modeling and consistent terminology actually comes from my major. I started coding there too, through courses like Information Technology (Python) and Software Programming, and I fill the gaps by building things myself. I implemented a TrueType font writer from scratch in pure Swift and published shared components as an npm library (formkit-react). My quality-engineering theory is backed by the ISTQB and CSTS certifications."
+            },
+            {
+              "question": "How does your SQA/CX background help in frontend work?",
+              "answer": "Doing SQA and CX at two companies, I watched first-hand where users get confused and drop off, and that experience lives on in my code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds — kicking in at 50 items, for example. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
+            },
+            {
+              "question": "What are you working on now?",
+              "answer": "I'm a full-stack developer on Doppket, a digital-asset marketplace at Dost11, MBC's AI strategy subsidiary. I've owned Korean-market localization, the product dashboard, the blog CMS, and the checkout UX, and I led onboarding for our first B2B client. I turned a photobooth feature I pitched in a meeting into a prototype in three days, and I redesigned the UI/UX of a broadcast CG compositing tool side by side with ML researchers in a shared repo."
+            },
+            {
+              "question": "How do you use AI tools?",
+              "answer": "Heavily — but I verify rather than trust blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. Conversely, on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and documented the process in an analysis writeup. I also work with AI inside products — a few-shot font-generation pipeline and an ML monorepo."
+            },
+            {
+              "question": "What matters most to you when collaborating?",
+              "answer": "I work PR-first and automate code quality with ESLint and Prettier plus Git hooks like Overcommit and Husky. I also look after quality outside the code — standardizing UI terms (e.g., visits/views collapsed into one 'views' label) and documenting responsive guidelines. At Dost11, research code and product code grew fast in one repo and screen wording and error messages drifted apart; I proposed aligning all user-facing text to one standard and unified everything myself, from screen labels to error messages across 50-some backend files. I write the accompanying tests, too."
+            }
+          ]
         }
       }
     },
@@ -14,7 +40,135 @@
       "meta": {
         "title": "Career Timeline",
         "greeting": "Hi, I'm Jiin Seok — a developer who builds experiences people can trust and understand."
-      }
+      },
+      "careers": [
+        {
+          "company": "Dost11",
+          "tocLabel": "Full-stack",
+          "description": "MBC AI strategy subsidiary · runs the digital-asset marketplace Doppket",
+          "url": "https://www.dost11.com",
+          "period": "2025.09 ~ 현재",
+          "role": "AI Dev Team · Full-stack Developer (Rails + React)",
+          "contributions": [
+            "Korean-market localization — full Korean translation and rebranding across every page; built new screens including the product dashboard, CMS blog, checkout UX, and membership",
+            "Korea-style monthly settlement — led the policy design (monthly close, snapshots, idempotency, sensitive-data boundaries), ticketing 30 settlement milestones, and implemented the settlement page, settings UI, and minimum-payout screen myself (design: me · implementation: with the team)",
+            "Rebuilt dev speed & verification — cut the cold build by 53% (18.0s→8.3s) by making type-checks async and splitting the dev SSR build, and added staged checks via pre-commit, pre-push, and CI Playwright SSR smoke tests",
+            "B2B & operations — led onboarding for our first B2B client, built and maintained the CRM user table and a Grafana daily-metrics dashboard (internal users excluded), and diagnosed and fixed an SSR 500 production incident caused by an asset-cache permission error",
+            "Event collaboration pitch — pitched it in a meeting and finished a [photobooth prototype](https://staging.doppket.com/proposals/mudo-run) in three days; adopted as an official add-on, through to frame matching and watermark compositing",
+            "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across 50-some backend files; also fixed a bug that blocked 5GB video uploads",
+            "Rebuilt the most267.co.kr corporate landing with Notion — rebuilt static HTML entirely in Next.js and wired up a Notion CMS/DB so non-developers manage content directly; prevented CLS with semantic HTML and next/image, cutting LCP by 46% and raising accessibility 83→96 versus the old site (solo)"
+          ]
+        },
+        {
+          "company": "Chainshift",
+          "tocLabel": "Production dev",
+          "description": "AI search-optimization SaaS",
+          "url": "https://www.chainshift.co",
+          "period": "2025.04 ~ 2025.06",
+          "role": "Intern · Frontend",
+          "contributions": [
+            "Built a dashboard MVP with bubble and treemap charts using D3.js and Recharts; finished three dashboard pages in seven days with Claude Code to support a sales demo",
+            "Built an SEO (SSR) landing-page template with Next.js and Tailwind CSS",
+            "Refactored the Nexca console: replaced 15 API routes with a single proxy, applied React Hook Form across the board, unified error handlers, and standardized auth-based access control with middleware and NextAuth"
+          ]
+        },
+        {
+          "company": "Fitogether",
+          "tocLabel": "SQA · certifications",
+          "description": "All-in-one football-data platform 'OHCOACH' · FIFA Preferred Provider (FPP)",
+          "url": "https://www.fitogether.com",
+          "period": "2023.08 ~ 2024.02",
+          "role": "Software Dev Team · SQA",
+          "contributions": [
+            "Organized neglected technical docs into a wiki to speed up developer onboarding",
+            "Created and managed tailored Jira projects for five products",
+            "Set up a test bench as part of a company-wide QA task force, and ran packet-reception testing for the iPad app"
+          ]
+        },
+        {
+          "company": "Mulryudaejang",
+          "tocLabel": "Startup",
+          "description": "Logistics SaaS (OMS/WMS) matching delivery and installation for mid-to-large products",
+          "url": "https://www.ftf.co.kr",
+          "period": "2022.06 ~ 2023.08",
+          "role": "Platform Planning Team · SQA Manager · CX Manager",
+          "contributions": [
+            "Introduced an issue/bug tracker to make development progress visible",
+            "Built an input-component design system and unified service terminology (ubiquitous language)",
+            "Supported onboarding for three B2B clients (including CJ Logistics) and ran development discussions (swapping the external API for map customization, DB integration); did QA on MySQL logistics data, analyzed usage in Google Analytics, and surfaced issues through end-user beta tests and on-site interviews"
+          ]
+        },
+        {
+          "company": "Yonhap News",
+          "tocLabel": "In-house archive",
+          "description": "Korea's leading news agency",
+          "url": "https://www.yna.co.kr",
+          "period": "2021.08 ~ 2022.03",
+          "role": "Publishing Bureau, DB Center · People-data specialist",
+          "contributions": [
+            "Guided internal web-app usage and improved UX through bug reports",
+            "Added familiar channels (KakaoTalk, SMS, fax) and cut the response form to a single page (50% shorter), raising the opt-in profile submission rate by 30%"
+          ]
+        }
+      ],
+      "extras": [
+        {
+          "tag": "Education",
+          "label": "Codeit Sprint Frontend Track, Cohort 7",
+          "tocLabel": "Frontend dev",
+          "period": "2024.04 ~ 2024.10",
+          "sort": "2024.04"
+        },
+        {
+          "tag": "Education",
+          "label": "Completed Comento's 'QA Test Automation Quantum Jump: Selenium with Python'",
+          "period": "2023.10",
+          "sort": "2023.10"
+        },
+        {
+          "tag": "Certification",
+          "label": "Earned ISTQB CTFL · CSTS Foundation Level",
+          "period": "2023.08 ~ 09",
+          "sort": "2023.08"
+        },
+        {
+          "tag": "Education",
+          "label": "Completed Grow&Better CX 101",
+          "period": "2022.04 ~ 05",
+          "sort": "2022.04"
+        },
+        {
+          "tag": "Certification",
+          "label": "Earned KBS Korean Language Proficiency Test, Level 1",
+          "period": "2021.03",
+          "sort": "2021.03"
+        },
+        {
+          "tag": "Certification",
+          "label": "Earned Class-2 Librarian certification (Korean Library Association)",
+          "period": "2021.09",
+          "sort": "2021.09"
+        },
+        {
+          "tag": "Education",
+          "label": "Yonsei University · B.A. in Theology (major) and Library & Information Science (double major) · completed IT coursework including Information Technology (Python), Software Programming, and Metadata",
+          "period": "2015 ~ 2021",
+          "sort": "2015.03"
+        },
+        {
+          "tag": "Activity",
+          "label": "Beta tester for the revised edition of Easys Publishing's 'Do It! Intro to Databases with Oracle'",
+          "period": "2025.02",
+          "sort": "2025.02"
+        },
+        {
+          "tag": "Start",
+          "label": "Started coding",
+          "period": "2020.09",
+          "sort": "2020.09",
+          "tocLabel": "Started coding"
+        }
+      ]
     },
     "techStack": {
       "meta": {
