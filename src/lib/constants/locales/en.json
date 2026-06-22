@@ -18,7 +18,7 @@
             },
             {
               "question": "How does your SQA/CX background help in frontend work?",
-              "answer": "Doing SQA and CX at two companies, I watched first-hand where users get confused and drop off, and that experience lives on in my code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds — kicking in at 50 items, for example. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
+              "answer": "Great UX is bug-free, and great UI is consistent — a principle I carried over from my QA and CX years. Doing SQA and CX at two companies, I watched first-hand where users get confused and drop off, and that experience lives on in my code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds — kicking in at 50 items, for example. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
             },
             {
               "question": "What are you working on now?",
@@ -39,7 +39,7 @@
     "career": {
       "meta": {
         "title": "Career Timeline",
-        "greeting": "Hi, I'm Jiin Seok — a developer who builds experiences people can trust and understand."
+        "greeting": "Hi, I'm Jiin Seok — a developer who uncovers problems and weaves them into clean, seamless experiences."
       },
       "careers": [
         {
