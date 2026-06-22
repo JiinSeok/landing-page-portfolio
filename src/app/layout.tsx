@@ -1,4 +1,5 @@
 import '@/app/globals.css'
+import { metaData, socialLinks } from '@/app/config'
 import ClientSideProviders from '@/lib/providers/ClientSideProviders'
 import { TextProvider } from '@/lib/providers/TextContext'
 import { LayoutProps } from '@/lib/types'
@@ -30,10 +31,39 @@ export const metadata: Metadata = {
   },
 }
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: '석지인',
+  alternateName: 'Jiin Seok',
+  url: metaData.baseUrl,
+  image: `${metaData.baseUrl}profile.jpg`,
+  jobTitle: '프론트엔드·풀스택 개발자',
+  worksFor: { '@type': 'Organization', name: '도스트11' },
+  sameAs: [
+    socialLinks.github,
+    socialLinks.linkedin,
+    'https://www.instagram.com/tappytype/',
+  ],
+  knowsAbout: [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    '프론트엔드 개발',
+    '웹 접근성',
+    'SEO',
+  ],
+}
+
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="ko">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <script
           async
           src="https://unpkg.com/ios-pwa-splash@1.0.0/cdn.min.js"
