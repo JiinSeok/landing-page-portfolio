@@ -106,14 +106,14 @@ export default function Navigation() {
                   href={ROUTER.Resume.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex items-center min-h-[24px] text-xs text-muted-foreground hover:text-foreground transition-colors"
                 >
                   이력서 ↗
                 </a>
                 <button
                   type="button"
                   onClick={railCopy}
-                  className="text-xs text-muted-foreground whitespace-nowrap hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  className="inline-flex items-center min-h-[24px] text-xs text-muted-foreground whitespace-nowrap hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                 >
                   {railCopied ? '복사됨 ✓' : '연락처 복사'}
                 </button>
@@ -157,7 +157,7 @@ export default function Navigation() {
                   <button
                     type="button"
                     onClick={() => scrollTo(item.id)}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    className="inline-flex items-center min-h-[24px] text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                   >
                     {item.label}
                   </button>

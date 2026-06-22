@@ -28,7 +28,7 @@ export default function FAQSection() {
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug break-keep">
+            <h2 className="self-start sticky top-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
               {t('title')}
             </h2>
           </div>

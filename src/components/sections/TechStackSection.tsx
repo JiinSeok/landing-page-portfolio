@@ -44,7 +44,7 @@ export default function TechStackSection() {
               className="w-6 h-6 mt-0.5 object-contain shrink-0"
             />
             <div>
-              <h5 className="mb-0.5 text-sm font-semibold">{tech.name}</h5>
+              <h3 className="mb-0.5 text-sm font-semibold">{tech.name}</h3>
               <p
                 className={styles.combineStyles([
                   styles.text.body('small'),
@@ -71,7 +71,7 @@ export default function TechStackSection() {
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <h2 className="self-start sticky top-28 text-right font-semibold text-foreground leading-snug break-keep">
+            <h2 className="self-start sticky top-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
               {t('pages.techStack.meta.title')}
             </h2>
           </div>
