@@ -69,7 +69,7 @@ export default function PersonalSection() {
             className="shrink-0 w-14 md:w-[68px] h-auto select-none drop-shadow-sm"
             draggable={false}
           />
-          <p className="max-w-sm text-left text-sm text-muted-foreground leading-relaxed break-keep">
+          <p className="max-w-sm md:max-w-none md:whitespace-nowrap text-left text-sm text-muted-foreground leading-relaxed break-keep">
             {t('pages.career.meta.greeting')}
           </p>
         </div>

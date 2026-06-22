@@ -41,7 +41,7 @@ export default function PromoBanner() {
         data-promo-banner
         role="region"
         aria-label={t('regionLabel')}
-        className="flex w-full items-center justify-center gap-3 bg-primary px-4 py-2 text-sm text-primary-foreground"
+        className="sticky top-0 z-[60] flex w-full items-center justify-center gap-3 bg-primary px-4 py-2 text-sm text-primary-foreground"
       >
         <a
           href={url}

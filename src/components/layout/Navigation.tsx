@@ -23,6 +23,7 @@ import {
   ShareMenu,
 } from '@/components/FloatingButtonGroup'
 import { Link, usePathname } from '@/navigation'
+import { useLocale } from '@/lib/providers/TextContext'
 
 const NAV_ITEMS = [
   { id: 'career', label: '커리어' },
@@ -71,11 +72,12 @@ export default function Navigation() {
     containerRef: railRef,
   } = useCopyContact()
   const onHome = usePathname() === '/'
+  const { locale, setLocale } = useLocale()
 
   return (
     <>
       {onHome && (
-        <div className="hidden md:block fixed inset-x-0 top-0 z-50 pointer-events-none">
+        <div className="hidden md:block fixed inset-x-0 top-[var(--promo-h)] z-50 pointer-events-none">
           <div
             aria-hidden
             className="absolute inset-y-0 left-0 dark bg-background lg:hidden"
@@ -124,7 +126,7 @@ export default function Navigation() {
         </div>
       )}
       <nav
-        className={`site-header w-full sticky top-0 bg-background text-muted-foreground border-b border-border z-40 transition-transform duration-300 ${onHome ? 'md:border-b-0' : ''}`}
+        className={`site-header w-full sticky top-[var(--promo-h)] bg-background text-muted-foreground border-b border-border z-40 transition-transform duration-300 ${onHome ? 'md:border-b-0' : ''}`}
         style={
           { '--navbar-height': `${NAVBAR_HEIGHT}px` } as React.CSSProperties & {
             '--navbar-height': string
@@ -164,6 +166,17 @@ export default function Navigation() {
                 </li>
               ))}
             </ul>
+
+            <button
+              type="button"
+              onClick={() => setLocale(locale === 'ko' ? 'en' : 'ko')}
+              className="inline-flex items-center min-h-[24px] text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              aria-label={
+                locale === 'ko' ? 'Switch to English' : '한국어로 전환'
+              }
+            >
+              {locale === 'ko' ? 'EN' : '한국어'}
+            </button>
 
             <a
               href={ROUTER.Resume.path}

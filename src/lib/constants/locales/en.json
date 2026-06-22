@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "status": "WIP skeleton — shell strings translated. Long-form prose (career entries, FAQ answers, project descriptions) intentionally falls back to Korean until native transcreation is done."
+  },
+  "pages": {
+    "home": {
+      "sections": {
+        "faq": {
+          "title": "FAQ"
+        }
+      }
+    },
+    "career": {
+      "meta": {
+        "title": "Career Timeline",
+        "greeting": "Hi, I'm Jiin Seok — a developer who builds experiences people can trust and understand."
+      }
+    },
+    "techStack": {
+      "meta": {
+        "title": "Tech Stack"
+      }
+    },
+    "projects": {
+      "view-project": "View project",
+      "view-code": "View code",
+      "view-image": "View image"
+    }
+  },
+  "layout": {
+    "loading": {
+      "title": "Loading",
+      "message": "Just a moment"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "Sorry, something broke.",
+      "tryAgain": "Try again",
+      "returnHome": "Back to home",
+      "errorId": "Error ID"
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Page not found",
+      "description": "This page doesn't exist or has moved.",
+      "returnHome": "Back to home",
+      "contactSupport": "Contact",
+      "contactMessage": "If this keeps happening, please reach out."
+    },
+    "promo": {
+      "text": "Apple Pencil AI font maker, TappyType!",
+      "cta": "Explore",
+      "chip": "TappyType",
+      "regionLabel": "TappyType promotion",
+      "closeLabel": "Close promotion banner",
+      "reopenLabel": "Reopen TappyType promotion"
+    }
+  }
+}

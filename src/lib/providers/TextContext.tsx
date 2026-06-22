@@ -1,16 +1,32 @@
 'use client'
 
+import enMessages from '@/lib/constants/locales/en.json'
 import koMessages from '@/lib/constants/locales/ko.json'
-import React, { createContext, ReactNode, useContext } from 'react'
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+
+export type Locale = 'ko' | 'en'
+
+const MESSAGES: Record<Locale, unknown> = { ko: koMessages, en: enMessages }
+const COOKIE_KEY = 'locale'
 
 // 컨텍스트 값 타입 정의
 type TextContextType = {
   t: (key: string, params?: Record<string, string | number>) => string | any
+  locale: Locale
+  setLocale: (locale: Locale) => void
 }
 
 // 기본값으로 컨텍스트 생성
 const TextContext = createContext<TextContextType>({
   t: () => '',
+  locale: 'ko',
+  setLocale: () => {},
 })
 
 // 텍스트 컨텍스트 사용을 위한 커스텀 훅
@@ -32,6 +48,12 @@ export function useTranslations(namespace?: string) {
   return context.t
 }
 
+// 현재 로케일과 변경 함수를 노출하는 훅(언어 토글용)
+export function useLocale() {
+  const { locale, setLocale } = useContext(TextContext)
+  return { locale, setLocale }
+}
+
 // 점 표기법 경로를 사용하여 객체에서 중첩 값을 가져오는 헬퍼 함수
 export function getNestedValue(obj: any, path: string): any {
   const keys = path.split('.')
@@ -49,48 +71,58 @@ export function getNestedValue(obj: any, path: string): any {
 
 // 프로바이더 컴포넌트
 export function TextProvider({ children }: { children: ReactNode }) {
-  // 매개변수 지원이 있는 키별 텍스트 검색 함수
+  // SSR/첫 페인트는 기본 ko로 렌더하고, 마운트 후 쿠키 값으로 동기화한다.
+  const [locale, setLocaleState] = useState<Locale>('ko')
+
+  useEffect(() => {
+    // 쿠키에 저장된 로케일로 1회 동기화(하이드레이션 후). 의도적 setState.
+    const saved = document.cookie.match(/(?:^|;\s*)locale=(ko|en)/)?.[1] as
+      | Locale
+      | undefined
+    if (saved && saved !== 'ko') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLocaleState(saved)
+      document.documentElement.lang = saved
+    }
+  }, [])
+
+  const setLocale = (next: Locale) => {
+    setLocaleState(next)
+    document.cookie = `${COOKIE_KEY}=${next}; path=/; max-age=31536000; samesite=lax`
+    document.documentElement.lang = next
+  }
+
+  // 매개변수 지원이 있는 키별 텍스트 검색 함수 (en 누락 시 ko 폴백)
   const t = (
     key: string,
     params?: Record<string, string | number>,
   ): string | any => {
-    // 점 표기법으로 번역 가져오기
-    const keyParts = key.split('.')
-    let translationValue: any = koMessages
-
-    // 중첩 객체 구조 탐색
-    for (const part of keyParts) {
-      if (translationValue && typeof translationValue === 'object') {
-        translationValue =
-          translationValue[part as keyof typeof translationValue]
-      } else {
-        translationValue = undefined
-        break
-      }
-    }
+    const value =
+      getNestedValue(MESSAGES[locale], key) ??
+      (locale !== 'ko' ? getNestedValue(koMessages, key) : undefined)
 
     // 값이 정의되지 않은 경우 키 반환
-    if (translationValue === undefined) {
+    if (value === undefined) {
       return key
     }
 
     // 값이 문자열인 경우 매개변수 대체 처리
-    if (typeof translationValue === 'string') {
-      let translation = translationValue
-
-      // 매개변수가 제공된 경우 번역에서 대체
-      if (params) {
-        Object.entries(params).forEach(([paramKey, paramValue]) => {
-          translation = translation.replace(`{${paramKey}}`, String(paramValue))
-        })
-      }
-
-      return translation
+    if (typeof value === 'string') {
+      if (!params) return value
+      return Object.entries(params).reduce(
+        (acc, [paramKey, paramValue]) =>
+          acc.replace(`{${paramKey}}`, String(paramValue)),
+        value,
+      )
     }
 
     // 값이 객체나 배열인 경우 직접 반환
-    return translationValue
+    return value
   }
 
-  return <TextContext.Provider value={{ t }}>{children}</TextContext.Provider>
+  return (
+    <TextContext.Provider value={{ t, locale, setLocale }}>
+      {children}
+    </TextContext.Provider>
+  )
 }
