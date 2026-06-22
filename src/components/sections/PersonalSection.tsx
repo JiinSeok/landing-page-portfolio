@@ -60,16 +60,8 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
-        <div className="max-w-3xl mx-auto mb-10 md:mb-12 flex items-center justify-center gap-4 md:gap-5">
-          <Image
-            src="/images/dev-avatar.webp"
-            alt="노트북을 든 석지인 도트 캐릭터"
-            width={72}
-            height={90}
-            className="shrink-0 w-14 md:w-[68px] h-auto select-none drop-shadow-sm"
-            draggable={false}
-          />
-          <p className="max-w-sm md:max-w-none md:whitespace-nowrap text-left text-sm text-muted-foreground leading-relaxed break-keep">
+        <div className="max-w-3xl mx-auto mb-10 md:mb-12 flex items-center justify-center">
+          <p className="max-w-sm md:max-w-none md:whitespace-nowrap text-center text-sm text-muted-foreground leading-relaxed break-keep">
             {t('pages.career.meta.greeting')}
           </p>
         </div>
@@ -82,9 +74,19 @@ export default function PersonalSection() {
 
         <div className="max-w-6xl mx-auto relative">
           <div className="hidden md:block absolute inset-y-0 left-0 w-24 lg:w-28 pointer-events-none">
-            <h2 className="dark sticky top-0 pt-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
-              {t('pages.career.meta.title')}
-            </h2>
+            <div className="dark sticky top-0 pt-28 flex flex-col items-end gap-2 bg-background">
+              <Image
+                src="/images/dev-avatar.webp"
+                alt="노트북을 든 석지인 도트 캐릭터"
+                width={72}
+                height={90}
+                className="w-12 lg:w-14 h-auto select-none drop-shadow-sm"
+                draggable={false}
+              />
+              <h2 className="text-right font-semibold text-foreground leading-snug break-keep">
+                {t('pages.career.meta.title')}
+              </h2>
+            </div>
           </div>
           {timeline.map((item, index) => {
             const isLast = index === timeline.length - 1
