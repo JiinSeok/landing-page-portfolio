@@ -35,7 +35,9 @@ export type CareerExtra = {
 export type AiMilestone = {
   sort: string
   label: string
+  labelEn?: string
   tocLabel?: string
+  tocLabelEn?: string
   major?: boolean
 }
 
@@ -67,15 +69,15 @@ export type TocItem = {
 export const AXIS_START = '2020.09'
 
 export const LLM_MILESTONES: AiMilestone[] = [
-  { sort: '2026.05', label: '3사 플래그십 동시 교체' },
-  { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시' },
-  { sort: '2025.08', label: 'GPT-5·나노 바나나 출시' },
-  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시', tocLabel: 'Claude Code 출시', major: true },
-  { sort: '2025.02', label: 'Claude Code 공개\n에이전틱 코딩' },
-  { sort: '2024.06', label: 'Claude 3.5 출시\nAI 코딩 실용화' },
-  { sort: '2023.03', label: 'GPT-4 출시\nCursor 등장', tocLabel: 'Cursor 출시', major: true },
-  { sort: '2022.11', label: 'ChatGPT 출시\nLLM 대중화', tocLabel: 'GPT 출시', major: true },
-  { sort: '2022.06', label: 'GitHub Copilot 정식 출시' },
+  { sort: '2026.05', label: '3사 플래그십 동시 교체', labelEn: 'Big-3 flagships swapped at once' },
+  { sort: '2025.11', label: 'Gemini 3·Claude Opus 4.5 출시', labelEn: 'Gemini 3 · Claude Opus 4.5 launch' },
+  { sort: '2025.08', label: 'GPT-5·나노 바나나 출시', labelEn: 'GPT-5 · Nano Banana launch' },
+  { sort: '2025.05', label: 'Claude 4·Claude Code 정식 출시', labelEn: 'Claude 4 · Claude Code GA', tocLabel: 'Claude Code 출시', tocLabelEn: 'Claude Code GA', major: true },
+  { sort: '2025.02', label: 'Claude Code 공개\n에이전틱 코딩', labelEn: 'Claude Code released\nagentic coding' },
+  { sort: '2024.06', label: 'Claude 3.5 출시\nAI 코딩 실용화', labelEn: 'Claude 3.5 launch\nAI coding goes practical' },
+  { sort: '2023.03', label: 'GPT-4 출시\nCursor 등장', labelEn: 'GPT-4 launch\nCursor arrives', tocLabel: 'Cursor 출시', tocLabelEn: 'Cursor arrives', major: true },
+  { sort: '2022.11', label: 'ChatGPT 출시\nLLM 대중화', labelEn: 'ChatGPT launch\nLLMs go mainstream', tocLabel: 'GPT 출시', tocLabelEn: 'ChatGPT launch', major: true },
+  { sort: '2022.06', label: 'GitHub Copilot 정식 출시', labelEn: 'GitHub Copilot GA' },
 ]
 
 const ONGOING_RANK: Record<'career' | 'project', string> = {
@@ -83,12 +85,17 @@ const ONGOING_RANK: Record<'career' | 'project', string> = {
   project: '9999.0',
 }
 
+// 진행 중(재직/운영) 판정 — 로케일에 무관하게 ko '현재'와 en 'Present'를 모두 인식
+export function isOngoingPeriod(period: string | undefined | null): boolean {
+  return /현재|present/i.test(period ?? '')
+}
+
 export function timelineSortKey(
   kind: 'career' | 'project',
   period: string,
 ): string {
   const start = period.slice(0, 7)
-  return period.includes('현재') ? `${ONGOING_RANK[kind]} ${start}` : start
+  return isOngoingPeriod(period) ? `${ONGOING_RANK[kind]} ${start}` : start
 }
 
 export function monthIndex(key: string): number {
@@ -115,6 +122,7 @@ export function buildTimeline<P extends TimelineProject>(
   careers: CareerEntry[],
   extras: CareerExtra[],
   projects: P[],
+  locale: 'ko' | 'en' = 'ko',
 ): TimelineEntry<P>[] {
   return [
     ...careers.map((career) => ({
@@ -137,10 +145,12 @@ export function buildTimeline<P extends TimelineProject>(
         anchor: timelineAnchorId('project', project.title),
         project,
       })),
-    ...LLM_MILESTONES.map((m) => ({
+    ...LLM_MILESTONES.map(({ labelEn, tocLabelEn, ...m }) => ({
       kind: 'milestone' as const,
       anchor: timelineAnchorId('milestone', m.sort),
       ...m,
+      label: locale === 'en' ? (labelEn ?? m.label) : m.label,
+      tocLabel: locale === 'en' ? (tocLabelEn ?? m.tocLabel) : m.tocLabel,
     })),
   ].sort((a, b) => b.sort.localeCompare(a.sort))
 }
@@ -165,7 +175,7 @@ export function buildTocItems(
           label: entry.career.tocLabel ?? entry.career.company,
           sublabel: entry.career.company,
           date,
-          ongoing: entry.career.period.includes('현재'),
+          ongoing: isOngoingPeriod(entry.career.period),
           anchor: entry.anchor,
         }
       }
@@ -174,7 +184,7 @@ export function buildTocItems(
           tier: 'minor',
           label: entry.project.title,
           date,
-          ongoing: (entry.project.period ?? '').includes('현재'),
+          ongoing: isOngoingPeriod(entry.project.period),
           anchor: entry.anchor,
         }
       }

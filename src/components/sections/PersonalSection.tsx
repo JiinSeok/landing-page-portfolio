@@ -3,7 +3,7 @@
 import { useTimelineData } from '@/lib/hooks/useTimelineData'
 import { useTranslations } from '@/lib/providers/TextContext'
 import { type ContributionGroup } from '@/lib/utils/timeline'
-import { entryDate } from '@/lib/utils/timeline'
+import { entryDate, isOngoingPeriod } from '@/lib/utils/timeline'
 import { ProjectEntry } from '@/components/sections/ProjectEntry'
 import Image from 'next/image'
 import styles from '@/lib/utils/styles'
@@ -60,8 +60,10 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
-        <div className="max-w-2xl mx-auto mb-12 md:mb-16 pt-2 md:pt-6">
-          <p className="text-balance text-center text-lg md:text-2xl font-medium tracking-tight text-foreground leading-snug break-keep">
+        <div className="max-w-6xl mx-auto mb-12 md:mb-16 pt-2 md:pt-6 flex gap-4 md:gap-6">
+          <div className="hidden md:block md:w-24 lg:w-28 shrink-0" aria-hidden />
+          <div className="hidden md:block shrink-0 w-6" aria-hidden />
+          <p className="flex-1 min-w-0 text-balance text-center text-lg md:text-2xl font-medium tracking-tight text-foreground leading-snug break-keep">
             {t('pages.career.meta.greeting')}
           </p>
         </div>
@@ -186,7 +188,7 @@ export default function PersonalSection() {
 
             const { career } = item
             const logo = COMPANY_LOGOS[career.company]
-            const isCurrent = career.period.includes('현재')
+            const isCurrent = isOngoingPeriod(career.period)
 
             return (
               <div
