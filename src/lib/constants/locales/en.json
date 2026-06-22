@@ -26,11 +26,11 @@
             },
             {
               "question": "How do you use AI tools?",
-              "answer": "Heavily — but I verify rather than trust blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. Conversely, on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and documented the process in an analysis writeup. I also work with AI inside products — a few-shot font-generation pipeline and an ML monorepo."
+              "answer": "Heavily — but I verify rather than trust it blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. Conversely, on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and documented the process in an analysis writeup. I also work with AI inside products — a few-shot font-generation pipeline and an ML monorepo."
             },
             {
               "question": "What matters most to you when collaborating?",
-              "answer": "I work PR-first and automate code quality with ESLint and Prettier plus Git hooks like Overcommit and Husky. I also look after quality outside the code — standardizing UI terms (e.g., visits/views collapsed into one 'views' label) and documenting responsive guidelines. At Dost11, research code and product code grew fast in one repo and screen wording and error messages drifted apart; I proposed aligning all user-facing text to one standard and unified everything myself, from screen labels to error messages across 50-some backend files. I write the accompanying tests, too."
+              "answer": "I work PR-first and automate code quality with ESLint and Prettier plus Git hooks like Overcommit and Husky. I also look after quality outside the code — standardizing UI terms (e.g., visits/views collapsed into one 'views' label) and documenting responsive guidelines. At Dost11, research code and product code grew fast in one repo and screen wording and error messages drifted apart; I proposed aligning all user-facing text to one standard and unified everything myself, from screen labels to error messages across some 50 backend files. I write the accompanying tests, too."
             }
           ]
         }
@@ -45,17 +45,17 @@
         {
           "company": "Dost11",
           "tocLabel": "Full-stack",
-          "description": "MBC AI strategy subsidiary · runs the digital-asset marketplace Doppket",
+          "description": "MBC's AI strategy subsidiary · runs the digital-asset marketplace Doppket",
           "url": "https://www.dost11.com",
           "period": "2025.09 ~ Present",
           "role": "AI Dev Team · Full-stack Developer (Rails + React)",
           "contributions": [
             "Korean-market localization — full Korean translation and rebranding across every page; built new screens including the product dashboard, CMS blog, checkout UX, and membership",
-            "Korea-style monthly settlement — led the policy design (monthly close, snapshots, idempotency, sensitive-data boundaries), ticketing 30 settlement milestones, and implemented the settlement page, settings UI, and minimum-payout screen myself (design: me · implementation: with the team)",
+            "Korea-style monthly settlement — led the policy design (monthly close, snapshots, idempotency, sensitive-data boundaries) and ticketed 30 settlement milestones, then implemented the settlement page, settings UI, and minimum-payout screen myself (design: me · implementation: with the team)",
             "Rebuilt dev speed & verification — cut the cold build by 53% (18.0s→8.3s) by making type-checks async and splitting the dev SSR build, and added staged checks via pre-commit, pre-push, and CI Playwright SSR smoke tests",
             "B2B & operations — led onboarding for our first B2B client, built and maintained the CRM user table and a Grafana daily-metrics dashboard (internal users excluded), and diagnosed and fixed an SSR 500 production incident caused by an asset-cache permission error",
             "Event collaboration pitch — pitched it in a meeting and finished a [photobooth prototype](https://staging.doppket.com/proposals/mudo-run) in three days; adopted as an official add-on, through to frame matching and watermark compositing",
-            "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across 50-some backend files; also fixed a bug that blocked 5GB video uploads",
+            "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across some 50 backend files; also fixed a bug that blocked 5GB video uploads",
             "Rebuilt the most267.co.kr corporate landing with Notion — rebuilt static HTML entirely in Next.js and wired up a Notion CMS/DB so non-developers manage content directly; prevented CLS with semantic HTML and next/image, cutting LCP by 46% and raising accessibility 83→96 versus the old site (solo)"
           ]
         },
@@ -151,7 +151,7 @@
         },
         {
           "tag": "Education",
-          "label": "Yonsei University · B.A. in Theology (major) and Library & Information Science (double major) · completed IT coursework including Information Technology (Python), Software Programming, and Metadata",
+          "label": "Yonsei University · B.A. in Theology and Library & Information Science (double major) · completed IT coursework including Information Technology (Python), Software Programming, and Metadata",
           "period": "2015 ~ 2021",
           "sort": "2015.03"
         },
@@ -215,8 +215,14 @@
           "description": "I split SSR (for search visibility) from CSR (for interaction) and isolated global config to preserve SSR, reaching Google Lighthouse SEO 100. I branched permissions and rendering across six user states to block unauthorized access, unified screens with shared components, and sped up responsiveness with optimistic updates.",
           "alt": "albaform job marketplace listing screen",
           "screens": [
-            { "caption": "Sign in as applicant → My Page", "alt": "albaform applicant journey — blocked while logged out, then applicant sign-in and My Page" },
-            { "caption": "Sign in as owner → manage job-form states", "alt": "albaform owner journey — private and closed states of my job forms" }
+            {
+              "caption": "Sign in as applicant → My Page",
+              "alt": "albaform applicant journey — blocked while logged out, then applicant sign-in and My Page"
+            },
+            {
+              "caption": "Sign in as owner → manage job-form states",
+              "alt": "albaform owner journey — private and closed states of my job forms"
+            }
           ]
         },
         "openmind": {
@@ -283,8 +289,14 @@
           "description": "The tool was Gradio, but the essence was the same: translating the user's workflow into screen structure. I restructured tool-named English tabs into the actual work order — 1. Mask → 2. Asset → 3. Composite — and added an 'original + mask + asset = composite' thumbnail timeline so the screen shows where each output feeds next. I also handled Korean UI terminology and broadcast-grade 5GB uploads.",
           "sublabel": "with ML researchers",
           "beforeAfter": {
-            "before": { "caption": "English tool tabs — work order unclear", "alt": "Before — SAM3 English tool-tab screen" },
-            "after": { "caption": "'original + mask + asset = composite' thumbnail timeline; work on the left, results on the right", "alt": "After — final screen with thumbnail timeline header and left/right split" }
+            "before": {
+              "caption": "English tool tabs — work order is unclear",
+              "alt": "Before — SAM3 English tool-tab screen"
+            },
+            "after": {
+              "caption": "'original + mask + asset = composite' thumbnail timeline; work on the left, results on the right",
+              "alt": "After — final screen with thumbnail timeline header and left/right split"
+            }
           }
         },
         "most267": {
@@ -293,8 +305,14 @@
           "description": "I integrated five Notion databases so non-developers manage content directly, and built an asset pipeline that downloads Notion files (which expire hourly) at build time and auto-converts them to WebP/WebM. I also optimized loading by removing CLS and preloading the hero.",
           "linkLabel": "View site",
           "beforeAfter": {
-            "before": { "caption": "Static HTML — content was a single YouTube card", "alt": "Before — hand-edited static HTML first screen" },
-            "after": { "caption": "A video uploaded to Notion, optimized to WebM and autoplaying", "alt": "After — Next.js rebuild with a Notion-integrated WebM hero video" }
+            "before": {
+              "caption": "Static HTML — content was a single YouTube card",
+              "alt": "Before — hand-edited static HTML first screen"
+            },
+            "after": {
+              "caption": "A video uploaded to Notion, optimized to WebM and autoplaying",
+              "alt": "After — Next.js rebuild with a Notion-integrated WebM hero video"
+            }
           }
         },
         "photobooth": {

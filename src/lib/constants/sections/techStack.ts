@@ -68,7 +68,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '스타일링',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
     description: '동적 스타일링을 위해 학습했습니다.',
-    descriptionEn: 'Learned for dynamic styling.',
+    descriptionEn: 'I learned it for dynamic styling.',
   },
   {
     name: 'Sass (SCSS)',
@@ -138,7 +138,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     description:
       '리니어 히스토리 컨벤션을 Git Hook으로 지키게 했습니다. 도스트11에서 Overcommit pre-push 훅을 고치며 PR 중심으로 일합니다.',
     descriptionEn:
-      'I enforced a linear-history convention with Git hooks. At Dost11 I fixed the Overcommit pre-push hook and work PR-first.',
+      'I enforce a linear-history convention with Git hooks. At Dost11 I fixed the Overcommit pre-push hook and work PR-first.',
   },
   {
     name: 'GitHub',
@@ -146,11 +146,10 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
     description:
       'GitHub Projects, Discussions를 이용해 회의 시간을 단축했습니다.',
-    descriptionEn:
-      'I cut meeting time using GitHub Projects and Discussions.',
+    descriptionEn: 'I cut meeting time using GitHub Projects and Discussions.',
   },
   {
-    name: 'ESlint / Stylelint / Prettier / EditorConfig',
+    name: 'ESLint / Stylelint / Prettier / EditorConfig',
     category: '도구',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg',
     description:
@@ -179,7 +178,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg',
     description: '자동배포와 PR Checks를 위해 사용했습니다.',
-    descriptionEn: 'Used for automatic deploys and PR Checks.',
+    descriptionEn: 'I use it for automatic deploys and PR Checks.',
   },
   {
     name: 'Netlify',
@@ -188,7 +187,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     description:
       'Vercel을 사용할 수 없는 상황에서 자동배포와 PR Checks를 위해 사용했습니다.',
     descriptionEn:
-      "Used for automatic deploys and PR Checks when Vercel wasn't an option.",
+      "I use it for automatic deploys and PR Checks when Vercel isn't an option.",
   },
   {
     name: 'AWS',
@@ -213,7 +212,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
     description: 'Next.js API 기능을 사용하기 위해 연습했습니다.',
-    descriptionEn: 'Practiced to use Next.js API features.',
+    descriptionEn: 'I practiced with it to learn Next.js API routes.',
   },
   {
     name: 'PostgreSQL',
@@ -225,7 +224,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
       'I ran a local DB to build a dashboard when there was no dev DB or data.',
   },
   {
-    name: 'mySQL',
+    name: 'MySQL',
     category: '인프라',
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
     description:
@@ -240,7 +239,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     description:
       '<Do It! 오라클로 배우는 SQL 입문>의 베타 테스터로 참여하며 학습했습니다.',
     descriptionEn:
-      "Learned while serving as a beta tester for <Do It! Intro to SQL with Oracle>.",
+      'I learned it while beta-testing <Do It! Intro to SQL with Oracle>.',
   },
   {
     name: 'NPM',
@@ -274,14 +273,14 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/notion.svg',
     description: '공유용 기술 문서 작성 및 자동 알림을 위해 사용했습니다.',
     descriptionEn:
-      'Used for writing shared technical docs and for automatic notifications.',
+      'I use it to write shared technical docs and send automatic notifications.',
   },
   {
     name: 'Postman',
     category: '협업',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg',
     description: 'API 문서 파악 및 API 리퀘스트 디버깅을 위해 사용했습니다.',
-    descriptionEn: 'Used to understand API docs and debug API requests.',
+    descriptionEn: 'I use it to read API docs and debug requests.',
   },
   {
     name: 'Swagger',
@@ -316,7 +315,7 @@ export const TECH_STACK_WITH_EXPERIENCE = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googleanalytics.svg',
     description: '페이지 통폐합을 위한 프로덕션 조회수 수집에 사용했습니다.',
     descriptionEn:
-      'Used to collect production page views for consolidating pages.',
+      'I used it to collect production page views when consolidating pages.',
   },
   {
     name: 'Kakao Developers',
