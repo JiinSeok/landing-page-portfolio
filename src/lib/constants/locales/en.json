@@ -173,6 +173,15 @@
     "techStack": {
       "meta": {
         "title": "Tech Stack"
+      },
+      "categories": {
+        "프론트엔드": "Frontend",
+        "상태 API": "State / API",
+        "스타일링": "Styling",
+        "도구": "Tools",
+        "협업": "Collaboration",
+        "인프라": "Infrastructure",
+        "기타": "Other"
       }
     },
     "projects": {

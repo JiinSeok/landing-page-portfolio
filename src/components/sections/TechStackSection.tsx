@@ -5,13 +5,14 @@ import {
   TECH_STACK_CATEGORIES,
   TECH_STACK_WITH_EXPERIENCE,
 } from '@/lib/constants/sections/techStack'
-import { useTranslations } from '@/lib/providers/TextContext'
+import { useLocale, useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
   const t = useTranslations()
+  const { locale } = useLocale()
   const [activeCategory, setActiveCategory] = useState<string>(
     TECH_STACK_CATEGORIES[0],
   )
@@ -29,7 +30,7 @@ export default function TechStackSection() {
 
   const categoryTabs: TabItem[] = TECH_STACK_CATEGORIES.map((category) => ({
     id: category,
-    label: category,
+    label: t(`pages.techStack.categories.${category}`),
     content: (
       <div className="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2">
         {TECH_STACK_WITH_EXPERIENCE.filter(
@@ -51,7 +52,9 @@ export default function TechStackSection() {
                   'text-muted-foreground leading-snug',
                 ])}
               >
-                {tech.description}
+                {locale === 'en'
+                  ? (tech.descriptionEn ?? tech.description)
+                  : tech.description}
               </p>
             </div>
           </div>
