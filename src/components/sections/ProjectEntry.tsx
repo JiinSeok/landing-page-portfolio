@@ -125,7 +125,7 @@ const observer = new IntersectionObserver(([entry]) => {
     tags: ['프로젝트', 'iOS'],
     lead: '애플펜슬로 쓴 손글씨를 한글 폰트로 만들어 주는 iOS 앱입니다.',
     description:
-      'Swift·SwiftUI·PencilKit으로 앱을 만들어 출시까지 단독으로 진행했습니다. 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했고, 브랜딩과 인스타그램 사전 마케팅도 진행 중입니다.',
+      'Swift·SwiftUI·PencilKit으로 앱을 만들어 출시까지 단독으로 진행했습니다. 모델을 바꿔도 앱을 고치지 않도록 앱과 서버를 REST 계약으로 분리했고, 출시 후에도 멀티프로젝트(1.1)·공책 입력·펜 프리셋(1.5) 등 업데이트를 단독으로 이어가고 있습니다.',
     url: 'https://www.instagram.com/tappytype/',
     linkLabel: '인스타그램 보기',
     url2: 'https://tappytype.com',
