@@ -22,7 +22,7 @@
             },
             {
               "question": "How does your SQA/CX background help in frontend work?",
-              "answer": "Great UX is bug-free, and great UI is consistent. That's a principle from my QA and CX years. Doing SQA and CX at two companies, I saw first-hand where users get confused and drop off, and it still shapes how I write code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds, kicking in at 50 items. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
+              "answer": "Great UX is bug-free, and great UI is consistent. That's a principle from my QA and CX years. Doing SQA and CX at two companies, I saw first-hand where users get confused and drop off, and it still shapes how I write code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds, kicking in at 50 items. Setting up issue trackers and building design systems are habits I picked up back then too."
             },
             {
               "question": "Why did you move into development?",
