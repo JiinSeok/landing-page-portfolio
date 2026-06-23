@@ -51,20 +51,20 @@ export default function FAQSection() {
               <div
                 key={faq.question}
                 className={styles.combineStyles([
-                  styles.spacing.marginBottom('md'),
-                  styles.spacing.paddingY('md'),
+                  styles.spacing.marginBottom('lg'),
+                  styles.spacing.paddingY('lg'),
                   'border-b border-border last:border-0',
                 ])}
               >
                 <h3 className="font-semibold text-lg py-3">{faq.question}</h3>
                 <div
                   className={styles.combineStyles([
-                    'flex gap-3',
+                    'flex items-end gap-4',
                     'text-muted-foreground',
                     styles.text.body('small'),
                   ])}
                 >
-                  <div className="relative w-14 h-16 shrink-0">
+                  <div className="relative mx-3 h-16 w-14 shrink-0">
                     <Image
                       src={ANSWER_AVATARS[i % ANSWER_AVATARS.length]}
                       alt=""
@@ -75,7 +75,7 @@ export default function FAQSection() {
                       draggable={false}
                     />
                   </div>
-                  <p className="pb-3">{faq.answer}</p>
+                  <p className="pb-3 leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             ))}
