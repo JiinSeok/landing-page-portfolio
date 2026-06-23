@@ -776,8 +776,9 @@
               </div>
               <ul class="dots">
                 <li>
-                  무한 스크롤을 IntersectionObserver와 isHydrated 가드로 구현해,
-                  렌더링 시점 의존으로 생기던 중복·누락 API 요청을 없앴습니다.
+                  <b>무한 스크롤 안정화</b>: IntersectionObserver와 isHydrated
+                  가드로 구현해, 렌더링 시점 의존으로 생기던 중복·누락 API
+                  요청을 없앴습니다.
                 </li>
               </ul>
             </div>
@@ -953,24 +954,25 @@
               </h4>
               <ul class="dots">
                 <li>
-                  손으로 직접 수정하던 정적 HTML 사이트를 Next.js로 전면
-                  재구축하고 GitHub Pages 정적 배포 CI/CD와
+                  <b>정적 HTML → Next.js 전면 재구축</b>: 손으로 직접 수정하던
+                  사이트를 Next.js로 재구축하고 GitHub Pages 정적 배포 CI/CD와
                   SEO(sitemap·robots)를 구축했습니다.
                 </li>
                 <li>
-                  Notion DB 5종(팀·작품·보도·영상·설정)을 연동해 비개발자가
-                  콘텐츠를 직접 관리하게 했습니다. select 속성 순서, R&amp;R
-                  컬럼 등 Notion 스키마가 카테고리 정렬·본부별 탭 UI에 그대로
-                  반영됩니다.
+                  <b>Notion CMS 연동</b>: Notion DB 5종(팀·작품·보도·영상·설정)을
+                  연동해 비개발자가 콘텐츠를 직접 관리하게 했습니다. select 속성
+                  순서, R&amp;R 컬럼 등 Notion 스키마가 카테고리 정렬·본부별 탭
+                  UI에 그대로 반영됩니다.
                 </li>
                 <li>
-                  한 시간마다 만료되는 Notion 파일 URL 문제를, 빌드 시점에
-                  자료를 내려받아 WebP/WebM으로 변환하는 파이프라인으로
-                  해결했습니다. Notion 장애 시에는 캐시로 빌드를 이어갑니다.
+                  <b>만료 URL 빌드타임 변환</b>: 한 시간마다 만료되는 Notion 파일
+                  URL 문제를, 빌드 시점에 자료를 내려받아 WebP/WebM으로 변환하는
+                  파이프라인으로 해결했습니다. Notion 장애 시에는 캐시로 빌드를
+                  이어갑니다.
                 </li>
                 <li>
-                  img 태그를 next/image로 전환하고 이미지 치수를 추출·고정해
-                  레이아웃 시프트(CLS)를 방지했습니다.
+                  <b>CLS 방지</b>: img 태그를 next/image로 전환하고 이미지 치수를
+                  추출·고정해 레이아웃 시프트(CLS)를 방지했습니다.
                 </li>
                 <li>
                   <b>재구축·최적화 효과(실측)</b>: 개편 전(정적 HTML) 대비
