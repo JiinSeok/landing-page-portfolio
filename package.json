@@ -17,6 +17,7 @@
     "lint": "eslint . --fix && stylelint '**/*.css' --fix",
     "test": "vitest run",
     "resume": "tsx scripts/resume/generate.ts",
+    "site-pdf": "tsx scripts/resume/generate-site-pdf.ts",
     "format": "prettier --write .",
     "correct": "pnpm format && pnpm lint",
     "update-dev": "git fetch origin && git rebase origin/dev",
