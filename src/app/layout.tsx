@@ -27,7 +27,8 @@ export const metadata: Metadata = {
       '사용자 중심의 경력과 아이디어로 임팩트를 만드는 개발자입니다.',
     url: 'https://usejiin.link',
     siteName: 'Jiin Seok · Product Engineer',
-    locale: 'ko_KR, en_US',
+    locale: 'ko_KR',
+    alternateLocale: ['en_US'],
     type: 'website',
   },
 }
