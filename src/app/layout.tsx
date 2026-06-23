@@ -14,8 +14,9 @@ import { Analytics } from '@vercel/analytics/next'
 export const metadata: Metadata = {
   title: '석지인 · 개발자',
   description:
-    '사용자 중심의 개발로 매끄러운 디지털 경험을 만드는 개발자입니다.',
-  keywords: '웹 개발, 프론트엔드, 백엔드, React, Next.js, 포트폴리오, 석지인',
+    '사용자 중심의 경력과 아이디어로 임팩트를 만드는 개발자입니다.',
+  keywords:
+    '개발자, 프로덕트 엔지니어, 프론트엔드, 풀스택, React, Next.js, 포트폴리오, 석지인',
   icons: {
     icon: { url: '/favicon.ico', type: 'image/x-icon' },
     apple: '/apple-touch-icon.png',
@@ -23,10 +24,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: '석지인 · 개발자',
     description:
-      '석지인은 사용자 중심의 개발과 디자인으로 매끄러운 디지털 경험을 만드는 개발자입니다.',
+      '사용자 중심의 경력과 아이디어로 임팩트를 만드는 개발자입니다.',
     url: 'https://usejiin.link',
-    siteName: 'Jiin Seok',
-    locale: 'ko_KR',
+    siteName: 'Jiin Seok · Product Engineer',
+    locale: 'ko_KR, en_US',
     type: 'website',
   },
 }
@@ -100,8 +101,8 @@ export default function RootLayout({ children }: LayoutProps) {
           <ScrollToTop />
           <CursorCompanion />
         </TextProvider>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   )
 }

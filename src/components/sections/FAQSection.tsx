@@ -2,6 +2,7 @@
 
 import { useTranslations } from '@/lib/providers/TextContext'
 import styles from '@/lib/utils/styles'
+import Image from 'next/image'
 
 type FAQItem = {
   question: string
@@ -28,9 +29,19 @@ export default function FAQSection() {
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <h2 className="self-start sticky top-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
-              {t('title')}
-            </h2>
+            <div className="self-start sticky top-28 flex flex-col items-end gap-2 bg-background">
+              <Image
+                src="/images/dev-avatar.webp"
+                alt="노트북을 든 석지인 도트 캐릭터"
+                width={72}
+                height={90}
+                className="w-12 lg:w-14 h-auto select-none drop-shadow-sm"
+                draggable={false}
+              />
+              <h2 className="text-right font-semibold text-foreground leading-snug break-keep">
+                {t('title')}
+              </h2>
+            </div>
           </div>
           <div className="hidden md:block shrink-0 w-6" />
 

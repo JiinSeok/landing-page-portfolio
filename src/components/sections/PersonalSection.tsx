@@ -77,14 +77,6 @@ export default function PersonalSection() {
         <div className="max-w-6xl mx-auto relative">
           <div className="hidden md:block absolute inset-y-0 left-0 w-24 lg:w-28 pointer-events-none">
             <div className="dark sticky top-0 pt-28 flex flex-col items-end gap-2 bg-background">
-              <Image
-                src="/images/dev-avatar.webp"
-                alt="노트북을 든 석지인 도트 캐릭터"
-                width={72}
-                height={90}
-                className="w-12 lg:w-14 h-auto select-none drop-shadow-sm"
-                draggable={false}
-              />
               <h2 className="text-right font-semibold text-foreground leading-snug break-keep">
                 {t('pages.career.meta.title')}
               </h2>
