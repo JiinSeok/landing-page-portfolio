@@ -1,6 +1,7 @@
 'use client'
 
 import PortfolioFAQSection from '@/components/sections/FAQSection'
+import Hero from '@/components/sections/Hero'
 import PersonalSection from '@/components/sections/PersonalSection'
 import TechStackSection from '@/components/sections/TechStackSection'
 import TimelineToc from '@/components/sections/TimelineToc'
@@ -27,8 +28,8 @@ export default function HomePage() {
         }}
       />
       <main className="w-full">
-        <h1 className="sr-only">석지인 — 개발자 포트폴리오</h1>
         <div className="w-full">
+          <Hero />
           <TimelineToc items={tocItems} nowKey={nowKey} />
           <PersonalSection />
         </div>

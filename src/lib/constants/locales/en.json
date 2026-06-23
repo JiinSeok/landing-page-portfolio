@@ -26,7 +26,7 @@
             },
             {
               "question": "How do you use AI tools?",
-              "answer": "Heavily, but I verify rather than trust it blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. It also works in reverse: on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and wrote up the process in an analysis doc. I also work with AI inside products, like a few-shot font-generation pipeline and an ML monorepo."
+              "answer": "Heavily, especially to work through and pressure-test my own thinking. I keep a config that injects my personal and work code style and working rules into Claude Code, so I get consistent results across machines. When Claude Code first launched I was at Chainshift, and though D3.js was new to me, AI sped me up enough to finish the dashboard and support the sales demo. It also works in reverse: on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, documented it in an analysis doc, and landed the offer. Lately I've been working with AI inside products too, like a few-shot font-generation pipeline and an ML monorepo."
             },
             {
               "question": "What matters most to you when collaborating?",
@@ -39,7 +39,8 @@
     "career": {
       "meta": {
         "title": "Career Timeline",
-        "greeting": "Hi, I'm Jiin Seok — a developer who uncovers problems and weaves them into clean, seamless experiences."
+        "greeting": "Hi, I'm Jiin Seok — a developer who uncovers problems and weaves them into clean, seamless experiences.",
+        "heroEyebrow": "Frontend · Full-stack Product Engineer"
       },
       "careers": [
         {

@@ -60,13 +60,6 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
-        <div className="max-w-6xl mx-auto mb-12 md:mb-16 pt-2 md:pt-6 flex gap-4 md:gap-6">
-          <div className="hidden md:block md:w-24 lg:w-28 shrink-0" aria-hidden />
-          <div className="hidden md:block shrink-0 w-6" aria-hidden />
-          <p className="flex-1 min-w-0 text-balance text-center text-lg md:text-2xl font-medium tracking-tight text-foreground leading-snug break-keep">
-            {t('pages.career.meta.greeting')}
-          </p>
-        </div>
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
           <hr className="w-12 mx-auto mb-8 border-border" />
           <h2 className={styles.text.heading(2)}>
