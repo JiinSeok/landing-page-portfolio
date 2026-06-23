@@ -14,7 +14,7 @@ import { Analytics } from '@vercel/analytics/next'
 export const metadata: Metadata = {
   title: '석지인 · 개발자',
   description:
-    '사용자 중심의 경력과 아이디어로 임팩트를 만드는 개발자입니다.',
+    '사용자 중심의 경험과 아이디어로 임팩트를 만드는 개발자입니다.',
   keywords:
     '개발자, 프로덕트 엔지니어, 프론트엔드, 풀스택, React, Next.js, 포트폴리오, 석지인',
   icons: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '석지인 · 개발자',
     description:
-      '사용자 중심의 경력과 아이디어로 임팩트를 만드는 개발자입니다.',
+      '사용자 중심의 경험과 아이디어로 임팩트를 만드는 개발자입니다.',
     url: 'https://usejiin.link',
     siteName: 'Jiin Seok · Product Engineer',
     locale: 'ko_KR',
