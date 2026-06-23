@@ -9,15 +9,17 @@ type FAQItem = {
   answer: string
 }
 
-// 답변마다 다른 포즈의 석지인 픽셀 아바타를 순환 배치(같은 캐릭터 반복 대신 변형으로
-// 위트를 주되, 폭이 제각각이라 고정 박스 + object-contain으로 정렬을 정규화한다).
+// FAQ 질문 순서에 맞춰 내용과 어울리는 포즈를 배치(인덱스 = 질문 순서):
+// 1 개발 전향 스토리→사색, 2 비전공 기초 다지기→코딩, 3 SQA/CX 강점→기본 포즈,
+// 4 현재 업무→노트북 작업, 5 AI 활용→후드+코드 화면, 6 협업→밝게 대화.
+// 폭이 제각각이라 표시 측은 고정 박스 + object-contain으로 정렬을 정규화한다.
 const ANSWER_AVATARS = [
-  '/images/avatars/avatar-1.webp',
-  '/images/avatars/avatar-2.webp',
-  '/images/avatars/avatar-3.webp',
-  '/images/avatars/avatar-4.webp',
   '/images/avatars/avatar-5.webp',
+  '/images/avatars/avatar-3.webp',
+  '/images/avatars/avatar-1.webp',
   '/images/avatars/avatar-6.webp',
+  '/images/avatars/avatar-4.webp',
+  '/images/avatars/avatar-2.webp',
 ]
 
 export default function FAQSection() {

@@ -30,7 +30,7 @@
             },
             {
               "question": "You're not a CS major — how did you build your fundamentals?",
-              "answer": "Library & Information Science is the study of classifying and structuring information, so my instinct for data modeling and consistent terminology actually comes from my major. I started coding there too, through courses like Information Technology (Python) and Software Programming, and I fill the gaps by building things myself. I implemented a TrueType font writer from scratch in pure Swift and published shared components as an npm library (formkit-react). My quality-engineering theory is backed by the ISTQB and CSTS certifications."
+              "answer": "Library & Information Science is the study of classifying and structuring information, so my instinct for data modeling actually comes from my major. I started coding there too, through courses like Information Technology (Python) and Software Programming, and in Digital Library Construction I planned a software project end to end, from writing the RFP to choosing the tech. I fill the rest by building things myself. I implemented a TrueType font writer from scratch in pure Swift and published shared components as an npm library (formkit-react). My quality-engineering theory is backed by the ISTQB and CSTS certifications."
             }
           ]
         }
