@@ -326,6 +326,28 @@
           "alt": "Photobooth demo — four-cut shots composited with a Muhan Dojeon RUN frame"
         }
       }
+    },
+    "recommendation": {
+      "tag": "Recommendation",
+      "tagColleague": "From a colleague",
+      "title": "Recommendations",
+      "intro": "Recommendations written by colleagues I've worked with.",
+      "back": "← Back to the home timeline",
+      "letterLead": "In brief — the original letter is handwritten in Korean:",
+      "items": {
+        "hong": {
+          "relation": "CTO, Dost11 · former colleague",
+          "summary": "From the CTO who hired me directly and worked with me for ~6 months · empathy, initiative",
+          "alt": "Recommendation for Jiin Seok, written by Hong, CTO of Dost11",
+          "letter": "I led the dev team at Dost11 and worked with Jiin for about six months, having hired him myself after spotting his profile on a job board. His standout strength is initiative: he doesn't stay inside his assigned scope but finds and fills a team's gaps. Right after joining he reworked our weak onboarding docs on his own, turning his own friction into an asset for the whole team, and he digs into ambiguity instead of glossing over it. He owned the Doppket web client and led a refactor of its legacy code that markedly raised the quality. His drive and ownership will shine most where the work changes fast and you have to define it yourself."
+        },
+        "song": {
+          "relation": "Colleague at Fitogether · now a frontend lead",
+          "summary": "From a colleague (now a frontend lead) · diligence, responsibility, communication",
+          "alt": "Recommendation for Jiin Seok, written by Song, a Fitogether colleague and current frontend lead",
+          "letter": "I have no doubt he'll keep growing. As a frontend developer, what impressed me was his attention to detail and his constant search for how to guarantee quality while working more efficiently — and he never left it at just pondering; he always put it into action."
+        }
+      }
     }
   },
   "layout": {
