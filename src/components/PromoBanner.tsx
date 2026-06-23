@@ -37,11 +37,14 @@ export default function PromoBanner() {
 
   return (
     <>
+      {/* md+에서는 좌측 다크 레일을 침범하지 않도록 흰 콘텐츠 영역(레일 오른쪽 끝)부터
+          배너를 시작한다. ml 값은 page.tsx·TimelineToc의 레일 폭 계산(RAIL_OFFSET_MD=132 /
+          RAIL_OFFSET_LG=148)과 동일하게 맞춘다. 모바일은 레일이 없어 전체 폭 유지. */}
       <aside
         data-promo-banner
         role="region"
         aria-label={t('regionLabel')}
-        className="sticky top-0 z-[60] flex w-full items-center justify-center gap-3 bg-primary px-4 py-2 text-sm text-primary-foreground"
+        className="sticky top-0 z-[60] flex w-full items-center justify-center gap-3 bg-primary px-4 py-2 text-sm text-primary-foreground md:ml-[calc((100%_-_min(72rem,100%))/2_+_132px)] md:w-auto md:border-l md:border-border lg:ml-[calc((100%_-_min(72rem,100%))/2_+_148px)]"
       >
         <a
           href={url}

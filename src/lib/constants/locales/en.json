@@ -10,7 +10,7 @@
           "questions": [
             {
               "question": "Why did you move into development?",
-              "answer": "I majored in Library & Information Science and worked on a people database at Yonhap News, then in QA and CX at a logistics startup and at Fitogether. I cut a response form down to a single page, raised the opt-in profile submission rate by 30%, and lowered communication costs with a shared glossary — and that's when I realized what I love is shaping information so it's easy for people to use. But QA and CX were roles where I proposed improvements and handed them off; the more I did it, the more I wanted to build and fix things myself. I'd been coding since 2020, so moving into development felt natural."
+              "answer": "I majored in Library & Information Science and worked on a people database at Yonhap News, then in QA and CX at a logistics startup and at Fitogether. I cut a response form down to a single page, raised the opt-in profile submission rate by 30%, and lowered communication costs with a shared glossary. That's where it clicked for me: what I enjoy is shaping information so it's easy for people to use. But in QA and CX I could only propose improvements and hand them off, and I kept wanting to build and fix things myself. I'd been coding since 2020, so moving into development felt natural."
             },
             {
               "question": "You're not a CS major — how did you build your fundamentals?",
@@ -18,7 +18,7 @@
             },
             {
               "question": "How does your SQA/CX background help in frontend work?",
-              "answer": "Great UX is bug-free, and great UI is consistent — a principle I carried over from my QA and CX years. Doing SQA and CX at two companies, I watched first-hand where users get confused and drop off, and that experience lives on in my code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds — kicking in at 50 items, for example. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
+              "answer": "Great UX is bug-free, and great UI is consistent. That's a principle from my QA and CX years. Doing SQA and CX at two companies, I saw first-hand where users get confused and drop off, and it still shapes how I write code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds, kicking in at 50 items. Setting up issue trackers, unifying terminology, and building design systems are habits I picked up back then too."
             },
             {
               "question": "What are you working on now?",
@@ -26,11 +26,11 @@
             },
             {
               "question": "How do you use AI tools?",
-              "answer": "Heavily — but I verify rather than trust it blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. Conversely, on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and documented the process in an analysis writeup. I also work with AI inside products — a few-shot font-generation pipeline and an ML monorepo."
+              "answer": "Heavily, but I verify rather than trust it blindly. At Chainshift I built three dashboard pages in seven days with Claude Code to support a sales demo, and I published a config that injects my code style and working rules into Claude Code. It also works in reverse: on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, and wrote up the process in an analysis doc. I also work with AI inside products, like a few-shot font-generation pipeline and an ML monorepo."
             },
             {
               "question": "What matters most to you when collaborating?",
-              "answer": "I work PR-first and automate code quality with ESLint and Prettier plus Git hooks like Overcommit and Husky. I also look after quality outside the code — standardizing UI terms (e.g., visits/views collapsed into one 'views' label) and documenting responsive guidelines. At Dost11, research code and product code grew fast in one repo and screen wording and error messages drifted apart; I proposed aligning all user-facing text to one standard and unified everything myself, from screen labels to error messages across some 50 backend files. I write the accompanying tests, too."
+              "answer": "I work PR-first and automate code quality with ESLint and Prettier plus Git hooks like Overcommit and Husky. I also look after quality outside the code: standardizing UI terms (e.g., visits/views collapsed into one 'views' label) and documenting responsive guidelines. At Dost11, research code and product code grew fast in one repo and screen wording and error messages drifted apart; I proposed aligning all user-facing text to one standard and unified everything myself, from screen labels to error messages across some 50 backend files. I write the accompanying tests, too."
             }
           ]
         }
