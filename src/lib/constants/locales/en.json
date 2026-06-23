@@ -152,7 +152,8 @@
         },
         {
           "tag": "Education",
-          "label": "Yonsei University · B.A. in Theology and Library & Information Science (double major) · completed IT coursework including Information Technology (Python), Software Programming, and Metadata",
+          "label": "Yonsei University · B.A. in Theology and Library & Information Science (double major)",
+          "description": "Completed IT coursework including Information Technology (Python), Software Programming, and Metadata",
           "period": "2015 ~ 2021",
           "sort": "2015.03"
         },
@@ -165,6 +166,7 @@
         {
           "tag": "Start",
           "label": "Started coding",
+          "description": "I started coding with Python crawling in 'Information Technology,' a foundational course in my Library & Information Science major at Yonsei.",
           "period": "2020.09",
           "sort": "2020.09",
           "tocLabel": "Started coding"

@@ -28,6 +28,7 @@ export type CareerExtra = {
   tag: string
   label: string
   tocLabel?: string
+  description?: string
   period: string
   sort: string
 }

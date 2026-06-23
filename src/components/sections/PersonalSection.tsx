@@ -138,6 +138,11 @@ export default function PersonalSection() {
                         {extra.period}
                       </span>
                     </div>
+                    {extra.description ? (
+                      <p className="mt-1.5 text-sm text-muted-foreground">
+                        {extra.description}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               )
