@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       aria-label="소개"
-      className="w-full pt-24 pb-10 md:pt-32 md:pb-14 overflow-x-clip"
+      className="w-full pt-24 pb-8 md:pt-28 md:pb-10 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
@@ -35,21 +35,13 @@ export default function Hero() {
           <div className="hidden md:block shrink-0 w-6" aria-hidden />
 
           <div className="flex-1 min-w-0">
-            <p className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <h1 className="sr-only">석지인 — 개발자 포트폴리오</h1>
+
+            <p className="mb-4 text-sm font-medium tracking-tight text-muted-foreground">
               {t('pages.career.meta.heroEyebrow')}
             </p>
 
-            <div className="mb-6 flex items-baseline gap-3">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none">
-                석지인
-                <span className="sr-only"> — 개발자 포트폴리오</span>
-              </h1>
-              <span className="font-mono text-sm md:text-base tracking-tight text-muted-foreground">
-                Jiin Seok
-              </span>
-            </div>
-
-            <p className="mb-9 max-w-2xl text-balance text-xl md:text-3xl font-medium tracking-tight leading-snug break-keep text-foreground">
+            <p className="mb-8 max-w-2xl text-balance text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
               {t('pages.career.meta.greeting')}
             </p>
 
