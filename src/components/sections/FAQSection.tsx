@@ -9,17 +9,24 @@ type FAQItem = {
   answer: string
 }
 
-// FAQ 질문 순서에 맞춰 내용과 어울리는 포즈를 배치(인덱스 = 질문 순서):
-// 1 개발 전향 스토리→사색, 2 비전공 기초 다지기→코딩, 3 SQA/CX 강점→기본 포즈,
-// 4 현재 업무→노트북 작업, 5 AI 활용→후드+코드 화면, 6 협업→밝게 대화.
-// 폭이 제각각이라 표시 측은 고정 박스 + object-contain으로 정렬을 정규화한다.
-const ANSWER_AVATARS = [
-  '/images/avatars/avatar-5.webp',
-  '/images/avatars/avatar-3.webp',
+// 질문 내용(키워드)에 맞춰 어울리는 포즈를 고른다. 질문 순서가 바뀌어도 매칭이
+// 유지되도록 인덱스가 아니라 키워드로 매칭하고, 못 찾으면 순환 폴백한다(ko/en 모두 대응).
+// 표시 측은 폭이 제각각이라 고정 박스 + object-contain으로 정렬을 정규화한다.
+const TOPIC_AVATARS: { test: RegExp; src: string }[] = [
+  { test: /\bAI\b/i, src: '/images/avatars/avatar-4.webp' }, // AI 활용 → 후드+코드 화면
+  { test: /협업|collaborat/i, src: '/images/avatars/avatar-2.webp' }, // 협업 → 밝게 대화
+  { test: /SQA|CX|품질|quality/i, src: '/images/avatars/avatar-1.webp' }, // 품질 → 기본 포즈
+  { test: /전향|move into|why did you/i, src: '/images/avatars/avatar-5.webp' }, // 개발 전향 → 사색
+  { test: /비전공|기초|major|fundamental/i, src: '/images/avatars/avatar-3.webp' }, // 기초 다지기 → 코딩
+  { test: /지금|현재|\bnow\b|working/i, src: '/images/avatars/avatar-6.webp' }, // 현재 업무 → 노트북 작업
+]
+const FALLBACK_AVATARS = [
   '/images/avatars/avatar-1.webp',
-  '/images/avatars/avatar-6.webp',
-  '/images/avatars/avatar-4.webp',
   '/images/avatars/avatar-2.webp',
+  '/images/avatars/avatar-3.webp',
+  '/images/avatars/avatar-4.webp',
+  '/images/avatars/avatar-5.webp',
+  '/images/avatars/avatar-6.webp',
 ]
 
 export default function FAQSection() {
@@ -49,38 +56,43 @@ export default function FAQSection() {
           <div className="hidden md:block shrink-0 w-6" />
 
           <div className="flex-1 min-w-0">
-            {faqItems.map((faq, i) => (
-              <div
-                key={faq.question}
-                className={styles.combineStyles([
-                  styles.spacing.marginBottom('lg'),
-                  styles.spacing.paddingY('lg'),
-                  'border-b border-border last:border-0',
-                ])}
-              >
-                <h3 className="font-semibold text-lg py-3">{faq.question}</h3>
+            {faqItems.map((faq, i) => {
+              const avatarSrc =
+                TOPIC_AVATARS.find((topic) => topic.test.test(faq.question))
+                  ?.src ?? FALLBACK_AVATARS[i % FALLBACK_AVATARS.length]
+              return (
                 <div
+                  key={faq.question}
                   className={styles.combineStyles([
-                    'flex items-end gap-4',
-                    'text-muted-foreground',
-                    styles.text.body('small'),
+                    styles.spacing.marginBottom('lg'),
+                    styles.spacing.paddingY('lg'),
+                    'border-b border-border last:border-0',
                   ])}
                 >
-                  <div className="relative mx-3 h-16 w-14 shrink-0">
-                    <Image
-                      src={ANSWER_AVATARS[i % ANSWER_AVATARS.length]}
-                      alt=""
-                      fill
-                      sizes="56px"
-                      aria-hidden
-                      className="object-contain object-bottom select-none"
-                      draggable={false}
-                    />
+                  <h3 className="font-semibold text-lg py-3">{faq.question}</h3>
+                  <div
+                    className={styles.combineStyles([
+                      'flex items-end gap-4',
+                      'text-muted-foreground',
+                      styles.text.body('small'),
+                    ])}
+                  >
+                    <div className="relative mx-3 h-16 w-14 shrink-0">
+                      <Image
+                        src={avatarSrc}
+                        alt=""
+                        fill
+                        sizes="56px"
+                        aria-hidden
+                        className="object-contain object-bottom select-none"
+                        draggable={false}
+                      />
+                    </div>
+                    <p className="pb-3 leading-relaxed">{faq.answer}</p>
                   </div>
-                  <p className="pb-3 leading-relaxed">{faq.answer}</p>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
