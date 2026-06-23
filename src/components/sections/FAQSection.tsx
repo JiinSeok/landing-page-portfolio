@@ -9,6 +9,17 @@ type FAQItem = {
   answer: string
 }
 
+// 답변마다 다른 포즈의 석지인 픽셀 아바타를 순환 배치(같은 캐릭터 반복 대신 변형으로
+// 위트를 주되, 폭이 제각각이라 고정 박스 + object-contain으로 정렬을 정규화한다).
+const ANSWER_AVATARS = [
+  '/images/avatars/avatar-1.webp',
+  '/images/avatars/avatar-2.webp',
+  '/images/avatars/avatar-3.webp',
+  '/images/avatars/avatar-4.webp',
+  '/images/avatars/avatar-5.webp',
+  '/images/avatars/avatar-6.webp',
+]
+
 export default function FAQSection() {
   const t = useTranslations('pages.home.sections.faq')
 
@@ -36,16 +47,7 @@ export default function FAQSection() {
           <div className="hidden md:block shrink-0 w-6" />
 
           <div className="flex-1 min-w-0">
-            <Image
-              src="/images/dev-avatar.webp"
-              alt=""
-              width={373}
-              height={520}
-              aria-hidden
-              className="mb-6 w-16 h-auto select-none drop-shadow-sm"
-              draggable={false}
-            />
-            {faqItems.map((faq) => (
+            {faqItems.map((faq, i) => (
               <div
                 key={faq.question}
                 className={styles.combineStyles([
@@ -57,11 +59,22 @@ export default function FAQSection() {
                 <h3 className="font-semibold text-lg py-3">{faq.question}</h3>
                 <div
                   className={styles.combineStyles([
-                    styles.spacing.paddingX('md'),
+                    'flex gap-3',
                     'text-muted-foreground',
                     styles.text.body('small'),
                   ])}
                 >
+                  <div className="relative w-14 h-16 shrink-0">
+                    <Image
+                      src={ANSWER_AVATARS[i % ANSWER_AVATARS.length]}
+                      alt=""
+                      fill
+                      sizes="56px"
+                      aria-hidden
+                      className="object-contain object-bottom select-none"
+                      draggable={false}
+                    />
+                  </div>
                   <p className="pb-3">{faq.answer}</p>
                 </div>
               </div>
