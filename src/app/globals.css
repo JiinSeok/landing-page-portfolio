@@ -245,6 +245,7 @@
 
 /* tappytype.com 홍보 배너 토글 — <html data-promo-dismissed> + 페인트 전 인라인
    스크립트로 제어해 FOUC·CLS를 방지한다 (PromoBanner.tsx 참조). */
+/* stylelint-disable-next-line no-duplicate-selectors -- 배너 변수를 배너 스타일 근처에 의도적으로 분리 */
 :root {
   /* 배너가 차지하는 높이. 고정 헤더·sticky 내비를 이만큼 내려 배너와 겹치지 않게 한다. */
   --promo-h: 44px;

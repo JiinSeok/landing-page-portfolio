@@ -4,6 +4,8 @@ overrides:
   postcss: '^8.5.15'
   # esbuild GHSA: Deno 모듈 RCE(high)·Windows dev server 임의 파일 읽기(low) — <0.28.1
   esbuild: '>=0.28.1'
+  # js-yaml: stylelint→cosmiconfig 가 끌어오던 4.1.1 의 merge key quadratic DoS(<4.2.0) 차단 (dev 전용 의존)
+  js-yaml: '>=4.2.0'
 allowBuilds:
   '@tailwindcss/oxide': false
   '@vercel/speed-insights': false
