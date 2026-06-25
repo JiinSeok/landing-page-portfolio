@@ -10,7 +10,7 @@
           "questions": [
             {
               "question": "What are you working on now?",
-              "answer": "I'm a full-stack developer on Doppket, a digital-asset marketplace at Dost11, MBC's AI strategy subsidiary. I've owned Korean-market localization, the product dashboard, the blog CMS, and the checkout UX, and I led onboarding for our first B2B client. I turned a photobooth feature I pitched in a meeting into a prototype in three days, and I redesigned the UI/UX of a broadcast CG compositing tool side by side with ML researchers in a shared repo."
+              "answer": "I run Doppket, a digital-asset marketplace at Dost11, MBC's AI strategy subsidiary, across product, development, operations, marketing, and sales. I joined on a contract in September 2025, converted to full-time in January 2026, and have led Doppket end to end since June 2026. I've owned Korean-market localization, the product dashboard, the blog CMS, and the checkout UX, and I led onboarding for our first B2B client. I turned a photobooth feature I pitched in a meeting into a prototype in three days, and I redesigned the UI/UX of a broadcast CG compositing tool side by side with ML researchers in a shared repo."
             },
             {
               "question": "What matters most to you when collaborating?",
@@ -49,15 +49,33 @@
           "description": "MBC's AI strategy subsidiary · runs the digital-asset marketplace Doppket",
           "url": "https://www.dost11.com",
           "period": "2025.09 ~ Present",
-          "role": "AI Dev Team · Full-stack Developer (Rails + React)",
+          "role": "AI Dev Team · Full-stack Developer · Doppket service lead",
           "contributions": [
-            "Korean-market localization — full Korean translation and rebranding across every page; built new screens including the product dashboard, CMS blog, checkout UX, and membership",
-            "Korea-style monthly settlement — led the policy design (monthly close, snapshots, idempotency, sensitive-data boundaries) and ticketed 30 settlement milestones, then implemented the settlement page, settings UI, and minimum-payout screen myself (design: me · implementation: with the team)",
-            "Rebuilt dev speed & verification — cut the cold build by 53% (18.0s→8.3s) by making type-checks async and splitting the dev SSR build, and added staged checks via pre-commit, pre-push, and CI Playwright SSR smoke tests",
-            "B2B & operations — led onboarding for our first B2B client, built and maintained the CRM user table and a Grafana daily-metrics dashboard (internal users excluded), and diagnosed and fixed an SSR 500 production incident caused by an asset-cache permission error",
-            "Event collaboration pitch — pitched it in a meeting and finished a [photobooth prototype](https://staging.doppket.com/proposals/mudo-run) in three days; adopted as an official add-on, through to frame matching and watermark compositing",
-            "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across some 50 backend files; also fixed a bug that blocked 5GB video uploads",
-            "Rebuilt the most267.co.kr corporate landing with Notion — rebuilt static HTML entirely in Next.js and wired up a Notion CMS/DB so non-developers manage content directly; prevented CLS with semantic HTML and next/image, cutting LCP by 46% and raising accessibility 83→96 versus the old site (solo)"
+            {
+              "title": "Service lead · Jun 2026 ~",
+              "items": [
+                "Took over Doppket end to end — ownership expanded across product, development, operations, marketing, and sales",
+                "Production monitoring dashboard — built a dashboard that surfaces operations and cost at a glance, including a projected-cost-trend panel"
+              ]
+            },
+            {
+              "title": "Full-time · Jan 2026 ~ Jun 2026",
+              "items": [
+                "Korea-style monthly settlement — led the policy design (monthly close, snapshots, idempotency, sensitive-data boundaries) and ticketed 30 settlement milestones, then implemented the settlement page, settings UI, and minimum-payout screen myself (design: me · implementation: with the team)",
+                "Rebuilt dev speed & verification — cut the cold build by 53% (18.0s→8.3s) by making type-checks async and splitting the dev SSR build, and added staged checks via pre-commit, pre-push, and CI Playwright SSR smoke tests",
+                "B2B & operations — handled onboarding for our first B2B client, built and maintained the CRM user table and a Grafana daily-metrics dashboard (internal users excluded), and diagnosed and fixed an SSR 500 production incident caused by an asset-cache permission error",
+                "Event collaboration pitch — pitched it in a meeting and finished a [photobooth prototype](https://staging.doppket.com/proposals/mudo-run) in three days; adopted as an official add-on, through to frame matching and watermark compositing",
+                "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across some 50 backend files; also fixed a bug that blocked 5GB video uploads",
+                "Rebuilt the most267.co.kr corporate landing with Notion — rebuilt static HTML entirely in Next.js and wired up a Notion CMS/DB so non-developers manage content directly; prevented CLS with semantic HTML and next/image, cutting LCP by 46% and raising accessibility 83→96 versus the old site (solo)"
+              ]
+            },
+            {
+              "title": "Contract · Sep 2025 ~ Dec 2025",
+              "items": [
+                "Korean-market localization — full Korean translation and rebranding across every page; built new screens including the product dashboard, checkout UX, and membership",
+                "Blog CMS, built 0→1 — added admin blog management (list, write, edit, publish toggle, revalidate) and the public blog pages from scratch"
+              ]
+            }
           ]
         },
         {

@@ -16,8 +16,8 @@ export const careers = {
     start: '2025.09',
     end: null,
     team: 'AI개발팀',
-    title: '풀스택 개발자',
-    employmentType: '정규직(2026.01 전환)',
+    title: '풀스택 개발자 · 도프켓 서비스 총괄',
+    employmentType: '계약직 → 정규직(2026.01 전환)',
     url: 'https://www.dost11.com',
   },
   chainshift: {
@@ -197,6 +197,7 @@ export const extraMonths = [
   '2025.01',
   '2025.05',
   '2025.08',
+  '2025.12',
   '2026.04',
   '2026.05',
 ]

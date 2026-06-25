@@ -275,9 +275,6 @@ export default function PersonalSection() {
                           >
                             {group.title && (
                               <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-2">
-                                <span className="text-xs font-semibold tracking-widest tabular-nums text-muted-foreground/50">
-                                  {String(i + 1).padStart(2, '0')}
-                                </span>
                                 <h4 className="text-sm font-semibold">
                                   {groupName}
                                 </h4>

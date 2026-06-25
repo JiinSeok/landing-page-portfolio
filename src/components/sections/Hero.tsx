@@ -41,7 +41,7 @@ export default function Hero() {
               {t('pages.career.meta.heroEyebrow')}
             </p>
 
-            <p className="mb-8 max-w-2xl text-balance text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
+            <p className="mb-8 max-w-2xl whitespace-pre-line text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
               {t('pages.career.meta.greeting')}
             </p>
 
