@@ -110,10 +110,10 @@ describe('원티드 본문 대조', () => {
     }
   })
 
-  it('어학 점수가 PDF·wanted와 일치한다', () => {
-    const template = read('scripts/resume/template.html').replace(/\s+/g, ' ')
+  // 사이트 이력서(template.html)는 어학 점수를 큐레이션해 노출하지 않는다.
+  // 전수 보관·대조는 원티드용 풀 이력서(wanted-resume.md)에서만 한다.
+  it('어학 점수가 wanted와 일치한다', () => {
     for (const lang of langMilestones) {
-      expect(template).toContain(lang.label)
       expect(wanted).toContain(lang.label)
     }
   })
