@@ -12,6 +12,7 @@ import PromoBanner from '@/components/PromoBanner'
 import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://usejiin.link'),
   title: '석지인 · 개발자',
   description:
     '사용자 중심의 경험과 아이디어로 임팩트를 만드는 개발자입니다.',
@@ -30,6 +31,12 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     alternateLocale: ['en_US'],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '석지인 · 개발자',
+    description:
+      '사용자 중심의 경험과 아이디어로 임팩트를 만드는 개발자입니다.',
   },
 }
 
