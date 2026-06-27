@@ -82,21 +82,6 @@ export default function RootLayout({ children }: LayoutProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <script
-          async
-          src="https://unpkg.com/ios-pwa-splash@1.0.0/cdn.min.js"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-        document.addEventListener('DOMContentLoaded', function() {
-          if (typeof iosPWASplash === 'function') {
-            iosPWASplash('/apple-touch-icon.png', '#FFFFFF');
-          }
-        });
-      `,
-          }}
-        />
         {/* 페인트 전 실행: 홍보 배너 닫힘 상태를 미리 반영해 FOUC·CLS 방지 */}
         <script
           dangerouslySetInnerHTML={{
