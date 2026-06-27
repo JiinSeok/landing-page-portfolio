@@ -37,7 +37,8 @@
       "meta": {
         "title": "커리어 타임라인",
         "greeting": "사용자 중심의 경험과 사고로,\n가장 큰 임팩트를 만드는 데 집중합니다.",
-        "heroEyebrow": "프론트엔드 · 풀스택 프로덕트 엔지니어"
+        "heroEyebrow": "프론트엔드 · 풀스택 프로덕트 엔지니어",
+        "heroSummary": "경력 3년 6개월·개발 2년 차 프론트엔드·풀스택 / React·Next.js(App Router)·TypeScript로 스타트업 MVP·이커머스 구축 / SSR·CSR·컴포넌트 설계·상태 관리·SEO/GEO, 빌드 53% 단축 등 실제·정량 성과 다수"
       },
       "careers": [
         {
