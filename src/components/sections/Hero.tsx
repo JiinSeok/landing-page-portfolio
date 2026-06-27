@@ -45,7 +45,7 @@ export default function Hero() {
               {t('pages.career.meta.greeting')}
             </p>
 
-            <p className="mb-8 max-w-2xl text-sm md:text-base leading-relaxed break-keep text-muted-foreground">
+            <p className="mb-8 w-full text-sm md:text-base leading-relaxed break-keep text-muted-foreground">
               {t('pages.career.meta.heroSummary')}
             </p>
 
