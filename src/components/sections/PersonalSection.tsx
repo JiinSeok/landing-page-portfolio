@@ -60,19 +60,23 @@ export default function PersonalSection() {
       className="w-full pt-6 pb-16 md:pt-4 md:pb-20 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
+        <h2 className="sr-only">{t('pages.career.meta.title')}</h2>
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
           <hr className="w-12 mx-auto mb-8 border-border" />
-          <h2 className={styles.text.heading(2)}>
+          <p className={styles.text.heading(2)} aria-hidden="true">
             {t('pages.career.meta.title')}
-          </h2>
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto relative">
           <div className="hidden md:block absolute inset-y-0 left-0 w-24 lg:w-28 pointer-events-none">
             <div className="dark sticky top-0 pt-28 flex flex-col items-end gap-2 bg-background">
-              <h2 className="text-right font-semibold text-foreground leading-snug break-keep">
+              <p
+                className="text-right font-semibold text-foreground leading-snug break-keep"
+                aria-hidden="true"
+              >
                 {t('pages.career.meta.title')}
-              </h2>
+              </p>
             </div>
           </div>
           {timeline.map((item, index) => {

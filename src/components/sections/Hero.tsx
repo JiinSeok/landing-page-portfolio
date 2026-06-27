@@ -35,7 +35,9 @@ export default function Hero() {
           <div className="hidden md:block shrink-0 w-6" aria-hidden />
 
           <div className="flex-1 min-w-0">
-            <h1 className="sr-only">석지인 — 개발자 포트폴리오</h1>
+            <h1 className="sr-only">
+              석지인 — 프론트엔드·풀스택 개발자 포트폴리오
+            </h1>
 
             <p className="mb-4 text-sm font-medium tracking-tight text-muted-foreground whitespace-pre-wrap">
               {t('pages.career.meta.heroEyebrow')}

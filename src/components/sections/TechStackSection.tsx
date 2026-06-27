@@ -66,17 +66,21 @@ export default function TechStackSection() {
   return (
     <section id="tech-stack" className="w-full py-10 md:py-12">
       <div className="px-6 md:px-8">
+        <h2 className="sr-only">{t('pages.techStack.meta.title')}</h2>
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
-          <h2 className={styles.text.heading(2)}>
+          <p className={styles.text.heading(2)} aria-hidden="true">
             {t('pages.techStack.meta.title')}
-          </h2>
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="dark hidden md:flex md:w-24 lg:w-28 shrink-0 justify-end">
-            <h2 className="self-start sticky top-28 bg-background text-right font-semibold text-foreground leading-snug break-keep">
+            <p
+              className="self-start sticky top-28 bg-background text-right font-semibold text-foreground leading-snug break-keep"
+              aria-hidden="true"
+            >
               {t('pages.techStack.meta.title')}
-            </h2>
+            </p>
           </div>
           <div className="hidden md:block shrink-0 w-6" />
 
