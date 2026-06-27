@@ -30,7 +30,7 @@ export default function Hero() {
       className="w-full pt-24 pb-8 md:pt-28 md:pb-10 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
-        <div className="w-full flex gap-4 md:gap-6">
+        <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">
           <div className="hidden md:block md:w-24 lg:w-28 shrink-0" aria-hidden />
           <div className="hidden md:block shrink-0 w-6" aria-hidden />
 
@@ -45,7 +45,7 @@ export default function Hero() {
               {t('pages.career.meta.greeting')}
             </p>
 
-            <p className="mb-8 w-full text-sm md:text-base leading-relaxed break-keep text-muted-foreground">
+            <p className="mb-8 w-full whitespace-pre-line text-sm md:text-base leading-relaxed break-keep text-muted-foreground">
               {t('pages.career.meta.heroSummary')}
             </p>
 
