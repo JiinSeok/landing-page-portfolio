@@ -37,10 +37,6 @@ export default function Hero() {
           <div className="flex-1 min-w-0">
             <h1 className="sr-only">석지인 — 개발자 포트폴리오</h1>
 
-            <p className="mb-4 text-sm font-medium tracking-tight text-muted-foreground">
-              {t('pages.career.meta.heroEyebrow')}
-            </p>
-
             <p className="mb-5 max-w-2xl text-balance whitespace-pre-line text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
               {t('pages.career.meta.greeting')}
             </p>
