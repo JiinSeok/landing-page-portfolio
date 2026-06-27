@@ -66,7 +66,7 @@
                 "Rebuilt dev speed & verification — cut the cold build by 53% (18.0s→8.3s) by making type-checks async and splitting the dev SSR build, and added staged checks via pre-commit, pre-push, and CI Playwright SSR smoke tests",
                 "B2B & operations — handled onboarding for our first B2B client, built and maintained the CRM user table and a Grafana daily-metrics dashboard (internal users excluded), and diagnosed and fixed an SSR 500 production incident caused by an asset-cache permission error",
                 "Event collaboration pitch — pitched it in a meeting and finished a [photobooth prototype](https://staging.doppket.com/proposals/mudo-run) in three days; adopted as an official add-on, through to frame matching and watermark compositing",
-                "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across some 50 backend files; also fixed a bug that blocked 5GB video uploads",
+                "Redesigned a broadcast CG compositing tool's UI/UX — working in a shared repo with ML researchers, restructured the workflow into three tabbed steps (mask → asset → composite), added a thumbnail timeline header, and separated display labels from internal keys to unify terminology down to error messages across some 50 backend files; built a clipboard image-paste upload to the AI/backend; and fixed a bug that blocked 5GB video uploads",
                 "Rebuilt the most267.co.kr corporate landing with Notion — rebuilt static HTML entirely in Next.js and wired up a Notion CMS/DB so non-developers manage content directly; prevented CLS with semantic HTML and next/image, cutting LCP by 46% and raising accessibility 83→96 versus the old site (solo)"
               ]
             },
@@ -301,7 +301,7 @@
         "aicg": {
           "title": "Broadcast CG compositing tool — Gradio UI/UX redesign",
           "lead": "Sharing one repo with ML researchers, I redesigned the frontend of a broadcast CG compositing tool.",
-          "description": "The tool was Gradio, but the essence was the same: translating the user's workflow into screen structure. I restructured tool-named English tabs into the actual work order — 1. Mask → 2. Asset → 3. Composite — and added an 'original + mask + asset = composite' thumbnail timeline so the screen shows where each output feeds next. I also handled Korean UI terminology and broadcast-grade 5GB uploads.",
+          "description": "The tool was Gradio, but the essence was the same: translating the user's workflow into screen structure. I restructured tool-named English tabs into the actual work order — 1. Mask → 2. Asset → 3. Composite — and added an 'original + mask + asset = composite' thumbnail timeline so the screen shows where each output feeds next. I built a clipboard image-paste upload that sends straight to the AI/backend, and handled Korean UI terminology and broadcast-grade 5GB uploads.",
           "sublabel": "with ML researchers",
           "beforeAfter": {
             "before": {
