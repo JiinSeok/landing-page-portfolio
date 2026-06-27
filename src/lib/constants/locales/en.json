@@ -249,7 +249,7 @@
         "tappytype": {
           "title": "TappyType",
           "lead": "An iOS app that turns Apple Pencil handwriting into a Korean font.",
-          "description": "I planned, built, designed, and marketed it solo, all the way to launch. It's made with Swift, SwiftUI, and PencilKit — I wrote the TrueType font writer from scratch in pure Swift and built a few-shot handwriting font-generation pipeline. The app and server sit behind a REST contract and protocol, so swapping the generation model never touches app code. Since launch I've kept shipping updates solo — multi-project (1.1), notebook input, portrait-only mode, and pen presets (1.5) — and audited the English localization end to end.",
+          "description": "I built the app with Swift, SwiftUI, and PencilKit and took it solo all the way to launch. I separated the app and server behind a REST contract so swapping the model never touches app code, and since launch I've kept shipping updates solo — multi-project (1.1), notebook input, and pen presets (1.5). SEO/GEO brought in real users through generative AI agents.",
           "alt": "TappyType iOS app intro card",
           "linkLabel": "View Instagram",
           "linkLabel2": "View site",
