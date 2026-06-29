@@ -1,28 +1,27 @@
 'use client'
 
+import FaqToc from '@/components/sections/FaqToc'
 import { useTranslations } from '@/lib/providers/TextContext'
 
-type CareerLite = { company: string }
-
 /**
- * 스펙시트형 히어로.
+ * 타이포 중심 히어로.
  *
- * 이름 락업 → thesis → 하단 hairline 스펙 테이블 순으로, 페이지의 진짜 시그니처인
- * 아래 TimelineToc(커리어×AI 이중축)로 자연스럽게 핸드오프한다. 미니 축을 따로 두지
- * 않는 이유는 실제 타임라인이 바로 다음에 오기 때문(중복 회피). 모노 영문 라벨은
- * 이력서의 "소개<ABOUT>" 병기와 동일한 시그니처 결.
+ * 자격(eyebrow) → 미션(headline) → 활동(lead) → 질문 퀵목차 순으로, 페이지의 진짜
+ * 시그니처인 아래 TimelineToc(커리어×AI 이중축)로 자연스럽게 핸드오프한다. 별도 스펙
+ * 테이블·미니 축을 두지 않는 이유는 같은 정보(경력 시점·현재 소속·스택)를 타임라인과
+ * 기술 스택 섹션이 더 풍부하게 보여주기 때문(중복·시각 변종 회피).
  */
 export default function Hero() {
   const t = useTranslations()
-  const careers = t('pages.career.careers') as unknown as CareerLite[]
-  const current = careers?.[0]?.company ?? ''
 
-  const specs: { label: string; value: string }[] = [
-    { label: 'SINCE', value: '2021' },
-    { label: 'NOW', value: `${current} · ${t('layout.ui.current')}` },
-    { label: 'SHIPPED', value: 'TappyType · formkit-react' },
-    { label: 'STACK', value: 'React · Next.js · TS' },
-  ]
+  // heroEyebrow 첫 줄은 역할·경력 자격(eyebrow), 나머지 줄은 현재 활동을 말하는
+  // thesis급 문장이다. 둘을 한 덩어리로 작게 누르면 greeting(미션)과 위계가 어긋나
+  // 보여서, 자격 → 미션(greeting) → 활동(lead) 3단으로 분리해 렌더한다. 워딩은
+  // 원문 그대로 쓰고 줄바꿈 기준으로만 가른다(en은 한 줄이라 lead가 비고 2단이 된다).
+  const [credential, ...eyebrowRest] = t('pages.career.meta.heroEyebrow').split(
+    '\n',
+  )
+  const lead = eyebrowRest.join('\n').trim()
 
   return (
     <section
@@ -39,25 +38,19 @@ export default function Hero() {
               석지인 — 프론트엔드·풀스택 개발자 포트폴리오
             </h1>
 
-            <p className="mb-4 text-sm font-medium tracking-tight text-muted-foreground whitespace-pre-wrap">
-              {t('pages.career.meta.heroEyebrow')}
+            <p className="mb-4 text-sm font-medium tracking-tight text-muted-foreground">
+              {credential}
             </p>
-            <p className="mb-5 max-w-2xl text-balance whitespace-pre-line text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
+            <p className="mb-4 max-w-2xl text-balance whitespace-pre-line text-xl md:text-3xl font-semibold tracking-tight leading-snug break-keep text-foreground">
               {t('pages.career.meta.greeting')}
             </p>
+            {lead && (
+              <p className="mb-2.5 max-w-2xl whitespace-pre-line text-base md:text-lg leading-relaxed break-keep text-muted-foreground">
+                {lead}
+              </p>
+            )}
 
-            <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-4">
-              {specs.map((spec) => (
-                <div key={spec.label} className="bg-background px-4 py-3">
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                    {spec.label}
-                  </dt>
-                  <dd className="mt-1 text-sm font-medium text-foreground break-keep">
-                    {spec.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <FaqToc />
           </div>
         </div>
       </div>

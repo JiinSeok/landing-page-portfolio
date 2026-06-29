@@ -7,30 +7,61 @@
       "sections": {
         "faq": {
           "title": "FAQ",
+          "tocTitle": "You might be wondering",
           "questions": [
             {
+              "id": "problem-immersion",
+              "question": "What problem have you immersed yourself in most deeply?",
+              "answer": "The thing I dug into most deeply happened before I became a developer, at a logistics startup, solving a delivery-map problem. It started as a simple data-fix request, but the more I looked, the clearer it got that the client's delivery drivers weren't using our app at all. I went out to the warehouse at dawn, rode along on deliveries, and interviewed the drivers, and that's where I confirmed the real problem was the delivery map. The dev team said it couldn't be improved, but when I traced the cause it turned out a Naver Maps API with poor React Native compatibility was to blame. I made the case for how central maps are in logistics, we switched to the more flexible Google Maps API, and we won the user migration. That's when I learned that solving a technical limitation can genuinely help users, and it's why I became a developer myself. I work the same way now at Doppket, defining a Korean-style settlement policy with no obvious right answer, edge case by edge case.",
+              "tocLabel": "Deepest problem"
+            },
+            {
+              "id": "good-code",
+              "question": "What makes good code, in your view?",
+              "answer": "Good code, to me, is code the next person can understand quickly and change safely, and that next person includes me a few months later. On one team project I watched error messages drift apart as each developer wrote their own, which made refactoring expensive. So early on I built a single shared error handler and applied it globally through TanStack Query. Once no one had to write error-checking code each time, we could focus on harder features like SSR. That leaves me with two conditions for good code: consistency, calling the same thing by the same name, and clear boundaries, splitting predictable errors from unpredictable ones and handling each by policy. When the rules are clear, the next person can repeat the same judgment.",
+              "tocLabel": "Good code"
+            },
+            {
+              "id": "current-work",
               "question": "What are you working on now?",
-              "answer": "I run Doppket, a digital-asset marketplace at Dost11, MBC's AI strategy subsidiary, across product, development, operations, marketing, and sales. I joined on a contract in September 2025, converted to full-time in January 2026, and have led Doppket end to end since June 2026. I've owned Korean-market localization, the product dashboard, the blog CMS, and the checkout UX, and I handled onboarding for our first B2B client. I turned a photobooth feature I pitched in a meeting into a prototype in three days, and I redesigned the UI/UX of a broadcast CG compositing tool side by side with ML researchers in a shared repo."
+              "answer": "I run Doppket, a digital-asset marketplace at Dost11, MBC's AI strategy subsidiary, across product, development, operations, marketing, and sales. I joined on a contract in September 2025, converted to full-time in January 2026, and have led Doppket end to end since June 2026. I've owned Korean-market localization, the product dashboard, the blog CMS, and the checkout UX, and I handled onboarding for our first B2B client. I turned a photobooth feature I pitched in a meeting into a prototype in three days, and I redesigned the UI/UX of a broadcast CG compositing tool side by side with ML researchers in a shared repo.",
+              "tocLabel": "What I do now"
             },
             {
-              "question": "What matters most to you when collaborating?",
-              "answer": "What I value most is everyone on the team calling the same thing by the same name. Mismatched terms are where misunderstandings and bugs begin, so wherever I've worked I've aligned the vocabulary first. At Dost11 I proposed bringing everything to one standard, from screen labels to error messages across some 50 backend files, and did the cleanup myself. Like a librarian who first pins down what someone is actually looking for, I think collaboration starts there too. The quality a machine can catch, I leave to automation — PR-first work with ESLint, Prettier, and Git hooks — so people can spend their energy on what actually needs agreement. So I don't just propose and leave it; I see it through, and I document both what I'm handing off and what I decided not to fix, with the reasons, so the next person can pick it up right away. Being transparent even about what I didn't do is where trust on a team comes from."
+              "id": "growth",
+              "question": "How do you keep growing as an engineer?",
+              "answer": "When I hit a problem, I start by looking at how others have solved something similar, and if it fits I apply it right away. When Git conflicts kept wiping out code on a team project, I brought in Linear History; when meetings ran long, I made a rule to write up discussion points in GitHub Discussions beforehand and cut the time down. The rest I fill by building. I published repetitive form logic as an npm library, and I implemented a TrueType font writer myself just because I was curious how fonts work. Knowledge I only read rarely sticks, but what I've built stays. I lean on AI to develop and pressure-test my thinking too, and when choosing technology I look first at where users get confused and drop off.",
+              "tocLabel": "Growth"
             },
             {
-              "question": "How do you use AI tools?",
-              "answer": "Heavily, especially to work through and pressure-test my own thinking. I keep a config that injects my personal and work code style and working rules into Claude Code, so I get consistent results across machines. When Claude Code first launched I was at Chainshift, and though D3.js was new to me, AI sped me up enough to finish the dashboard and support the sales demo. It also works in reverse: on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, documented it in an analysis doc, and landed the offer. Lately I've been working with AI inside products too, like a few-shot font-generation pipeline and an ML monorepo."
-            },
-            {
+              "id": "qa-cx",
               "question": "How does your SQA/CX background help in frontend work?",
-              "answer": "Great UX is bug-free, and great UI is consistent. That's a principle from my QA and CX years. Doing SQA and CX at two companies, I saw first-hand where users get confused and drop off, and it still shapes how I write code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds, kicking in at 50 items. Setting up issue trackers and building design systems are habits I picked up back then too."
+              "answer": "Great UX is bug-free, and great UI is consistent. That's a principle from my QA and CX years. Doing SQA and CX at two companies, I saw first-hand where users get confused and drop off, and it still shapes how I write code. I split errors into the predictable (400/422) and the unpredictable (5xx/network) and handle each by policy, and I apply performance strategies like virtualization against numeric thresholds, kicking in at 50 items. Setting up issue trackers and building design systems are habits I picked up back then too.",
+              "tocLabel": "QA/CX edge"
             },
             {
+              "id": "collaboration",
+              "question": "What matters most to you when collaborating?",
+              "answer": "What I value most is everyone on the team calling the same thing by the same name. Mismatched terms are where misunderstandings and bugs begin, so wherever I've worked I've aligned the vocabulary first. At Dost11 I proposed bringing everything to one standard, from screen labels to error messages across some 50 backend files, and did the cleanup myself. Like a librarian who first pins down what someone is actually looking for, I think collaboration starts there too. The quality a machine can catch, I leave to automation — PR-first work with ESLint, Prettier, and Git hooks — so people can spend their energy on what actually needs agreement. So I don't just propose and leave it; I see it through, and I document both what I'm handing off and what I decided not to fix, with the reasons, so the next person can pick it up right away. Being transparent even about what I didn't do is where trust on a team comes from.",
+              "tocLabel": "Collaboration"
+            },
+            {
+              "id": "ai",
+              "question": "How do you use AI tools?",
+              "answer": "Heavily, especially to work through and pressure-test my own thinking. I keep a config that injects my personal and work code style and working rules into Claude Code, so I get consistent results across machines. When Claude Code first launched I was at Chainshift, and though D3.js was new to me, AI sped me up enough to finish the dashboard and support the sales demo. It also works in reverse: on a hiring assignment I replaced AI-generated code with code I wrote myself to unify error handling, documented it in an analysis doc, and landed the offer. Lately I've been working with AI inside products too, like a few-shot font-generation pipeline and an ML monorepo.",
+              "tocLabel": "AI tools"
+            },
+            {
+              "id": "career-change",
               "question": "Why did you move into development?",
-              "answer": "I majored in Library & Information Science and worked on a people database at Yonhap News, then in QA and CX at a logistics startup and at Fitogether. I cut a response form down to a single page, raised the opt-in profile submission rate by 30%, and lowered communication costs with a shared glossary. That's where it clicked for me: what I enjoy is shaping information so it's easy for people to use. But in QA and CX I could only propose improvements and hand them off, and I kept wanting to build and fix things myself. I'd been coding since 2020, so moving into development felt natural."
+              "answer": "I majored in Library & Information Science and worked on a people database at Yonhap News, then in QA and CX at a logistics startup and at Fitogether. I cut a response form down to a single page, raised the opt-in profile submission rate by 30%, and lowered communication costs with a shared glossary. That's where it clicked for me: what I enjoy is shaping information so it's easy for people to use. But in QA and CX I could only propose improvements and hand them off, and I kept wanting to build and fix things myself. I'd been coding since 2020, so moving into development felt natural.",
+              "tocLabel": "Career switch"
             },
             {
+              "id": "fundamentals",
               "question": "You're not a CS major — how did you build your fundamentals?",
-              "answer": "Library & Information Science is the study of classifying and structuring information, so my instinct for data modeling actually comes from my major. I started coding there too, through courses like Information Technology (Python) and Software Programming, and in Digital Library Construction I planned a software project end to end, from writing the RFP to choosing the tech. I fill the rest by building things myself. I implemented a TrueType font writer from scratch in pure Swift and published shared components as an npm library (formkit-react). My quality-engineering theory is backed by the ISTQB and CSTS certifications."
+              "answer": "Library & Information Science is the study of classifying and structuring information, so my instinct for data modeling actually comes from my major. I started coding there too, through courses like Information Technology (Python) and Software Programming, and in Digital Library Construction I planned a software project end to end, from writing the RFP to choosing the tech. I fill the rest by building things myself. I implemented a TrueType font writer from scratch in pure Swift and published shared components as an npm library (formkit-react). My quality-engineering theory is backed by the ISTQB and CSTS certifications.",
+              "tocLabel": "Fundamentals"
             }
           ]
         }

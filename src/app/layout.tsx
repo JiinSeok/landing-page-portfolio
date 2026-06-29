@@ -90,6 +90,9 @@ export default function RootLayout({ children }: LayoutProps) {
         />
       </head>
       <body
+        // Grammarly 등 브라우저 확장이 <body>에 data-gr-* 속성을 주입해 생기는
+        // hydration 불일치 경고를 무시한다(자식이 아닌 이 요소 속성에만 적용).
+        suppressHydrationWarning
         className={cn(
           'min-h-screen w-full bg-background text-[clamp(16px,1vw,18px)]',
         )}

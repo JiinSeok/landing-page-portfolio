@@ -5,8 +5,10 @@ import styles from '@/lib/utils/styles'
 import Image from 'next/image'
 
 type FAQItem = {
+  id: string
   question: string
   answer: string
+  tocLabel: string
 }
 
 // 질문 내용(키워드)에 맞춰 어울리는 포즈를 고른다. 질문 순서가 바뀌어도 매칭이
@@ -69,10 +71,12 @@ export default function FAQSection() {
               return (
                 <div
                   key={faq.question}
+                  id={faq.id}
                   className={styles.combineStyles([
                     styles.spacing.marginBottom('lg'),
                     styles.spacing.paddingY('lg'),
                     'border-b border-border last:border-0',
+                    'scroll-mt-[calc(var(--promo-h)_+_88px)]',
                   ])}
                 >
                   <h3 className="font-semibold text-lg py-3">{faq.question}</h3>
