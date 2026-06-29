@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       aria-label="소개"
-      className="w-full pt-24 pb-8 md:pt-28 md:pb-10 overflow-x-clip"
+      className="w-full pt-24 pb-24 md:pt-28 md:pb-32 overflow-x-clip"
     >
       <div className="px-6 md:px-8">
         <div className="max-w-6xl mx-auto flex gap-4 md:gap-6">

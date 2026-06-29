@@ -653,7 +653,7 @@ export function ContactMenu() {
     >
       <ContentCard
         title="Jiin Seok"
-        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
+        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 bg-background p-1"
       >
         <address className="space-y-2 text-sm text-muted-foreground not-italic">
           <div className="flex items-center gap-2">
@@ -746,7 +746,7 @@ export function ShareMenu() {
     >
       <ContentCard
         title="Share This Page"
-        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
+        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 bg-background p-1"
       >
         <div className="flex flex-col gap-3">
           <Button
@@ -854,7 +854,7 @@ export function TocMenu() {
     >
       <ContentCard
         title="Table of Contents"
-        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 backdrop-blur-sm bg-background/90 p-1"
+        className="w-64 sm:w-64 md:w-72 lg:w-80 shadow-lg border border-border/50 bg-background p-1"
       >
         <nav
           className="pr-3 -mr-2 flex flex-col"

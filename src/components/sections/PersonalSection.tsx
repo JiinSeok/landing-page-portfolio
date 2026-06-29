@@ -62,7 +62,6 @@ export default function PersonalSection() {
       <div className="px-6 md:px-8">
         <h2 className="sr-only">{t('pages.career.meta.title')}</h2>
         <div className="max-w-3xl mx-auto text-center mb-8 md:hidden">
-          <hr className="w-12 mx-auto mb-8 border-border" />
           <p className={styles.text.heading(2)} aria-hidden="true">
             {t('pages.career.meta.title')}
           </p>

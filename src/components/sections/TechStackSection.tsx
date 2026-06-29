@@ -7,7 +7,7 @@ import {
 } from '@/lib/constants/sections/techStack'
 import { useLocale, useTranslations } from '@/lib/providers/TextContext'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from '@/lib/utils/styles'
 
 export default function TechStackSection() {
@@ -16,17 +16,6 @@ export default function TechStackSection() {
   const [activeCategory, setActiveCategory] = useState<string>(
     TECH_STACK_CATEGORIES[0],
   )
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentIndex = TECH_STACK_CATEGORIES.findIndex(
-        (category) => category === activeCategory,
-      )
-      const nextIndex = (currentIndex + 1) % TECH_STACK_CATEGORIES.length
-      setActiveCategory(TECH_STACK_CATEGORIES[nextIndex])
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [activeCategory])
 
   const categoryTabs: TabItem[] = TECH_STACK_CATEGORIES.map((category) => ({
     id: category,
