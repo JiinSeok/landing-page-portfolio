@@ -45,6 +45,24 @@
 
 `package.json`의 `pre-push` 스크립트는 `pnpm correct && pnpm build`다. 푸시 전에는 이 기준을 만족하는지 확인한다.
 
+### dependabot PR은 머지하지 말고 로컬에서 재생성한다
+
+pnpm 11에는 `minimumReleaseAge` 24시간 격리가 기본으로 켜져 있다. 게시 후 24시간이 안 된 패키지가 lockfile에 있으면 설치가 `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION`으로 실패한다.
+
+dependabot은 PR을 만들 때 lockfile을 **전체 재해석**하므로, 바꾸려던 패키지와 무관한 전이 의존성까지 갓 나온 버전으로 떠오른다. 그 lockfile은 Vercel 빌드에서 반드시 실패한다. pnpm의 격리는 verify-after-resolve라서 리졸버가 조건을 만족하는 구버전으로 폴백하지 않는다(pnpm #11203, 미해결).
+
+`.github/dependabot.yml`로는 막을 수 없다. `cooldown` 옵션은 직접 의존 PR의 생성 시점만 늦추고 전이 의존성 재해석에는 관여하지 않으며, 보안 업데이트에서는 아예 무시된다.
+
+따라서 dependabot PR은 이렇게 처리한다.
+
+1. PR 본문에서 올리려는 패키지와 목표 버전을 확인한다
+2. 목표 버전의 게시 시각이 24시간을 넘겼는지 확인한다 (`npm view <pkg> time --json`)
+3. `package.json`의 해당 specifier만 손으로 올리고 `pnpm install`을 돌린다 — pnpm이 기존 lockfile을 기준선으로 삼아 영향받는 노드만 다시 해석하므로 무관한 전이 의존성이 떠오르지 않는다
+4. `git diff pnpm-lock.yaml`으로 변경이 의도한 패키지에 한정됐는지 확인한다
+5. `pnpm test`·`pnpm build` 통과 후 커밋하고, dependabot PR은 사유를 코멘트로 남기고 닫는다
+
+반복해서 걸리는 데이터 패키지는 `pnpm-workspace.yaml`의 `overrides`에 버전을 고정한다. 격리 정책을 끄거나 `minimumReleaseAgeExclude`로 빼는 것보다 안전하다.
+
 ## 구현 메모
 
 - UI는 Tailwind CSS 4 기반이다. 기존 토큰과 컴포넌트 패턴을 먼저 재사용한다.
