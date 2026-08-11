@@ -20,6 +20,7 @@ export interface GalleryScreen {
 export interface GalleryItem {
   id?: string
   title: string
+  private?: boolean
   period?: string
   tags: string[]
   lead?: string
