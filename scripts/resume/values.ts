@@ -48,8 +48,6 @@ export function resumeValues(): Record<string, string> {
     'metrics.settlementTickets': metrics.settlementTickets,
     'metrics.buildCold': metrics.buildCold,
     'metrics.buildDevStart': metrics.buildDevStart,
-    'metrics.most267Lighthouse': metrics.most267Lighthouse,
-    'metrics.most267Lcp': metrics.most267Lcp,
     'talks.seo.when': talks.seo.when,
     'talks.seo.url': talks.seo.url,
     'talks.cx.when': talks.cx.when,

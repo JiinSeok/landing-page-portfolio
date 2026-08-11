@@ -81,8 +81,6 @@ export const metrics = {
   settlementTickets: '30건',
   buildCold: '18.0초 → 8.3초(53% 단축)',
   buildDevStart: '14.1초 → 10.0초(29% 단축)',
-  most267Lighthouse: '성능 84→91 · 접근성 83→96 · 모범사례 92→100',
-  most267Lcp: 'LCP 2.8초 → 1.5초(약 46% 단축)',
   buildWatchMemory: '118MB → 60MB(49% 절감)',
   albaformSeo: 'Google Lighthouse SEO 100',
 }

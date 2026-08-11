@@ -24,9 +24,6 @@ const PROJECT_IDS = [
   'seo-talk',
   'cx-talk',
   'settlement',
-  'aicg',
-  'most267',
-  'photobooth',
 ]
 
 export function useTimelineData() {
