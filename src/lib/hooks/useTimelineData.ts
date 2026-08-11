@@ -37,9 +37,11 @@ export function useTimelineData() {
 
   // 프로젝트 표시 텍스트를 로케일로 치환(구조·이미지·URL은 galleryItems 유지).
   // anchor는 id 기반이라 로케일이 바뀌어도 스크롤·TOC 링크가 안정적이다.
+  const showInternal = process.env.NEXT_PUBLIC_SHOW_INTERNAL === 'true'
   const projects = galleryItems.map((item, index) => {
     const id = PROJECT_IDS[index] ?? item.title
     const get = (key: string) => t(`pages.projects.items.${id}.${key}`)
+    const periodRaw = item.private && !showInternal ? undefined : item.period
     return {
       ...item,
       id,
@@ -52,7 +54,7 @@ export function useTimelineData() {
       linkLabel2: item.linkLabel2 ? get('linkLabel2') : undefined,
       featured: item.featured ? { sublabel: get('sublabel') } : undefined,
       period:
-        locale === 'en' ? item.period?.replace('현재', 'Present') : item.period,
+        locale === 'en' ? periodRaw?.replace('현재', 'Present') : periodRaw,
       screens: item.screens?.map((screen, si) => ({
         ...screen,
         caption: screen.caption ? get(`screens.${si}.caption`) : undefined,

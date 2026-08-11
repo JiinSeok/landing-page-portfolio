@@ -945,64 +945,7 @@
                   단계별 검증을 추가했습니다.
                 </li>
               </ul>
-              <h4>
-                방송용 CG AI 합성 도구: Gradio UI/UX 재설계
-                <span class="tech">(Python, Gradio)</span>
-              </h4>
-              <ul class="dots">
-                <li>
-                  ML 연구원들과 한 저장소에서 협업하며, 도구 이름 기준 영문
-                  탭(에셋·트래킹·합성)을 실제 작업 순서인 워크플로우 3단계
-                  탭(1.마스크 → 2.에셋 → 3.합성)으로 재구성하고, '원본 영상 +
-                  마스크 영상 + 에셋 = 합성 결과' 썸네일 타임라인 헤더를
-                  신설했습니다. 산출물이 다음 단계 어디에 쓰이는지 화면이 직접
-                  안내합니다.
-                </li>
-                <li>
-                  표시 라벨과 내부 키를 분리한 뒤 UI 용어를 통일·한국어화하고,
-                  백엔드 파일 {{metrics.errorMsgFiles}}에 흩어진 사용자 노출
-                  에러 메시지를 전부 찾아 같은 기준으로 통일했습니다. 사내 유저
-                  인터뷰를 진행하고 개발팀-CG팀 용어표를 만들었습니다.
-                </li>
-                <li>
-                  클립보드에서 이미지를 붙여넣어 AI·백엔드로 바로 올리는 업로드
-                  기능을 개발하고, 방송용 대용량(5GB) 영상 업로드·타임아웃을
-                  조정했으며, 파일 탐색기 체크박스 미표시·폰트 로드 실패 등
-                  워크플로우를 막던 버그를 해결했습니다.
-                </li>
-              </ul>
-              <h4>
-                기업 랜딩 most267.co.kr: Notion 연동 재구축
-                <span class="tech">(Next.js, GitHub Actions)</span>
-              </h4>
-              <ul class="dots">
-                <li>
-                  <b>정적 HTML → Next.js 전면 재구축</b>: 손으로 직접 수정하던
-                  사이트를 Next.js로 재구축하고 GitHub Pages 정적 배포 CI/CD와
-                  SEO(sitemap·robots)를 구축했습니다.
-                </li>
-                <li>
-                  <b>Notion CMS 연동</b>: Notion DB 5종(팀·작품·보도·영상·설정)을
-                  연동해 비개발자가 콘텐츠를 직접 관리하게 했습니다. select 속성
-                  순서, R&amp;R 컬럼 등 Notion 스키마가 카테고리 정렬·본부별 탭
-                  UI에 그대로 반영됩니다.
-                </li>
-                <li>
-                  <b>만료 URL 빌드타임 변환</b>: 한 시간마다 만료되는 Notion 파일
-                  URL 문제를, 빌드 시점에 자료를 내려받아 WebP/WebM으로 변환하는
-                  파이프라인으로 해결했습니다. Notion 장애 시에는 캐시로 빌드를
-                  이어갑니다.
-                </li>
-                <li>
-                  <b>CLS 방지</b>: img 태그를 next/image로 전환하고 이미지 치수를
-                  추출·고정해 레이아웃 시프트(CLS)를 방지했습니다.
-                </li>
-                <li>
-                  <b>재구축·최적화 효과(실측)</b>: 개편 전(정적 HTML) 대비
-                  Lighthouse(desktop) {{metrics.most267Lighthouse}},
-                  {{metrics.most267Lcp}}를 확인했습니다.
-                </li>
-              </ul>
+              <!-- Internal projects removed for production: Gradio UI/UX redesign and most267 corporate rebuild -->
             </div>
 
             <div class="item">
